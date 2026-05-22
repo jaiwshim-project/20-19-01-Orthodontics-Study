@@ -32,11 +32,59 @@
                 <p style="margin: 0 0 10px 0; color: #0284c7;"><strong>💾 Supabase 연동</strong></p>
                 <p style="margin: 0 0 10px 0; font-size: 13px; color: #666;">학습 진도를 클라우드에 저장하여 다른 기기에서도 접근할 수 있습니다.</p>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button class="btn btn-primary" onclick="configureSupabase()">⚙️ Supabase 설정</button>
+                    <button class="btn btn-primary" id="authBtn" onclick="showAuthModal()">🔐 로그인</button>
                     <button class="btn btn-success" id="syncBtn" onclick="syncProgressToCloud()" style="display: none;">☁️ 클라우드에 저장</button>
                     <button class="btn btn-secondary" id="loadBtn" onclick="loadProgressFromCloud()" style="display: none;">📥 클라우드에서 로드</button>
+                    <button class="btn btn-danger" id="logoutBtn" onclick="handleLogout()" style="display: none;">🚪 로그아웃</button>
                 </div>
                 <div id="syncStatus" style="margin-top: 10px; font-size: 12px; color: #666;"></div>
+                <div id="userStatus" style="margin-top: 10px; font-size: 13px; color: #0284c7;"></div>
+            </div>
+        </div>
+
+        <!-- Authentication Modal -->
+        <div id="authModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+            <div style="background: white; border-radius: 12px; padding: 30px; width: 90%; max-width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+                <h2 style="margin: 0 0 20px 0; text-align: center; color: #0066CC;">🔐 사용자 인증</h2>
+
+                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <button class="btn btn-primary" id="loginTab" onclick="switchAuthTab('login')" style="flex: 1; background: #0066CC;">로그인</button>
+                    <button class="btn btn-secondary" id="signupTab" onclick="switchAuthTab('signup')" style="flex: 1; background: #ccc; color: #333;">회원가입</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="loginForm" style="display: block;">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">이메일</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">비밀번호</label>
+                        <input type="password" id="loginPassword" placeholder="비밀번호 (최소 6자)" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+                    </div>
+                    <button class="btn btn-primary" onclick="handleLogin()" style="width: 100%;">로그인</button>
+                    <div id="loginError" style="margin-top: 10px; color: #d32f2f; font-size: 13px; display: none;"></div>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signupForm" style="display: none;">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">이름</label>
+                        <input type="text" id="signupName" placeholder="학습자 이름" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">이메일</label>
+                        <input type="email" id="signupEmail" placeholder="your@email.com" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">비밀번호</label>
+                        <input type="password" id="signupPassword" placeholder="비밀번호 (최소 6자)" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+                    </div>
+                    <button class="btn btn-primary" onclick="handleSignup()" style="width: 100%;">회원가입</button>
+                    <div id="signupError" style="margin-top: 10px; color: #d32f2f; font-size: 13px; display: none;"></div>
+                </div>
+
+                <button class="btn btn-secondary" onclick="closeAuthModal()" style="width: 100%; margin-top: 15px;">닫기</button>
             </div>
         </div>
 
@@ -506,6 +554,13 @@
 
         // Supabase 연동 함수
         function syncProgressToCloud() {
+            const user = getCurrentUser();
+            if (!user) {
+                alert('⚠️ 클라우드 동기화를 위해 로그인이 필요합니다.');
+                showAuthModal();
+                return;
+            }
+
             if (!supabase.isConfigured) {
                 alert('먼저 Supabase를 설정해주세요.');
                 return;
@@ -516,7 +571,7 @@
             status.textContent = '⏳ 클라우드에 저장 중...';
             status.style.color = '#666';
 
-            supabase.saveProgress('current_user', {
+            supabase.saveProgress(user.id, {
                 phase1: data.phase1Progress || 0,
                 phase2: data.phase2Progress || 0,
                 phase3: data.phase3Progress || 0,
@@ -534,6 +589,13 @@
         }
 
         function loadProgressFromCloud() {
+            const user = getCurrentUser();
+            if (!user) {
+                alert('⚠️ 클라우드 동기화를 위해 로그인이 필요합니다.');
+                showAuthModal();
+                return;
+            }
+
             if (!supabase.isConfigured) {
                 alert('먼저 Supabase를 설정해주세요.');
                 return;
@@ -543,7 +605,7 @@
             status.textContent = '⏳ 클라우드에서 로드 중...';
             status.style.color = '#666';
 
-            supabase.getProgress('current_user').then(result => {
+            supabase.getProgress(user.id).then(result => {
                 if (result && result.length > 0) {
                     const cloudData = result[0].data;
                     const data = getData();
@@ -562,14 +624,129 @@
             });
         }
 
+        // Authentication UI Functions
+        function showAuthModal() {
+            document.getElementById('authModal').style.display = 'flex';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupForm').style.display = 'none';
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('signupName').value = '';
+            document.getElementById('signupEmail').value = '';
+            document.getElementById('signupPassword').value = '';
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('signupError').style.display = 'none';
+        }
+
+        function switchAuthTab(tab) {
+            if (tab === 'login') {
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('signupForm').style.display = 'none';
+                document.getElementById('loginTab').style.background = '#0066CC';
+                document.getElementById('loginTab').style.color = 'white';
+                document.getElementById('signupTab').style.background = '#ccc';
+                document.getElementById('signupTab').style.color = '#333';
+            } else {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('signupForm').style.display = 'block';
+                document.getElementById('loginTab').style.background = '#ccc';
+                document.getElementById('loginTab').style.color = '#333';
+                document.getElementById('signupTab').style.background = '#0066CC';
+                document.getElementById('signupTab').style.color = 'white';
+            }
+        }
+
+        async function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorEl = document.getElementById('loginError');
+
+            if (!email || !password) {
+                errorEl.textContent = '이메일과 비밀번호를 입력해주세요';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            const result = await signInUser(email, password);
+            if (result.success) {
+                closeAuthModal();
+                updateAuthUI();
+                alert('✅ 로그인 성공!');
+            } else {
+                errorEl.textContent = result.error;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        async function handleSignup() {
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const errorEl = document.getElementById('signupError');
+
+            if (!name || !email || !password) {
+                errorEl.textContent = '모든 필드를 입력해주세요';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            const result = await signUpUser(email, password, name);
+            if (result.success) {
+                // Save user record for future login
+                saveUserRecord(email, password, name);
+                closeAuthModal();
+                updateAuthUI();
+                alert('✅ 회원가입 완료! 로그인되었습니다.');
+            } else {
+                errorEl.textContent = result.error;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        function handleLogout() {
+            if (confirm('정말로 로그아웃하시겠습니까?')) {
+                signOutUser();
+                updateAuthUI();
+                alert('✅ 로그아웃되었습니다.');
+            }
+        }
+
+        function updateAuthUI() {
+            const user = getCurrentUser();
+            const authBtn = document.getElementById('authBtn');
+            const syncBtn = document.getElementById('syncBtn');
+            const loadBtn = document.getElementById('loadBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const userStatus = document.getElementById('userStatus');
+
+            if (user) {
+                authBtn.style.display = 'none';
+                syncBtn.style.display = 'inline-block';
+                loadBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'inline-block';
+                userStatus.textContent = `✅ ${user.name} (${user.email})으로 로그인됨`;
+                userStatus.style.color = '#059669';
+            } else {
+                authBtn.style.display = 'inline-block';
+                syncBtn.style.display = 'none';
+                loadBtn.style.display = 'none';
+                logoutBtn.style.display = 'none';
+                userStatus.textContent = '⚠️ 로그인이 필요합니다';
+                userStatus.style.color = '#f59e0b';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             updateProgressDisplay();
             renderNotes();
+            updateAuthUI();
 
             // Supabase 설정 확인 및 버튼 표시
             if (supabase.isConfigured) {
-                document.getElementById('syncBtn').style.display = 'inline-block';
-                document.getElementById('loadBtn').style.display = 'inline-block';
                 document.getElementById('syncStatus').textContent = '✅ Supabase 연동됨';
                 document.getElementById('syncStatus').style.color = '#059669';
             }

@@ -44,17 +44,29 @@ class SupabaseClient {
         }
     }
 
-    // 진도 데이터 저장
+    // 진도 데이터 저장 (사용자 인증 필수)
     async saveProgress(userId, progressData) {
+        if (!userId) {
+            console.error('User ID required for cloud sync');
+            return null;
+        }
         return this.request('POST', '/progress', {
             user_id: userId,
+            phase1: progressData.phase1Progress || 0,
+            phase2: progressData.phase2Progress || 0,
+            phase3: progressData.phase3Progress || 0,
+            hoursSpent: progressData.hoursSpent || 0,
             data: progressData,
             updated_at: new Date().toISOString()
         });
     }
 
-    // 진도 데이터 불러오기
+    // 진도 데이터 불러오기 (사용자 인증 필수)
     async getProgress(userId) {
+        if (!userId) {
+            console.error('User ID required for cloud sync');
+            return null;
+        }
         return this.request('GET', `/progress?user_id=eq.${userId}`);
     }
 

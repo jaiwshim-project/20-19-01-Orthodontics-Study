@@ -244,6 +244,144 @@ const ALL_FILES = [
     { name: 'settings.local.json', type: 'JSON', size: '0.19KB', phase: '1', category: '⚙️ 설정' }
 ];
 
+// Authentication Management
+const AUTH_KEY = 'orthodontics_auth_session';
+
+// Get auth session
+function getAuthSession() {
+    const session = localStorage.getItem(AUTH_KEY);
+    if (session) {
+        try {
+            const parsed = JSON.parse(session);
+            // Check if session is still valid (7 days expiry)
+            const createdAt = new Date(parsed.createdAt).getTime();
+            const now = new Date().getTime();
+            const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
+            if (now - createdAt < sevenDaysMs) {
+                return parsed;
+            } else {
+                localStorage.removeItem(AUTH_KEY);
+                return null;
+            }
+        } catch (e) {
+            return null;
+        }
+    }
+    return null;
+}
+
+// Is user authenticated
+function isAuthenticated() {
+    return getAuthSession() !== null;
+}
+
+// Get current user
+function getCurrentUser() {
+    const session = getAuthSession();
+    return session ? session.user : null;
+}
+
+// Sign up new user
+async function signUpUser(email, password, name) {
+    try {
+        // Validate input
+        if (!email || !password || !name) {
+            throw new Error('모든 필드를 입력해주세요');
+        }
+        if (password.length < 6) {
+            throw new Error('비밀번호는 최소 6자 이상이어야 합니다');
+        }
+        if (!email.includes('@')) {
+            throw new Error('유효한 이메일을 입력해주세요');
+        }
+
+        // Create user session (in real app, this would call Supabase)
+        const user = {
+            id: 'user_' + Date.now(),
+            email: email,
+            name: name,
+            createdAt: new Date().toISOString()
+        };
+
+        const session = {
+            user: user,
+            accessToken: 'token_' + Math.random().toString(36).substr(2, 9),
+            createdAt: new Date().toISOString()
+        };
+
+        localStorage.setItem(AUTH_KEY, JSON.stringify(session));
+        console.log('✅ 회원가입 성공:', email);
+        return { success: true, user };
+    } catch (error) {
+        console.error('회원가입 실패:', error.message);
+        return { success: false, error: error.message };
+    }
+}
+
+// Sign in user
+async function signInUser(email, password) {
+    try {
+        // Validate input
+        if (!email || !password) {
+            throw new Error('이메일과 비밀번호를 입력해주세요');
+        }
+
+        // Get stored user (in real app, this would authenticate with Supabase)
+        const users = JSON.parse(localStorage.getItem('orthodontics_all_users') || '[]');
+        const user = users.find(u => u.email === email);
+
+        if (!user || user.password !== password) {
+            throw new Error('이메일 또는 비밀번호가 올바르지 않습니다');
+        }
+
+        const session = {
+            user: { id: user.id, email: user.email, name: user.name },
+            accessToken: 'token_' + Math.random().toString(36).substr(2, 9),
+            createdAt: new Date().toISOString()
+        };
+
+        localStorage.setItem(AUTH_KEY, JSON.stringify(session));
+        console.log('✅ 로그인 성공:', email);
+        return { success: true, user: session.user };
+    } catch (error) {
+        console.error('로그인 실패:', error.message);
+        return { success: false, error: error.message };
+    }
+}
+
+// Sign out user
+function signOutUser() {
+    localStorage.removeItem(AUTH_KEY);
+    console.log('✅ 로그아웃 완료');
+    return { success: true };
+}
+
+// Save new user record (for future sign in)
+function saveUserRecord(email, password, name) {
+    try {
+        const users = JSON.parse(localStorage.getItem('orthodontics_all_users') || '[]');
+
+        // Check if user already exists
+        if (users.find(u => u.email === email)) {
+            throw new Error('이미 가입된 이메일입니다');
+        }
+
+        users.push({
+            id: 'user_' + Date.now(),
+            email: email,
+            password: password,
+            name: name,
+            createdAt: new Date().toISOString()
+        });
+
+        localStorage.setItem('orthodontics_all_users', JSON.stringify(users));
+        return { success: true };
+    } catch (error) {
+        console.error('사용자 저장 실패:', error.message);
+        return { success: false, error: error.message };
+    }
+}
+
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function() {
     initializeData();
