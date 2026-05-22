@@ -24,8 +24,8 @@
             transition: all 0.3s;
         }
         .idea-tab-button.active {
-            color: #0284c7;
-            border-bottom-color: #0284c7;
+            color: #0066CC;
+            border-bottom-color: #0066CC;
         }
         .idea-form {
             padding: 15px;
@@ -69,8 +69,8 @@
         .idea-status {
             display: inline-block;
             padding: 4px 8px;
-            background: #dbeafe;
-            color: #0284c7;
+            background: #e0f2fe;
+            color: #0066CC;
             border-radius: 4px;
             font-size: 11px;
             font-weight: 600;
@@ -166,19 +166,19 @@
         <div class="card">
             <h2>🌟 아이디어 제출 가이드</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0284c7;">
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
                     <h4>📝 구체적으로</h4>
                     <p style="font-size: 13px; color: #666;">"좋게 해주세요"보다는 구체적인 문제와 해결책을 제시하세요.</p>
                 </div>
-                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0284c7;">
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
                     <h4>🎯 사용자 입장</h4>
                     <p style="font-size: 13px; color: #666;">사용자(학습자)의 관점에서 어떤 불편함이 있는지 설명하세요.</p>
                 </div>
-                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0284c7;">
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
                     <h4>💡 창의성</h4>
                     <p style="font-size: 13px; color: #666;">혁신적인 기능 아이디어도 환영합니다.</p>
                 </div>
-                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0284c7;">
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
                     <h4>📊 실현 가능성</h4>
                     <p style="font-size: 13px; color: #666;">기술적으로 구현 가능한지도 함께 생각해 보세요.</p>
                 </div>
@@ -346,7 +346,7 @@
                                 <span class="idea-category">${i.category}</span>
                                 <span style="font-size: 11px; font-weight: 600; color: ${i.priority === '높음' ? '#dc2626' : i.priority === '중간' ? '#f59e0b' : '#10b981'};">${i.priority} 우선순위</span>
                                 <div class="idea-content">${i.content.replace(/\n/g, '<br>')}</div>
-                                ${i.benefit ? `<div style="padding: 10px; background: #f0f9ff; border-radius: 4px; margin-bottom: 10px; font-size: 13px; color: #0284c7;"><strong>기대 효과:</strong> ${i.benefit}</div>` : ''}
+                                ${i.benefit ? `<div style="padding: 10px; background: #f0f9ff; border-radius: 4px; margin-bottom: 10px; font-size: 13px; color: #0066CC;"><strong>기대 효과:</strong> ${i.benefit}</div>` : ''}
                                 <div class="idea-date">${new Date(i.date).toLocaleString('ko-KR')}</div>
                             </div>
                             <button class="btn btn-secondary" onclick="deleteIdea(${i.id})" style="background: #ef4444; color: white; padding: 5px 10px; font-size: 12px; margin-left: 10px;">삭제</button>
