@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>?듯빀 ?숈뒿 ?덈툕 - 援먯젙???뚮옯??+ Obsidian</title>
+    <title>교정학 학습 플랫폼 - 웹셉·세팔로 + Obsidian</title>
     <link rel="stylesheet" href="style.css">
     <style>
         * {
@@ -296,6 +296,47 @@
             margin-bottom: 10px;
         }
 
+        nav {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0;
+            display: flex;
+            overflow-x: auto;
+            gap: 0;
+            flex-wrap: nowrap;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            flex: 0 1 auto;
+            min-width: auto;
+            padding: 12px 10px;
+            text-decoration: none;
+            color: #1f2937;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background: #f9fafb;
+        }
+
+        nav a.active {
+            color: #0ea5e9;
+            border-bottom-color: #0ea5e9;
+        }
+
+        nav a:last-child {
+            order: 999 !important;
+            margin-left: auto !important;
+        }
+
         @media (max-width: 768px) {
             .hub-grid {
                 grid-template-columns: 1fr;
@@ -313,176 +354,176 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>?럳 ?듯빀 ?숈뒿 ?덈툕</h1>
-            <p>援먯젙???뚮옯??+ Obsidian ?숈뒿 ?명듃</p>
-            <p style="font-size: 14px; opacity: 0.8;">???뚮옯?쇨낵 媛쒖씤 ?명듃瑜??쒓납?먯꽌 愿由ы븯?몄슂</p>
-        </header>
-
         <nav>
-            <a href="index.html">?룧 ??/a>
-            <a href="resources.html">?뱴 ?먮즺</a>
-            <a href="learning-path.html">?럳 ?숈뒿寃쎈줈</a>
-            <a href="concepts.html">?뮕 媛쒕뀗?뺣━</a>
-            <a href="ideas.html">?뮡 ?뚮옯?쇨컻??/a>
-            <a href="progress.html">?깍툘 吏꾨룄</a>
-            <a href="application.html">?? ?뚮옯?쇱쟻??/a>
-            <a href="webceph.html">?뵇 ?뱀뀎쨌?명뙏濡?/a>
-            <a href="comparison.html">?뽳툘 EZM 鍮꾧탳</a>
-            <a href="wiki-vault-index.html" class="active">?쭬 ?꾪궎蹂쇳듃</a>
+            <a href="index.html">🏠 홈</a>
+            <a href="resources.html">📚 자료</a>
+            <a href="learning-path.html">🎓 학습경로</a>
+            <a href="concepts.html">💡 개념정리</a>
+            <a href="ideas.html">💭 플랫폼개선</a>
+            <a href="progress.html">⏱️ 진도</a>
+            <a href="application.html">🚀 플랫폼적용</a>
+            <a href="webceph.html">🔍 웹셉·세팔로</a>
+            <a href="comparison.html">⚖️ EZM 비교</a>
+            <a href="wiki-vault-index.html" class="active">🧠 위키볼트</a>
         </nav>
 
+        <header>
+            <h1>🧠 위키볼트 학습 허브</h1>
+            <p>EZM 교정학 플랫폼 + Obsidian 학습 통합</p>
+            <p style="font-size: 14px; opacity: 0.8;">웹 플랫폼과 Obsidian에서 관리하세요</p>
+        </header>
+
         <div class="hub-grid">
-            <!-- ???뚮옯??移대뱶 -->
+            <!-- 웹 플랫폼 카드 -->
             <div class="hub-card">
-                <h2>?뙋 ???뚮옯??/h2>
-                <p>?숈뒿 ?먮즺 ?묎렐, 吏꾨룄 異붿쟻, 媛쒕뀗 ?뺣━, ?꾩씠?붿뼱 湲곕줉 ??紐⑤뱺 ?숈뒿 ?쒕룞??愿由ы빀?덈떎.</p>
+                <h2>📚 웹 플랫폼</h2>
+                <p>학습 자료 접근, 진도 추적, 개념 정리, 아이디어 기록 등 모든 학습 진행을 관리합니다.</p>
                 <div class="hub-links">
                     <a href="index.html" class="hub-link">
-                        <span class="hub-link-icon">?룧</span>
-                        <span>??- ?뚮옯??媛쒖슂</span>
-                        <span class="hub-link-arrow">??/span>
+                        <span class="hub-link-icon">🏠</span>
+                        <span>홈 - 플랫폼 개요</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
                     <a href="resources.html" class="hub-link">
-                        <span class="hub-link-icon">?뱴</span>
-                        <span>?먮즺 - 90媛??숈뒿 ?먮즺</span>
-                        <span class="hub-link-arrow">??/span>
+                        <span class="hub-link-icon">📚</span>
+                        <span>자료 - 90개 학습 자료</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
                     <a href="learning-path.html" class="hub-link">
-                        <span class="hub-link-icon">?럳</span>
-                        <span>?숈뒿寃쎈줈 - Phase 1-3</span>
-                        <span class="hub-link-arrow">??/span>
+                        <span class="hub-link-icon">🎓</span>
+                        <span>학습경로 - Phase 1-3</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
                     <a href="progress.html" class="hub-link">
-                        <span class="hub-link-icon">?뱤</span>
-                        <span>吏꾨룄 - ?숈뒿 異붿쟻 & ?명듃</span>
-                        <span class="hub-link-arrow">??/span>
+                        <span class="hub-link-icon">⏱️</span>
+                        <span>진도 - 학습 추적 & 내보내기</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
                     <a href="concepts.html" class="hub-link">
-                        <span class="hub-link-icon">?뮕</span>
-                        <span>媛쒕뀗?뺣━ - ?숈뒿 ?뺤쓽</span>
-                        <span class="hub-link-arrow">??/span>
+                        <span class="hub-link-icon">💡</span>
+                        <span>개념정리 - 학습 정의</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
                     <a href="ideas.html" class="hub-link">
-                        <span class="hub-link-icon">?뮡</span>
-                        <span>?뚮옯?쇨컻??- ?꾩씠?붿뼱</span>
-                        <span class="hub-link-arrow">??/span>
+                        <span class="hub-link-icon">💭</span>
+                        <span>플랫폼개선 - 아이디어</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Obsidian Vault 移대뱶 -->
+            <!-- Obsidian Vault 카드 -->
             <div class="hub-card">
-                <h2>?쭬 Obsidian Vault</h2>
-                <p>Phase蹂??숈뒿 ?명듃, 耳?댁뒪 遺꾩꽍, 媛쒕뀗 ?뺣━瑜??묒꽦?섍퀬 愿由ы빀?덈떎.</p>
+                <h2>🧠 Obsidian Vault</h2>
+                <p>Phase별 학습 노트, 케이스 분석, 개념 정리를 작성하고 관리합니다.</p>
                 <div class="hub-links">
-                    <a href="file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki" class="hub-link" target="_blank">
-                        <span class="hub-link-icon">?뱛</span>
-                        <span>Vault ?닿린 (?뚯씪 ?먯깋湲?</span>
-                        <span class="hub-link-arrow">??/span>
+                    <a href="file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki" class="hub-link" target="_blank">
+                        <span class="hub-link-icon">📂</span>
+                        <span>Vault 폴더 (파일 탐색기)</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
                     <a href="#" onclick="openObsidianApp()" class="hub-link">
-                        <span class="hub-link-icon">?뵕</span>
-                        <span>Obsidian ?깆뿉???닿린</span>
-                        <span class="hub-link-arrow">??/span>
+                        <span class="hub-link-icon">🧠</span>
+                        <span>Obsidian 앱에서 열기</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
-                    <a href="#" onclick="alert('Phase 1, 2, 3 ?대뜑???덈뒗 README.md瑜??뺤씤?섏꽭??'); return false;" class="hub-link">
-                        <span class="hub-link-icon">?뱰</span>
-                        <span>Phase蹂?媛?대뱶 ?쎄린</span>
-                        <span class="hub-link-arrow">??/span>
+                    <a href="#" onclick="alert('Phase 1, 2, 3 폴더에 있는 README.md를 확인하세요'); return false;" class="hub-link">
+                        <span class="hub-link-icon">📖</span>
+                        <span>Phase별 가이드 보기</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
-                    <a href="#" onclick="alert('Templates ?대뜑???숈뒿?명듃.md, 耳?댁뒪遺꾩꽍.md, 媛쒕뀗?뺣━.md ?쒗뵆由우쓣 ?ъ슜?섏꽭??'); return false;" class="hub-link">
-                        <span class="hub-link-icon">?뱷</span>
-                        <span>?명듃 ?쒗뵆由??ъ슜</span>
-                        <span class="hub-link-arrow">??/span>
+                    <a href="#" onclick="alert('Templates 폴더에 학습노트.md, 케이스분석.md, 개념정리.md 템플릿을 사용하세요'); return false;" class="hub-link">
+                        <span class="hub-link-icon">📝</span>
+                        <span>템플릿 사용</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
-                    <a href="#" onclick="alert('progress.html ?섏씠吏??JSON/CSV/留덊겕?ㅼ슫 ?대낫?닿린瑜??ъ슜?섏꽭??'); return false;" class="hub-link">
-                        <span class="hub-link-icon">?뱾</span>
-                        <span>吏꾨룄 ?곗씠???숆린??/span>
-                        <span class="hub-link-arrow">??/span>
+                    <a href="#" onclick="alert('progress.html 페이지에서 JSON/CSV/마크다운 내보내기를 사용하세요'); return false;" class="hub-link">
+                        <span class="hub-link-icon">💾</span>
+                        <span>진도 데이터 내보내기</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
-                    <a href="#" onclick="alert('Study Notes ?대뜑瑜?留뚮뱾怨?媛쒖씤 ?명듃瑜???ν븯?몄슂.'); return false;" class="hub-link">
-                        <span class="hub-link-icon">??/span>
-                        <span>媛쒖씤 ?명듃 ???/span>
-                        <span class="hub-link-arrow">??/span>
+                    <a href="#" onclick="alert('Study Notes 폴더를 만들고 개인 노트를 추가하세요'); return false;" class="hub-link">
+                        <span class="hub-link-icon">✍️</span>
+                        <span>개인 노트 작성</span>
+                        <span class="hub-link-arrow">→</span>
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Phase 移대뱶 -->
-        <h3 style="color: white; margin-bottom: 20px; text-align: center; font-size: 22px;">?뱴 Phase蹂??숈뒿 怨꾪쉷</h3>
+        <!-- Phase 카드 -->
+        <h3 style="color: white; margin-bottom: 20px; text-align: center; font-size: 22px;">📚 Phase별 학습 계획</h3>
         <div class="phase-cards">
             <div class="phase-card">
-                <div class="phase-header phase1">??Phase 1: 湲곗큹 ?댄빐 (22?쒓컙)</div>
+                <div class="phase-header phase1">🟢 Phase 1: 기초 이해 (22시간)</div>
                 <div class="phase-content">
-                    <p><strong>?렞 紐⑺몴</strong></p>
+                    <p><strong>학습 목표</strong></p>
                     <ul style="margin-left: 15px; margin-bottom: 10px;">
-                        <li style="margin-bottom: 5px;">EZ 媛쒕뀗 ?꾨꼍 ?댄빐</li>
-                        <li style="margin-bottom: 5px;">?깆옣 ?⑦꽩 ?댄빐</li>
-                        <li>遺?뺢탳??遺꾨쪟 ?듬뱷</li>
+                        <li style="margin-bottom: 5px;">EZ 개념 완전 이해</li>
+                        <li style="margin-bottom: 5px;">5방향 사진 이해</li>
+                        <li>부정교합 분류 습득</li>
                     </ul>
-                    <p style="margin-bottom: 15px;"><strong>?먮즺</strong>: ?щ씪?대뱶 1-15 + Chapter 1-3</p>
-                    <p style="margin-bottom: 15px;"><strong>湲곌컙</strong>: 1-2二?/p>
+                    <p style="margin-bottom: 15px;"><strong>자료</strong>: 슬라이드 1-15 + Chapter 1-3</p>
+                    <p style="margin-bottom: 15px;"><strong>기간</strong>: 1-2주</p>
                     <div class="phase-buttons">
-                        <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">?숈뒿寃쎈줈 蹂닿린</button>
-                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki/Phase%201%20-%20湲곗큹%20?댄빐')">Obsidian ?명듃</button>
+                        <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">학습경로 보기</button>
+                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%201%20-%20기초%20이해')">Obsidian 노트</button>
                     </div>
                 </div>
             </div>
 
             <div class="phase-card">
-                <div class="phase-header phase2">?뱰 Phase 2: 怨좉툒 ?댄빐 (28?쒓컙)</div>
+                <div class="phase-header phase2">🔵 Phase 2: 고급 이해 (28시간)</div>
                 <div class="phase-content">
-                    <p><strong>?렞 紐⑺몴</strong></p>
+                    <p><strong>학습 목표</strong></p>
                     <ul style="margin-left: 15px; margin-bottom: 10px;">
-                        <li style="margin-bottom: 5px;">怨듦컙遺꾩꽍 怨듭떇 ?듬뱷</li>
-                        <li style="margin-bottom: 5px;">諛쒖튂 ?먮떒 ?λ젰</li>
-                        <li>耳?댁뒪 遺꾩꽍 ?λ젰</li>
+                        <li style="margin-bottom: 5px;">공간분석 공식 습득</li>
+                        <li style="margin-bottom: 5px;">발치판단 능력</li>
+                        <li>안모분석 역량</li>
                     </ul>
-                    <p style="margin-bottom: 15px;"><strong>?먮즺</strong>: ?щ씪?대뱶 16-39 + Chapter 4-8</p>
-                    <p style="margin-bottom: 15px;"><strong>湲곌컙</strong>: 2-3二?/p>
+                    <p style="margin-bottom: 15px;"><strong>자료</strong>: 슬라이드 16-39 + Chapter 4-8</p>
+                    <p style="margin-bottom: 15px;"><strong>기간</strong>: 2-3주</p>
                     <div class="phase-buttons">
-                        <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">?숈뒿寃쎈줈 蹂닿린</button>
-                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki/Phase%202%20-%20怨좉툒%20?댄빐')">Obsidian ?명듃</button>
+                        <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">학습경로 보기</button>
+                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%202%20-%20고급%20이해')">Obsidian 노트</button>
                     </div>
                 </div>
             </div>
 
             <div class="phase-card">
-                <div class="phase-header phase3">?? Phase 3: ?뚮옯???곸슜 (30?쒓컙)</div>
+                <div class="phase-header phase3">🟡 Phase 3: 플랫폼 적용 (30시간)</div>
                 <div class="phase-content">
-                    <p><strong>?렞 紐⑺몴</strong></p>
+                    <p><strong>학습 목표</strong></p>
                     <ul style="margin-left: 15px; margin-bottom: 10px;">
-                        <li style="margin-bottom: 5px;">?뚮옯???꾪궎?띿쿂 ?댄빐</li>
-                        <li style="margin-bottom: 5px;">?꾩긽 ??肄붾뱶 蹂??/li>
-                        <li>?낅┰ 媛쒕컻 ?λ젰</li>
+                        <li style="margin-bottom: 5px;">플랫폼 코드 이해</li>
+                        <li style="margin-bottom: 5px;">독립 개발 능력</li>
+                        <li>문제 해결 역량</li>
                     </ul>
-                    <p style="margin-bottom: 15px;"><strong>?먮즺</strong>: ?щ씪?대뱶 40-45 + Chapter 9-11</p>
-                    <p style="margin-bottom: 15px;"><strong>湲곌컙</strong>: 2-3二?/p>
+                    <p style="margin-bottom: 15px;"><strong>자료</strong>: 슬라이드 40-45 + Chapter 9-11</p>
+                    <p style="margin-bottom: 15px;"><strong>기간</strong>: 2-3주</p>
                     <div class="phase-buttons">
-                        <button class="phase-btn primary" onclick="window.location.href='application.html'">?뚮옯???곸슜 媛?대뱶</button>
-                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki/Phase%203%20-%20?뚮옯??20?곸슜')">Obsidian ?명듃</button>
+                        <button class="phase-btn primary" onclick="window.location.href='application.html'">플랫폼 적용 가이드</button>
+                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%203%20-%20플랫폼%20적용')">Obsidian 노트</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ?듦퀎 ?뱀뀡 -->
+        <!-- 통계 섹션 -->
         <div class="stats-section">
-            <h3>?뱤 ?숈뒿 由ъ냼??/h3>
+            <h3>📊 학습 리소스</h3>
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">90</div>
-                    <div class="stat-label">?숈뒿 ?먮즺</div>
+                    <div class="stat-label">학습 자료</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">9</div>
-                    <div class="stat-label">HTML ?섏씠吏</div>
+                    <div class="stat-label">HTML 페이지</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">80</div>
-                    <div class="stat-label">?숈뒿 ?쒓컙</div>
+                    <div class="stat-label">학습 시간</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">3</div>
@@ -491,35 +532,32 @@
             </div>
         </div>
 
-        <!-- 鍮좊Ⅸ 留곹겕 -->
+        <!-- 빠른 링크 -->
         <div class="quick-links">
-            <h3>?뵕 鍮좊Ⅸ ?묎렐</h3>
+            <h3>🔗 빠른 메뉴</h3>
             <div class="quick-grid">
-                <a href="index.html" class="quick-btn">?룧 ?뚮옯????/a>
-                <a href="progress.html" class="quick-btn">?뱤 吏꾨룄 異붿쟻</a>
-                <a href="concepts.html" class="quick-btn">?뮕 媛쒕뀗?뺣━</a>
-                <a href="ideas.html" class="quick-btn">?뮡 ?꾩씠?붿뼱</a>
-                <a href="comparison.html" class="quick-btn">?뽳툘 EZM 鍮꾧탳</a>
-                <a href="application.html" class="quick-btn">?? ?뚮옯??媛쒕컻</a>
+                <a href="index.html" class="quick-btn">🏠 플랫폼 홈</a>
+                <a href="progress.html" class="quick-btn">⏱️ 진도 추적</a>
+                <a href="concepts.html" class="quick-btn">💡 개념정리</a>
+                <a href="ideas.html" class="quick-btn">💭 아이디어</a>
+                <a href="comparison.html" class="quick-btn">⚖️ EZM 비교</a>
+                <a href="application.html" class="quick-btn">🚀 플랫폼 가이드</a>
             </div>
         </div>
 
         <footer>
-            <p>?럳 援먯젙???숈뒿 ?뚮옯??+ Obsidian ?듯빀 ?숈뒿 ?덈툕</p>
-            <p>Kim Yong Eul??Equilibrium Zone Methodology (EZM) ?꾩쟾 ?댄빐 & 20-19 Orthodontics AI ?뚮옯???낅┰ 媛쒕컻</p>
-            <p style="margin-top: 15px; opacity: 0.8;">짤 2026 | 留덉?留??낅뜲?댄듃: 2026-05-22</p>
+            <p>🧠 교정학 플랫폼 - 웹셉·세팔로 + Obsidian 통합 학습 시스템</p>
+            <p>Kim Yong Eul의 Equilibrium Zone Methodology (EZM) 완전 이해 & 20-19 Orthodontics AI 플랫폼 독립 개발</p>
+            <p style="margin-top: 15px; opacity: 0.8;">© 2026 | 마지막 업데이트: 2026-05-22</p>
         </footer>
     </div>
 
     <script>
         function openObsidianApp() {
-            // Obsidian vault 寃쎈줈瑜?obsidian:// URL ?ㅽ궡?쇰줈 ?닿린
-            const vaultPath = 'file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki';
+            const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
             window.open(vaultPath, '_blank');
         }
     </script>
     <script src="js/chatbot.js"></script>
 </body>
 </html>
-
-
