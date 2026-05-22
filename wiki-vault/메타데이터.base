@@ -1,0 +1,40 @@
+﻿---
+filters: 'file.name != ""'
+properties:
+  파일명:
+    type: text
+    primary: true
+  폴더:
+    type: text
+  크기_KB:
+    type: number
+  수정일:
+    type: date
+  파일타입:
+    type: text
+
+formulas:
+  수정경과일: '(today() - date(수정일)).days'
+  크기분류: 'if(크기_KB > 1000, "큼", if(크기_KB > 100, "중간", "작음"))'
+
+views:
+  - type: table
+    name: "📊 현황표"
+    order: [파일명, 폴더, 크기_KB, 수정일]
+
+  - type: table
+    name: "🆕 최근 업데이트"
+    order: [파일명, 수정일]
+    sort: [수정일 desc]
+    limit: 30
+
+  - type: cards
+    name: "📈 파일 크기별"
+    order: [파일명, 크기_KB]
+    sort: [크기_KB desc]
+
+  - type: table
+    name: "🔍 타입별 분석"
+    order: [파일명, 파일타입]
+    groupBy: 파일타입
+---

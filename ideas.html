@@ -1,0 +1,570 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>?뚮옯?쇨컻??- 援먯젙???숈뒿 ?뚮옯??/title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .idea-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+            overflow-x: auto;
+        }
+        .idea-tab-button {
+            padding: 12px 20px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .idea-tab-button:hover {
+            color: #0284c7;
+            background: #f9fafb;
+        }
+        .idea-tab-button.active {
+            color: #0284c7;
+            border-bottom-color: #0284c7;
+        }
+        .idea-tab-content {
+            display: none;
+        }
+        .idea-tab-content.active {
+            display: block;
+        }
+        .idea-box {
+            background: #f9fafb;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 6px;
+            border-left: 4px solid #0284c7;
+        }
+        .idea-box h4 {
+            margin-top: 0;
+            color: #0284c7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>?뮡 ?뚮옯?쇨컻??/h1>
+        <p>20-19 Orthodontics AI ?뚮옯??媛쒖꽑 ?꾩씠?붿뼱瑜?湲곕줉?섍퀬 ?곗꽑?쒖쐞瑜?愿由ы븯?몄슂</p>
+    </header>
+
+    <nav>
+        <a href="index.html">?룧 ??/a>
+        <a href="resources.html">?뱴 ?먮즺</a>
+        <a href="learning-path.html">?럳 ?숈뒿寃쎈줈</a>
+        <a href="concepts.html">?뮕 媛쒕뀗?뺣━</a>
+        <a href="ideas.html" class="active">?뮡 ?뚮옯?쇨컻??/a>
+        <a href="progress.html">?깍툘 吏꾨룄</a>
+        <a href="application.html">?? ?뚮옯?쇱쟻??/a>
+        <a href="webceph.html">?뵇 ?뱀뀎쨌?명뙏濡?/a>
+        <a href="comparison.html">?뽳툘 EZM 鍮꾧탳</a>
+        <a href="wiki-vault-index.html">?쭬 ?꾪궎蹂쇳듃</a>
+    </nav>
+
+    <div class="container">
+        <!-- ?꾩씠?붿뼱 ??硫붾돱 -->
+        <div class="card">
+            <div class="idea-tabs">
+                <button class="idea-tab-button active" onclick="switchIdeaTab('examples')">?뮕 ?쒖븞 ?꾩씠?붿뼱</button>
+                <button class="idea-tab-button" onclick="switchIdeaTab('myideas')">?뱷 ???꾩씠?붿뼱</button>
+                <button class="idea-tab-button" onclick="switchIdeaTab('status')">?뱤 吏꾪뻾 ?꾪솴</button>
+            </div>
+
+            <!-- ?쒖븞 ?꾩씠?붿뼱 ??-->
+            <div id="examples" class="idea-tab-content active">
+                <h2>?뮕 異붿쿇 媛쒖꽑 ?꾩씠?붿뼱</h2>
+                <p style="color: #666; margin-bottom: 20px;">
+                    ?뚮옯?쇱쓣 ?붿슧 媛뺣젰?섍퀬 ?ъ슜??移쒗솕?곸쑝濡?媛쒖꽑?????덈뒗 ?꾩씠?붿뼱?ㅼ엯?덈떎. 李멸퀬?섍퀬 而ㅼ뒪?곕쭏?댁쭠?섏뿬 ?먯떊???꾩씠?붿뼱濡??깅줉?섏꽭??
+                </p>
+
+                <h3>?렓 UI/UX 媛쒖꽑</h3>
+                <div class="idea-box">
+                    <h4>?뵧 ?ㅽ겕紐⑤뱶 吏??/h4>
+                    <p>?ъ슜?먭? ?ㅽ겕紐⑤뱶瑜??좏깮?????덈룄濡?湲곕뒫 異붽?</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?쇨컙 ?숈뒿 ?????쇰줈 媛먯냼 |
+                        <strong>?쒖씠??</strong> 狩먥춴 |
+                        <strong>?곗꽑?쒖쐞:</strong> 以묎컙
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>?벑 紐⑤컮??理쒖쟻??媛쒖꽑</h4>
+                    <p>?뚮툝由? ?ㅻ쭏?명룿 ?붾㈃?먯꽌 ?붿슧 理쒖쟻?붾맂 ?덉씠?꾩썐</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> 紐⑤컮???ъ슜???μ긽 |
+                        <strong>?쒖씠??</strong> 狩먥춴狩?|
+                        <strong>?곗꽑?쒖쐞:</strong> ?믪쓬
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>?렞 ??쒕낫??媛쒖씤??/h4>
+                    <p>?ъ슜?먭? ???붾㈃???꾩젽???먰븯???濡?諛곗튂 媛??/p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?ъ슜??寃쏀뿕 媛쒖씤??|
+                        <strong>?쒖씠??</strong> 狩먥춴狩?|
+                        <strong>?곗꽑?쒖쐞:</strong> 以묎컙
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 30px;">?뵩 湲곕뒫 ?뺤옣</h3>
+                <div class="idea-box">
+                    <h4>?렏 ?숈쁺???뚮젅?댁뼱 ?댁옣</h4>
+                    <p>?뚮옯???댁뿉??MP4 ?곸긽??吏곸젒 ?ъ깮?????덈뒗 ?뚮젅?댁뼱 ?듯빀</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?숈뒿 寃쏀뿕 媛뺥솕 |
+                        <strong>?쒖씠??</strong> 狩먥춴 |
+                        <strong>?곗꽑?쒖쐞:</strong> ?믪쓬
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>?뱤 ?숈뒿 ?듦퀎 ?쒓컖??/h4>
+                    <p>李⑦듃, 洹몃옒?꾨줈 吏꾨룄?④낵 ?숈뒿 ?쒓컙???쒓컖??/p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?숆린 遺??利앸? |
+                        <strong>?쒖씠??</strong> 狩먥춴 |
+                        <strong>?곗꽑?쒖쐞:</strong> ?믪쓬
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>?뵇 ?꾨Ц 寃??湲곕뒫</h4>
+                    <p>?⑥뼱蹂? 媛쒕뀗蹂? Phase蹂꾨줈 ?붿슧 ?뺢탳??寃???꾪꽣</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?먰븯???먮즺 鍮좊Ⅴ寃?諛쒓껄 |
+                        <strong>?쒖씠??</strong> 狩먥춴 |
+                        <strong>?곗꽑?쒖쐞:</strong> 以묎컙
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>狩?遺곷쭏??利먭꺼李얘린</h4>
+                    <p>?먯＜ 蹂대뒗 ?먮즺??媛쒕뀗??利먭꺼李얘린濡??깅줉</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?숈뒿 ?⑥쑉 ?μ긽 |
+                        <strong>?쒖씠??</strong> 狩?|
+                        <strong>?곗꽑?쒖쐞:</strong> 以묎컙
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 30px;">?? AI 湲곕뒫 異붽?</h3>
+                <div class="idea-box">
+                    <h4>?쨼 AI ?숈뒿 議곗뼵</h4>
+                    <p>?ъ슜?먯쓽 吏꾨룄? 媛쒕뀗 ?댄빐?꾨? 諛뷀깢?쇰줈 留욎땄???숈뒿 異붿쿇</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?숈뒿 ?⑥쑉??洹밸???|
+                        <strong>?쒖씠??</strong> 狩먥춴狩먥춴 |
+                        <strong>?곗꽑?쒖쐞:</strong> ?믪쓬
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>?뱷 媛쒕뀗 ?먮룞 ?앹꽦</h4>
+                    <p>?먮즺瑜??낅줈?쒗븯硫?AI媛 ?듭떖 媛쒕뀗???먮룞 異붿텧?섏뿬 ?쒖떆</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?숈뒿 ?쒓컙 ?⑥텞 |
+                        <strong>?쒖씠??</strong> 狩먥춴狩먥춴 |
+                        <strong>?곗꽑?쒖쐞:</strong> ?믪쓬
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 30px;">?뱴 肄섑뀗痢??뺢컯</h3>
+                <div class="idea-box">
+                    <h4>?뱰 ?ㅼ젣 ?꾩긽 耳?댁뒪</h4>
+                    <p>吏꾨떒遺??移섎즺源뚯????ㅼ젣 ?꾩긽 ?щ? 異붽?</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?ㅻТ 媛먭컖 ?듬뱷 |
+                        <strong>?쒖씠??</strong> 狩먥춴狩?|
+                        <strong>?곗꽑?쒖쐞:</strong> ?믪쓬
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>?럳 ?댁쫰/?쒗뿕 湲곕뒫</h4>
+                    <p>Phase蹂??먮뒗 二쇱젣蹂?媛앷????댁쫰? 紐⑥쓽 ?쒗뿕</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> 吏???뺤갑???μ긽 |
+                        <strong>?쒖씠??</strong> 狩먥춴 |
+                        <strong>?곗꽑?쒖쐞:</strong> 以묎컙
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>?뵕 Cross-Reference ?쒖뒪??/h4>
+                    <p>媛쒕뀗, ?먮즺, ?щ씪?대뱶瑜??먮룞?쇰줈 ?곌껐?섏뿬 ?숈뒿 寃쎈줈 ?쒖떆</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> ?由ъ뒪???숈뒿 吏??|
+                        <strong>?쒖씠??</strong> 狩먥춴狩?|
+                        <strong>?곗꽑?쒖쐞:</strong> 以묎컙
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 30px;">?쩃 ?묒뾽 湲곕뒫</h3>
+                <div class="idea-box">
+                    <h4>?뮠 ?볤?/?좊줎</h4>
+                    <p>媛쒕뀗?대굹 ?꾩씠?붿뼱???볤????ъ븘 ?좊줎?????덈뒗 湲곕뒫</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> 而ㅻ??덊떚 ?뺤꽦 |
+                        <strong>?쒖씠??</strong> 狩먥춴狩?|
+                        <strong>?곗꽑?쒖쐞:</strong> ??쓬
+                    </p>
+                </div>
+
+                <div class="idea-box">
+                    <h4>?봽 媛쒕뀗 怨듭쑀</h4>
+                    <p>?먯떊???뺣━??媛쒕뀗???ㅻⅨ ?ъ슜?먯? 怨듭쑀</p>
+                    <p style="color: #666; font-size: 13px;">
+                        <strong>?④낵:</strong> 而ㅻ??덊떚 ?숈뒿 ?먮즺 異뺤쟻 |
+                        <strong>?쒖씠??</strong> 狩먥춴 |
+                        <strong>?곗꽑?쒖쐞:</strong> ??쓬
+                    </p>
+                </div>
+            </div>
+
+            <!-- ???꾩씠?붿뼱 ??-->
+            <div id="myideas" class="idea-tab-content">
+                <h2>?뱷 ?섏쓽 媛쒖꽑 ?꾩씠?붿뼱</h2>
+
+                <div style="margin: 20px 0; padding: 20px; background: #f0fdf4; border-radius: 8px;">
+                    <h3 style="margin-top: 0; color: #10b981;">???덈줈???꾩씠?붿뼱 異붽?</h3>
+                    <div>
+                        <input type="text" id="ideaTitle" placeholder="?꾩씠?붿뼱 ?쒕ぉ (?? ?ㅽ겕紐⑤뱶 吏??" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #e5e7eb; border-radius: 4px;">
+
+                        <select id="ideaCategory" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #e5e7eb; border-radius: 4px;">
+                            <option value="">移댄뀒怨좊━ ?좏깮</option>
+                            <option value="UI/UX">UI/UX</option>
+                            <option value="湲곕뒫">湲곕뒫 ?뺤옣</option>
+                            <option value="?깅뒫">?깅뒫 理쒖쟻??/option>
+                            <option value="AI">AI 湲곕뒫</option>
+                            <option value="肄섑뀗痢?>肄섑뀗痢??뺢컯</option>
+                            <option value="?묒뾽">?묒뾽 湲곕뒫</option>
+                            <option value="湲고?">湲고?</option>
+                        </select>
+
+                        <select id="ideaPhase" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #e5e7eb; border-radius: 4px;">
+                            <option value="">愿??Phase ?좏깮</option>
+                            <option value="Phase 1">Phase 1 (湲곗큹)</option>
+                            <option value="Phase 2">Phase 2 (怨좉툒)</option>
+                            <option value="Phase 3">Phase 3 (?뚮옯?쇱쟻??</option>
+                            <option value="?꾩껜">?꾩껜</option>
+                        </select>
+
+                        <textarea id="ideaDescription" placeholder="?꾩씠?붿뼱 ?ㅻ챸 (諛곌꼍, 紐⑺몴, 湲곕? ?④낵 ??" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #e5e7eb; border-radius: 4px; min-height: 100px;"></textarea>
+
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 10px;">
+                            <div>
+                                <label style="display: block; font-size: 13px; margin-bottom: 5px;">?쒖씠???좏깮</label>
+                                <select id="ideaDifficulty" style="width: 100%; padding: 8px; border: 1px solid #e5e7eb; border-radius: 4px;">
+                                    <option value="">?좏깮?섏꽭??/option>
+                                    <option value="狩?>??쓬 (狩?</option>
+                                    <option value="狩먥춴">以묎컙 (狩먥춴)</option>
+                                    <option value="狩먥춴狩?>?믪쓬 (狩먥춴狩?</option>
+                                    <option value="狩먥춴狩먥춴">留ㅼ슦 ?믪쓬 (狩먥춴狩먥춴)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; font-size: 13px; margin-bottom: 5px;">?곗꽑?쒖쐞</label>
+                                <select id="ideaPriority" style="width: 100%; padding: 8px; border: 1px solid #e5e7eb; border-radius: 4px;">
+                                    <option value="">?좏깮?섏꽭??/option>
+                                    <option value="?믪쓬">?믪쓬</option>
+                                    <option value="以묎컙">以묎컙</option>
+                                    <option value="??쓬">??쓬</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success" onclick="addMyIdea()" style="width: 100%; padding: 12px;">?뮶 ?꾩씠?붿뼱 ???/button>
+                    </div>
+                </div>
+
+                <h3>??λ맂 ?꾩씠?붿뼱 (<span id="myIdeasCount">0</span>媛?</h3>
+                <div id="myIdeasList" style="margin-top: 20px;">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+
+            <!-- 吏꾪뻾 ?꾪솴 ??-->
+            <div id="status" class="idea-tab-content">
+                <h2>?뱤 ?꾩씠?붿뼱 吏꾪뻾 ?꾪솴</h2>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0;">
+                    <div style="padding: 15px; background: #fee2e2; border-radius: 6px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #dc2626;" id="statusProposed">0</div>
+                        <div style="font-size: 12px; color: #991b1b; margin-top: 5px;">?뱷 ?쒖븞</div>
+                    </div>
+                    <div style="padding: 15px; background: #fef3c7; border-radius: 6px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #d97706;" id="statusReviewing">0</div>
+                        <div style="font-size: 12px; color: #b45309; margin-top: 5px;">?뵇 寃?좎쨷</div>
+                    </div>
+                    <div style="padding: 15px; background: #d1fae5; border-radius: 6px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #059669;" id="statusCompleted">0</div>
+                        <div style="font-size: 12px; color: #047857; margin-top: 5px;">???꾨즺</div>
+                    </div>
+                    <div style="padding: 15px; background: #dbeafe; border-radius: 6px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #0284c7;" id="statusTotal">0</div>
+                        <div style="font-size: 12px; color: #1e40af; margin-top: 5px;">?뱤 珥??꾩씠?붿뼱</div>
+                    </div>
+                </div>
+
+                <h3>?곹깭蹂??꾩씠?붿뼱 紐⑸줉</h3>
+
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #dc2626;">?뱷 ?쒖븞 ?곹깭</h4>
+                    <div id="proposedList" style="margin-bottom: 20px;"></div>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #d97706;">?뵇 寃?좎쨷 ?곹깭</h4>
+                    <div id="reviewingList" style="margin-bottom: 20px;"></div>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #059669;">???꾨즺 ?곹깭</h4>
+                    <div id="completedList" style="margin-bottom: 20px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>?뮡 ?뚮옯?쇱쓣 ?붿슧 媛뺣젰?섍퀬 ?ъ슜?섍린 醫뗪쾶 留뚮뱶???꾩씠?붿뼱瑜?怨꾩냽 湲곕줉?섏꽭??</p>
+        </footer>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        function switchIdeaTab(tab) {
+            document.querySelectorAll('.idea-tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.idea-tab-button').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tab === 'status') {
+                renderIdeaStatus();
+            }
+        }
+
+        function addMyIdea() {
+            const title = document.getElementById('ideaTitle').value.trim();
+            const category = document.getElementById('ideaCategory').value;
+            const phase = document.getElementById('ideaPhase').value;
+            const description = document.getElementById('ideaDescription').value.trim();
+            const difficulty = document.getElementById('ideaDifficulty').value;
+            const priority = document.getElementById('ideaPriority').value;
+
+            if (!title || !category || !description || !difficulty || !priority) {
+                alert('紐⑤뱺 ??ぉ???낅젰?댁＜?몄슂.');
+                return;
+            }
+
+            const data = getData();
+            const newIdea = {
+                id: Date.now(),
+                title,
+                category,
+                phase: phase || '?꾩껜',
+                description,
+                difficulty,
+                priority,
+                status: '?쒖븞',
+                createdAt: new Date().toISOString()
+            };
+
+            data.ideas = (data.ideas || []);
+            data.ideas.push(newIdea);
+            saveData(data);
+
+            // ??珥덇린??            document.getElementById('ideaTitle').value = '';
+            document.getElementById('ideaCategory').value = '';
+            document.getElementById('ideaPhase').value = '';
+            document.getElementById('ideaDescription').value = '';
+            document.getElementById('ideaDifficulty').value = '';
+            document.getElementById('ideaPriority').value = '';
+
+            renderMyIdeas();
+            alert('?꾩씠?붿뼱媛 ??λ릺?덉뒿?덈떎!');
+        }
+
+        function deleteIdea(id) {
+            if (confirm('???꾩씠?붿뼱瑜???젣?섏떆寃좎뒿?덇퉴?')) {
+                const data = getData();
+                data.ideas = (data.ideas || []).filter(i => i.id !== id);
+                saveData(data);
+                renderMyIdeas();
+                renderIdeaStatus();
+            }
+        }
+
+        function updateIdeaStatus(id, newStatus) {
+            const data = getData();
+            const idea = (data.ideas || []).find(i => i.id === id);
+            if (idea) {
+                idea.status = newStatus;
+                saveData(data);
+                renderIdeaStatus();
+            }
+        }
+
+        function renderMyIdeas() {
+            const data = getData();
+            const ideas = data.ideas || [];
+            const container = document.getElementById('myIdeasList');
+
+            document.getElementById('myIdeasCount').textContent = ideas.length;
+
+            if (ideas.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999; padding: 30px;">異붽????꾩씠?붿뼱媛 ?놁뒿?덈떎.</p>';
+            } else {
+                container.innerHTML = ideas.map(idea => {
+                    const statusColor = idea.status === '?쒖븞' ? '#dc2626' : (idea.status === '寃?좎쨷' ? '#d97706' : '#059669');
+                    return `
+                        <div style="padding: 15px; background: #f9fafb; border-radius: 6px; border-left: 4px solid ${statusColor}; margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 8px 0; color: #1f2937;">${idea.title}</h4>
+                                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+                                        <span style="padding: 4px 8px; background: #dbeafe; border-radius: 4px; font-size: 11px; color: #0284c7;">${idea.category}</span>
+                                        <span style="padding: 4px 8px; background: #f3f4f6; border-radius: 4px; font-size: 11px; color: #666;">${idea.phase}</span>
+                                        <span style="padding: 4px 8px; background: #fef3c7; border-radius: 4px; font-size: 11px;">${idea.difficulty}</span>
+                                    </div>
+                                    <p style="margin: 10px 0; color: #666; font-size: 13px;">${idea.description}</p>
+                                    <small style="color: #999;">?곗꽑?쒖쐞: <strong>${idea.priority}</strong> | ${new Date(idea.createdAt).toLocaleDateString('ko-KR')}</small>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 5px; margin-left: 10px;">
+                                    <select onchange="updateIdeaStatus(${idea.id}, this.value)" style="padding: 6px; border: 1px solid #e5e7eb; border-radius: 4px; font-size: 12px;">
+                                        <option value="?쒖븞" ${idea.status === '?쒖븞' ? 'selected' : ''}>?쒖븞</option>
+                                        <option value="寃?좎쨷" ${idea.status === '寃?좎쨷' ? 'selected' : ''}>寃?좎쨷</option>
+                                        <option value="?꾨즺" ${idea.status === '?꾨즺' ? 'selected' : ''}>?꾨즺</option>
+                                    </select>
+                                    <button onclick="deleteIdea(${idea.id})" style="background: #ef4444; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">??젣</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        function renderIdeaStatus() {
+            const data = getData();
+            const ideas = data.ideas || [];
+
+            const proposed = ideas.filter(i => i.status === '?쒖븞');
+            const reviewing = ideas.filter(i => i.status === '寃?좎쨷');
+            const completed = ideas.filter(i => i.status === '?꾨즺');
+
+            document.getElementById('statusProposed').textContent = proposed.length;
+            document.getElementById('statusReviewing').textContent = reviewing.length;
+            document.getElementById('statusCompleted').textContent = completed.length;
+            document.getElementById('statusTotal').textContent = ideas.length;
+
+            // ?곹깭蹂?由ъ뒪???뚮뜑留?            function renderList(list, containerId) {
+                const container = document.getElementById(containerId);
+                if (list.length === 0) {
+                    container.innerHTML = '<p style="color: #999; font-size: 13px;">?꾩씠?붿뼱媛 ?놁뒿?덈떎.</p>';
+                } else {
+                    container.innerHTML = list.map(idea => `
+                        <div style="padding: 12px; background: white; border-radius: 6px; border: 1px solid #e5e7eb; margin-bottom: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: start;">
+                                <div style="flex: 1;">
+                                    <h5 style="margin: 0 0 5px 0; color: #1f2937; font-size: 14px;">${idea.title}</h5>
+                                    <div style="font-size: 12px; color: #666;">${idea.description.substring(0, 80)}...</div>
+                                    <div style="font-size: 11px; color: #999; margin-top: 5px;">
+                                        ${idea.category} | ${idea.priority} | ${idea.difficulty}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            renderList(proposed, 'proposedList');
+            renderList(reviewing, 'reviewingList');
+            renderList(completed, 'completedList');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMyIdeas();
+        });
+    </script>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>?럳 ?숈뒿寃쎈줈</h3>
+                    <ul>
+                        <li><a href="learning-path.html">Phase 1: 湲곗큹 ?댄빐</a></li>
+                        <li><a href="learning-path.html">Phase 2: 怨좉툒 ?댄빐</a></li>
+                        <li><a href="learning-path.html">Phase 3: ?뚮옯???곸슜</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>?뱴 二쇱슂 ?먮즺</h3>
+                    <ul>
+                        <li><a href="resources.html">45媛??щ씪?대뱶</a></li>
+                        <li><a href="resources.html">11媛?援먭낵??/a></li>
+                        <li><a href="resources.html">90媛??꾩껜 ?먮즺</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>?? ?숈뒿 ?꾧뎄</h3>
+                    <ul>
+                        <li><a href="concepts.html">媛쒕뀗?뺣━</a></li>
+                        <li><a href="ideas.html">?뚮옯?쇨컻??/a></li>
+                        <li><a href="progress.html">?숈뒿 吏꾨룄</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>?뽳툘 諛⑸쾿濡?鍮꾧탳</h3>
+                    <ul>
+                        <li><a href="comparison.html">EZM vs Cephalometric</a></li>
+                        <li><a href="webceph.html">?뱀뀎쨌?명뙏濡??곸꽭</a></li>
+                        <li><a href="application.html">?뚮옯???곸슜</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-stats" style="justify-content: center;">
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">90</div>
+                    <div class="footer-stat-label">?숈뒿 ?먮즺</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">9</div>
+                    <div class="footer-stat-label">?숈뒿 ?섏씠吏</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">80</div>
+                    <div class="footer-stat-label">?숈뒿 ?쒓컙</div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    <span class="footer-badge">狩?EZM</span>
+                    <span class="footer-badge">?뱴 Phase 1-3</span>
+                    <span class="footer-badge">?? AI ?뚮옯??/span>
+                </p>
+                <p>짤 2026 援먯젙???숈뒿 ?뚮옯??| Kim Yong Eul??Equilibrium Zone Methodology (EZM)</p>
+                <p style="margin-top: 10px; color: #6b7280;">留덉?留??낅뜲?댄듃: 2026-05-22 | 45媛??щ씪?대뱶 횞 11媛?援먭낵???꾩쟾 ?곌껐</p>
+            </div>
+        </footer>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
+
+

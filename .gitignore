@@ -1,0 +1,26 @@
+# Large files exceeding GitHub limits
+*.mp4
+*.mkv
+*.avi
+*.pptx
+*.ppt
+
+# System files
+.DS_Store
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Node modules
+node_modules/
+
+# Docx files (if too large)
+*.docx
+*.pdf
+
+# Folders with large media
+1. 김용을 원장 자료/
+documents/

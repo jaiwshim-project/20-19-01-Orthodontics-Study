@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>?먮즺 - 援먯젙???숈뒿 ?뚮옯??/title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .tab-button {
+            padding: 12px 20px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .tab-button:hover {
+            color: #0284c7;
+            background: #f9fafb;
+        }
+        .tab-button.active {
+            color: #0284c7;
+            border-bottom-color: #0284c7;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>?뱴 ?숈뒿 ?먮즺</h1>
+        <p>90媛??뚯씪 | 源?⑹쓣 ?먯옣 ?먮즺? 湲고? ?먮즺濡?遺꾨쪟</p>
+    </header>
+
+    <nav>
+        <a href="index.html">?룧 ??/a>
+        <a href="resources.html" class="active">?뱴 ?먮즺</a>
+        <a href="learning-path.html">?럳 ?숈뒿寃쎈줈</a>
+        <a href="concepts.html">?뮕 媛쒕뀗?뺣━</a>
+        <a href="ideas.html">?뮡 ?뚮옯?쇨컻??/a>
+        <a href="progress.html">?깍툘 吏꾨룄</a>
+        <a href="application.html">?? ?뚮옯?쇱쟻??/a>
+        <a href="webceph.html">?뵇 ?뱀뀎쨌?명뙏濡?/a>
+        <a href="comparison.html">?뽳툘 EZM 鍮꾧탳</a>
+        <a href="wiki-vault-index.html">?쭬 ?꾪궎蹂쇳듃</a>
+    </nav>
+
+    <div class="container">
+        <!-- ??硫붾돱 -->
+        <div class="card">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="switchTab('kim')">?럳 源?⑹쓣 ?먯옣 ?먮즺</button>
+                <button class="tab-button" onclick="switchTab('other')">?뱰 湲고? ?먮즺</button>
+            </div>
+
+            <!-- Kim???먮즺 ??-->
+            <div id="kim" class="tab-content active">
+                <h2 style="margin-top: 0;">?럳 源?⑹쓣 ?먯옣 ?먮즺</h2>
+
+                <div style="padding: 20px; background: #f0fdf4; border-radius: 8px; margin: 20px 0;">
+                    <h3 style="color: #047857; margin-top: 0;">?뱤 遺?뺢탳??遺꾨쪟 媛쒖슂</h3>
+                    <img src="images/?대?吏 7.png" alt="遺?뺢탳??遺꾨쪟" style="width: 100%; max-width: 900px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <p style="color: #666; font-size: 13px; margin-top: 15px;">
+                        <strong>6媛吏 二쇱슂 遺?뺢탳???좏삎:</strong> 怨쇨컻援먰빀(Deep Bite), 諛섎?援먰빀(Class III), 援먯감援먰빀(Cross Bite), 踰뚯뼱吏꾩튂??Diastema), 媛쒕갑援먰빀(Open Bite), 珥앹깮(Crowding)<br/>
+                        ??遺꾨쪟??EZM 吏꾨떒 諛?移섎즺怨꾪쉷???듭떖 湲곕컲?낅땲??
+                    </p>
+                </div>
+
+                <p style="color: #666; font-size: 13px; margin-bottom: 15px;">
+                    Equilibrium Zone 諛⑸쾿濡좉낵 愿?⑤맂 紐⑤뱺 ?먮즺 | 珥?<strong id="kimFileCount">67</strong>媛?                </p>
+
+                <div style="margin: 15px 0;">
+                    <input type="text" id="kimSearchInput" placeholder="源?⑹쓣 ?먯옣 ?먮즺 寃??.." style="width: 100%; padding: 10px; margin-bottom: 10px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;">
+                        <button class="btn btn-primary" onclick="filterKimByType('')">?뱤 ?꾩껜</button>
+                        <button class="btn btn-secondary" onclick="filterKimByType('JPG')">?벝 ?щ씪?대뱶 (45)</button>
+                        <button class="btn btn-secondary" onclick="filterKimByType('DOCX')">?뱥 援먭낵??(12)</button>
+                        <button class="btn btn-secondary" onclick="filterKimByType('PPTX')">?뱤 諛쒗몴 (7)</button>
+                        <button class="btn btn-secondary" onclick="filterKimByType('PDF')">?뱞 PDF (3)</button>
+                    </div>
+                </div>
+
+                <table style="font-size: 13px; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>?뚯씪紐?/th>
+                            <th>???/th>
+                            <th>?ш린</th>
+                            <th>Phase</th>
+                            <th>蹂닿린</th>
+                            <th>?곌껐</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kimResourcesTable">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 湲고? ?먮즺 ??-->
+            <div id="other" class="tab-content">
+                <h2 style="margin-top: 0;">?뱰 湲고? ?먮즺</h2>
+                <p style="color: #666; font-size: 13px; margin-bottom: 15px;">
+                    Webceph, Cephalometric 諛?湲곕낯 援먯젙???먮즺 | 珥?<strong id="otherFileCount">23</strong>媛?                </p>
+
+                <div style="margin: 15px 0;">
+                    <input type="text" id="otherSearchInput" placeholder="湲고? ?먮즺 寃??.." style="width: 100%; padding: 10px; margin-bottom: 10px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;">
+                        <button class="btn btn-primary" onclick="filterOtherByType('')">?뱤 ?꾩껜</button>
+                        <button class="btn btn-secondary" onclick="filterOtherByType('PNG')">?벝 ?대?吏 (8)</button>
+                        <button class="btn btn-secondary" onclick="filterOtherByType('DOCX')">?뱥 臾몄꽌 (5)</button>
+                        <button class="btn btn-secondary" onclick="filterOtherByType('PPTX')">?뱤 諛쒗몴 (2)</button>
+                        <button class="btn btn-secondary" onclick="filterOtherByType('PDF')">?뱞 PDF (3)</button>
+                        <button class="btn btn-secondary" onclick="filterOtherByType('MP4')">?렗 ?곸긽 (4)</button>
+                    </div>
+                </div>
+
+                <table style="font-size: 13px; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>?뚯씪紐?/th>
+                            <th>???/th>
+                            <th>?ш린</th>
+                            <th>Phase</th>
+                            <th>蹂닿린</th>
+                            <th>遺꾨쪟</th>
+                        </tr>
+                    </thead>
+                    <tbody id="otherResourcesTable">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Image Viewer Modal -->
+        <div id="imageModal" class="modal">
+            <div class="modal-content" style="max-width: 90%; width: 90%; max-height: 90vh; overflow: auto;">
+                <span class="close" onclick="closeImageModal()">&times;</span>
+                <img id="modalImage" style="width: 100%; height: auto; margin-top: 10px;">
+            </div>
+        </div>
+
+        <!-- ?щ씪?대뱶 留ㅽ븨 -->
+        <div class="card">
+            <h2>狩?45媛??щ씪?대뱶 횞 11媛?援먭낵??留ㅽ븨</h2>
+            <table style="font-size: 12px;">
+                <thead>
+                    <tr>
+                        <th>?щ씪?대뱶</th>
+                        <th>媛쒖닔</th>
+                        <th>愿??援먭낵??/th>
+                        <th>二쇱젣</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1-5</td><td>5</td><td>Chapter 1</td><td>Equilibrium Zone 媛쒕뀗</td></tr>
+                    <tr><td>6-10</td><td>5</td><td>Chapter 2</td><td>?깆옣怨?諛쒖쑁</td></tr>
+                    <tr><td>11-15</td><td>5</td><td>Chapter 3</td><td>?뺤긽援먰빀 vs 遺?뺢탳??/td></tr>
+                    <tr><td>16-21</td><td>6</td><td>Chapter 4</td><td>?덈え遺꾩꽍</td></tr>
+                    <tr><td>22-26</td><td>5</td><td>Chapter 5</td><td>怨듦컙遺꾩꽍 & 諛쒖튂</td></tr>
+                    <tr><td>27-30</td><td>4</td><td>Chapter 6</td><td>移섎궡遺?뺢탳??/td></tr>
+                    <tr><td>31-34</td><td>4</td><td>Chapter 7</td><td>Class II</td></tr>
+                    <tr><td>35-39</td><td>5</td><td>Chapter 8</td><td>Class III</td></tr>
+                    <tr><td>40-42</td><td>3</td><td>Chapter 9-10</td><td>?섏쭅遺?뺢탳??狩?/td></tr>
+                    <tr><td>43-45</td><td>3</td><td>Chapter 11</td><td>?좎?? ?덉젙</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>?럳 ?숈뒿寃쎈줈</h3>
+                    <ul>
+                        <li><a href="learning-path.html">Phase 1: 湲곗큹 ?댄빐</a></li>
+                        <li><a href="learning-path.html">Phase 2: 怨좉툒 ?댄빐</a></li>
+                        <li><a href="learning-path.html">Phase 3: ?뚮옯???곸슜</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>?뱴 二쇱슂 ?먮즺</h3>
+                    <ul>
+                        <li><a href="resources.html">45媛??щ씪?대뱶</a></li>
+                        <li><a href="resources.html">11媛?援먭낵??/a></li>
+                        <li><a href="resources.html">90媛??꾩껜 ?먮즺</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>?? ?숈뒿 ?꾧뎄</h3>
+                    <ul>
+                        <li><a href="concepts.html">媛쒕뀗?뺣━</a></li>
+                        <li><a href="ideas.html">?뚮옯?쇨컻??/a></li>
+                        <li><a href="progress.html">?숈뒿 吏꾨룄</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>?뽳툘 諛⑸쾿濡?鍮꾧탳</h3>
+                    <ul>
+                        <li><a href="comparison.html">EZM vs Cephalometric</a></li>
+                        <li><a href="webceph.html">?뱀뀎쨌?명뙏濡??곸꽭</a></li>
+                        <li><a href="application.html">?뚮옯???곸슜</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-stats" style="justify-content: center;">
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">90</div>
+                    <div class="footer-stat-label">?숈뒿 ?먮즺</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">9</div>
+                    <div class="footer-stat-label">?숈뒿 ?섏씠吏</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">80</div>
+                    <div class="footer-stat-label">?숈뒿 ?쒓컙</div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    <span class="footer-badge">狩?EZM</span>
+                    <span class="footer-badge">?뱴 Phase 1-3</span>
+                    <span class="footer-badge">?? AI ?뚮옯??/span>
+                </p>
+                <p>짤 2026 援먯젙???숈뒿 ?뚮옯??| Kim Yong Eul??Equilibrium Zone Methodology (EZM)</p>
+                <p style="margin-top: 10px; color: #6b7280;">留덉?留??낅뜲?댄듃: 2026-05-22 | 45媛??щ씪?대뱶 횞 11媛?援먭낵???꾩쟾 ?곌껐</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        // ?뚯씪 遺꾨쪟 ?⑥닔
+        function isKimFile(file) {
+            const kimPatterns = [
+                /^?щ씪?대뱶\d+\.JPG$/,
+                /^(1\.|2\.|3\.|4\.|5\.|6\.|7\.|8\.|9\.|10\.|11\.)/,
+                /Chapter/i, /Growth/, /Normal/, /Facial/, /Ext/, /Class/, /Vertical/, /Retention/, /Preface/, /Beyond/, /Intra/,
+                /援먯젙???먮즺.*\.pdf/, /援먯젙???먮즺.*\.pptx/, /?꾨? 援먯젙??,
+                /presentation-1\.pptx/
+            ];
+
+            return kimPatterns.some(pattern => pattern.test(file.name));
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tab === 'kim') {
+                renderKimResources();
+            } else {
+                renderOtherResources();
+            }
+        }
+
+        function getFilePath(fileName) {
+            if (fileName.match(/^?щ씪?대뱶\d+\.JPG$/)) {
+                return `slides/${fileName}`;
+            }
+            if (fileName.match(/^(1\.|2\.|3\.|4\.|5\.|6\.|7\.|8\.|9\.|10\.|11\.)/)) {
+                if (fileName.includes('docx') || fileName.includes('DOCX')) {
+                    return `documents/${fileName}`;
+                }
+            }
+            if (fileName.includes('Growth') || fileName.includes('Normal') ||
+                fileName.includes('Facial') || fileName.includes('Ext') ||
+                fileName.includes('Class') || fileName.includes('Vertical') ||
+                fileName.includes('Retention') || fileName.includes('Preface') ||
+                fileName.includes('Beyond') || fileName.includes('Intra')) {
+                return `documents/${fileName}`;
+            }
+            if (fileName === 'presentation-1.pptx') {
+                return `documents/${fileName}`;
+            }
+            return fileName;
+        }
+
+        function openFile(fileName) {
+            const filePath = getFilePath(fileName);
+            const type = fileName.split('.').pop().toUpperCase();
+
+            if (type === 'JPG' || type === 'PNG') {
+                showImageViewer(filePath);
+            } else if (type === 'PDF') {
+                window.open(filePath, '_blank');
+            } else if (type === 'MP4') {
+                showVideoPlayer(filePath, fileName);
+            } else if (type === 'PPTX' || type === 'DOCX') {
+                alert(`${fileName}\n\n寃쎈줈: ${filePath}\n\n?⑤씪?몄쑝濡?蹂닿린?섎젮硫??ㅼ쓬 留곹겕瑜??ъ슜?섏꽭??\nhttps://office.live.com/view`);
+            } else {
+                downloadFile(filePath);
+            }
+        }
+
+        function showImageViewer(filePath) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImage');
+            img.src = filePath;
+            img.onerror = function() {
+                alert(`?대?吏瑜?濡쒕뱶?????놁뒿?덈떎.\n寃쎈줈: ${filePath}`);
+            };
+            modal.classList.add('show');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.remove('show');
+        }
+
+        function showVideoPlayer(filePath, fileName) {
+            alert(`鍮꾨뵒?? ${fileName}\n\n寃쎈줈: ${filePath}\n\n?대뜑瑜??댁뼱??鍮꾨뵒?ㅻ? ?ъ깮?섏꽭??`);
+        }
+
+        function downloadFile(filePath) {
+            const link = document.createElement('a');
+            link.href = filePath;
+            link.download = filePath.split('/').pop();
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function renderKimResources() {
+            const tbody = document.getElementById('kimResourcesTable');
+            const kimFiles = ALL_FILES.filter(f => isKimFile(f));
+
+            tbody.innerHTML = kimFiles.map((file, idx) => {
+                const type = file.type;
+                let actionBtn = '-';
+
+                if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
+                    actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
+                }
+
+                return `
+                    <tr>
+                        <td>${file.name}</td>
+                        <td><span class="badge">${file.type}</span></td>
+                        <td>${file.size}</td>
+                        <td>${file.phase}</td>
+                        <td>${actionBtn}</td>
+                        <td>${file.relatedChapter ? `<small>${file.relatedChapter}</small>` : '-'}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            document.getElementById('kimFileCount').textContent = kimFiles.length;
+        }
+
+        function renderOtherResources() {
+            const tbody = document.getElementById('otherResourcesTable');
+            const otherFiles = ALL_FILES.filter(f => !isKimFile(f));
+
+            tbody.innerHTML = otherFiles.map((file, idx) => {
+                const type = file.type;
+                let actionBtn = '-';
+
+                if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
+                    actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
+                }
+
+                let category = '湲고?';
+                if (file.name.includes('?뱀뀎')) category = 'Webceph';
+                if (file.name.includes('??꾩튂怨?)) category = '?쇰컲 ?먮즺';
+
+                return `
+                    <tr>
+                        <td>${file.name}</td>
+                        <td><span class="badge">${file.type}</span></td>
+                        <td>${file.size}</td>
+                        <td>${file.phase}</td>
+                        <td>${actionBtn}</td>
+                        <td><small>${category}</small></td>
+                    </tr>
+                `;
+            }).join('');
+
+            document.getElementById('otherFileCount').textContent = otherFiles.length;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderKimResources();
+
+            // 源?⑹쓣 ?먯옣 ?먮즺 寃??            document.getElementById('kimSearchInput').addEventListener('keyup', function(e) {
+                const search = e.target.value.toLowerCase();
+                const kimFiles = ALL_FILES.filter(f => isKimFile(f));
+                const filtered = kimFiles.filter(f => f.name.toLowerCase().includes(search));
+
+                const tbody = document.getElementById('kimResourcesTable');
+                tbody.innerHTML = filtered.map(file => {
+                    const type = file.type;
+                    let actionBtn = '-';
+                    if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
+                        actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
+                    }
+                    return `
+                        <tr>
+                            <td>${file.name}</td>
+                            <td><span class="badge">${file.type}</span></td>
+                            <td>${file.size}</td>
+                            <td>${file.phase}</td>
+                            <td>${actionBtn}</td>
+                            <td>${file.relatedChapter ? `<small>${file.relatedChapter}</small>` : '-'}</td>
+                        </tr>
+                    `;
+                }).join('');
+                document.getElementById('kimFileCount').textContent = filtered.length;
+            });
+
+            // 湲고? ?먮즺 寃??            document.getElementById('otherSearchInput').addEventListener('keyup', function(e) {
+                const search = e.target.value.toLowerCase();
+                const otherFiles = ALL_FILES.filter(f => !isKimFile(f));
+                const filtered = otherFiles.filter(f => f.name.toLowerCase().includes(search));
+
+                const tbody = document.getElementById('otherResourcesTable');
+                tbody.innerHTML = filtered.map(file => {
+                    const type = file.type;
+                    let actionBtn = '-';
+                    if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
+                        actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
+                    }
+                    let category = '湲고?';
+                    if (file.name.includes('?뱀뀎')) category = 'Webceph';
+                    if (file.name.includes('??꾩튂怨?)) category = '?쇰컲 ?먮즺';
+                    return `
+                        <tr>
+                            <td>${file.name}</td>
+                            <td><span class="badge">${file.type}</span></td>
+                            <td>${file.size}</td>
+                            <td>${file.phase}</td>
+                            <td>${actionBtn}</td>
+                            <td><small>${category}</small></td>
+                        </tr>
+                    `;
+                }).join('');
+                document.getElementById('otherFileCount').textContent = filtered.length;
+            });
+
+            // ??낅퀎 ?꾪꽣
+            window.filterKimByType = function(type) {
+                const kimFiles = ALL_FILES.filter(f => isKimFile(f));
+                let filtered = kimFiles;
+                if (type) {
+                    filtered = kimFiles.filter(f => f.type === type);
+                }
+
+                const tbody = document.getElementById('kimResourcesTable');
+                tbody.innerHTML = filtered.map(file => {
+                    const type = file.type;
+                    let actionBtn = '-';
+                    if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
+                        actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
+                    }
+                    return `
+                        <tr>
+                            <td>${file.name}</td>
+                            <td><span class="badge">${file.type}</span></td>
+                            <td>${file.size}</td>
+                            <td>${file.phase}</td>
+                            <td>${actionBtn}</td>
+                            <td>${file.relatedChapter ? `<small>${file.relatedChapter}</small>` : '-'}</td>
+                        </tr>
+                    `;
+                }).join('');
+                document.getElementById('kimFileCount').textContent = filtered.length;
+            };
+
+            window.filterOtherByType = function(type) {
+                const otherFiles = ALL_FILES.filter(f => !isKimFile(f));
+                let filtered = otherFiles;
+                if (type) {
+                    filtered = otherFiles.filter(f => f.type === type);
+                }
+
+                const tbody = document.getElementById('otherResourcesTable');
+                tbody.innerHTML = filtered.map(file => {
+                    const type = file.type;
+                    let actionBtn = '-';
+                    if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
+                        actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
+                    }
+                    let category = '湲고?';
+                    if (file.name.includes('?뱀뀎')) category = 'Webceph';
+                    if (file.name.includes('??꾩튂怨?)) category = '?쇰컲 ?먮즺';
+                    return `
+                        <tr>
+                            <td>${file.name}</td>
+                            <td><span class="badge">${file.type}</span></td>
+                            <td>${file.size}</td>
+                            <td>${file.phase}</td>
+                            <td>${actionBtn}</td>
+                            <td><small>${category}</small></td>
+                        </tr>
+                    `;
+                }).join('');
+                document.getElementById('otherFileCount').textContent = filtered.length;
+            };
+
+            // ?대?吏 紐⑤떖 ?몃? ?대┃???リ린
+            window.onclick = function(event) {
+                const modal = document.getElementById('imageModal');
+                if (event.target === modal) {
+                    modal.classList.remove('show');
+                }
+            };
+        });
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
+
+

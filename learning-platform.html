@@ -1,0 +1,1608 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교정학 학습 플랫폼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0EA5E9;
+            --secondary: #06B6D4;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --border: #E5E7EB;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 0;
+            display: flex;
+            overflow-x: auto;
+            gap: 0;
+        }
+
+        nav button {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border: none;
+            background: white;
+            color: var(--dark);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        nav button:hover {
+            background: var(--light);
+        }
+
+        nav button.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .grid-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .grid-item h4 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .grid-item p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+
+        .badge.success {
+            background: var(--success);
+        }
+
+        .badge.warning {
+            background: var(--warning);
+        }
+
+        /* Buttons */
+        button.btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0285A7;
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background: var(--light);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+            font-size: 13px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        tr:hover {
+            background: #fafafa;
+        }
+
+        /* Home Section */
+        .welcome-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome-box h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-box p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        /* Learning Path */
+        .phase-container {
+            margin-top: 20px;
+        }
+
+        .phase-box {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .phase-box.active {
+            border-left-color: var(--success);
+            background: #f0fdf4;
+        }
+
+        .phase-box.locked {
+            border-left-color: #ccc;
+            opacity: 0.6;
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .phase-header h3 {
+            font-size: 16px;
+        }
+
+        .phase-status {
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .status-active {
+            background: #DBEAFE;
+            color: var(--primary);
+        }
+
+        .status-completed {
+            background: #DCFCE7;
+            color: var(--success);
+        }
+
+        .status-pending {
+            background: #FEF3C7;
+            color: #B45309;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            border-top: 1px solid var(--border);
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 22px;
+            }
+
+            nav button {
+                min-width: 120px;
+                padding: 12px 15px;
+                font-size: 12px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>74개 자료를 활용한 단계별 임상 지식 습득</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <button class="nav-btn active" onclick="switchTab('home')">🏠 홈</button>
+        <button class="nav-btn" onclick="switchTab('resources')">📚 자료</button>
+        <button class="nav-btn" onclick="switchTab('learning')">🎓 학습경로</button>
+        <button class="nav-btn" onclick="switchTab('concepts')">📝 개념정리</button>
+        <button class="nav-btn" onclick="switchTab('progress')">📈 진도</button>
+        <button class="nav-btn" onclick="switchTab('application')">💡 플랫폼개선</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Section -->
+        <div id="home" class="section active">
+            <div class="welcome-box">
+                <h2>임상 지식, 단계적으로 습득하기</h2>
+                <p>53개 이미지 + 8개 PPTX + 4개 영상 + 12개 문서</p>
+                <button class="btn btn-primary" onclick="switchTab('learning')">학습 시작하기</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="phaseProgress">0%</div>
+                    <div class="stat-label">전체 진도</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="hoursSpent">0h</div>
+                    <div class="stat-label">학습 시간</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="filesReviewed">0/89</div>
+                    <div class="stat-label">자료 섭취</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="conceptsCreated">0</div>
+                    <div class="stat-label">개념 정리</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>현재 학습 상태</h2>
+                <div id="currentLearning"></div>
+            </div>
+
+            <div class="card">
+                <h2>빠른 시작</h2>
+                <div class="grid">
+                    <div class="grid-item" onclick="switchTab('resources')">
+                        <h4>📚 자료 찾기</h4>
+                        <p>74개 자료를 카테고리별로 탐색</p>
+                    </div>
+                    <div class="grid-item" onclick="switchTab('learning')">
+                        <h4>🎯 학습경로</h4>
+                        <p>Phase 1부터 단계별 가이드</p>
+                    </div>
+                    <div class="grid-item" onclick="switchTab('concepts')">
+                        <h4>📝 개념정리</h4>
+                        <p>학습한 내용을 정리하고 기록</p>
+                    </div>
+                    <div class="grid-item" onclick="switchTab('application')">
+                        <h4>💡 플랫폼개선</h4>
+                        <p>학습 내용을 플랫폼에 적용</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Section -->
+        <div id="resources" class="section">
+            <div class="card">
+                <h2>📚 학습 자료</h2>
+                <p style="margin-bottom: 20px; color: #666;">
+                    총 89개 파일 | 1,042MB
+                    <span style="font-size: 12px; color: #999;">
+                        (기본 74개 + 김용을 원장 자료 15개)
+                    </span>
+                </p>
+
+                <div style="margin-bottom: 20px; display: flex; gap: 10px;">
+                    <input type="text" id="searchInput" placeholder="자료 검색 (파일명, 타입)..."
+                           style="flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px;">
+                    <select id="filterType" style="padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px;">
+                        <option value="">모든 타입</option>
+                        <option value="JPG">📸 이미지 (JPG)</option>
+                        <option value="PNG">🎨 이미지 (PNG)</option>
+                        <option value="PPTX">📊 프레젠테이션</option>
+                        <option value="MP4">🎬 영상</option>
+                        <option value="PDF">📄 PDF</option>
+                        <option value="DOCX">📋 DOCX</option>
+                    </select>
+                </div>
+
+                <div class="grid">
+                    <div class="grid-item" onclick="filterByType('JPG')">
+                        <h4>📸 이미지 (JPG)</h4>
+                        <p><strong>45개</strong></p>
+                        <span class="badge success">슬라이드 1-45</span>
+                    </div>
+                    <div class="grid-item" onclick="filterByType('PNG')">
+                        <h4>🎨 이미지 (PNG)</h4>
+                        <p><strong>8개</strong></p>
+                        <span class="badge success">그림 자료</span>
+                    </div>
+                    <div class="grid-item" onclick="filterByType('PPTX')">
+                        <h4>📊 프레젠테이션</h4>
+                        <p><strong>9개</strong></p>
+                        <span class="badge success">AI + 심화</span>
+                    </div>
+                    <div class="grid-item" onclick="filterByType('MP4')">
+                        <h4>🎬 영상</h4>
+                        <p><strong>4개</strong></p>
+                        <span class="badge warning">개념 설명</span>
+                    </div>
+                    <div class="grid-item" onclick="filterByType('PDF')">
+                        <h4>📄 PDF</h4>
+                        <p><strong>5개</strong></p>
+                        <span class="badge">참고값</span>
+                    </div>
+                    <div class="grid-item" onclick="filterByType('DOCX')">
+                        <h4>📋 DOCX</h4>
+                        <p><strong>17개</strong></p>
+                        <span class="badge warning">기본 4 + 명문 13</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: #f0f4f8; border-radius: 6px; border-left: 4px solid var(--secondary);">
+                    <strong style="color: var(--secondary);">🎓 신규: 명문출판사 자료</strong>
+                    <p style="margin-top: 10px; font-size: 13px; color: #666;">
+                        Kim Yong Eul 원장 집필, 명문출판사 11개 챕터 + 프레젠테이션 자료
+                        <br/>
+                        <strong>용도</strong>: Phase 2-3 심화 학습 및 임상 참고 자료
+                        <br/>
+                        <strong>크기</strong>: 약 571MB (15개 파일)
+                        <br/>
+                        <a href="#" onclick="alert('추가 자료 상세 정보\\n\\n📚 명문출판사 11개 챕터\\n- Ch.1 현대 교정학의 발전과 과제\\n- Ch.2 성장과 발육\\n- Ch.3 정상교합과 부정교합\\n- Ch.4 골격 유형 분석\\n- Ch.5 발치와 비발치\\n- Ch.6 치내 부정교합\\n- Ch.7 Class II 부정교합\\n- Ch.8 Class III 부정교합\\n- Ch.9 Deep Bite\\n- Ch.10 Open Bite\\n- Ch.11 유지와 안정\\n\\n📊 프레젠테이션\\n- presentation-1.pptx (146.9MB)\\n- presentation-1.pdf\\n\\n자세한 내용은 wiki-vault의\\nkim용을-원장-자료.md를 참고하세요!'); return false;"
+                          style="color: var(--secondary); font-weight: 600; text-decoration: underline; cursor: pointer;">상세 정보</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>전체 파일 목록</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>자료명</th>
+                            <th>타입</th>
+                            <th>크기</th>
+                            <th>Phase</th>
+                            <th>상태</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resourcesTable">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>🎯 Phase별 필수 자료</h2>
+                <div style="margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 10px;">Phase 1: 기초 이해</h3>
+                    <table style="font-size: 13px;">
+                        <thead>
+                            <tr>
+                                <th>순번</th>
+                                <th>자료명</th>
+                                <th>타입</th>
+                                <th>용도</th>
+                                <th>시간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>교정학 01.mp4</td>
+                                <td>🎬 영상</td>
+                                <td>입문 영상</td>
+                                <td>27분</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>슬라이드 1-15.JPG</td>
+                                <td>📸 이미지</td>
+                                <td>기초 개념</td>
+                                <td>2시간</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>The_Bio-Digital_Blueprint.pptx</td>
+                                <td>📊 PPTX</td>
+                                <td>프레임워크</td>
+                                <td>2시간</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>웹셉 세팔로.pdf</td>
+                                <td>📄 PDF</td>
+                                <td>진단 기초</td>
+                                <td>1시간</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: 10px;">Phase 2: 고급 이해</h3>
+                    <table style="font-size: 13px;">
+                        <thead>
+                            <tr>
+                                <th>순번</th>
+                                <th>자료명</th>
+                                <th>타입</th>
+                                <th>용도</th>
+                                <th>시간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>The_Equilibrium_Blueprint.pptx</td>
+                                <td>📊 PPTX</td>
+                                <td>발치 판단</td>
+                                <td>1시간</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>슬라이드 16-30.JPG</td>
+                                <td>📸 이미지</td>
+                                <td>진단 도구</td>
+                                <td>2시간</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Bio-AI_Orthodontics.pptx</td>
+                                <td>📊 PPTX</td>
+                                <td>AI 응용</td>
+                                <td>1.5시간</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>교정학 02.mp4</td>
+                                <td>🎬 영상</td>
+                                <td>진단 심화</td>
+                                <td>30분</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Path Section -->
+        <div id="learning" class="section">
+            <div class="card">
+                <h2>🎓 단계별 학습경로</h2>
+                <p style="color: #666; margin-bottom: 20px;">총 3단계 | 예상 소요: 6주 | 총 학습시간: 40시간</p>
+
+                <div class="phase-container">
+                    <!-- Phase 1 -->
+                    <div class="phase-box active">
+                        <div class="phase-header">
+                            <h3>Phase 1: 기초 이해</h3>
+                            <span class="phase-status status-active">진행중</span>
+                        </div>
+                        <p style="color: #666; margin-bottom: 10px;">부정교합 분류, 성장 패턴, 진단 도구 이해</p>
+
+                        <div style="margin-top: 10px;">
+                            <div class="progress-text">
+                                <span>진도</span>
+                                <span id="phase1Progress">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="phase1Fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <table style="margin-top: 15px; font-size: 13px;">
+                            <thead>
+                                <tr>
+                                    <th>기간</th>
+                                    <th>학습 내용</th>
+                                    <th>목표</th>
+                                    <th>시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Day 1</strong></td>
+                                    <td>교정학 01.mp4</td>
+                                    <td>교정학 3대 목표 이해</td>
+                                    <td>27분</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Day 2-5</strong></td>
+                                    <td>슬라이드 1-7 (부정교합 분류)</td>
+                                    <td>Angle 분류 3가지 설명</td>
+                                    <td>2시간</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Day 6-7</strong></td>
+                                    <td>웹셉 세팔로.pdf (기준점)</td>
+                                    <td>기준점 10개 암기, 정상값 3개</td>
+                                    <td>1시간</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Day 8</strong></td>
+                                    <td>교정학 02.mp4</td>
+                                    <td>진단 도구 5가지 나열</td>
+                                    <td>30분</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Day 9-12</strong></td>
+                                    <td>슬라이드 16-30 (진단 분석)</td>
+                                    <td>CVMS 8단계, 세파로 분석</td>
+                                    <td>2시간</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Day 13-14</strong></td>
+                                    <td>The_Bio-Digital_Blueprint.pptx</td>
+                                    <td>현대 교정학 4축 이해</td>
+                                    <td>2시간</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="margin-top: 15px; padding: 12px; background: #f0fdf4; border-radius: 6px; border-left: 3px solid var(--success); font-size: 13px;">
+                            <strong>📚 학습 팁:</strong>
+                            각 학습은 최소 3회 반복 (개요 → 세부 → 복습). 다이어그램을 직접 그려보고 개념을 정리하세요.
+                        </div>
+
+                        <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="completePhase(1)">
+                            Phase 1 완료로 표시
+                        </button>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="phase-box" id="phase2Box" style="opacity: 0.7;">
+                        <div class="phase-header">
+                            <h3>Phase 2: 고급 이해</h3>
+                            <span class="phase-status status-pending" id="phase2Status">예정</span>
+                        </div>
+                        <p style="color: #666; margin-bottom: 10px;">4대 AI 엔진 (발치, 성장, 안모, 재발)의 임상 근거 학습 (2-3주)</p>
+
+                        <div style="margin-top: 10px;">
+                            <div class="progress-text">
+                                <span>진도</span>
+                                <span id="phase2Progress">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="phase2Fill" style="width: 0%; background: var(--secondary);"></div>
+                            </div>
+                        </div>
+
+                        <table style="margin-top: 15px; font-size: 13px;">
+                            <thead>
+                                <tr>
+                                    <th>주차</th>
+                                    <th>학습 내용</th>
+                                    <th>시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Week 1</strong></td>
+                                    <td>4대 AI 엔진 임상 기초 (Extraction, Growth, Facial, Recurrence)</td>
+                                    <td>약 20시간</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Week 2</strong></td>
+                                    <td>플랫폼 API 엔드포인트 & 알고리즘 분석</td>
+                                    <td>약 15시간</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="margin-top: 15px; padding: 12px; background: #f0f4f8; border-radius: 6px; border-left: 3px solid var(--secondary); font-size: 13px;">
+                            <strong>📖 상세 가이드:</strong>
+                            <a href="#" onclick="alert('Phase 2 상세 가이드\\n\\n파일: PHASE2_고급이해.md\\n\\n4대 AI 엔진의 각각:\\n① Extraction AI (발치 판단)\\n② Growth Prediction (성장 예측)\\n③ Facial Simulation (안모 시뮬레이션)\\n④ Recurrence Prediction (재발 예측)\\n\\n→ Learning Platform이나 텍스트 에디터에서 PHASE2_고급이해.md 파일 참고'); return false;" style="color: var(--secondary); font-weight: 600; text-decoration: none;">PHASE2_고급이해.md 보기</a>
+                        </div>
+
+                        <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="completePhase(2)">
+                            Phase 2 완료로 표시
+                        </button>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="phase-box" id="phase3Box" style="opacity: 0.7;">
+                        <div class="phase-header">
+                            <h3>Phase 3: 플랫폼 적용</h3>
+                            <span class="phase-status status-pending" id="phase3Status">예정</span>
+                        </div>
+                        <p style="color: #666; margin-bottom: 10px;">플랫폼 자주적 기획·개선·업그레이드 (2-3주)</p>
+
+                        <div style="margin-top: 10px;">
+                            <div class="progress-text">
+                                <span>진도</span>
+                                <span id="phase3Progress">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="phase3Fill" style="width: 0%; background: var(--success);"></div>
+                            </div>
+                        </div>
+
+                        <table style="margin-top: 15px; font-size: 13px;">
+                            <thead>
+                                <tr>
+                                    <th>주차</th>
+                                    <th>학습 내용</th>
+                                    <th>시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Week 1</strong></td>
+                                    <td>플랫폼 코드 분석 & 버그 수정</td>
+                                    <td>약 15시간</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Week 2</strong></td>
+                                    <td>알고리즘 개선 & 신규 기능 기획</td>
+                                    <td>약 15시간</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Week 3</strong></td>
+                                    <td>선택 심화: 임상 데이터 / ML / 확장 기능 / 가이드 작성</td>
+                                    <td>약 10시간</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="margin-top: 15px; padding: 12px; background: #f0fdf4; border-radius: 6px; border-left: 3px solid var(--success); font-size: 13px;">
+                            <strong>📖 상세 가이드:</strong>
+                            <a href="#" onclick="alert('Phase 3 상세 가이드\\n\\n파일: PHASE3_플랫폼적용.md\\n\\n학습 내용:\\n- 플랫폼 코드 구조 분석\\n- 버그 탐지 & 수정\\n- 알고리즘 개선\\n- 신규 기능 기획\\n- 성능 최적화\\n\\n→ PHASE3_플랫폼적용.md 파일 참고'); return false;" style="color: var(--success); font-weight: 600; text-decoration: none;">PHASE3_플랫폼적용.md 보기</a>
+                        </div>
+
+                        <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="completePhase(3)">
+                            Phase 3 완료로 표시
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concepts Section -->
+        <div id="concepts" class="section">
+            <div class="card">
+                <h2>📝 개념 정리</h2>
+                <p style="margin-bottom: 20px; color: #666;">Phase 1 필수 개념 100개 정리</p>
+                <button class="btn btn-primary" onclick="openConceptForm()">+ 새 개념 추가</button>
+
+                <div style="margin-top: 20px;">
+                    <h3 style="margin-bottom: 10px; color: var(--primary);">Phase 1: 기초 이해 필수 개념 (예시)</h3>
+                    <table style="font-size: 13px;">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>개념</th>
+                                <th>정의 (한 줄)</th>
+                                <th>관련 자료</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Angle 분류</strong></td>
+                                <td>상악 제1대구치와 하악 제1대구치의 위치 관계로 부정교합 분류</td>
+                                <td>슬라이드 4-7</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><strong>정상 교합</strong></td>
+                                <td>상 제1대구치가 하 제1대구치의 근심 협측구 내에 위치</td>
+                                <td>슬라이드 8-10</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><strong>Class I</strong></td>
+                                <td>상악 제1대구치 관계는 정상이나 치아 위치에 문제</td>
+                                <td>슬라이드 4-5</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><strong>Class II</strong></td>
+                                <td>하악골이 상악골에 비해 뒤에 위치 (Division 1/2로 세분화)</td>
+                                <td>슬라이드 5-6</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><strong>Class III</strong></td>
+                                <td>하악골이 상악골에 비해 앞으로 나와 있는 상태</td>
+                                <td>슬라이드 7</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><strong>Deep Bite</strong></td>
+                                <td>수직 중첩(overbite)이 4mm 이상으로 깊은 경우</td>
+                                <td>슬라이드 9</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><strong>Open Bite</strong></td>
+                                <td>상 전치와 하 전치 사이에 공간이 있어 물리지 않는 상태</td>
+                                <td>슬라이드 10</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><strong>CVMS (경추 성숙도)</strong></td>
+                                <td>측면 두부 X선에서 경추의 형태로 성장 시기 판정 (8단계)</td>
+                                <td>슬라이드 26-30</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><strong>SNA 각도</strong></td>
+                                <td>상악골 위치 판정 (정상: 80-82°)</td>
+                                <td>웹셉.pdf</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><strong>SNB 각도</strong></td>
+                                <td>하악골 위치 판정 (정상: 78-80°)</td>
+                                <td>웹셉.pdf</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <table style="margin-top: 30px;">
+                    <thead>
+                        <tr>
+                            <th>개념</th>
+                            <th>정의</th>
+                            <th>Phase</th>
+                            <th style="text-align: right;">작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody id="conceptsList">
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 40px; color: #999;">
+                                개념을 추가하면 여기에 표시됩니다
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card" id="conceptForm" style="display: none;">
+                <h2>새 개념 추가</h2>
+                <div style="display: grid; gap: 15px;">
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 5px;">개념명</label>
+                        <input type="text" id="conceptTitle" placeholder="예: Angle 분류" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 5px;">정의 (한 문장)</label>
+                        <input type="text" id="conceptDef" placeholder="예: 상악과 하악의 대구치 관계로 부정교합을 분류" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 5px;">Phase</label>
+                        <select id="conceptPhase" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px;">
+                            <option>Phase 1</option>
+                            <option>Phase 2</option>
+                            <option>Phase 3</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-primary" onclick="saveConcept()">저장</button>
+                        <button class="btn btn-secondary" onclick="closeConceptForm()">취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div id="progress" class="section">
+            <div class="card">
+                <h2>📈 학습 진도</h2>
+
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="statPhaseProgress">0%</div>
+                        <div class="stat-label">전체 진도</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="statHours">0</div>
+                        <div class="stat-label">학습 시간 (목표 40h)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="statFiles">0</div>
+                        <div class="stat-label">자료 섭취 (목표 89)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="statConcepts">0</div>
+                        <div class="stat-label">개념 정리 (목표 100)</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Phase별 진도</h3>
+                    <div style="margin-bottom: 30px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Phase 1: 기초 이해</span>
+                            <span id="phase1Text">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="phase1ProgressBar" style="width: 0%; background: var(--primary);"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Phase 2: 고급 이해</span>
+                            <span id="phase2Text">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="phase2ProgressBar" style="width: 0%; background: var(--secondary);"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Phase 3: 플랫폼 적용</span>
+                            <span id="phase3Text">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="phase3ProgressBar" style="width: 0%; background: var(--success);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>자료 섭취 현황</h3>
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-value" style="color: var(--primary);">0</div>
+                        <div class="stat-label">이미지 (0/53)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" style="color: var(--secondary);">0</div>
+                        <div class="stat-label">PPTX (0/8)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" style="color: var(--warning);">0</div>
+                        <div class="stat-label">영상 (0/4)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" style="color: var(--success);">0</div>
+                        <div class="stat-label">문서 (0/22)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Application Section -->
+        <div id="application" class="section">
+            <div class="card">
+                <h2>💡 학습 → 플랫폼 개선 매핑</h2>
+                <p style="margin-bottom: 20px; color: #666;">학습 자료를 플랫폼 AI 엔진에 직접 연결</p>
+
+                <h3 style="margin-bottom: 15px; color: var(--primary);">4대 AI 엔진 학습-개선 로드맵</h3>
+                <table style="margin-bottom: 30px; font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>AI 엔진</th>
+                            <th>학습 자료</th>
+                            <th>임상 기초</th>
+                            <th>구현 파일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>① Extraction AI</strong><br/>(발치 판단)</td>
+                            <td>The_Equilibrium_Blueprint.pptx</td>
+                            <td>발치 판단 기준 8가지, 공간분석</td>
+                            <td>api/extraction-ai.js</td>
+                        </tr>
+                        <tr>
+                            <td><strong>② Growth Prediction</strong><br/>(성장 예측)</td>
+                            <td>슬라이드 11-15, CVMS 자료</td>
+                            <td>성장 패턴 3가지, CVMS 8단계</td>
+                            <td>api/growth-prediction.js</td>
+                        </tr>
+                        <tr>
+                            <td><strong>③ Facial Simulation</strong><br/>(안모 시뮬레이션)</td>
+                            <td>Facial_Simulation.pptx</td>
+                            <td>측면 안모 미적 분석, 계측값</td>
+                            <td>js/facial-simulation-core.js</td>
+                        </tr>
+                        <tr>
+                            <td><strong>④ Recurrence Prediction</strong><br/>(재발 예측)</td>
+                            <td>Bio-AI_Orthodontics.pptx</td>
+                            <td>재발 위험 인자, 부정교합 유형</td>
+                            <td>api/recurrence.js</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="margin-bottom: 15px; color: var(--secondary);">플랫폼 개선 제안 추가</h3>
+                <button class="btn btn-primary" onclick="openIdeaForm()">+ 새 개선 아이디어 추가</button>
+
+                <table style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>학습 자료</th>
+                            <th>플랫폼 함수</th>
+                            <th>개선 아이디어</th>
+                            <th>상태</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ideasList">
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 40px; color: #999;">
+                                학습한 내용을 플랫폼 개선으로 연결하세요
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card" id="ideaForm" style="display: none;">
+                <h2>새 아이디어 추가</h2>
+                <div style="display: grid; gap: 15px;">
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 5px;">학습 자료</label>
+                        <input type="text" id="ideaSource" placeholder="예: The_Equilibrium_Blueprint.pptx" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 5px;">플랫폼 함수</label>
+                        <select id="ideaPlatform" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px;">
+                            <option>Extraction AI (발치 판단)</option>
+                            <option>Growth Prediction (성장 예측)</option>
+                            <option>Facial Simulation (안모 시뮬레이션)</option>
+                            <option>Recurrence Prediction (재발 예측)</option>
+                            <option>3D Viewer (3D 뷰어)</option>
+                            <option>RAG Chatbot (AI 챗봇)</option>
+                            <option>기타</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-weight: 600; display: block; margin-bottom: 5px;">개선 아이디어</label>
+                        <textarea id="ideaContent" placeholder="구체적인 개선 내용을 입력하세요..." style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; min-height: 100px; font-family: inherit;"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-primary" onclick="saveIdea()">저장</button>
+                        <button class="btn btn-secondary" onclick="closeIdeaForm()">취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 교정학 학습 플랫폼 | 74개 자료를 활용한 효과적 임상 지식 습득 시스템</p>
+    </footer>
+
+    <script>
+        // 89개 파일 메타데이터 (기본 74 + 추가 15)
+        const ALL_FILES = [
+            // MP4 영상 (4개)
+            { name: '교정학 01.mp4', type: 'MP4', size: '20037.25KB', phase: '1', category: '🎬 영상' },
+            { name: '교정학 02.mp4', type: 'MP4', size: '26777.31KB', phase: '1-2', category: '🎬 영상' },
+            { name: '교정학 03.mp4', type: 'MP4', size: '27678.31KB', phase: '2', category: '🎬 영상' },
+            { name: '현대_교정학의_두_얼굴.mp4', type: 'MP4', size: '49677.47KB', phase: '2-3', category: '🎬 영상' },
+
+            // PPTX 프레젠테이션 (8개)
+            { name: 'The_Bio-Digital_Blueprint.pptx', type: 'PPTX', size: '20916.87KB', phase: '1-2', category: '📊 PPTX' },
+            { name: 'The_Equilibrium_Blueprint.pptx', type: 'PPTX', size: '20138.88KB', phase: '2', category: '📊 PPTX' },
+            { name: 'Bio-AI_Orthodontics.pptx', type: 'PPTX', size: '15141.19KB', phase: '2', category: '📊 PPTX' },
+            { name: 'Open_Bite_Clinical_Blueprint.pptx', type: 'PPTX', size: '18104.68KB', phase: '3', category: '📊 PPTX' },
+            { name: '20-19_Orthodontic_AI_Copilot.pptx', type: 'PPTX', size: '12952.38KB', phase: '3', category: '📊 PPTX' },
+            { name: 'Orthodontic_AI_Blueprint.pptx', type: 'PPTX', size: '9878.31KB', phase: '2-3', category: '📊 PPTX' },
+            { name: 'AI_Powered_Precision_Orthodontics.pptx', type: 'PPTX', size: '9449.56KB', phase: '2-3', category: '📊 PPTX' },
+            { name: '교정학 자료.pptx', type: 'PPTX', size: '168130.83KB', phase: '1-3', category: '📊 PPTX' },
+
+            // PDF 문서 (6개)
+            { name: '웹셉.pdf', type: 'PDF', size: '3891.78KB', phase: '1', category: '📄 PDF' },
+            { name: '웹셉 매뉴얼.pdf', type: 'PDF', size: '2592.78KB', phase: '1-2', category: '📄 PDF' },
+            { name: '웹셉 세팔로.docx', type: 'DOCX', size: '995.01KB', phase: '1', category: '📋 DOCX' },
+            { name: '1. 현대 교정학의 발전과 과제.pdf', type: 'PDF', size: '3064.8KB', phase: '1-2', category: '📄 PDF' },
+            { name: '교정학 자료.pdf', type: 'PDF', size: '7620.28KB', phase: '1-2', category: '📄 PDF' },
+            { name: '대전치과 교정학.pdf', type: 'PDF', size: '680.46KB', phase: '1', category: '📄 PDF' },
+
+            // DOCX 문서 (4개)
+            { name: '1. 현대 교정학의 발전과 과제.docx', type: 'DOCX', size: '21772.31KB', phase: '1-2', category: '📋 DOCX' },
+            { name: 'Innovative Aesthetic and Functional Orthodontic Planning with Hard and Soft Tissue Analyses.docx', type: 'DOCX', size: '832.61KB', phase: '2-3', category: '📋 DOCX' },
+            { name: '대전치과 교정학.docx', type: 'DOCX', size: '50.64KB', phase: '1', category: '📋 DOCX' },
+
+            // JPG 슬라이드 (45개) - 명문출판사 11개 챕터와 매핑
+            // 슬라이드 1-5: Ch.1 (현대 교정학의 발전과 과제)
+            ...Array.from({length: 5}, (_, i) => ({
+                name: `슬라이드${i+1}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '1',
+                category: '📸 JPG (Ch.1)',
+                relatedChapter: '1. 현대 교정학의 발전과 과제'
+            })),
+
+            // 슬라이드 6-10: Ch.2 (Growth and Development)
+            ...Array.from({length: 5}, (_, i) => ({
+                name: `슬라이드${i+6}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '1-2',
+                category: '📸 JPG (Ch.2)',
+                relatedChapter: '2. Growth and Development'
+            })),
+
+            // 슬라이드 11-15: Ch.3 (Normal occlusion)
+            ...Array.from({length: 5}, (_, i) => ({
+                name: `슬라이드${i+11}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '1-2',
+                category: '📸 JPG (Ch.3)',
+                relatedChapter: '3. Normal occlusion and malocclusion'
+            })),
+
+            // 슬라이드 16-21: Ch.4 (Facial type)
+            ...Array.from({length: 6}, (_, i) => ({
+                name: `슬라이드${i+16}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '2',
+                category: '📸 JPG (Ch.4)',
+                relatedChapter: '4. Facial type'
+            })),
+
+            // 슬라이드 22-26: Ch.5 (Extraction)
+            ...Array.from({length: 5}, (_, i) => ({
+                name: `슬라이드${i+22}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '2',
+                category: '📸 JPG (Ch.5)',
+                relatedChapter: '5. Ext & non Ext'
+            })),
+
+            // 슬라이드 27-30: Ch.6 (Intra-arch)
+            ...Array.from({length: 4}, (_, i) => ({
+                name: `슬라이드${i+27}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '1-2',
+                category: '📸 JPG (Ch.6)',
+                relatedChapter: '6. Intra-arch malocclusion'
+            })),
+
+            // 슬라이드 31-34: Ch.7 (Class II)
+            ...Array.from({length: 4}, (_, i) => ({
+                name: `슬라이드${i+31}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '2',
+                category: '📸 JPG (Ch.7)',
+                relatedChapter: '7. Class II malocclusion'
+            })),
+
+            // 슬라이드 35-39: Ch.8 (Class III)
+            ...Array.from({length: 5}, (_, i) => ({
+                name: `슬라이드${i+35}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '2',
+                category: '📸 JPG (Ch.8)',
+                relatedChapter: '8. Class III malocclusion'
+            })),
+
+            // 슬라이드 40-42: Ch.9-10 (Vertical)
+            ...Array.from({length: 3}, (_, i) => ({
+                name: `슬라이드${i+40}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '2-3',
+                category: '📸 JPG (Ch.9-10)',
+                relatedChapter: '9-10. Vertical malocclusion'
+            })),
+
+            // 슬라이드 43-45: Ch.11 (Retention)
+            ...Array.from({length: 3}, (_, i) => ({
+                name: `슬라이드${i+43}.JPG`,
+                type: 'JPG',
+                size: '150KB~240KB',
+                phase: '1-3',
+                category: '📸 JPG (Ch.11)',
+                relatedChapter: '11. Retention and Stability'
+            })),
+
+            // PNG 이미지 (8개)
+            { name: '05.png', type: 'PNG', size: '4570.33KB', phase: '1-2', category: '🎨 PNG' },
+            { name: '11.png', type: 'PNG', size: '4759.06KB', phase: '1-2', category: '🎨 PNG' },
+            { name: 'Gemini_Generated_Image_ceylfdceylfdceyl.png', type: 'PNG', size: '6104.11KB', phase: '2-3', category: '🎨 PNG' },
+            { name: 'unnamed (10).png', type: 'PNG', size: '4305.57KB', phase: '2', category: '🎨 PNG' },
+            { name: 'unnamed (19).png', type: 'PNG', size: '4591.47KB', phase: '2', category: '🎨 PNG' },
+            { name: 'unnamed (6).png', type: 'PNG', size: '4657.98KB', phase: '2', category: '🎨 PNG' },
+            { name: 'unnamed (8).png', type: 'PNG', size: '5129.51KB', phase: '2', category: '🎨 PNG' },
+            { name: 'unnamed (9).png', type: 'PNG', size: '4190.85KB', phase: '2', category: '🎨 PNG' },
+
+            // 추가 자료: 명문출판사 + presentation (15개)
+            // Presentations
+            { name: 'presentation-1.pptx', type: 'PPTX', size: '146903.02KB', phase: '2-3', category: '📊 PPTX' },
+            { name: 'presentation-1.pdf', type: 'PDF', size: '4247.27KB', phase: '2-3', category: '📄 PDF' },
+
+            // 명문출판사 11개 챕터 + 보조
+            { name: '1. 현대 교정학의 발전과 과제.docx', type: 'DOCX', size: '21772.3KB', phase: '1-2', category: '📋 DOCX' },
+            { name: '2. Growth and Developement.docx', type: 'DOCX', size: '31148.99KB', phase: '2', category: '📋 DOCX' },
+            { name: '3. Normal occlusion and malocclusion.docx', type: 'DOCX', size: '38658.12KB', phase: '1-2', category: '📋 DOCX' },
+            { name: '4. Facial type.docx', type: 'DOCX', size: '33695.31KB', phase: '2', category: '📋 DOCX' },
+            { name: '5. Ext & non Ext.docx', type: 'DOCX', size: '35116.51KB', phase: '2', category: '📋 DOCX' },
+            { name: '6. Intra-arch malocclusion; Diastema, Crowding & protrusion.docx', type: 'DOCX', size: '49691.97KB', phase: '1-2', category: '📋 DOCX' },
+            { name: '7. Class ll malocclusion.docx', type: 'DOCX', size: '25982.06KB', phase: '2', category: '📋 DOCX' },
+            { name: '8. Class lll malocclusion.docx', type: 'DOCX', size: '48344.28KB', phase: '2', category: '📋 DOCX' },
+            { name: '9. Vertical malocclusion; Deepbite.docx', type: 'DOCX', size: '21804.95KB', phase: '2', category: '📋 DOCX' },
+            { name: '10. Vertical malocclusion; Openbite.docx', type: 'DOCX', size: '69937.22KB', phase: '3', category: '📋 DOCX' },
+            { name: '11. Retention and Stability.docx', type: 'DOCX', size: '25043.98KB', phase: '1-3', category: '📋 DOCX' },
+            { name: '1. Preface.docx', type: 'DOCX', size: '19.14KB', phase: '1', category: '📋 DOCX' },
+            { name: '1, Beyond Contemporaly 정리.docx', type: 'DOCX', size: '31.67KB', phase: '3', category: '📋 DOCX' }
+        ];
+
+        // Data Store (localStorage)
+        const DATA_KEY = 'orthodontics_learning_data';
+
+        // Initialize data
+        function initializeData() {
+            if (!localStorage.getItem(DATA_KEY)) {
+                localStorage.setItem(DATA_KEY, JSON.stringify({
+                    phase1Progress: 0,
+                    hoursSpent: 0,
+                    filesReviewed: [],
+                    concepts: [],
+                    ideas: []
+                }));
+            }
+        }
+
+        // Get data
+        function getData() {
+            return JSON.parse(localStorage.getItem(DATA_KEY)) || {};
+        }
+
+        // Save data
+        function saveData(data) {
+            localStorage.setItem(DATA_KEY, JSON.stringify(data));
+            updateAllStats();
+        }
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            // Show selected section
+            document.getElementById(tabName).classList.add('active');
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Concept form
+        function openConceptForm() {
+            document.getElementById('conceptForm').style.display = 'block';
+        }
+
+        function closeConceptForm() {
+            document.getElementById('conceptForm').style.display = 'none';
+        }
+
+        function saveConcept() {
+            const title = document.getElementById('conceptTitle').value;
+            const def = document.getElementById('conceptDef').value;
+            const phase = document.getElementById('conceptPhase').value;
+
+            if (!title || !def) {
+                alert('개념명과 정의를 입력하세요');
+                return;
+            }
+
+            const data = getData();
+            data.concepts = data.concepts || [];
+            data.concepts.push({
+                id: Date.now(),
+                title,
+                def,
+                phase,
+                date: new Date().toISOString().split('T')[0]
+            });
+
+            saveData(data);
+            closeConceptForm();
+            document.getElementById('conceptTitle').value = '';
+            document.getElementById('conceptDef').value = '';
+            renderConcepts();
+        }
+
+        function renderConcepts() {
+            const data = getData();
+            const conceptsList = document.getElementById('conceptsList');
+            const concepts = data.concepts || [];
+
+            if (concepts.length === 0) {
+                conceptsList.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 40px; color: #999;">개념을 추가하면 여기에 표시됩니다</td></tr>';
+                return;
+            }
+
+            conceptsList.innerHTML = concepts.map(c => `
+                <tr>
+                    <td><strong>${c.title}</strong></td>
+                    <td style="font-size: 12px; color: #666;">${c.def}</td>
+                    <td>${c.phase}</td>
+                    <td style="text-align: right; font-size: 12px; color: #999;">${c.date}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Idea form
+        function openIdeaForm() {
+            document.getElementById('ideaForm').style.display = 'block';
+        }
+
+        function closeIdeaForm() {
+            document.getElementById('ideaForm').style.display = 'none';
+        }
+
+        function saveIdea() {
+            const source = document.getElementById('ideaSource').value;
+            const platform = document.getElementById('ideaPlatform').value;
+            const content = document.getElementById('ideaContent').value;
+
+            if (!source || !content) {
+                alert('모든 필드를 입력하세요');
+                return;
+            }
+
+            const data = getData();
+            data.ideas = data.ideas || [];
+            data.ideas.push({
+                id: Date.now(),
+                source,
+                platform,
+                content,
+                status: '제안',
+                date: new Date().toISOString().split('T')[0]
+            });
+
+            saveData(data);
+            closeIdeaForm();
+            document.getElementById('ideaSource').value = '';
+            document.getElementById('ideaContent').value = '';
+            renderIdeas();
+        }
+
+        function renderIdeas() {
+            const data = getData();
+            const ideasList = document.getElementById('ideasList');
+            const ideas = data.ideas || [];
+
+            if (ideas.length === 0) {
+                ideasList.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 40px; color: #999;">학습 내용을 플랫폼 개선으로 연결하세요</td></tr>';
+                return;
+            }
+
+            ideasList.innerHTML = ideas.map(i => `
+                <tr>
+                    <td style="font-size: 12px;">${i.source}</td>
+                    <td style="font-size: 12px;">${i.platform}</td>
+                    <td style="font-size: 12px;">${i.content.substring(0, 50)}...</td>
+                    <td><span class="badge">${i.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // Complete phase
+        function completePhase(phase) {
+            const data = getData();
+            if (phase === 1) {
+                data.phase1Progress = 100;
+                saveData(data);
+                document.getElementById('phase2Box').style.opacity = '1';
+                document.getElementById('phase2Status').textContent = '진행중';
+                document.getElementById('phase2Status').className = 'phase-status status-active';
+                alert('🎉 Phase 1을 완료했습니다!\n\nPhase 2: 고급 이해를 시작하세요.');
+                renderPhaseProgress();
+            } else if (phase === 2) {
+                data.phase2Progress = 100;
+                saveData(data);
+                document.getElementById('phase3Box').style.opacity = '1';
+                document.getElementById('phase3Status').textContent = '진행중';
+                document.getElementById('phase3Status').className = 'phase-status status-active';
+                alert('🎉 Phase 2를 완료했습니다!\n\nPhase 3: 플랫폼 적용을 시작하세요.');
+                renderPhaseProgress();
+            } else if (phase === 3) {
+                data.phase3Progress = 100;
+                saveData(data);
+                alert('🏆 축하합니다! Phase 3를 완료했습니다!\n\n당신은 이제 플랫폼을 자주적으로 기획·개선·업그레이드할 수 있습니다.');
+                renderPhaseProgress();
+            }
+        }
+
+        // Render phase progress
+        function renderPhaseProgress() {
+            const data = getData();
+            document.getElementById('phase2Fill').style.width = (data.phase2Progress || 0) + '%';
+            document.getElementById('phase2Progress').textContent = (data.phase2Progress || 0) + '%';
+            document.getElementById('phase2ProgressBar').style.width = (data.phase2Progress || 0) + '%';
+            document.getElementById('phase2Text').textContent = (data.phase2Progress || 0) + '%';
+
+            document.getElementById('phase3Fill').style.width = (data.phase3Progress || 0) + '%';
+            document.getElementById('phase3Progress').textContent = (data.phase3Progress || 0) + '%';
+            document.getElementById('phase3ProgressBar').style.width = (data.phase3Progress || 0) + '%';
+            document.getElementById('phase3Text').textContent = (data.phase3Progress || 0) + '%';
+
+            // Unlock Phase 2 if Phase 1 is completed
+            if ((data.phase1Progress || 0) >= 100) {
+                document.getElementById('phase2Box').style.opacity = '1';
+                const phase2Status = document.getElementById('phase2Status');
+                if (phase2Status.textContent === '예정') {
+                    phase2Status.textContent = '준비완료';
+                }
+            }
+
+            // Unlock Phase 3 if Phase 2 is completed
+            if ((data.phase2Progress || 0) >= 100) {
+                document.getElementById('phase3Box').style.opacity = '1';
+                const phase3Status = document.getElementById('phase3Status');
+                if (phase3Status.textContent === '예정') {
+                    phase3Status.textContent = '준비완료';
+                }
+            }
+        }
+
+        // Update all stats
+        function updateAllStats() {
+            const data = getData();
+            const concepts = data.concepts || [];
+            const ideas = data.ideas || [];
+
+            document.getElementById('phaseProgress').textContent = (data.phase1Progress || 0) + '%';
+            document.getElementById('hoursSpent').textContent = (data.hoursSpent || 0) + 'h';
+            document.getElementById('filesReviewed').textContent = (data.filesReviewed || []).length + '/74';
+            document.getElementById('conceptsCreated').textContent = concepts.length;
+
+            document.getElementById('statPhaseProgress').textContent = (data.phase1Progress || 0) + '%';
+            document.getElementById('statHours').textContent = data.hoursSpent || 0;
+            document.getElementById('statFiles').textContent = (data.filesReviewed || []).length;
+            document.getElementById('statConcepts').textContent = concepts.length;
+
+            // Phase progress bars
+            document.getElementById('phase1Fill').style.width = (data.phase1Progress || 0) + '%';
+            document.getElementById('phase1Progress').textContent = (data.phase1Progress || 0) + '%';
+            document.getElementById('phase1ProgressBar').style.width = (data.phase1Progress || 0) + '%';
+            document.getElementById('phase1Text').textContent = (data.phase1Progress || 0) + '%';
+
+            renderPhaseProgress();
+            renderConcepts();
+            renderIdeas();
+        }
+
+        // 자료 검색 및 필터링
+        function filterByType(type) {
+            document.getElementById('filterType').value = type;
+            renderResources();
+        }
+
+        function renderResources() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filterType = document.getElementById('filterType').value;
+            const resourcesTable = document.getElementById('resourcesTable');
+
+            let filtered = ALL_FILES.filter(file => {
+                const matchesSearch = file.name.toLowerCase().includes(searchTerm);
+                const matchesType = !filterType || file.type === filterType;
+                return matchesSearch && matchesType;
+            });
+
+            if (filtered.length === 0) {
+                resourcesTable.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 40px; color: #999;">검색 결과가 없습니다</td></tr>';
+                return;
+            }
+
+            resourcesTable.innerHTML = filtered.map(f => `
+                <tr>
+                    <td style="font-weight: 500;">${f.name}</td>
+                    <td>${f.category}</td>
+                    <td style="font-size: 12px; color: #666;">${f.size}</td>
+                    <td><span class="badge">${f.phase}</span></td>
+                    <td><span class="badge">준비중</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // 검색 및 필터 이벤트 리스너
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const filterType = document.getElementById('filterType');
+            if (searchInput) searchInput.addEventListener('input', renderResources);
+            if (filterType) filterType.addEventListener('change', renderResources);
+        });
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeData();
+            updateAllStats();
+            renderResources();
+        });
+    </script>
+</body>
+</html>

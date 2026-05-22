@@ -1,0 +1,199 @@
+{
+  "main": {
+    "id": "95165c7367ff97e4",
+    "type": "split",
+    "children": [
+      {
+        "id": "0a451441e523b36e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "24633fb434150cc2",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "그래프 뷰"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9fc4ccf30c4b983c",
+    "type": "split",
+    "children": [
+      {
+        "id": "5410835147667af2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6f3c49c2557bf1c9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "12b996778b577599",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "7132fdafc1fc0de9",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "북마크"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "de7f4cfa3c23b106",
+    "type": "split",
+    "children": [
+      {
+        "id": "d9f00bc743ca35e9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8b5bef1c1d0f5b37",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "백링크"
+            }
+          },
+          {
+            "id": "7fd587ccc8821dfd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "나가는 링크"
+            }
+          },
+          {
+            "id": "6b4ceeeb94361fa4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "태그"
+            }
+          },
+          {
+            "id": "d48bc2a9cf5491a7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "모든 속성"
+            }
+          },
+          {
+            "id": "ed7e1661a8f70391",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "개요"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "bases:새 베이스 생성하기": false
+    }
+  },
+  "active": "24633fb434150cc2",
+  "lastOpenFiles": [
+    "위키-홈.md.tmp.22756.6ed52370e562",
+    "슬라이드-매핑-요약.md",
+    "슬라이드-매핑-요약.md.tmp.22756.0f7d262a34f7",
+    "README.md.tmp.22756.f869c9d0f9b5",
+    "파일-목록.md.tmp.22756.8cef12e3a48e",
+    "위키-홈.md.tmp.22756.b541cb596aae",
+    "슬라이드-가이드.md",
+    "슬라이드-가이드.md.tmp.22756.1d4d44a8a3f6",
+    "Webceph-Cephalometric-Methodology.md.tmp.22756.d39ed30e4c53",
+    "위키-홈.md.tmp.22756.f6c59235bbf7",
+    "README.md.tmp.22756.443c450dab36",
+    "파일-목록.md.tmp.22756.d3713ea54f7b",
+    "파일-목록.md.tmp.22756.c86229a2f1ab",
+    "Webceph-Cephalometric-Methodology.md",
+    "Kim-Equilibrium-Zone-Methodology.md",
+    "김용을-원장-자료.md",
+    "위키-홈.md"
+  ]
+}

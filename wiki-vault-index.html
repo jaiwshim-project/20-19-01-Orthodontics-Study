@@ -1,0 +1,525 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>?듯빀 ?숈뒿 ?덈툕 - 援먯젙???뚮옯??+ Obsidian</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .hub-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hub-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .hub-card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .hub-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .hub-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hub-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s;
+            border-left: 4px solid #667eea;
+        }
+
+        .hub-link:hover {
+            background: #e8e8ff;
+            transform: translateX(5px);
+        }
+
+        .hub-link span {
+            font-weight: 600;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .hub-link-icon {
+            font-size: 18px;
+            margin-right: 12px;
+        }
+
+        .hub-link-arrow {
+            font-size: 16px;
+            color: #999;
+        }
+
+        .phase-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .phase-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .phase-header {
+            padding: 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .phase-header.phase1 {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        }
+
+        .phase-header.phase2 {
+            background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+        }
+
+        .phase-header.phase3 {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+        }
+
+        .phase-content {
+            padding: 20px;
+        }
+
+        .phase-content p {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .phase-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phase-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phase-btn.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .phase-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .phase-btn.secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+
+        .phase-btn.secondary:hover {
+            background: #f9f9f9;
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .stats-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .stats-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-item {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .quick-links {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .quick-links h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-btn {
+            padding: 15px;
+            background: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            font-size: 13px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hub-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            .phase-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>?럳 ?듯빀 ?숈뒿 ?덈툕</h1>
+            <p>援먯젙???뚮옯??+ Obsidian ?숈뒿 ?명듃</p>
+            <p style="font-size: 14px; opacity: 0.8;">???뚮옯?쇨낵 媛쒖씤 ?명듃瑜??쒓납?먯꽌 愿由ы븯?몄슂</p>
+        </header>
+
+        <nav>
+            <a href="index.html">?룧 ??/a>
+            <a href="resources.html">?뱴 ?먮즺</a>
+            <a href="learning-path.html">?럳 ?숈뒿寃쎈줈</a>
+            <a href="concepts.html">?뮕 媛쒕뀗?뺣━</a>
+            <a href="ideas.html">?뮡 ?뚮옯?쇨컻??/a>
+            <a href="progress.html">?깍툘 吏꾨룄</a>
+            <a href="application.html">?? ?뚮옯?쇱쟻??/a>
+            <a href="webceph.html">?뵇 ?뱀뀎쨌?명뙏濡?/a>
+            <a href="comparison.html">?뽳툘 EZM 鍮꾧탳</a>
+            <a href="wiki-vault-index.html" class="active">?쭬 ?꾪궎蹂쇳듃</a>
+        </nav>
+
+        <div class="hub-grid">
+            <!-- ???뚮옯??移대뱶 -->
+            <div class="hub-card">
+                <h2>?뙋 ???뚮옯??/h2>
+                <p>?숈뒿 ?먮즺 ?묎렐, 吏꾨룄 異붿쟻, 媛쒕뀗 ?뺣━, ?꾩씠?붿뼱 湲곕줉 ??紐⑤뱺 ?숈뒿 ?쒕룞??愿由ы빀?덈떎.</p>
+                <div class="hub-links">
+                    <a href="index.html" class="hub-link">
+                        <span class="hub-link-icon">?룧</span>
+                        <span>??- ?뚮옯??媛쒖슂</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="resources.html" class="hub-link">
+                        <span class="hub-link-icon">?뱴</span>
+                        <span>?먮즺 - 90媛??숈뒿 ?먮즺</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="learning-path.html" class="hub-link">
+                        <span class="hub-link-icon">?럳</span>
+                        <span>?숈뒿寃쎈줈 - Phase 1-3</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="progress.html" class="hub-link">
+                        <span class="hub-link-icon">?뱤</span>
+                        <span>吏꾨룄 - ?숈뒿 異붿쟻 & ?명듃</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="concepts.html" class="hub-link">
+                        <span class="hub-link-icon">?뮕</span>
+                        <span>媛쒕뀗?뺣━ - ?숈뒿 ?뺤쓽</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="ideas.html" class="hub-link">
+                        <span class="hub-link-icon">?뮡</span>
+                        <span>?뚮옯?쇨컻??- ?꾩씠?붿뼱</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Obsidian Vault 移대뱶 -->
+            <div class="hub-card">
+                <h2>?쭬 Obsidian Vault</h2>
+                <p>Phase蹂??숈뒿 ?명듃, 耳?댁뒪 遺꾩꽍, 媛쒕뀗 ?뺣━瑜??묒꽦?섍퀬 愿由ы빀?덈떎.</p>
+                <div class="hub-links">
+                    <a href="file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki" class="hub-link" target="_blank">
+                        <span class="hub-link-icon">?뱛</span>
+                        <span>Vault ?닿린 (?뚯씪 ?먯깋湲?</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="#" onclick="openObsidianApp()" class="hub-link">
+                        <span class="hub-link-icon">?뵕</span>
+                        <span>Obsidian ?깆뿉???닿린</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="#" onclick="alert('Phase 1, 2, 3 ?대뜑???덈뒗 README.md瑜??뺤씤?섏꽭??'); return false;" class="hub-link">
+                        <span class="hub-link-icon">?뱰</span>
+                        <span>Phase蹂?媛?대뱶 ?쎄린</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="#" onclick="alert('Templates ?대뜑???숈뒿?명듃.md, 耳?댁뒪遺꾩꽍.md, 媛쒕뀗?뺣━.md ?쒗뵆由우쓣 ?ъ슜?섏꽭??'); return false;" class="hub-link">
+                        <span class="hub-link-icon">?뱷</span>
+                        <span>?명듃 ?쒗뵆由??ъ슜</span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="#" onclick="alert('progress.html ?섏씠吏??JSON/CSV/留덊겕?ㅼ슫 ?대낫?닿린瑜??ъ슜?섏꽭??'); return false;" class="hub-link">
+                        <span class="hub-link-icon">?뱾</span>
+                        <span>吏꾨룄 ?곗씠???숆린??/span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                    <a href="#" onclick="alert('Study Notes ?대뜑瑜?留뚮뱾怨?媛쒖씤 ?명듃瑜???ν븯?몄슂.'); return false;" class="hub-link">
+                        <span class="hub-link-icon">??/span>
+                        <span>媛쒖씤 ?명듃 ???/span>
+                        <span class="hub-link-arrow">??/span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 移대뱶 -->
+        <h3 style="color: white; margin-bottom: 20px; text-align: center; font-size: 22px;">?뱴 Phase蹂??숈뒿 怨꾪쉷</h3>
+        <div class="phase-cards">
+            <div class="phase-card">
+                <div class="phase-header phase1">??Phase 1: 湲곗큹 ?댄빐 (22?쒓컙)</div>
+                <div class="phase-content">
+                    <p><strong>?렞 紐⑺몴</strong></p>
+                    <ul style="margin-left: 15px; margin-bottom: 10px;">
+                        <li style="margin-bottom: 5px;">EZ 媛쒕뀗 ?꾨꼍 ?댄빐</li>
+                        <li style="margin-bottom: 5px;">?깆옣 ?⑦꽩 ?댄빐</li>
+                        <li>遺?뺢탳??遺꾨쪟 ?듬뱷</li>
+                    </ul>
+                    <p style="margin-bottom: 15px;"><strong>?먮즺</strong>: ?щ씪?대뱶 1-15 + Chapter 1-3</p>
+                    <p style="margin-bottom: 15px;"><strong>湲곌컙</strong>: 1-2二?/p>
+                    <div class="phase-buttons">
+                        <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">?숈뒿寃쎈줈 蹂닿린</button>
+                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki/Phase%201%20-%20湲곗큹%20?댄빐')">Obsidian ?명듃</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-header phase2">?뱰 Phase 2: 怨좉툒 ?댄빐 (28?쒓컙)</div>
+                <div class="phase-content">
+                    <p><strong>?렞 紐⑺몴</strong></p>
+                    <ul style="margin-left: 15px; margin-bottom: 10px;">
+                        <li style="margin-bottom: 5px;">怨듦컙遺꾩꽍 怨듭떇 ?듬뱷</li>
+                        <li style="margin-bottom: 5px;">諛쒖튂 ?먮떒 ?λ젰</li>
+                        <li>耳?댁뒪 遺꾩꽍 ?λ젰</li>
+                    </ul>
+                    <p style="margin-bottom: 15px;"><strong>?먮즺</strong>: ?щ씪?대뱶 16-39 + Chapter 4-8</p>
+                    <p style="margin-bottom: 15px;"><strong>湲곌컙</strong>: 2-3二?/p>
+                    <div class="phase-buttons">
+                        <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">?숈뒿寃쎈줈 蹂닿린</button>
+                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki/Phase%202%20-%20怨좉툒%20?댄빐')">Obsidian ?명듃</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-header phase3">?? Phase 3: ?뚮옯???곸슜 (30?쒓컙)</div>
+                <div class="phase-content">
+                    <p><strong>?렞 紐⑺몴</strong></p>
+                    <ul style="margin-left: 15px; margin-bottom: 10px;">
+                        <li style="margin-bottom: 5px;">?뚮옯???꾪궎?띿쿂 ?댄빐</li>
+                        <li style="margin-bottom: 5px;">?꾩긽 ??肄붾뱶 蹂??/li>
+                        <li>?낅┰ 媛쒕컻 ?λ젰</li>
+                    </ul>
+                    <p style="margin-bottom: 15px;"><strong>?먮즺</strong>: ?щ씪?대뱶 40-45 + Chapter 9-11</p>
+                    <p style="margin-bottom: 15px;"><strong>湲곌컙</strong>: 2-3二?/p>
+                    <div class="phase-buttons">
+                        <button class="phase-btn primary" onclick="window.location.href='application.html'">?뚮옯???곸슜 媛?대뱶</button>
+                        <button class="phase-btn secondary" onclick="window.open('file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki/Phase%203%20-%20?뚮옯??20?곸슜')">Obsidian ?명듃</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ?듦퀎 ?뱀뀡 -->
+        <div class="stats-section">
+            <h3>?뱤 ?숈뒿 由ъ냼??/h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">90</div>
+                    <div class="stat-label">?숈뒿 ?먮즺</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">HTML ?섏씠吏</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">80</div>
+                    <div class="stat-label">?숈뒿 ?쒓컙</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Learning Phase</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 鍮좊Ⅸ 留곹겕 -->
+        <div class="quick-links">
+            <h3>?뵕 鍮좊Ⅸ ?묎렐</h3>
+            <div class="quick-grid">
+                <a href="index.html" class="quick-btn">?룧 ?뚮옯????/a>
+                <a href="progress.html" class="quick-btn">?뱤 吏꾨룄 異붿쟻</a>
+                <a href="concepts.html" class="quick-btn">?뮕 媛쒕뀗?뺣━</a>
+                <a href="ideas.html" class="quick-btn">?뮡 ?꾩씠?붿뼱</a>
+                <a href="comparison.html" class="quick-btn">?뽳툘 EZM 鍮꾧탳</a>
+                <a href="application.html" class="quick-btn">?? ?뚮옯??媛쒕컻</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>?럳 援먯젙???숈뒿 ?뚮옯??+ Obsidian ?듯빀 ?숈뒿 ?덈툕</p>
+            <p>Kim Yong Eul??Equilibrium Zone Methodology (EZM) ?꾩쟾 ?댄빐 & 20-19 Orthodontics AI ?뚮옯???낅┰ 媛쒕컻</p>
+            <p style="margin-top: 15px; opacity: 0.8;">짤 2026 | 留덉?留??낅뜲?댄듃: 2026-05-22</p>
+        </footer>
+    </div>
+
+    <script>
+        function openObsidianApp() {
+            // Obsidian vault 寃쎈줈瑜?obsidian:// URL ?ㅽ궡?쇰줈 ?닿린
+            const vaultPath = 'file:///C:/01%20?대줈?쒖퐫??000%20?뱁뿀-??묎텒/01%20移섍낵%20援먯젙??.obsidian-wiki';
+            window.open(vaultPath, '_blank');
+        }
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
+
+
