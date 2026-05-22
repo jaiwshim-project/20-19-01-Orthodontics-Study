@@ -1,8 +1,8 @@
 // Supabase 초기화
-// 사용자는 https://supabase.com에서 프로젝트를 생성하고 아래에 키를 입력해야 합니다.
+// 프로젝트: yrefhwvpopmqqvgalomt
 
-const SUPABASE_URL = localStorage.getItem('supabase_url') || '';
-const SUPABASE_KEY = localStorage.getItem('supabase_key') || '';
+const SUPABASE_URL = localStorage.getItem('supabase_url') || 'https://yrefhwvpopmqqvgalomt.supabase.co';
+const SUPABASE_KEY = localStorage.getItem('supabase_key') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlyZWZod3Zwb3BtcXF2Z2Fsb210Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0NTg3MDksImV4cCI6MjA5NTAzNDcwOX0.MlrHV8f7xF5Sll3O-L_5DRq6LSKtn8FRcL1PfoNQ9V8';
 
 class SupabaseClient {
     constructor(url, key) {
