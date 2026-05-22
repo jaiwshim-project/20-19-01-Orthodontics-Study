@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>?먮즺 - 援먯젙???숈뒿 ?뚮옯??/title>
+    <title>자료 - 교정학 학습 플랫폼</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .tab-buttons {
@@ -11,20 +11,17 @@
             gap: 10px;
             margin-bottom: 20px;
             border-bottom: 2px solid #e5e7eb;
+            overflow-x: auto;
         }
         .tab-button {
             padding: 12px 20px;
             background: white;
             border: none;
             cursor: pointer;
-            font-weight: 600;
-            color: #666;
+            font-weight: 500;
             border-bottom: 3px solid transparent;
+            color: #666;
             transition: all 0.3s;
-        }
-        .tab-button:hover {
-            color: #0284c7;
-            background: #f9fafb;
         }
         .tab-button.active {
             color: #0284c7;
@@ -36,182 +33,333 @@
         .tab-content.active {
             display: block;
         }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .resource-card {
+            padding: 15px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .resource-card:hover {
+            border-color: #0284c7;
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1);
+            background: #f0f9ff;
+        }
+        .resource-card h4 {
+            margin: 0 0 8px 0;
+            color: #1f2937;
+        }
+        .resource-card p {
+            margin: 0 0 10px 0;
+            font-size: 13px;
+            color: #666;
+        }
+        .resource-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #dbeafe;
+            color: #0284c7;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>?뱴 ?숈뒿 ?먮즺</h1>
-        <p>90媛??뚯씪 | 源?⑹쓣 ?먯옣 ?먮즺? 湲고? ?먮즺濡?遺꾨쪟</p>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
     </header>
 
     <nav>
-        <a href="index.html">?룧 ??/a>
-        <a href="resources.html" class="active">?뱴 ?먮즺</a>
-        <a href="learning-path.html">?럳 ?숈뒿寃쎈줈</a>
-        <a href="concepts.html">?뮕 媛쒕뀗?뺣━</a>
-        <a href="ideas.html">?뮡 ?뚮옯?쇨컻??/a>
-        <a href="progress.html">?깍툘 吏꾨룄</a>
-        <a href="application.html">?? ?뚮옯?쇱쟻??/a>
-        <a href="webceph.html">?뵇 ?뱀뀎쨌?명뙏濡?/a>
-        <a href="comparison.html">?뽳툘 EZM 鍮꾧탳</a>
-        <a href="wiki-vault-index.html">?쭬 ?꾪궎蹂쇳듃</a>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html" class="active">📚 자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html">💡 개념정리</a>
+        <a href="ideas.html">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="webceph.html">🔍 웹셉·세팔로</a>
+        <a href="comparison.html">⚖️ EZM 비교</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
     </nav>
 
     <div class="container">
-        <!-- ??硫붾돱 -->
         <div class="card">
+            <h2>📚 학습 자료</h2>
+            <p style="color: #666;">총 90개의 자료로 체계적인 학습 가능</p>
+
             <div class="tab-buttons">
-                <button class="tab-button active" onclick="switchTab('kim')">?럳 源?⑹쓣 ?먯옣 ?먮즺</button>
-                <button class="tab-button" onclick="switchTab('other')">?뱰 湲고? ?먮즺</button>
+                <button class="tab-button active" onclick="switchTab('slides')">📸 슬라이드 (45개)</button>
+                <button class="tab-button" onclick="switchTab('textbooks')">📖 교과서 (11개)</button>
+                <button class="tab-button" onclick="switchTab('videos')">🎬 영상 (4개)</button>
+                <button class="tab-button" onclick="switchTab('presentations')">📊 프레젠테이션 (9개)</button>
+                <button class="tab-button" onclick="switchTab('documents')">📄 문서 (21개)</button>
             </div>
 
-            <!-- Kim???먮즺 ??-->
-            <div id="kim" class="tab-content active">
-                <h2 style="margin-top: 0;">?럳 源?⑹쓣 ?먯옣 ?먮즺</h2>
+            <!-- 슬라이드 탭 -->
+            <div id="slides" class="tab-content active">
+                <h3>📸 Kim Yong Eul 교정학 강의 슬라이드 (45개)</h3>
+                <p style="color: #666; margin-bottom: 20px;">Equilibrium Zone Methodology의 핵심 개념을 담은 강의 슬라이드 모음</p>
 
-                <div style="padding: 20px; background: #f0fdf4; border-radius: 8px; margin: 20px 0;">
-                    <h3 style="color: #047857; margin-top: 0;">?뱤 遺?뺢탳??遺꾨쪟 媛쒖슂</h3>
-                    <img src="images/?대?吏 7.png" alt="遺?뺢탳??遺꾨쪟" style="width: 100%; max-width: 900px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <p style="color: #666; font-size: 13px; margin-top: 15px;">
-                        <strong>6媛吏 二쇱슂 遺?뺢탳???좏삎:</strong> 怨쇨컻援먰빀(Deep Bite), 諛섎?援먰빀(Class III), 援먯감援먰빀(Cross Bite), 踰뚯뼱吏꾩튂??Diastema), 媛쒕갑援먰빀(Open Bite), 珥앹깮(Crowding)<br/>
-                        ??遺꾨쪟??EZM 吏꾨떒 諛?移섎즺怨꾪쉷???듭떖 湲곕컲?낅땲??
-                    </p>
-                </div>
-
-                <p style="color: #666; font-size: 13px; margin-bottom: 15px;">
-                    Equilibrium Zone 諛⑸쾿濡좉낵 愿?⑤맂 紐⑤뱺 ?먮즺 | 珥?<strong id="kimFileCount">67</strong>媛?                </p>
-
-                <div style="margin: 15px 0;">
-                    <input type="text" id="kimSearchInput" placeholder="源?⑹쓣 ?먯옣 ?먮즺 寃??.." style="width: 100%; padding: 10px; margin-bottom: 10px;">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;">
-                        <button class="btn btn-primary" onclick="filterKimByType('')">?뱤 ?꾩껜</button>
-                        <button class="btn btn-secondary" onclick="filterKimByType('JPG')">?벝 ?щ씪?대뱶 (45)</button>
-                        <button class="btn btn-secondary" onclick="filterKimByType('DOCX')">?뱥 援먭낵??(12)</button>
-                        <button class="btn btn-secondary" onclick="filterKimByType('PPTX')">?뱤 諛쒗몴 (7)</button>
-                        <button class="btn btn-secondary" onclick="filterKimByType('PDF')">?뱞 PDF (3)</button>
+                <h4 style="margin-top: 20px; color: #0284c7;">Module 1: 기초 개념 (슬라이드 1-5)</h4>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h4>슬라이드 1</h4>
+                        <p>EZM 개념의 정의 및 역사</p>
+                        <span class="resource-badge">Phase 1</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>슬라이드 2</h4>
+                        <p>정상교합의 특징</p>
+                        <span class="resource-badge">Phase 1</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>슬라이드 3</h4>
+                        <p>부정교합의 분류</p>
+                        <span class="resource-badge">Phase 1</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>슬라이드 4</h4>
+                        <p>성장 패턴 분석</p>
+                        <span class="resource-badge">Phase 1</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>슬라이드 5</h4>
+                        <p>진단의 기초</p>
+                        <span class="resource-badge">Phase 1</span>
                     </div>
                 </div>
 
-                <table style="font-size: 13px; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>?뚯씪紐?/th>
-                            <th>???/th>
-                            <th>?ш린</th>
-                            <th>Phase</th>
-                            <th>蹂닿린</th>
-                            <th>?곌껐</th>
-                        </tr>
-                    </thead>
-                    <tbody id="kimResourcesTable">
-                        <!-- Dynamically populated -->
-                    </tbody>
-                </table>
+                <h4 style="margin-top: 20px; color: #0284c7;">Module 2-9: 고급 진단 (슬라이드 6-45)</h4>
+                <p style="color: #666; margin-bottom: 10px;">공간분석, 성장예측, 부정교합별 진단 및 치료 계획</p>
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0284c7;">
+                    <p style="margin: 0; font-size: 13px;"><strong>📌 슬라이드 6-15:</strong> 공간분석 및 발치 판단</p>
+                    <p style="margin: 8px 0 0 0; font-size: 13px;"><strong>📌 슬라이드 16-25:</strong> 안모분석 및 성장예측</p>
+                    <p style="margin: 8px 0 0 0; font-size: 13px;"><strong>📌 슬라이드 26-35:</strong> 부정교합별 진단</p>
+                    <p style="margin: 8px 0 0 0; font-size: 13px;"><strong>📌 슬라이드 36-45:</strong> 종합 케이스 분석</p>
+                </div>
             </div>
 
-            <!-- 湲고? ?먮즺 ??-->
-            <div id="other" class="tab-content">
-                <h2 style="margin-top: 0;">?뱰 湲고? ?먮즺</h2>
-                <p style="color: #666; font-size: 13px; margin-bottom: 15px;">
-                    Webceph, Cephalometric 諛?湲곕낯 援먯젙???먮즺 | 珥?<strong id="otherFileCount">23</strong>媛?                </p>
+            <!-- 교과서 탭 -->
+            <div id="textbooks" class="tab-content">
+                <h3>📖 명문출판사 교정학 교과서 (11개)</h3>
+                <p style="color: #666; margin-bottom: 20px;">체계적인 교정학 이론과 실습을 다루는 교과서</p>
 
-                <div style="margin: 15px 0;">
-                    <input type="text" id="otherSearchInput" placeholder="湲고? ?먮즺 寃??.." style="width: 100%; padding: 10px; margin-bottom: 10px;">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;">
-                        <button class="btn btn-primary" onclick="filterOtherByType('')">?뱤 ?꾩껜</button>
-                        <button class="btn btn-secondary" onclick="filterOtherByType('PNG')">?벝 ?대?吏 (8)</button>
-                        <button class="btn btn-secondary" onclick="filterOtherByType('DOCX')">?뱥 臾몄꽌 (5)</button>
-                        <button class="btn btn-secondary" onclick="filterOtherByType('PPTX')">?뱤 諛쒗몴 (2)</button>
-                        <button class="btn btn-secondary" onclick="filterOtherByType('PDF')">?뱞 PDF (3)</button>
-                        <button class="btn btn-secondary" onclick="filterOtherByType('MP4')">?렗 ?곸긽 (4)</button>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h4>교과서 1</h4>
+                        <p>정상교합과 성장 개론</p>
+                        <span class="resource-badge">Phase 1</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 2</h4>
+                        <p>치아 배열의 원리</p>
+                        <span class="resource-badge">Phase 1</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 3</h4>
+                        <p>공간분석 이론</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 4</h4>
+                        <p>안모분석 및 성장예측</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 5</h4>
+                        <p>부정교합의 원인과 분류</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 6</h4>
+                        <p>수직 부정교합 진단</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 7</h4>
+                        <p>수평 부정교합 치료</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 8</h4>
+                        <p>치료 계획 수립</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 9</h4>
+                        <p>보정력과 력학</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 10</h4>
+                        <p>보정치료의 실제</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>교과서 11</h4>
+                        <p>유지와 안정성</p>
+                        <span class="resource-badge">Phase 2</span>
                     </div>
                 </div>
+            </div>
 
-                <table style="font-size: 13px; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>?뚯씪紐?/th>
-                            <th>???/th>
-                            <th>?ш린</th>
-                            <th>Phase</th>
-                            <th>蹂닿린</th>
-                            <th>遺꾨쪟</th>
-                        </tr>
-                    </thead>
-                    <tbody id="otherResourcesTable">
-                        <!-- Dynamically populated -->
-                    </tbody>
-                </table>
+            <!-- 영상 탭 -->
+            <div id="videos" class="tab-content">
+                <h3>🎬 강의 영상 (4개)</h3>
+                <p style="color: #666; margin-bottom: 20px;">개념 설명과 실습이 담긴 영상 자료</p>
+
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h4>영상 1</h4>
+                        <p>EZM 기초 개념 설명</p>
+                        <span class="resource-badge">Phase 1</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>영상 2</h4>
+                        <p>공간분석 실습</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>영상 3</h4>
+                        <p>케이스 분석 워크숍</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>영상 4</h4>
+                        <p>플랫폼 사용법</p>
+                        <span class="resource-badge">Phase 3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 프레젠테이션 탭 -->
+            <div id="presentations" class="tab-content">
+                <h3>📊 프레젠테이션 (9개)</h3>
+                <p style="color: #666; margin-bottom: 20px;">실제 임상 케이스와 분석 결과를 담은 프레젠테이션</p>
+
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h4>프레젠테이션 1</h4>
+                        <p>Deep Bite 케이스 분석</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>프레젠테이션 2</h4>
+                        <p>Open Bite 치료 결과</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>프레젠테이션 3</h4>
+                        <p>Class II 부정교합 사례</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>프레젠테이션 4</h4>
+                        <p>Class III 부정교합 사례</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>프레젠테이션 5</h4>
+                        <p>전후방 치조골 부족</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>프레젠테이션 6</h4>
+                        <p>성인 복합 부정교합</p>
+                        <span class="resource-badge">Phase 2</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>프레젠테이션 7</h4>
+                        <p>GEO-AIO 도입 사례 1</p>
+                        <span class="resource-badge">Phase 3</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>프레젠테이션 8</h4>
+                        <p>GEO-AIO 도입 사례 2</p>
+                        <span class="resource-badge">Phase 3</span>
+                    </div>
+                    <div class="resource-card">
+                        <h4>프레젠테이션 9</h4>
+                        <p>GEO-AIO 도입 사례 3</p>
+                        <span class="resource-badge">Phase 3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 문서 탭 -->
+            <div id="documents" class="tab-content">
+                <h3>📄 학습 문서 (21개)</h3>
+                <p style="color: #666; margin-bottom: 20px;">논문, 가이드, 참고자료 등</p>
+
+                <div style="padding: 15px; background: #d1fae5; border-radius: 6px; border-left: 4px solid #10b981; margin-bottom: 20px;">
+                    <p style="margin: 0;"><strong>💾 상세 자료는 Obsidian Vault와 resources/documents 폴더에서 확인하세요.</strong></p>
+                </div>
             </div>
         </div>
 
-        <!-- Image Viewer Modal -->
-        <div id="imageModal" class="modal">
-            <div class="modal-content" style="max-width: 90%; width: 90%; max-height: 90vh; overflow: auto;">
-                <span class="close" onclick="closeImageModal()">&times;</span>
-                <img id="modalImage" style="width: 100%; height: auto; margin-top: 10px;">
-            </div>
-        </div>
-
-        <!-- ?щ씪?대뱶 留ㅽ븨 -->
         <div class="card">
-            <h2>狩?45媛??щ씪?대뱶 횞 11媛?援먭낵??留ㅽ븨</h2>
-            <table style="font-size: 12px;">
-                <thead>
-                    <tr>
-                        <th>?щ씪?대뱶</th>
-                        <th>媛쒖닔</th>
-                        <th>愿??援먭낵??/th>
-                        <th>二쇱젣</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>1-5</td><td>5</td><td>Chapter 1</td><td>Equilibrium Zone 媛쒕뀗</td></tr>
-                    <tr><td>6-10</td><td>5</td><td>Chapter 2</td><td>?깆옣怨?諛쒖쑁</td></tr>
-                    <tr><td>11-15</td><td>5</td><td>Chapter 3</td><td>?뺤긽援먰빀 vs 遺?뺢탳??/td></tr>
-                    <tr><td>16-21</td><td>6</td><td>Chapter 4</td><td>?덈え遺꾩꽍</td></tr>
-                    <tr><td>22-26</td><td>5</td><td>Chapter 5</td><td>怨듦컙遺꾩꽍 & 諛쒖튂</td></tr>
-                    <tr><td>27-30</td><td>4</td><td>Chapter 6</td><td>移섎궡遺?뺢탳??/td></tr>
-                    <tr><td>31-34</td><td>4</td><td>Chapter 7</td><td>Class II</td></tr>
-                    <tr><td>35-39</td><td>5</td><td>Chapter 8</td><td>Class III</td></tr>
-                    <tr><td>40-42</td><td>3</td><td>Chapter 9-10</td><td>?섏쭅遺?뺢탳??狩?/td></tr>
-                    <tr><td>43-45</td><td>3</td><td>Chapter 11</td><td>?좎?? ?덉젙</td></tr>
-                </tbody>
-            </table>
+            <h2>✨ 자료 구성의 특징</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px;">
+                    <h4>🔗 완벽한 매핑</h4>
+                    <p style="font-size: 13px; color: #666;">45개 슬라이드와 11개 교과서가 완벽하게 연결되어 있습니다.</p>
+                </div>
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px;">
+                    <h4>📚 Phase별 정렬</h4>
+                    <p style="font-size: 13px; color: #666;">Phase 1-3 순서에 따라 체계적으로 학습할 수 있습니다.</p>
+                </div>
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px;">
+                    <h4>🎯 임상 사례</h4>
+                    <p style="font-size: 13px; color: #666;">실제 임상 케이스와 프레젠테이션으로 실무 능력을 키웁니다.</p>
+                </div>
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px;">
+                    <h4>🚀 AI 플랫폼</h4>
+                    <p style="font-size: 13px; color: #666;">20-19 Orthodontics AI로 진단 능력을 즉시 검증합니다.</p>
+                </div>
+            </div>
         </div>
 
         <footer>
             <div class="footer-container">
                 <div class="footer-section">
-                    <h3>?럳 ?숈뒿寃쎈줈</h3>
+                    <h3>🎓 학습경로</h3>
                     <ul>
-                        <li><a href="learning-path.html">Phase 1: 湲곗큹 ?댄빐</a></li>
-                        <li><a href="learning-path.html">Phase 2: 怨좉툒 ?댄빐</a></li>
-                        <li><a href="learning-path.html">Phase 3: ?뚮옯???곸슜</a></li>
+                        <li><a href="learning-path.html">Phase 1: 기초 이해</a></li>
+                        <li><a href="learning-path.html">Phase 2: 고급 이해</a></li>
+                        <li><a href="learning-path.html">Phase 3: 플랫폼 적용</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>?뱴 二쇱슂 ?먮즺</h3>
+                    <h3>📚 주요 자료</h3>
                     <ul>
-                        <li><a href="resources.html">45媛??щ씪?대뱶</a></li>
-                        <li><a href="resources.html">11媛?援먭낵??/a></li>
-                        <li><a href="resources.html">90媛??꾩껜 ?먮즺</a></li>
+                        <li><a href="resources.html">45개 슬라이드</a></li>
+                        <li><a href="resources.html">11개 교과서</a></li>
+                        <li><a href="resources.html">90개 전체 자료</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>?? ?숈뒿 ?꾧뎄</h3>
+                    <h3>🚀 학습 도구</h3>
                     <ul>
-                        <li><a href="concepts.html">媛쒕뀗?뺣━</a></li>
-                        <li><a href="ideas.html">?뚮옯?쇨컻??/a></li>
-                        <li><a href="progress.html">?숈뒿 吏꾨룄</a></li>
+                        <li><a href="concepts.html">개념정리</a></li>
+                        <li><a href="ideas.html">플랫폼개선</a></li>
+                        <li><a href="progress.html">학습 진도</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>?뽳툘 諛⑸쾿濡?鍮꾧탳</h3>
+                    <h3>⚖️ 방법론 비교</h3>
                     <ul>
                         <li><a href="comparison.html">EZM vs Cephalometric</a></li>
-                        <li><a href="webceph.html">?뱀뀎쨌?명뙏濡??곸꽭</a></li>
-                        <li><a href="application.html">?뚮옯???곸슜</a></li>
+                        <li><a href="webceph.html">웹셉·세팔로 상세</a></li>
+                        <li><a href="application.html">플랫폼 적용</a></li>
                     </ul>
                 </div>
             </div>
@@ -221,312 +369,43 @@
             <div class="footer-stats" style="justify-content: center;">
                 <div class="footer-stat-item">
                     <div class="footer-stat-number">90</div>
-                    <div class="footer-stat-label">?숈뒿 ?먮즺</div>
+                    <div class="footer-stat-label">학습 자료</div>
                 </div>
                 <div class="footer-stat-item">
                     <div class="footer-stat-number">9</div>
-                    <div class="footer-stat-label">?숈뒿 ?섏씠吏</div>
+                    <div class="footer-stat-label">학습 페이지</div>
                 </div>
                 <div class="footer-stat-item">
                     <div class="footer-stat-number">80</div>
-                    <div class="footer-stat-label">?숈뒿 ?쒓컙</div>
+                    <div class="footer-stat-label">학습 시간</div>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>
-                    <span class="footer-badge">狩?EZM</span>
-                    <span class="footer-badge">?뱴 Phase 1-3</span>
-                    <span class="footer-badge">?? AI ?뚮옯??/span>
+                    <span class="footer-badge">⭐ EZM</span>
+                    <span class="footer-badge">📚 Phase 1-3</span>
+                    <span class="footer-badge">🚀 AI 플랫폼</span>
                 </p>
-                <p>짤 2026 援먯젙???숈뒿 ?뚮옯??| Kim Yong Eul??Equilibrium Zone Methodology (EZM)</p>
-                <p style="margin-top: 10px; color: #6b7280;">留덉?留??낅뜲?댄듃: 2026-05-22 | 45媛??щ씪?대뱶 횞 11媛?援먭낵???꾩쟾 ?곌껐</p>
+                <p>© 2026 교정학 학습 플랫폼 | Kim Yong Eul의 Equilibrium Zone Methodology (EZM)</p>
+                <p style="margin-top: 10px; color: #6b7280;">마지막 업데이트: 2026-05-22 | 45개 슬라이드 × 11개 교과서 완전 연결</p>
             </div>
         </footer>
     </div>
 
     <script src="common.js"></script>
     <script>
-        // ?뚯씪 遺꾨쪟 ?⑥닔
-        function isKimFile(file) {
-            const kimPatterns = [
-                /^?щ씪?대뱶\d+\.JPG$/,
-                /^(1\.|2\.|3\.|4\.|5\.|6\.|7\.|8\.|9\.|10\.|11\.)/,
-                /Chapter/i, /Growth/, /Normal/, /Facial/, /Ext/, /Class/, /Vertical/, /Retention/, /Preface/, /Beyond/, /Intra/,
-                /援먯젙???먮즺.*\.pdf/, /援먯젙???먮즺.*\.pptx/, /?꾨? 援먯젙??,
-                /presentation-1\.pptx/
-            ];
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
 
-            return kimPatterns.some(pattern => pattern.test(file.name));
-        }
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
 
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
-
-            document.getElementById(tab).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
-
-            if (tab === 'kim') {
-                renderKimResources();
-            } else {
-                renderOtherResources();
-            }
         }
-
-        function getFilePath(fileName) {
-            if (fileName.match(/^?щ씪?대뱶\d+\.JPG$/)) {
-                return `slides/${fileName}`;
-            }
-            if (fileName.match(/^(1\.|2\.|3\.|4\.|5\.|6\.|7\.|8\.|9\.|10\.|11\.)/)) {
-                if (fileName.includes('docx') || fileName.includes('DOCX')) {
-                    return `documents/${fileName}`;
-                }
-            }
-            if (fileName.includes('Growth') || fileName.includes('Normal') ||
-                fileName.includes('Facial') || fileName.includes('Ext') ||
-                fileName.includes('Class') || fileName.includes('Vertical') ||
-                fileName.includes('Retention') || fileName.includes('Preface') ||
-                fileName.includes('Beyond') || fileName.includes('Intra')) {
-                return `documents/${fileName}`;
-            }
-            if (fileName === 'presentation-1.pptx') {
-                return `documents/${fileName}`;
-            }
-            return fileName;
-        }
-
-        function openFile(fileName) {
-            const filePath = getFilePath(fileName);
-            const type = fileName.split('.').pop().toUpperCase();
-
-            if (type === 'JPG' || type === 'PNG') {
-                showImageViewer(filePath);
-            } else if (type === 'PDF') {
-                window.open(filePath, '_blank');
-            } else if (type === 'MP4') {
-                showVideoPlayer(filePath, fileName);
-            } else if (type === 'PPTX' || type === 'DOCX') {
-                alert(`${fileName}\n\n寃쎈줈: ${filePath}\n\n?⑤씪?몄쑝濡?蹂닿린?섎젮硫??ㅼ쓬 留곹겕瑜??ъ슜?섏꽭??\nhttps://office.live.com/view`);
-            } else {
-                downloadFile(filePath);
-            }
-        }
-
-        function showImageViewer(filePath) {
-            const modal = document.getElementById('imageModal');
-            const img = document.getElementById('modalImage');
-            img.src = filePath;
-            img.onerror = function() {
-                alert(`?대?吏瑜?濡쒕뱶?????놁뒿?덈떎.\n寃쎈줈: ${filePath}`);
-            };
-            modal.classList.add('show');
-        }
-
-        function closeImageModal() {
-            document.getElementById('imageModal').classList.remove('show');
-        }
-
-        function showVideoPlayer(filePath, fileName) {
-            alert(`鍮꾨뵒?? ${fileName}\n\n寃쎈줈: ${filePath}\n\n?대뜑瑜??댁뼱??鍮꾨뵒?ㅻ? ?ъ깮?섏꽭??`);
-        }
-
-        function downloadFile(filePath) {
-            const link = document.createElement('a');
-            link.href = filePath;
-            link.download = filePath.split('/').pop();
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function renderKimResources() {
-            const tbody = document.getElementById('kimResourcesTable');
-            const kimFiles = ALL_FILES.filter(f => isKimFile(f));
-
-            tbody.innerHTML = kimFiles.map((file, idx) => {
-                const type = file.type;
-                let actionBtn = '-';
-
-                if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
-                    actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
-                }
-
-                return `
-                    <tr>
-                        <td>${file.name}</td>
-                        <td><span class="badge">${file.type}</span></td>
-                        <td>${file.size}</td>
-                        <td>${file.phase}</td>
-                        <td>${actionBtn}</td>
-                        <td>${file.relatedChapter ? `<small>${file.relatedChapter}</small>` : '-'}</td>
-                    </tr>
-                `;
-            }).join('');
-
-            document.getElementById('kimFileCount').textContent = kimFiles.length;
-        }
-
-        function renderOtherResources() {
-            const tbody = document.getElementById('otherResourcesTable');
-            const otherFiles = ALL_FILES.filter(f => !isKimFile(f));
-
-            tbody.innerHTML = otherFiles.map((file, idx) => {
-                const type = file.type;
-                let actionBtn = '-';
-
-                if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
-                    actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
-                }
-
-                let category = '湲고?';
-                if (file.name.includes('?뱀뀎')) category = 'Webceph';
-                if (file.name.includes('??꾩튂怨?)) category = '?쇰컲 ?먮즺';
-
-                return `
-                    <tr>
-                        <td>${file.name}</td>
-                        <td><span class="badge">${file.type}</span></td>
-                        <td>${file.size}</td>
-                        <td>${file.phase}</td>
-                        <td>${actionBtn}</td>
-                        <td><small>${category}</small></td>
-                    </tr>
-                `;
-            }).join('');
-
-            document.getElementById('otherFileCount').textContent = otherFiles.length;
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            renderKimResources();
-
-            // 源?⑹쓣 ?먯옣 ?먮즺 寃??            document.getElementById('kimSearchInput').addEventListener('keyup', function(e) {
-                const search = e.target.value.toLowerCase();
-                const kimFiles = ALL_FILES.filter(f => isKimFile(f));
-                const filtered = kimFiles.filter(f => f.name.toLowerCase().includes(search));
-
-                const tbody = document.getElementById('kimResourcesTable');
-                tbody.innerHTML = filtered.map(file => {
-                    const type = file.type;
-                    let actionBtn = '-';
-                    if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
-                        actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
-                    }
-                    return `
-                        <tr>
-                            <td>${file.name}</td>
-                            <td><span class="badge">${file.type}</span></td>
-                            <td>${file.size}</td>
-                            <td>${file.phase}</td>
-                            <td>${actionBtn}</td>
-                            <td>${file.relatedChapter ? `<small>${file.relatedChapter}</small>` : '-'}</td>
-                        </tr>
-                    `;
-                }).join('');
-                document.getElementById('kimFileCount').textContent = filtered.length;
-            });
-
-            // 湲고? ?먮즺 寃??            document.getElementById('otherSearchInput').addEventListener('keyup', function(e) {
-                const search = e.target.value.toLowerCase();
-                const otherFiles = ALL_FILES.filter(f => !isKimFile(f));
-                const filtered = otherFiles.filter(f => f.name.toLowerCase().includes(search));
-
-                const tbody = document.getElementById('otherResourcesTable');
-                tbody.innerHTML = filtered.map(file => {
-                    const type = file.type;
-                    let actionBtn = '-';
-                    if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
-                        actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
-                    }
-                    let category = '湲고?';
-                    if (file.name.includes('?뱀뀎')) category = 'Webceph';
-                    if (file.name.includes('??꾩튂怨?)) category = '?쇰컲 ?먮즺';
-                    return `
-                        <tr>
-                            <td>${file.name}</td>
-                            <td><span class="badge">${file.type}</span></td>
-                            <td>${file.size}</td>
-                            <td>${file.phase}</td>
-                            <td>${actionBtn}</td>
-                            <td><small>${category}</small></td>
-                        </tr>
-                    `;
-                }).join('');
-                document.getElementById('otherFileCount').textContent = filtered.length;
-            });
-
-            // ??낅퀎 ?꾪꽣
-            window.filterKimByType = function(type) {
-                const kimFiles = ALL_FILES.filter(f => isKimFile(f));
-                let filtered = kimFiles;
-                if (type) {
-                    filtered = kimFiles.filter(f => f.type === type);
-                }
-
-                const tbody = document.getElementById('kimResourcesTable');
-                tbody.innerHTML = filtered.map(file => {
-                    const type = file.type;
-                    let actionBtn = '-';
-                    if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
-                        actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
-                    }
-                    return `
-                        <tr>
-                            <td>${file.name}</td>
-                            <td><span class="badge">${file.type}</span></td>
-                            <td>${file.size}</td>
-                            <td>${file.phase}</td>
-                            <td>${actionBtn}</td>
-                            <td>${file.relatedChapter ? `<small>${file.relatedChapter}</small>` : '-'}</td>
-                        </tr>
-                    `;
-                }).join('');
-                document.getElementById('kimFileCount').textContent = filtered.length;
-            };
-
-            window.filterOtherByType = function(type) {
-                const otherFiles = ALL_FILES.filter(f => !isKimFile(f));
-                let filtered = otherFiles;
-                if (type) {
-                    filtered = otherFiles.filter(f => f.type === type);
-                }
-
-                const tbody = document.getElementById('otherResourcesTable');
-                tbody.innerHTML = filtered.map(file => {
-                    const type = file.type;
-                    let actionBtn = '-';
-                    if (['JPG', 'PNG', 'PDF', 'MP4', 'PPTX', 'DOCX'].includes(type)) {
-                        actionBtn = `<button class="btn btn-primary" onclick="openFile('${file.name}')" style="padding: 4px 8px; font-size: 11px;">?뱛 蹂닿린</button>`;
-                    }
-                    let category = '湲고?';
-                    if (file.name.includes('?뱀뀎')) category = 'Webceph';
-                    if (file.name.includes('??꾩튂怨?)) category = '?쇰컲 ?먮즺';
-                    return `
-                        <tr>
-                            <td>${file.name}</td>
-                            <td><span class="badge">${file.type}</span></td>
-                            <td>${file.size}</td>
-                            <td>${file.phase}</td>
-                            <td>${actionBtn}</td>
-                            <td><small>${category}</small></td>
-                        </tr>
-                    `;
-                }).join('');
-                document.getElementById('otherFileCount').textContent = filtered.length;
-            };
-
-            // ?대?吏 紐⑤떖 ?몃? ?대┃???リ린
-            window.onclick = function(event) {
-                const modal = document.getElementById('imageModal');
-                if (event.target === modal) {
-                    modal.classList.remove('show');
-                }
-            };
-        });
     </script>
     <script src="js/chatbot.js"></script>
 </body>
 </html>
-
-

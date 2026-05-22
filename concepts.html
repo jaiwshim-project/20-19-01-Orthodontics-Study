@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>媛쒕뀗?뺣━ - 援먯젙???숈뒿 ?뚮옯??/title>
+    <title>개념정리 - 교정학 학습 플랫폼</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .concept-tabs {
@@ -18,438 +18,201 @@
             background: white;
             border: none;
             cursor: pointer;
-            font-weight: 600;
-            color: #666;
+            font-weight: 500;
             border-bottom: 3px solid transparent;
+            color: #666;
             transition: all 0.3s;
-            white-space: nowrap;
-        }
-        .concept-tab-button:hover {
-            color: #0284c7;
-            background: #f9fafb;
         }
         .concept-tab-button.active {
             color: #0284c7;
             border-bottom-color: #0284c7;
         }
-        .concept-tab-content {
-            display: none;
-        }
-        .concept-tab-content.active {
-            display: block;
-        }
-        .concept-box {
-            background: #f9fafb;
-            border-left: 4px solid #0284c7;
+        .concept-form {
             padding: 15px;
-            margin: 15px 0;
+            background: #f9fafb;
             border-radius: 6px;
+            margin-bottom: 20px;
         }
-        .concept-box h4 {
-            margin-top: 0;
-            color: #0284c7;
+        .concept-item {
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 6px;
+            border-left: 4px solid #0284c7;
+            margin-bottom: 15px;
         }
-        .concept-formula {
+        .concept-item-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .concept-item-phase {
+            display: inline-block;
+            padding: 4px 8px;
             background: #dbeafe;
-            padding: 12px;
-            border-radius: 6px;
-            margin: 10px 0;
-            font-family: monospace;
+            color: #0284c7;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .concept-item-content {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .concept-item-date {
+            font-size: 12px;
+            color: #999;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>?뮕 媛쒕뀗?뺣━</h1>
-        <p>援먯젙???듭떖 媛쒕뀗怨?吏?앹쓣 泥닿퀎?곸쑝濡??뺣━?섏꽭??/p>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
     </header>
 
     <nav>
-        <a href="index.html">?룧 ??/a>
-        <a href="resources.html">?뱴 ?먮즺</a>
-        <a href="learning-path.html">?럳 ?숈뒿寃쎈줈</a>
-        <a href="concepts.html" class="active">?뮕 媛쒕뀗?뺣━</a>
-        <a href="ideas.html">?뮡 ?뚮옯?쇨컻??/a>
-        <a href="progress.html">?깍툘 吏꾨룄</a>
-        <a href="application.html">?? ?뚮옯?쇱쟻??/a>
-        <a href="webceph.html">?뵇 ?뱀뀎쨌?명뙏濡?/a>
-        <a href="comparison.html">?뽳툘 EZM 鍮꾧탳</a>
-        <a href="wiki-vault-index.html">?쭬 ?꾪궎蹂쇳듃</a>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html">📚 자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html" class="active">💡 개념정리</a>
+        <a href="ideas.html">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="webceph.html">🔍 웹셉·세팔로</a>
+        <a href="comparison.html">⚖️ EZM 비교</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
     </nav>
 
     <div class="container">
-        <!-- 媛쒕뀗 ??硫붾돱 -->
         <div class="card">
+            <h2>💡 학습 개념 정리</h2>
+            <p style="color: #666;">학습 중 만난 핵심 개념을 자신의 언어로 정리하고 저장하세요.</p>
+        </div>
+
+        <div class="card">
+            <h2>📝 개념 작성</h2>
+            <div class="concept-form">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">개념명</label>
+                    <input type="text" id="conceptTitle" placeholder="예: Equilibrium Zone의 정의" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Phase</label>
+                    <select id="conceptPhase" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px;">
+                        <option value="">선택하세요</option>
+                        <option value="Phase 1">Phase 1: 기초 이해</option>
+                        <option value="Phase 2">Phase 2: 고급 이해</option>
+                        <option value="Phase 3">Phase 3: 플랫폼 적용</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">개념 설명</label>
+                    <textarea id="conceptContent" placeholder="이 개념이 무엇인지, 왜 중요한지 자신의 언어로 설명하세요." style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px; min-height: 120px;"></textarea>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">관련 자료</label>
+                    <input type="text" id="conceptResource" placeholder="예: 슬라이드 1-5, 교과서 2장" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px;">
+                </div>
+
+                <button class="btn btn-primary" onclick="addConcept()">💾 개념 저장</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔍 저장된 개념</h2>
             <div class="concept-tabs">
-                <button class="concept-tab-button active" onclick="switchConceptTab('basics')">?뱴 湲곕낯 媛쒕뀗</button>
-                <button class="concept-tab-button" onclick="switchConceptTab('diagnosis')">?뵇 吏꾨떒</button>
-                <button class="concept-tab-button" onclick="switchConceptTab('treatment')">?룯 移섎즺怨꾪쉷</button>
-                <button class="concept-tab-button" onclick="switchConceptTab('other')">?뱰 湲고?</button>
+                <button class="concept-tab-button active" onclick="filterConcepts('')">전체 (0)</button>
+                <button class="concept-tab-button" onclick="filterConcepts('Phase 1')">Phase 1 (0)</button>
+                <button class="concept-tab-button" onclick="filterConcepts('Phase 2')">Phase 2 (0)</button>
+                <button class="concept-tab-button" onclick="filterConcepts('Phase 3')">Phase 3 (0)</button>
             </div>
 
-            <!-- 湲곕낯 媛쒕뀗 ??-->
-            <div id="basics" class="concept-tab-content active">
-                <h2>?뱴 湲곕낯 媛쒕뀗</h2>
-
-                <div class="concept-box">
-                    <h4>?렞 Equilibrium Zone (?됲삎議?</h4>
-                    <p>
-                        媛쒖씤??怨④꺽?? 移섏븘?ш린?? 洹몃━怨??듦????뱀꽦???곕씪 ?뺥빐吏??移섏븘媛 ?덉젙?곸쑝濡?諛곗뿴?????덈뒗 ?뱀젙 ?곸뿭?낅땲??
-                    </p>
-                    <img src="slides/?щ씪?대뱶1.JPG" alt="?됲삎議?媛쒕뀗" style="width: 100%; max-width: 600px; height: auto; border-radius: 6px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <ul>
-                        <li><strong>媛쒕뀗:</strong> 紐⑤뱺 媛쒖씤??怨좎쑀???됲삎議댁쓣 媛吏?/li>
-                        <li><strong>寃곗젙?붿씤:</strong> 怨④꺽 ?뺥깭, 移섏븘 ?ш린, ????ш린, ?낆닠????/li>
-                        <li><strong>以묒슂??</strong> ?쒖?媛믪씠 ?꾨땶 媛쒖씤???됲삎議댁씠 湲곗?</li>
-                        <li><strong>?덉젙??</strong> ?됲삎議???諛곗뿴? ?κ린 ?덉젙??/li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?뱪 5諛⑺뼢 ?ъ쭊 遺꾩꽍</h4>
-                    <p>移섏븘? 怨④꺽 ?곹깭瑜??낆껜?곸쑝濡??뚯븙?섎뒗 湲곕낯 諛⑸쾿</p>
-                    <img src="slides/?щ씪?대뱶2.JPG" alt="5諛⑺뼢 ?ъ쭊 遺꾩꽍" style="width: 100%; max-width: 600px; height: auto; border-radius: 6px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <table style="width: 100%; font-size: 13px; margin-top: 10px;">
-                        <tr style="background: #dbeafe;">
-                            <th style="padding: 10px; text-align: left;">諛⑺뼢</th>
-                            <th style="padding: 10px; text-align: left;">遺꾩꽍 ??ぉ</th>
-                            <th style="padding: 10px; text-align: left;">紐⑹쟻</th>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>?뺣㈃</strong></td>
-                            <td style="padding: 10px;">醫뚯슦 ?移? 以묒꽑 ?쇱튂, 移섏븘 湲곗슱湲?/td>
-                            <td style="padding: 10px;">醫뚯슦 遺덈?移?媛먯?</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>醫뚯륫硫?/strong></td>
-                            <td style="padding: 10px;">?곹븯??愿怨? 移섏븘 諛곗튂, Overjet</td>
-                            <td style="padding: 10px;">?꾪썑諛?愿怨??뺤씤</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>?곗륫硫?/strong></td>
-                            <td style="padding: 10px;">醫뚯륫硫닿낵 ?숈씪 ??ぉ 鍮꾧탳</td>
-                            <td style="padding: 10px;">?移?꽦 寃利?/td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>?곸븙援먰빀硫?/strong></td>
-                            <td style="padding: 10px;">?곸븙 移섏븘 諛곗튂, U?먰삎 ?뺥깭</td>
-                            <td style="padding: 10px;">?곸븙 ??대뱶 ?곹깭 ?뚯븙</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 10px;"><strong>?섏븙援먰빀硫?/strong></td>
-                            <td style="padding: 10px;">?섏븙 移섏븘 諛곗튂, V?먰삎 ?뺥깭</td>
-                            <td style="padding: 10px;">?섏븙 ??대뱶 ?곹깭 ?뚯븙</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?뱩 ?뺤긽援먰빀??湲곗?</h4>
-                    <ul>
-                        <li><strong>Overjet:</strong> ?곸쟾移섏? ?섏쟾移섏쓽 ?꾪썑諛?愿怨?(?뺤긽: 2-3mm)</li>
-                        <li><strong>Overbite:</strong> ?곸쟾移섏? ?섏쟾移섏쓽 ?섏쭅 愿怨?(?뺤긽: 2-3mm)</li>
-                        <li><strong>Molar Relationship:</strong> ?援ъ튂 愿怨?(?뺤긽: Class I)</li>
-                        <li><strong>Canine Relationship:</strong> 寃ъ튂 愿怨?(?뺤긽: Class I)</li>
-                        <li><strong>以묒꽑:</strong> ?곹븯??以묒꽑???쇱튂</li>
-                        <li><strong>移섏텞:</strong> 媛?移섏븘媛 ?뺤긽 湲곗슱湲곕? ?좎?</li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?㎚ ?깆옣 諛쒖쑁 ?④퀎</h4>
-                    <table style="width: 100%; font-size: 13px; margin-top: 10px;">
-                        <tr style="background: #dbeafe;">
-                            <th style="padding: 10px;">?쒓린</th>
-                            <th style="padding: 10px;">?곕졊</th>
-                            <th style="padding: 10px;">?뱀쭠</th>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>?좎튂湲?/strong></td>
-                            <td style="padding: 10px;">3-5??/td>
-                            <td style="padding: 10px;">?좎튂留?議댁옱, ?앸━????議댁옱</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>?쇳빀湲?珥덇린</strong></td>
-                            <td style="padding: 10px;">6-8??/td>
-                            <td style="padding: 10px;">???援ъ튂 遺꾩텧, 以묒젅移?遺꾩텧</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>?쇳빀湲?以묎린</strong></td>
-                            <td style="padding: 10px;">8-10??/td>
-                            <td style="padding: 10px;">痢≪젅移? 寃ъ튂 遺꾩텧 ?쒖옉</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>?쇳빀湲??꾧린</strong></td>
-                            <td style="padding: 10px;">10-12??/td>
-                            <td style="padding: 10px;">???뚭뎄移?遺꾩텧</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 10px;"><strong>?곴뎄移섍린</strong></td>
-                            <td style="padding: 10px;">12???댄썑</td>
-                            <td style="padding: 10px;">紐⑤뱺 ?좎튂 ?덈씫, ?곴뎄移??꾩꽦</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <!-- ?ъ슜???낅젰 ?뱀뀡 -->
-                <h3 style="margin-top: 30px;">???섏쓽 湲곕낯 媛쒕뀗 ?뺣━</h3>
-                <div style="margin: 15px 0;">
-                    <input type="text" id="basicsTitle" placeholder="媛쒕뀗紐?(?? Equilibrium Zone)" style="width: 100%; padding: 10px; margin-bottom: 10px;">
-                    <textarea id="basicsContent" placeholder="媛쒕뀗 ?ㅻ챸???묒꽦?섏꽭??.." style="width: 100%; padding: 10px; margin-bottom: 10px; min-height: 100px;"></textarea>
-                    <button class="btn btn-primary" onclick="addBasicsConcept()">?뮶 ???/button>
-                </div>
-                <div id="basicsList" style="margin-top: 20px;"></div>
+            <div id="conceptsList" style="margin-top: 20px;">
+                <p style="text-align: center; color: #999; padding: 40px;">저장된 개념이 없습니다.</p>
             </div>
+        </div>
 
-            <!-- 吏꾨떒 ??-->
-            <div id="diagnosis" class="concept-tab-content">
-                <h2>?뵇 吏꾨떒</h2>
+        <div class="card">
+            <h2>💡 개념정리 팁</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>📌 자신의 언어로:</strong> 교과서나 슬라이드의 정의를 그대로 옮기기보다는 이해한 내용을 자신의 말로 다시 설명하세요.
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>🎯 핵심만:</strong> 개념의 핵심을 간단하고 명확하게 정리하세요. 너무 길면 복습할 때 피로해집니다.
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>🔗 연결 고리:</strong> 새로운 개념이 이전 개념과 어떻게 연결되는지 생각해 보세요.
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>📚 상세는 Obsidian:</strong> 더 상세한 내용은 Obsidian Vault에 별도로 기록하세요.
+                </li>
+                <li style="padding: 10px 0;">
+                    <strong>🔄 정기 복습:</strong> Phase 완료 후 저장한 개념들을 다시 읽어보며 복습하는 것이 효과적입니다.
+                </li>
+            </ul>
+        </div>
 
-                <div class="concept-box">
-                    <h4>?뵢 怨듦컙遺꾩꽍 (Space Analysis)</h4>
-                    <p>遺?뺢탳?⑹쓽 洹쇰낯 ?먯씤???뚯븙?섎뒗 媛??以묒슂??吏꾨떒 諛⑸쾿</p>
-                    <div class="concept-formula">
-                        ?꾩슂 怨듦컙 = 紐⑤뱺 ?곴뎄移섏쓽 洹쇱썝????쓽 ??br/>
-                        媛??怨듦컙 = ?곸븙沅??먮뒗 ?섏븙沅곸쓽 湲몄씠<br/>
-                        怨듦컙 遺議?= ?꾩슂 怨듦컙 - 媛??怨듦컙
-                    </div>
-                    <ul>
-                        <li><strong>怨듦컙 遺議?< 4mm:</strong> 鍮꾨컻移?媛??/li>
-                        <li><strong>怨듦컙 遺議?4-8mm:</strong> 鍮꾨컻移?諛쒖튂 蹂묓뻾 寃??/li>
-                        <li><strong>怨듦컙 遺議?> 8mm:</strong> 諛쒖튂 沅뚯옣</li>
-                    </ul>
+        <div class="card">
+            <h2>📊 학습 전략</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="padding: 15px; background: #d1fae5; border-radius: 6px;">
+                    <h4>✅ 능동적 학습</h4>
+                    <p style="font-size: 13px; color: #666;">수동적 읽기보다 능동적으로 개념을 정리하면 학습 효율이 3배 높아집니다.</p>
                 </div>
-
-                <div class="concept-box">
-                    <h4>?벝 遺?뺢탳??遺꾨쪟</h4>
-                    <ul>
-                        <li>
-                            <strong>Crowding (珥앹깮)</strong>
-                            <p style="color: #666; font-size: 13px;">怨듦컙 遺議깆쑝濡??명븳 移섏븘 寃뱀묠 | ?먯씤: ?낃턿???묎굅??移섏븘 ?ш린媛 ??/p>
-                        </li>
-                        <li style="margin-top: 10px;">
-                            <strong>Protrusion (?꾨룎)</strong>
-                            <p style="color: #666; font-size: 13px;">移섏븘媛 ?뺤긽蹂대떎 ?욎쑝濡??섏샂 | ?먯씤: 怨쇰룄??怨듦컙, ?곸븙沅??ш린 ??/p>
-                        </li>
-                        <li style="margin-top: 10px;">
-                            <strong>Class II (援ъ튂 愿怨?</strong>
-                            <p style="color: #666; font-size: 13px;">?곸븙 ???援ъ튂媛 ?섏븙 ???援ъ튂蹂대떎 ?욎뿉 ?꾩튂 | ?먯씤: ?곸븙 怨쇱꽦???먮뒗 ?섏븙 ??깆옣</p>
-                        </li>
-                        <li style="margin-top: 10px;">
-                            <strong>Class III (援ъ튂 愿怨?</strong>
-                            <p style="color: #666; font-size: 13px;">?섏븙 ???援ъ튂媛 ?곸븙 ???援ъ튂蹂대떎 ?욎뿉 ?꾩튂 | ?먯씤: ?섏븙 怨쇱꽦???먮뒗 ?곸븙 ??깆옣</p>
-                        </li>
-                        <li style="margin-top: 10px;">
-                            <strong>Open Bite (媛쒕갑援먰빀)</strong>
-                            <p style="color: #666; font-size: 13px;">?꾩튂媛 ?ロ엳吏 ?딆? ?곹깭 | ?먯씤: ? ?대?湲? ?먭???鍮④린 ?듦?</p>
-                        </li>
-                        <li style="margin-top: 10px;">
-                            <strong>Deep Bite (怨쇨컻援먰빀)</strong>
-                            <p style="color: #666; font-size: 13px;">?곸쟾移섍? ?섏쟾移섎? 怨쇰룄?섍쾶 ??? ?곹깭 | ?먯씤: ?곸븙 怨쇱꽦?? ?꾨갑 移섏븘 ??깆옣</p>
-                        </li>
-                        <li style="margin-top: 10px;">
-                            <strong>Diastema (怨듦레)</strong>
-                            <p style="color: #666; font-size: 13px;">移섏븘 ?ъ씠??怨듦레 | ?먯씤: 怨쇰룄??怨듦컙, ?곸븙 ?뺤쨷 ?ㅼ냼? 怨쇰컻??/p>
-                        </li>
-                    </ul>
+                <div style="padding: 15px; background: #dbeafe; border-radius: 6px;">
+                    <h4>🧠 기억 강화</h4>
+                    <p style="font-size: 13px; color: #666;">자신의 말로 정리하는 과정에서 뇌가 정보를 재처리하여 장기기억이 됩니다.</p>
                 </div>
-
-                <div class="concept-box">
-                    <h4>?뱤 ?덈え遺꾩꽍</h4>
-                    <p>?쇨뎬???뺥깭? 鍮꾩쑉??遺꾩꽍?섏뿬 ?깆옣 諛⑺뼢???덉륫?섎뒗 諛⑸쾿</p>
-                    <ul>
-                        <li><strong>怨④꺽 ?⑦꽩:</strong> ?섏쭅???깆옣, ?뺤긽 ?깆옣, ?섑룊???깆옣</li>
-                        <li><strong>?깆옣 諛⑺뼢:</strong> ?됰㈃ 媛곷룄, Gonial angle 痢≪젙</li>
-                        <li><strong>?쇨뎬 ?꾨줈??</strong> Convex, Straight, Concave</li>
-                        <li><strong>?섏쭅 李⑥썝:</strong> ?섏븞硫??믪씠 鍮꾩쑉 遺꾩꽍</li>
-                    </ul>
+                <div style="padding: 15px; background: #fef3c7; border-radius: 6px;">
+                    <h4>📈 시간 효율성</h4>
+                    <p style="font-size: 13px; color: #666;">정리된 개념 목록은 복습 시간을 대폭 단축해줍니다.</p>
                 </div>
-
-                <!-- ?ъ슜???낅젰 ?뱀뀡 -->
-                <h3 style="margin-top: 30px;">???섏쓽 吏꾨떒 媛쒕뀗</h3>
-                <div style="margin: 15px 0;">
-                    <input type="text" id="diagnosisTitle" placeholder="吏꾨떒 媛쒕뀗紐? style="width: 100%; padding: 10px; margin-bottom: 10px;">
-                    <textarea id="diagnosisContent" placeholder="吏꾨떒 諛⑸쾿?대굹 湲곗????ㅻ챸?섏꽭??.." style="width: 100%; padding: 10px; margin-bottom: 10px; min-height: 100px;"></textarea>
-                    <button class="btn btn-primary" onclick="addDiagnosisConcept()">?뮶 ???/button>
+                <div style="padding: 15px; background: #f3e8ff; border-radius: 6px;">
+                    <h4>🎯 목표 달성</h4>
+                    <p style="font-size: 13px; color: #666;">개념을 명확히 함으로써 학습 목표 달성도를 높일 수 있습니다.</p>
                 </div>
-                <div id="diagnosisList" style="margin-top: 20px;"></div>
-            </div>
-
-            <!-- 移섎즺怨꾪쉷 ??-->
-            <div id="treatment" class="concept-tab-content">
-                <h2>?룯 移섎즺怨꾪쉷</h2>
-
-                <div class="concept-box">
-                    <h4>?렞 諛쒖튂 vs 鍮꾨컻移??먮떒</h4>
-                    <p><strong>諛쒖튂 寃곗젙 湲곗?:</strong></p>
-                    <ul>
-                        <li>怨듦컙 遺議깆씠 8mm ?댁긽</li>
-                        <li>鍮꾨컻移섎줈 諛곗튂?????뚯텧???ы븷 ?덉긽</li>
-                        <li>?깆옣 ?⑦꽩???낇솕 諛⑺뼢</li>
-                        <li>?덈え 媛쒖꽑???꾩슂??寃쎌슦</li>
-                        <li>移섏＜ 嫄닿컯 ?곹깭 怨좊젮</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>鍮꾨컻移?寃곗젙 湲곗?:</strong></p>
-                    <ul>
-                        <li>怨듦컙 遺議깆씠 4mm 誘몃쭔</li>
-                        <li>怨듦컙 ?뺣? 媛?μ꽦 ?덉쓬</li>
-                        <li>誘몄슜?곸쑝濡?諛쒖튂 ?뚰뵾 ?щ쭩</li>
-                        <li>?깆옣??吏?띾릺???쒓린</li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?봽 移섎즺 ?쒖꽌 (Treatment Sequence)</h4>
-                    <table style="width: 100%; font-size: 13px; margin-top: 10px;">
-                        <tr style="background: #dbeafe;">
-                            <th style="padding: 10px;">?④퀎</th>
-                            <th style="padding: 10px;">?댁슜</th>
-                            <th style="padding: 10px;">湲곌컙</th>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>1?④퀎: ?듦? ?쒓굅</strong></td>
-                            <td style="padding: 10px;">? ?대?湲? ?먭???鍮④린 ???낆뒿愿 援먯젙</td>
-                            <td style="padding: 10px;">蹂묓뻾</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>2?④퀎: ?쇳빀湲?移섎즺</strong></td>
-                            <td style="padding: 10px;">???援ъ튂 愿怨??뺣┰, 怨듦컙 ?뺣?</td>
-                            <td style="padding: 10px;">1-2??/td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e5e7eb;">
-                            <td style="padding: 10px;"><strong>3?④퀎: 怨좎젙??援먯젙</strong></td>
-                            <td style="padding: 10px;">紐⑤뱺 移섏븘 理쒖쥌 諛곗튂, ?곸꽭 議곗젅</td>
-                            <td style="padding: 10px;">2-3??/td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 10px;"><strong>4?④퀎: ?좎?</strong></td>
-                            <td style="padding: 10px;">由ы뀒?대꼫 ?μ갑, ?κ린 ?덉젙??愿由?/td>
-                            <td style="padding: 10px;">3-5???댁긽</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?뱥 移섎즺 紐⑺몴 ?ㅼ젙</h4>
-                    <ul>
-                        <li><strong>湲곕뒫??紐⑺몴:</strong> ?뺤긽 援먰빀, ?밴린 湲곕뒫 ?뚮났</li>
-                        <li><strong>誘몄슜??紐⑺몴:</strong> 醫뗭? ?쇨뎬 ?꾨줈?? 誘몄냼 誘명븰</li>
-                        <li><strong>?덉젙??紐⑺몴:</strong> ?κ린 ?덉젙, ?щ컻 諛⑹?</li>
-                        <li><strong>嫄닿컯 紐⑺몴:</strong> 移섏＜ 嫄닿컯 ?좎?, ?몄젙??媛쒖꽑</li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?썱截?援먯젙 ?μ튂 ?좏깮</h4>
-                    <ul>
-                        <li><strong>怨좎젙??援먯젙?μ튂:</strong> 媛???④낵?? ?뺥솗??議곗젅 媛??/li>
-                        <li><strong>湲곕뒫??援먯젙?μ튂:</strong> ?깆옣 ?쒖슜, ?쇳빀湲?異붿쿇</li>
-                        <li><strong>遺꾨━??援먯젙?μ튂:</strong> 媛泥좎떇, ?⑥닚 耳?댁뒪</li>
-                        <li><strong>?щ챸 援먯젙:</strong> 誘몄슜???곗닔, 鍮꾩슜 ?믪쓬</li>
-                    </ul>
-                </div>
-
-                <!-- ?ъ슜???낅젰 ?뱀뀡 -->
-                <h3 style="margin-top: 30px;">???섏쓽 移섎즺怨꾪쉷 媛쒕뀗</h3>
-                <div style="margin: 15px 0;">
-                    <input type="text" id="treatmentTitle" placeholder="移섎즺怨꾪쉷 媛쒕뀗紐? style="width: 100%; padding: 10px; margin-bottom: 10px;">
-                    <textarea id="treatmentContent" placeholder="移섎즺 諛⑸쾿?대굹 ?꾨왂???ㅻ챸?섏꽭??.." style="width: 100%; padding: 10px; margin-bottom: 10px; min-height: 100px;"></textarea>
-                    <button class="btn btn-primary" onclick="addTreatmentConcept()">?뮶 ???/button>
-                </div>
-                <div id="treatmentList" style="margin-top: 20px;"></div>
-            </div>
-
-            <!-- 湲고? ??-->
-            <div id="other" class="concept-tab-content">
-                <h2>?뱰 湲고?</h2>
-
-                <div class="concept-box">
-                    <h4>?┠ 移섏븘 ?대???/h4>
-                    <ul>
-                        <li><strong>移섍?:</strong> 援ш컯 ??蹂댁씠??遺遺? 踰뺣옉吏덈줈 ??뿬 ?덉쓬</li>
-                        <li><strong>移섍렐:</strong> ?쇨뎬堉????꾩튂, 諛깆븙吏덈줈 ??뿬 ?덉쓬</li>
-                        <li><strong>踰뺣옉吏?</strong> 理쒖쇅痢? 媛??寃쎄꼍, ?ъ깮 遺덇?</li>
-                        <li><strong>?곸븘吏?</strong> 踰뺣옉吏??섏링, 誘쇨컧</li>
-                        <li><strong>移섏닔:</strong> ?좉꼍怨??덇? ?ы븿</li>
-                        <li><strong>移섏＜議곗쭅:</strong> 移섏븘瑜?吏吏?섎뒗 堉? ?몃?, ?뉖じ</li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?ウ 援ш컯 ?듦????곹뼢</h4>
-                    <ul>
-                        <li><strong>?먭???鍮④린:</strong> 媛쒕갑援먰빀, ?곸쟾移??뚯텧 ?좊컻</li>
-                        <li><strong>? ?대?湲?</strong> 媛쒕갑援먰빀, 怨듦레 利앷?</li>
-                        <li><strong>?낆닠 鍮④린:</strong> ?곸쟾移??좊┝, ?뚯텧</li>
-                        <li><strong>?쒖そ?밴린:</strong> 鍮꾨?移? 痢〓갑 ?좊┝</li>
-                        <li><strong>?낇샇??</strong> 媛쒕갑援먰빀, ?μ븞紐??좊컻</li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?뮞 湲곕뒫???대룞</h4>
-                    <ul>
-                        <li><strong>?ъ뵻 ?대룞:</strong> 洹쇱쑁 媛뺥솕, ?낃낏 諛쒕떖 ?먭레</li>
-                        <li><strong>?낆닠 ?대룞:</strong> ?곸꽭??洹쇱쑁 議곗젅</li>
-                        <li><strong>? ?대룞:</strong> ? ?꾩튂 援먯젙</li>
-                        <li><strong>?명씉 ?덈젴:</strong> 肄뷀샇???듦???/li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h4>?뵍 ?좎?? ?덉젙 (Retention)</h4>
-                    <ul>
-                        <li><strong>?좎??μ튂????븷:</strong> 移섎즺 ??移섏븘 ?대룞 諛⑹?</li>
-                        <li><strong>怨좎젙??由ы뀒?대꼫:</strong> ?곴뎄??怨좎젙, 留ㅼ슦 ?④낵??/li>
-                        <li><strong>媛泥좎떇 由ы뀒?대꼫:</strong> ?쇨컙 李⑹슜, ?몄쓽???곗닔</li>
-                        <li><strong>?좎? 湲곌컙:</strong> 理쒖냼 3-5???댁긽 ?꾩닔</li>
-                        <li><strong>?뺢린 寃吏?</strong> 3-6媛쒖썡留덈떎 ?ы룊媛</li>
-                    </ul>
-                </div>
-
-                <!-- ?ъ슜???낅젰 ?뱀뀡 -->
-                <h3 style="margin-top: 30px;">???섏쓽 湲고? 媛쒕뀗</h3>
-                <div style="margin: 15px 0;">
-                    <input type="text" id="otherTitle" placeholder="媛쒕뀗紐? style="width: 100%; padding: 10px; margin-bottom: 10px;">
-                    <textarea id="otherContent" placeholder="媛쒕뀗 ?ㅻ챸???묒꽦?섏꽭??.." style="width: 100%; padding: 10px; margin-bottom: 10px; min-height: 100px;"></textarea>
-                    <button class="btn btn-primary" onclick="addOtherConcept()">?뮶 ???/button>
-                </div>
-                <div id="otherList" style="margin-top: 20px;"></div>
             </div>
         </div>
 
         <footer>
             <div class="footer-container">
                 <div class="footer-section">
-                    <h3>?럳 ?숈뒿寃쎈줈</h3>
+                    <h3>🎓 학습경로</h3>
                     <ul>
-                        <li><a href="learning-path.html">Phase 1: 湲곗큹 ?댄빐</a></li>
-                        <li><a href="learning-path.html">Phase 2: 怨좉툒 ?댄빐</a></li>
-                        <li><a href="learning-path.html">Phase 3: ?뚮옯???곸슜</a></li>
+                        <li><a href="learning-path.html">Phase 1: 기초 이해</a></li>
+                        <li><a href="learning-path.html">Phase 2: 고급 이해</a></li>
+                        <li><a href="learning-path.html">Phase 3: 플랫폼 적용</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>?뱴 二쇱슂 ?먮즺</h3>
+                    <h3>📚 주요 자료</h3>
                     <ul>
-                        <li><a href="resources.html">45媛??щ씪?대뱶</a></li>
-                        <li><a href="resources.html">11媛?援먭낵??/a></li>
-                        <li><a href="resources.html">90媛??꾩껜 ?먮즺</a></li>
+                        <li><a href="resources.html">45개 슬라이드</a></li>
+                        <li><a href="resources.html">11개 교과서</a></li>
+                        <li><a href="resources.html">90개 전체 자료</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>?? ?숈뒿 ?꾧뎄</h3>
+                    <h3>🚀 학습 도구</h3>
                     <ul>
-                        <li><a href="concepts.html">媛쒕뀗?뺣━</a></li>
-                        <li><a href="ideas.html">?뚮옯?쇨컻??/a></li>
-                        <li><a href="progress.html">?숈뒿 吏꾨룄</a></li>
+                        <li><a href="concepts.html">개념정리</a></li>
+                        <li><a href="ideas.html">플랫폼개선</a></li>
+                        <li><a href="progress.html">학습 진도</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>?뽳툘 諛⑸쾿濡?鍮꾧탳</h3>
+                    <h3>⚖️ 방법론 비교</h3>
                     <ul>
                         <li><a href="comparison.html">EZM vs Cephalometric</a></li>
-                        <li><a href="webceph.html">?뱀뀎쨌?명뙏濡??곸꽭</a></li>
-                        <li><a href="application.html">?뚮옯???곸슜</a></li>
+                        <li><a href="webceph.html">웹셉·세팔로 상세</a></li>
+                        <li><a href="application.html">플랫폼 적용</a></li>
                     </ul>
                 </div>
             </div>
@@ -459,262 +222,126 @@
             <div class="footer-stats" style="justify-content: center;">
                 <div class="footer-stat-item">
                     <div class="footer-stat-number">90</div>
-                    <div class="footer-stat-label">?숈뒿 ?먮즺</div>
+                    <div class="footer-stat-label">학습 자료</div>
                 </div>
                 <div class="footer-stat-item">
                     <div class="footer-stat-number">9</div>
-                    <div class="footer-stat-label">?숈뒿 ?섏씠吏</div>
+                    <div class="footer-stat-label">학습 페이지</div>
                 </div>
                 <div class="footer-stat-item">
                     <div class="footer-stat-number">80</div>
-                    <div class="footer-stat-label">?숈뒿 ?쒓컙</div>
+                    <div class="footer-stat-label">학습 시간</div>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>
-                    <span class="footer-badge">狩?EZM</span>
-                    <span class="footer-badge">?뱴 Phase 1-3</span>
-                    <span class="footer-badge">?? AI ?뚮옯??/span>
+                    <span class="footer-badge">⭐ EZM</span>
+                    <span class="footer-badge">📚 Phase 1-3</span>
+                    <span class="footer-badge">🚀 AI 플랫폼</span>
                 </p>
-                <p>짤 2026 援먯젙???숈뒿 ?뚮옯??| Kim Yong Eul??Equilibrium Zone Methodology (EZM)</p>
-                <p style="margin-top: 10px; color: #6b7280;">留덉?留??낅뜲?댄듃: 2026-05-22 | 45媛??щ씪?대뱶 횞 11媛?援먭낵???꾩쟾 ?곌껐</p>
+                <p>© 2026 교정학 학습 플랫폼 | Kim Yong Eul의 Equilibrium Zone Methodology (EZM)</p>
+                <p style="margin-top: 10px; color: #6b7280;">마지막 업데이트: 2026-05-22 | 45개 슬라이드 × 11개 교과서 완전 연결</p>
             </div>
         </footer>
     </div>
 
     <script src="common.js"></script>
     <script>
-        function switchConceptTab(tab) {
-            document.querySelectorAll('.concept-tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.concept-tab-button').forEach(el => el.classList.remove('active'));
+        let currentFilter = '';
 
-            document.getElementById(tab).classList.add('active');
-            event.target.classList.add('active');
-        }
+        function addConcept() {
+            const title = document.getElementById('conceptTitle').value.trim();
+            const phase = document.getElementById('conceptPhase').value;
+            const content = document.getElementById('conceptContent').value.trim();
+            const resource = document.getElementById('conceptResource').value.trim();
 
-        function addBasicsConcept() {
-            const title = document.getElementById('basicsTitle').value.trim();
-            const content = document.getElementById('basicsContent').value.trim();
-
-            if (!title || !content) {
-                alert('?쒕ぉ怨??댁슜???낅젰?댁＜?몄슂.');
+            if (!title || !phase || !content) {
+                alert('개념명, Phase, 설명을 모두 입력해주세요.');
                 return;
             }
 
             const data = getData();
-            const concept = {
+            data.concepts = data.concepts || [];
+            data.concepts.push({
                 id: Date.now(),
                 title,
+                phase,
                 content,
-                category: '湲곕낯媛쒕뀗',
-                createdAt: new Date().toISOString()
-            };
+                resource,
+                date: new Date().toISOString()
+            });
 
-            data.concepts = (data.concepts || []);
-            data.concepts.push(concept);
             saveData(data);
 
-            document.getElementById('basicsTitle').value = '';
-            document.getElementById('basicsContent').value = '';
-            renderBasicsList();
-        }
+            document.getElementById('conceptTitle').value = '';
+            document.getElementById('conceptPhase').value = '';
+            document.getElementById('conceptContent').value = '';
+            document.getElementById('conceptResource').value = '';
 
-        function addDiagnosisConcept() {
-            const title = document.getElementById('diagnosisTitle').value.trim();
-            const content = document.getElementById('diagnosisContent').value.trim();
-
-            if (!title || !content) {
-                alert('?쒕ぉ怨??댁슜???낅젰?댁＜?몄슂.');
-                return;
-            }
-
-            const data = getData();
-            const concept = {
-                id: Date.now(),
-                title,
-                content,
-                category: '吏꾨떒',
-                createdAt: new Date().toISOString()
-            };
-
-            data.concepts = (data.concepts || []);
-            data.concepts.push(concept);
-            saveData(data);
-
-            document.getElementById('diagnosisTitle').value = '';
-            document.getElementById('diagnosisContent').value = '';
-            renderDiagnosisList();
-        }
-
-        function addTreatmentConcept() {
-            const title = document.getElementById('treatmentTitle').value.trim();
-            const content = document.getElementById('treatmentContent').value.trim();
-
-            if (!title || !content) {
-                alert('?쒕ぉ怨??댁슜???낅젰?댁＜?몄슂.');
-                return;
-            }
-
-            const data = getData();
-            const concept = {
-                id: Date.now(),
-                title,
-                content,
-                category: '移섎즺怨꾪쉷',
-                createdAt: new Date().toISOString()
-            };
-
-            data.concepts = (data.concepts || []);
-            data.concepts.push(concept);
-            saveData(data);
-
-            document.getElementById('treatmentTitle').value = '';
-            document.getElementById('treatmentContent').value = '';
-            renderTreatmentList();
-        }
-
-        function addOtherConcept() {
-            const title = document.getElementById('otherTitle').value.trim();
-            const content = document.getElementById('otherContent').value.trim();
-
-            if (!title || !content) {
-                alert('?쒕ぉ怨??댁슜???낅젰?댁＜?몄슂.');
-                return;
-            }
-
-            const data = getData();
-            const concept = {
-                id: Date.now(),
-                title,
-                content,
-                category: '湲고?',
-                createdAt: new Date().toISOString()
-            };
-
-            data.concepts = (data.concepts || []);
-            data.concepts.push(concept);
-            saveData(data);
-
-            document.getElementById('otherTitle').value = '';
-            document.getElementById('otherContent').value = '';
-            renderOtherList();
+            renderConcepts();
         }
 
         function deleteConcept(id) {
-            if (confirm('??媛쒕뀗????젣?섏떆寃좎뒿?덇퉴?')) {
+            if (confirm('이 개념을 삭제하시겠습니까?')) {
                 const data = getData();
                 data.concepts = (data.concepts || []).filter(c => c.id !== id);
                 saveData(data);
-                renderAllLists();
+                renderConcepts();
             }
         }
 
-        function renderBasicsList() {
-            const data = getData();
-            const concepts = (data.concepts || []).filter(c => c.category === '湲곕낯媛쒕뀗');
-            const container = document.getElementById('basicsList');
+        function filterConcepts(phase) {
+            currentFilter = phase;
+            renderConcepts();
+        }
 
-            if (concepts.length === 0) {
-                container.innerHTML = '<p style="color: #999;">??λ맂 媛쒕뀗???놁뒿?덈떎.</p>';
+        function renderConcepts() {
+            const data = getData();
+            const concepts = (data.concepts || []).filter(c => !currentFilter || c.phase === currentFilter);
+            const sorted = concepts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            const container = document.getElementById('conceptsList');
+            if (sorted.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">저장된 개념이 없습니다.</p>';
             } else {
-                container.innerHTML = concepts.map(c => `
-                    <div style="padding: 12px; background: #f9fafb; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid #0284c7;">
+                container.innerHTML = sorted.map(c => `
+                    <div class="concept-item">
                         <div style="display: flex; justify-content: space-between; align-items: start;">
                             <div style="flex: 1;">
-                                <h5 style="margin: 0 0 5px 0;">${c.title}</h5>
-                                <p style="margin: 5px 0; font-size: 13px; color: #666;">${c.content.substring(0, 100)}...</p>
-                                <small style="color: #999;">${new Date(c.createdAt).toLocaleDateString('ko-KR')}</small>
+                                <div class="concept-item-title">${c.title}</div>
+                                <span class="concept-item-phase">${c.phase}</span>
+                                ${c.resource ? `<span style="margin-left: 8px; font-size: 12px; color: #666;">📚 ${c.resource}</span>` : ''}
+                                <div class="concept-item-content">${c.content.replace(/\n/g, '<br>')}</div>
+                                <div class="concept-item-date">${new Date(c.date).toLocaleString('ko-KR')}</div>
                             </div>
-                            <button onclick="deleteConcept(${c.id})" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">??젣</button>
+                            <button class="btn btn-secondary" onclick="deleteConcept(${c.id})" style="background: #ef4444; color: white; padding: 5px 10px; font-size: 12px; margin-left: 10px;">삭제</button>
                         </div>
                     </div>
                 `).join('');
             }
+
+            updateConceptTabs();
         }
 
-        function renderDiagnosisList() {
+        function updateConceptTabs() {
             const data = getData();
-            const concepts = (data.concepts || []).filter(c => c.category === '吏꾨떒');
-            const container = document.getElementById('diagnosisList');
+            const allCount = (data.concepts || []).length;
+            const phase1Count = (data.concepts || []).filter(c => c.phase === 'Phase 1').length;
+            const phase2Count = (data.concepts || []).filter(c => c.phase === 'Phase 2').length;
+            const phase3Count = (data.concepts || []).filter(c => c.phase === 'Phase 3').length;
 
-            if (concepts.length === 0) {
-                container.innerHTML = '<p style="color: #999;">??λ맂 媛쒕뀗???놁뒿?덈떎.</p>';
-            } else {
-                container.innerHTML = concepts.map(c => `
-                    <div style="padding: 12px; background: #f9fafb; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid #059669;">
-                        <div style="display: flex; justify-content: space-between; align-items: start;">
-                            <div style="flex: 1;">
-                                <h5 style="margin: 0 0 5px 0;">${c.title}</h5>
-                                <p style="margin: 5px 0; font-size: 13px; color: #666;">${c.content.substring(0, 100)}...</p>
-                                <small style="color: #999;">${new Date(c.createdAt).toLocaleDateString('ko-KR')}</small>
-                            </div>
-                            <button onclick="deleteConcept(${c.id})" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">??젣</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        function renderTreatmentList() {
-            const data = getData();
-            const concepts = (data.concepts || []).filter(c => c.category === '移섎즺怨꾪쉷');
-            const container = document.getElementById('treatmentList');
-
-            if (concepts.length === 0) {
-                container.innerHTML = '<p style="color: #999;">??λ맂 媛쒕뀗???놁뒿?덈떎.</p>';
-            } else {
-                container.innerHTML = concepts.map(c => `
-                    <div style="padding: 12px; background: #f9fafb; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid #d97706;">
-                        <div style="display: flex; justify-content: space-between; align-items: start;">
-                            <div style="flex: 1;">
-                                <h5 style="margin: 0 0 5px 0;">${c.title}</h5>
-                                <p style="margin: 5px 0; font-size: 13px; color: #666;">${c.content.substring(0, 100)}...</p>
-                                <small style="color: #999;">${new Date(c.createdAt).toLocaleDateString('ko-KR')}</small>
-                            </div>
-                            <button onclick="deleteConcept(${c.id})" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">??젣</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        function renderOtherList() {
-            const data = getData();
-            const concepts = (data.concepts || []).filter(c => c.category === '湲고?');
-            const container = document.getElementById('otherList');
-
-            if (concepts.length === 0) {
-                container.innerHTML = '<p style="color: #999;">??λ맂 媛쒕뀗???놁뒿?덈떎.</p>';
-            } else {
-                container.innerHTML = concepts.map(c => `
-                    <div style="padding: 12px; background: #f9fafb; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid #8b5cf6;">
-                        <div style="display: flex; justify-content: space-between; align-items: start;">
-                            <div style="flex: 1;">
-                                <h5 style="margin: 0 0 5px 0;">${c.title}</h5>
-                                <p style="margin: 5px 0; font-size: 13px; color: #666;">${c.content.substring(0, 100)}...</p>
-                                <small style="color: #999;">${new Date(c.createdAt).toLocaleDateString('ko-KR')}</small>
-                            </div>
-                            <button onclick="deleteConcept(${c.id})" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">??젣</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        function renderAllLists() {
-            renderBasicsList();
-            renderDiagnosisList();
-            renderTreatmentList();
-            renderOtherList();
+            const buttons = document.querySelectorAll('.concept-tab-button');
+            buttons[0].textContent = `전체 (${allCount})`;
+            buttons[1].textContent = `Phase 1 (${phase1Count})`;
+            buttons[2].textContent = `Phase 2 (${phase2Count})`;
+            buttons[3].textContent = `Phase 3 (${phase3Count})`;
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            renderAllLists();
+            renderConcepts();
         });
     </script>
     <script src="js/chatbot.js"></script>
 </body>
 </html>
-
-

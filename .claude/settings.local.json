@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem *)",
+      "Bash(chmod +x __TRACKED_VAR__/.claude/skills/wiki-auto-generator/wiki-generator.sh)",
+      "Bash(bash *)",
+      "Bash(grep -E \"\\\\.\\(md|json|html\\)$\")",
+      "Bash(xargs ls -lh)",
+      "Bash(awk '{print $9, $5}')",
+      "PowerShell(taskkill *)",
+      "PowerShell(Start-Process \"C:\\\\01 Ŭ�ε��ڵ�\\\\000 Ư��-���۱�\\\\01 ġ�� ������\\\\learning-platform.html\")",
+      "Bash(dir *.md *.html)",
+      "Bash(findstr /c:\".md\" /c:\".html\")",
+      "Bash(dir \"C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\")",
+      "PowerShell(Get-ChildItem \"C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\" -Force | Where-Object {$_.Name -match \"교정학|김용을\"})",
+      "Bash(powershell -Command \"\\(Get-ChildItem -Path 'C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\\\\교정학 자료-김용을 원장' -Recurse | Measure-Object -Property Length -Sum\\).Sum / 1MB\")",
+      "WebFetch(domain:webceph.com)",
+      "Bash(Get-Content *)",
+      "PowerShell(\\(Get-Content \"C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\\\\application.html\" | Measure-Object -Line\\).Lines)",
+      "PowerShell(\\(Get-Content \"C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\\\\ideas.html\" | Measure-Object -Line\\).Lines; \\(Get-Content \"C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\\\\webceph.html\" | Measure-Object -Line\\).Lines; \\(Get-Content \"C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\\\\comparison.html\" | Measure-Object -Line\\).Lines)",
+      "Bash(Find \"C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\" -type f \\\\\\( -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.png\" \\\\\\))",
+      "Bash(Get-ChildItem -Path \"C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(Get-ChildItem *)",
+      "Bash(npm list *)",
+      "Bash(node screenshot.js)",
+      "Bash(xargs -I {} sh -c 'echo \"📄 {}:\"; grep -c \"🧠 위키볼트\" {}')",
+      "Read(//c/01 클로드코드/000 특허-저작권/**)",
+      "Bash(sed -i 's/<\\\\/body>$/    <script src=\"js\\\\/chatbot.js\"><\\\\/script>\\\\n<\\\\/body>/' 'C:\\\\01 클로드코드\\\\000 특허-저작권\\\\01 치과 교정학$file')",
+      "Bash(file *.html)",
+      "Bash(findstr \"UTF\\\\|ISO\\\\|ascii\")",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
