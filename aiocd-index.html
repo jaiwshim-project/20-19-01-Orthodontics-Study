@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIOCD 플랫폼 Wiki - AI 기반 교정진단 플랫폼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #1e40af 0%, #0369a1 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background: white;
+            border-bottom: 2px solid #e5e7eb;
+            padding: 0;
+            display: flex;
+            overflow-x: auto;
+            gap: 0;
+            flex-wrap: nowrap;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            flex: 0 1 auto;
+            min-width: auto;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #1f2937;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background: #f9fafb;
+        }
+
+        nav a.active {
+            color: #0ea5e9;
+            border-bottom-color: #0ea5e9;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .summary-box {
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .summary-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .summary-box p {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .folders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .folder-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+        }
+
+        .folder-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+        }
+
+        .folder-header {
+            padding: 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .folder-header.core {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+        }
+
+        .folder-header.module {
+            background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+        }
+
+        .folder-header.business {
+            background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);
+        }
+
+        .folder-header.technical {
+            background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+        }
+
+        .folder-header.operational {
+            background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+        }
+
+        .folder-content {
+            padding: 20px;
+        }
+
+        .folder-description {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .file-item {
+            padding: 10px 12px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            transition: all 0.2s;
+            border-left: 3px solid #ddd;
+            cursor: pointer;
+        }
+
+        .file-item:hover {
+            background: #e8e8ff;
+            border-left-color: #0369a1;
+            transform: translateX(3px);
+        }
+
+        .file-icon {
+            margin-right: 6px;
+        }
+
+        .stats-grid {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-box {
+            padding: 20px;
+            background: linear-gradient(135deg, #1e40af 0%, #0369a1 100%);
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .quick-access {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .quick-access h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-btn {
+            padding: 15px;
+            background: linear-gradient(135deg, #1e40af 0%, #0369a1 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            font-size: 13px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .folder-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-left: auto;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            .folders-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="wiki-vault-index.html">📚 EZM 교정학</a>
+            <a href="aiocd-index.html" class="active">🤖 AIOCD 플랫폼</a>
+        </nav>
+
+        <header>
+            <h1>🤖 AIOCD 플랫폼 Wiki</h1>
+            <p>AI 기반 교정진단 자동화 플랫폼</p>
+            <div class="summary-box">
+                <strong>플랫폼 개요</strong>
+                <p>진단시간 20분 → 3분 단축 | 진단 정확도 94% | 3D 시뮬레이션 | 자동 임상가이드</p>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">13</div>
+                <div class="stat-label">문서 폴더</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">핵심 문서</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div class="stat-label">파일럿 병원</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">25</div>
+                <div class="stat-label">온톨로지 관계식</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">📋 공통 표준 코어 (5개)</h2>
+        <div class="folders-grid">
+            <div class="folder-card">
+                <div class="folder-header core">
+                    <span>📌</span> 플랫폼 정의
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">플랫폼 한줄 정의, 30초/3분/IR 설명, 핵심 가치제안</p>
+                    <div class="file-list">
+                        <a href="markdown-viewer.html?file=wiki-vault/AIOCD/01_공통표준코어/01_플랫폼_한줄정의.md" class="file-item">
+                            <span class="file-icon">📄</span> 플랫폼 정의 (30초 / 3분 / Investor)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header core">
+                    <span>🎯</span> 고객 문제
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">6가지 고객 pain point, Before/After 분석</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/01_공통표준코어/02_해결하는_고객문제.md" class="file-item">
+                            <span class="file-icon">📄</span> 6가지 고객 문제 & 해결안
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header core">
+                    <span>⚙️</span> 핵심 기능
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">P0/P1/P2 우선순위, 8개 AI 엔진, 구현 순서</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/01_공통표준코어/05_핵심기능목록.md" class="file-item">
+                            <span class="file-icon">📄</span> 핵심기능 목록 & 우선순위
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header core">
+                    <span>💰</span> 영업 전략
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">ROI 계산, 경쟁 분석, Closing 메시지</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/01_공통표준코어/12_영업제안논리.md" class="file-item">
+                            <span class="file-icon">📄</span> 영업 제안 논리 & ROI
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header core">
+                    <span>🔗</span> 플랫폼 연결
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">4개 플랫폼 통합 전략 (GEO/MedVo/Insight/AX)</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/01_공통표준코어/25_플랫폼간_연결전략.md" class="file-item">
+                            <span class="file-icon">📄</span> 4플랫폼 연결 전략
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🔧 플랫폼 특화 모듈 (11개)</h2>
+        <div class="folders-grid">
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>🧠</span> AI 진단 엔진
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">이미지 분류, 부정교합 진단, 정확도 94%</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/01_AI_진단_엔진.md" class="file-item">
+                            <span class="file-icon">📄</span> AI 진단 엔진 (CNN 기반)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>📊</span> 3D 시뮬레이션
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">치아 이동 예측, Three.js 렌더링, 월별 시뮬</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/02_3D_시뮬레이션_엔진.md" class="file-item">
+                            <span class="file-icon">📄</span> 3D 시뮬레이션 엔진
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>📐</span> 세팔로 분석
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">자동 각도 추출, WebCeph 연동, 정상범위 비교</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/03_세팔로메트리_분석_모듈.md" class="file-item">
+                            <span class="file-icon">📄</span> 세팔로 분석 모듈
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>🔌</span> WebCeph 통합
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">세팔로 데이터 자동 추출, API 연동</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/04_WebCeph_API_통합.md" class="file-item">
+                            <span class="file-icon">📄</span> WebCeph API 통합
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>📖</span> 임상가이드 생성
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">자동 단계별 임상 가이드, 와이어 추천, 일정</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/05_임상가이드_자동생성.md" class="file-item">
+                            <span class="file-icon">📄</span> 임상가이드 자동생성
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>🎓</span> 학습 플랫폼
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">신입의 교육, 자동 채점, 난이도 조정</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/06_학습플랫폼.md" class="file-item">
+                            <span class="file-icon">📄</span> AI 학습 플랫폼
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>💬</span> 환자 교육 콘텐츠
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">Claude API로 자동 생성, 다국어 지원</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/07_환자_교육_콘텐츠.md" class="file-item">
+                            <span class="file-icon">📄</span> 환자 교육 콘텐츠 생성
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>📚</span> 케이스 라이브러리
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">1000+ 케이스, 벡터 검색, 유사도 분석</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/08_케이스_라이브러리.md" class="file-item">
+                            <span class="file-icon">📄</span> 케이스 라이브러리
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>📋</span> 보고서 생성
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">월간/분기별 리포트, 월도별 진단 추이</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/09_보고서_생성_엔진.md" class="file-item">
+                            <span class="file-icon">📄</span> 보고서 생성 엔진
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>💳</span> 비용 계산기
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">부정교합별 표준 비용, 시간별 비용 변화</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/10_치료비용_계산기.md" class="file-item">
+                            <span class="file-icon">📄</span> 치료비용 계산기
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header module">
+                    <span>🌍</span> 다국어 지원
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">30개 언어, 외국인 환자 진료 자동화</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/02_플랫폼특화모듈/11_다국어_지원_시스템.md" class="file-item">
+                            <span class="file-icon">📄</span> 다국어 지원 시스템
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">💼 비즈니스 & 고객 관련 (7개 폴더)</h2>
+        <div class="folders-grid">
+            <div class="folder-card">
+                <div class="folder-header business">
+                    <span>🏥</span> 고객 사례
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">파일럿 병원 상세 분석, ROI, 성공사례</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/03_고객사례/김용을_원장_서울교정클리닉.md" class="file-item">
+                            <span class="file-icon">📄</span> 김용을 클리닉 (서울, 강남)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header business">
+                    <span>📢</span> 영업 자료
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">표준 제안서, FAQ 15개, 세일즈 스크립트</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/04_영업자료/01_표준제안서_요약본.md" class="file-item">
+                            <span class="file-icon">📄</span> 표준 제안서 요약본
+                        </a>
+                        <a href="wiki-vault/AIOCD/04_영업자료/02_자주_묻는_질문_FAQ.md" class="file-item">
+                            <span class="file-icon">📄</span> FAQ 15개
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header business">
+                    <span>📜</span> 계약 자료
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">표준 계약서, SLA, 데이터 보호 정책</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/05_계약자료/01_표준계약서_요약.md" class="file-item">
+                            <span class="file-icon">📄</span> 표준 계약서 (500만/월)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🔬 기술 & 운영 (6개 폴더)</h2>
+        <div class="folders-grid">
+            <div class="folder-card">
+                <div class="folder-header technical">
+                    <span>🏗️</span> 기술 아키텍처
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">Next.js, Node.js, Supabase, Neo4j, 성능지표</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/06_기술자료/01_아키텍처.md" class="file-item">
+                            <span class="file-icon">📄</span> 전체 아키텍처 & 기술스택
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header technical">
+                    <span>🛡️</span> 특허 & IP
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">3개 특허 아이디어, 출원 전략, 청구항</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/07_특허_지식재산/01_특허아이디어_3개.md" class="file-item">
+                            <span class="file-icon">📄</span> 3가지 특허 아이디어 (상세)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header technical">
+                    <span>🚀</span> 개선 아이디어
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">로드맵 Q3~Q2 2027, 우선순위 매트릭스</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/08_개선아이디어/01_미래기능로드맵.md" class="file-item">
+                            <span class="file-icon">📄</span> 미래 기능 로드맵 (6개월)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header technical">
+                    <span>🤖</span> AI 생성 프롬프트
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">10개 자동 문서 생성 프롬프트</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/09_AI_생성물/01_산출물_프롬프트_모음.md" class="file-item">
+                            <span class="file-icon">📄</span> 10개 AI 생성 프롬프트
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header technical">
+                    <span>🧬</span> 온톨로지 & 그래프
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">4개 플랫폼 노드, 25 관계식, Neo4j 스키마</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/10_온톨로지_관계/01_개념목록.md" class="file-item">
+                            <span class="file-icon">📄</span> 온톨로지 개념 목록
+                        </a>
+                        <a href="wiki-vault/AIOCD/10_온톨로지_관계/02_관계문장.md" class="file-item">
+                            <span class="file-icon">📄</span> 관계 문장 (25개)
+                        </a>
+                        <a href="wiki-vault/AIOCD/10_온톨로지_관계/09_Neo4j_변환스키마.md" class="file-item">
+                            <span class="file-icon">📄</span> Neo4j 스키마 & Cypher
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header operational">
+                    <span>📊</span> 운영 & 로그
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">월간 보고서, KPI, 파일럿 병원 진행상황</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/11_운영_업데이트로그/2026년_5월_월간보고.md" class="file-item">
+                            <span class="file-icon">📄</span> 2026년 5월 월간보고서
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">💡 나머지 폴더 (2개)</h2>
+        <div class="folders-grid">
+            <div class="folder-card">
+                <div class="folder-header operational">
+                    <span>📞</span> 고객 소통
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">병원장 피드백, 설명회 스크립트, 상담 기록</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/12_고객소통/" class="file-item">
+                            <span class="file-icon">📂</span> 고객 소통 폴더
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="folder-card">
+                <div class="folder-header operational">
+                    <span>📥</span> 임시 메모장
+                </div>
+                <div class="folder-content">
+                    <p class="folder-description">긴급 아이디어, MedVo 제안, 아이디어 큐</p>
+                    <div class="file-list">
+                        <a href="wiki-vault/AIOCD/00_Inbox/아이디어_메모장.md" class="file-item">
+                            <span class="file-icon">📄</span> Inbox - 아이디어 메모장
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-access">
+            <h3>🔗 빠른 접근</h3>
+            <div class="quick-grid">
+                <a href="wiki-vault/AIOCD/01_공통표준코어/01_플랫폼_한줄정의.md" class="quick-btn">📌 플랫폼 정의</a>
+                <a href="wiki-vault/AIOCD/04_영업자료/02_자주_묻는_질문_FAQ.md" class="quick-btn">❓ FAQ</a>
+                <a href="wiki-vault/AIOCD/06_기술자료/01_아키텍처.md" class="quick-btn">🏗️ 아키텍처</a>
+                <a href="wiki-vault/AIOCD/07_특허_지식재산/01_특허아이디어_3개.md" class="quick-btn">🛡️ 특허</a>
+                <a href="wiki-vault/AIOCD/08_개선아이디어/01_미래기능로드맵.md" class="quick-btn">🚀 로드맵</a>
+                <a href="wiki-vault/AIOCD/00_Inbox/아이디어_메모장.md" class="quick-btn">💡 Inbox</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>🤖 AIOCD - AI 기반 교정진단 자동화 플랫폼</p>
+            <p>한국 교정학의 표준을 정의하고 아시아 최고의 교정 진단 플랫폼 구축</p>
+            <p style="margin-top: 15px; opacity: 0.8;">© 2026 | 마지막 업데이트: 2026-05-23 | <a href="wiki-vault-index.html" style="color: white; text-decoration: underline;">EZM 교정학으로 돌아가기</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // 모든 마크다운 파일 링크를 마크다운 뷰어로 변경
+        document.querySelectorAll('.file-item, .quick-btn').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.includes('wiki-vault/AIOCD') && href.endsWith('.md')) {
+                link.setAttribute('href', 'markdown-viewer.html?file=' + href);
+            }
+        });
+    </script>
+</body>
+</html>

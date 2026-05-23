@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIOCD Wiki 문서</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header a {
+            color: #0369a1;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        header a:hover {
+            background: #e0f2fe;
+            border-color: #0369a1;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading::after {
+            content: "⏳";
+            display: block;
+            font-size: 32px;
+            margin-top: 10px;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #dc2626;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            line-height: 1.8;
+        }
+
+        .content h1 {
+            color: #1e40af;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0f2fe;
+            font-size: 32px;
+        }
+
+        .content h1:first-child {
+            margin-top: 0;
+        }
+
+        .content h2 {
+            color: #0369a1;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .content h3 {
+            color: #0c4a6e;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .content h4, .content h5, .content h6 {
+            color: #0c4a6e;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .content ul, .content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .content li {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .content code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            color: #d32f2f;
+            font-size: 13px;
+        }
+
+        .content pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .content pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .content blockquote {
+            border-left: 4px solid #0369a1;
+            padding-left: 15px;
+            color: #555;
+            font-style: italic;
+            margin: 15px 0;
+        }
+
+        .content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        .content table th {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .content table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            color: #333;
+        }
+
+        .content table tr:hover {
+            background: #f9fafb;
+        }
+
+        .content a {
+            color: #0369a1;
+            text-decoration: none;
+            border-bottom: 1px solid #0369a1;
+            transition: all 0.2s;
+        }
+
+        .content a:hover {
+            background: #e0f2fe;
+            padding: 2px 4px;
+        }
+
+        .content strong {
+            color: #1e40af;
+            font-weight: 700;
+        }
+
+        .content em {
+            color: #0c4a6e;
+        }
+
+        .toc {
+            background: #f0f9ff;
+            border-left: 4px solid #0369a1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .toc h4 {
+            color: #0369a1;
+            margin-top: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 6px;
+        }
+
+        .toc a {
+            color: #0369a1;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            color: #666;
+            padding: 30px 20px;
+            font-size: 12px;
+        }
+
+        .breadcrumb {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #0369a1;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .content h1 {
+                font-size: 24px;
+            }
+
+            .content h2 {
+                font-size: 18px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h2 style="color: #1e40af; margin: 0;">📖 AIOCD Wiki</h2>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="aiocd-index.html">← 인덱스로</a>
+                <a href="wiki-vault-index.html">📚 EZM</a>
+            </div>
+        </header>
+
+        <div id="breadcrumb" class="breadcrumb"></div>
+        <div id="error" class="error" style="display: none;"></div>
+        <div id="loading" class="loading" style="display: none;">문서를 불러오는 중...</div>
+        <div id="content" class="content" style="display: none;"></div>
+
+        <footer>
+            <p>🧠 AIOCD Platform Wiki | 마지막 업데이트: 2026-05-23</p>
+        </footer>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        let filePath = params.get('file');
+
+        if (!filePath) {
+            showError('문서 경로가 지정되지 않았습니다. aiocd-index.html에서 문서를 선택해주세요.');
+            document.getElementById('loading').style.display = 'none';
+        } else {
+            // URL 디코딩
+            try {
+                filePath = decodeURIComponent(filePath);
+            } catch (e) {
+                // 이미 디코딩된 경우
+            }
+            loadMarkdown(filePath);
+        }
+
+        function showError(message) {
+            document.getElementById('error').textContent = '❌ ' + message;
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        function loadMarkdown(path) {
+            document.getElementById('loading').style.display = 'block';
+
+            // 파일 경로 정규화
+            const normalizedPath = path.replace(/\\/g, '/');
+
+            // fetch 시도 (웹 서버 환경)
+            fetch(normalizedPath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('fetch 실패');
+                    }
+                    return response.text();
+                })
+                .then(markdown => renderMarkdown(markdown, path))
+                .catch(() => {
+                    // fetch 실패 시 XMLHttpRequest로 재시도 (로컬 파일)
+                    loadWithXHR(normalizedPath, path);
+                });
+        }
+
+        function loadWithXHR(normalizedPath, originalPath) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', normalizedPath, true);
+            xhr.overrideMimeType('text/plain; charset=utf-8');
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    renderMarkdown(xhr.responseText, originalPath);
+                } else {
+                    showError(`파일을 찾을 수 없습니다 (404): ${originalPath}`);
+                }
+            };
+
+            xhr.onerror = function() {
+                showError(`파일을 로드할 수 없습니다. <br><br>
+                    <strong>해결책:</strong><br>
+                    1. 터미널에서 이 명령 실행:<br>
+                    <code style="background: #f5f5f5; padding: 10px; display: block; margin: 10px 0;">
+                    cd "${getWorkingDir()}" && python -m http.server 8000
+                    </code>
+                    2. 그 후 브라우저에서 <code>http://localhost:8000/aiocd-index.html</code> 열기
+                `);
+            };
+
+            xhr.send();
+        }
+
+        function renderMarkdown(markdown, path) {
+            document.getElementById('loading').style.display = 'none';
+
+            // 제목 추출
+            const titleMatch = markdown.match(/^# (.+)$/m);
+            const title = titleMatch ? titleMatch[1] : '문서';
+            document.title = title + ' - AIOCD Wiki';
+
+            // 마크다운 렌더링
+            const html = marked.parse(markdown);
+            const sanitized = DOMPurify.sanitize(html);
+            document.getElementById('content').innerHTML = sanitized;
+            document.getElementById('content').style.display = 'block';
+
+            // 빵 부스러기 경로 표시
+            const pathParts = path.split('/');
+            const lastPart = pathParts[pathParts.length - 1];
+            const folderPart = pathParts[pathParts.length - 2];
+            document.getElementById('breadcrumb').innerHTML =
+                `<a href="aiocd-index.html">Home</a> / ${folderPart} / <strong>${lastPart}</strong>`;
+
+            // 목차 생성
+            generateTOC();
+
+            // 외부 링크 새 탭에서 열기
+            document.querySelectorAll('#content a').forEach(link => {
+                if (link.hostname && link.hostname !== window.location.hostname) {
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                }
+            });
+        }
+
+        function generateTOC() {
+            const headings = document.querySelectorAll('#content h2, #content h3');
+            if (headings.length === 0) return;
+
+            let tocHTML = '<div class="toc"><h4>📑 목차</h4><ul>';
+            headings.forEach((heading, index) => {
+                const id = 'heading-' + index;
+                heading.id = id;
+                const level = heading.tagName === 'H2' ? 0 : 1;
+                tocHTML += `<li style="margin-left: ${level * 15}px;"><a href="#${id}">${heading.textContent}</a></li>`;
+            });
+            tocHTML += '</ul></div>';
+
+            const contentDiv = document.getElementById('content');
+            contentDiv.insertAdjacentHTML('afterbegin', tocHTML);
+        }
+
+        function getWorkingDir() {
+            // 현재 디렉토리 근사값
+            return 'C:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학';
+        }
+    </script>
+</body>
+</html>
