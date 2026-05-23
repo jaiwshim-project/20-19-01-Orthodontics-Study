@@ -417,9 +417,9 @@
                 <h2>🧠 Obsidian Vault</h2>
                 <p>Phase별 학습 노트, 케이스 분석, 개념 정리를 작성하고 관리합니다.</p>
                 <div class="hub-links">
-                    <a href="https://github.com/jaiwshim-project/20-19-01-Orthodontics-Study/tree/main/.obsidian-wiki" class="hub-link" target="_blank">
+                    <a href="#" onclick="openVaultFolder(); return false;" class="hub-link">
                         <span class="hub-link-icon">📂</span>
-                        <span>Vault 폴더 (GitHub)</span>
+                        <span>Vault 폴더 열기</span>
                         <span class="hub-link-arrow">→</span>
                     </a>
                     <a href="#" onclick="openObsidianApp()" class="hub-link">
@@ -467,7 +467,7 @@
                     <p style="margin-bottom: 15px;"><strong>기간</strong>: 1-2주</p>
                     <div class="phase-buttons">
                         <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">학습경로 보기</button>
-                        <button class="phase-btn secondary" onclick="window.open('https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/.obsidian-wiki/Phase%201%20-%20기초%20이해/README.md')">Obsidian 노트</button>
+                        <button class="phase-btn secondary" onclick="openPhaseNote(1)">Obsidian 노트</button>
                     </div>
                 </div>
             </div>
@@ -485,7 +485,7 @@
                     <p style="margin-bottom: 15px;"><strong>기간</strong>: 2-3주</p>
                     <div class="phase-buttons">
                         <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">학습경로 보기</button>
-                        <button class="phase-btn secondary" onclick="window.open('https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/.obsidian-wiki/Phase%202%20-%20고급%20이해/README.md')">Obsidian 노트</button>
+                        <button class="phase-btn secondary" onclick="openPhaseNote(2)">Obsidian 노트</button>
                     </div>
                 </div>
             </div>
@@ -503,7 +503,7 @@
                     <p style="margin-bottom: 15px;"><strong>기간</strong>: 2-3주</p>
                     <div class="phase-buttons">
                         <button class="phase-btn primary" onclick="window.location.href='application.html'">플랫폼 적용 가이드</button>
-                        <button class="phase-btn secondary" onclick="window.open('https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/.obsidian-wiki/Phase%203%20-%20플랫폼%20적용/README.md')">Obsidian 노트</button>
+                        <button class="phase-btn secondary" onclick="openPhaseNote(3)">Obsidian 노트</button>
                     </div>
                 </div>
             </div>
@@ -553,14 +553,51 @@
     </div>
 
     <script>
+        function isLocalEnvironment() {
+            return window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        }
+
+        function openVaultFolder() {
+            if (isLocalEnvironment()) {
+                // 로컬: file:// 경로 사용
+                const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
+                window.open(vaultPath, '_blank');
+            } else {
+                // GitHub Pages: 메시지 표시 후 GitHub 링크 제공
+                alert('Obsidian Vault 폴더는 로컬 환경에서만 직접 접근 가능합니다.\n\nGitHub에서 폴더를 보시려면 아래 링크를 방문하세요.');
+                window.open('https://github.com/jaiwshim-project/20-19-01-Orthodontics-Study/tree/main/.obsidian-wiki', '_blank');
+            }
+        }
+
+        function openPhaseNote(phaseNum) {
+            const phaseNames = {
+                1: '기초 이해',
+                2: '고급 이해',
+                3: '플랫폼 적용'
+            };
+
+            if (isLocalEnvironment()) {
+                // 로컬: file:// 경로 사용
+                const phaseName = phaseNames[phaseNum];
+                const localPath = `file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%20${phaseNum}%20-%20${encodeURI(phaseName)}`;
+                window.open(localPath, '_blank');
+            } else {
+                // GitHub Pages: Obsidian 앱 열기 권유
+                alert(`Phase ${phaseNum} (${phaseNames[phaseNum]}) 노트는 Obsidian 앱에서 확인하세요.\n\n아래의 "Obsidian 앱에서 열기" 버튼을 사용하거나, 로컬 Obsidian 앱을 실행하세요.`);
+                openObsidianApp();
+            }
+        }
+
         function openObsidianApp() {
-            // Local environment: uses file:/// protocol
-            // GitHub Pages: uses GitHub Pages URL
-            const isLocalFile = window.location.protocol === 'file:';
-            const vaultPath = isLocalFile
-                ? 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki'
-                : 'https://github.com/jaiwshim-project/20-19-01-Orthodontics-Study/tree/main/.obsidian-wiki';
-            window.open(vaultPath, '_blank');
+            if (isLocalEnvironment()) {
+                // 로컬: file:// 경로 사용
+                const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
+                window.open(vaultPath, '_blank');
+            } else {
+                // GitHub Pages: 안내 메시지
+                alert('Obsidian 앱에서 다음 폴더를 열어주세요:\n\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\.obsidian-wiki\n\n또는 GitHub에서 폴더를 확인하세요.');
+                window.open('https://github.com/jaiwshim-project/20-19-01-Orthodontics-Study/tree/main/.obsidian-wiki', '_blank');
+            }
         }
     </script>
     <script src="js/chatbot.js"></script>
