@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 - 교정학 학습 플랫폼</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .phase-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .phase-btn {
+            padding: 12px 24px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .phase-btn.active {
+            background: #0066CC;
+            color: white;
+            border-color: #0066CC;
+        }
+        .quiz-question {
+            padding: 20px;
+            background: #f9fafb;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .question-number {
+            color: #0066CC;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            border-color: #0066CC;
+            background: #e0f2fe;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .result-section {
+            display: none;
+            padding: 20px;
+            background: #e0f2fe;
+            border-radius: 8px;
+            border: 2px solid #0066CC;
+            margin-top: 20px;
+        }
+        .result-section.show {
+            display: block;
+        }
+        .score-display {
+            font-size: 48px;
+            font-weight: 700;
+            color: #0066CC;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .answer-review {
+            margin-top: 20px;
+        }
+        .answer-item {
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border-left: 4px solid #ddd;
+        }
+        .answer-item.correct {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+        .answer-item.incorrect {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
+    </header>
+
+    <nav>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html">📚 자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html">💡 개념정리</a>
+        <a href="ideas.html">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="quiz.html" class="active">✍️ 퀴즈</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>✍️ 교정학 학습 확인 퀴즈</h2>
+            <p style="color: #666;">각 Phase별 학습 이해도를 확인하세요. 즉시 채점되고 해설이 제공됩니다.</p>
+
+            <div class="phase-selector">
+                <button class="phase-btn active" onclick="selectPhase(1)">📝 Phase 1: 기초 이해</button>
+                <button class="phase-btn" onclick="selectPhase(2)">📝 Phase 2: 고급 이해</button>
+                <button class="phase-btn" onclick="selectPhase(3)">📝 Phase 3: 플랫폼 적용</button>
+            </div>
+        </div>
+
+        <div id="quizContainer" class="card">
+            <!-- 퀴즈 문제가 동적으로 로드됨 -->
+        </div>
+
+        <div id="resultContainer" class="card result-section">
+            <!-- 결과가 동적으로 표시됨 -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>🎓 학습경로</h3>
+                <ul>
+                    <li><a href="learning-path.html">Phase 1: 기초 이해</a></li>
+                    <li><a href="learning-path.html">Phase 2: 고급 이해</a></li>
+                    <li><a href="learning-path.html">Phase 3: 플랫폼 적용</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>📚 주요 자료</h3>
+                <ul>
+                    <li><a href="resources.html">45개 슬라이드</a></li>
+                    <li><a href="resources.html">11개 교과서</a></li>
+                    <li><a href="resources.html">90개 전체 자료</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>🚀 학습 도구</h3>
+                <ul>
+                    <li><a href="concepts.html">개념정리</a></li>
+                    <li><a href="ideas.html">플랫폼개선</a></li>
+                    <li><a href="progress.html">학습 진도</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>✍️ 평가</h3>
+                <ul>
+                    <li><a href="quiz.html">퀴즈</a></li>
+                    <li><a href="cases.html">케이스 스터디</a></li>
+                    <li><a href="tools.html">실습 도구</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-stats" style="justify-content: center;">
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">30</div>
+                <div class="footer-stat-label">퀴즈 문제</div>
+            </div>
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">3</div>
+                <div class="footer-stat-label">Phase 평가</div>
+            </div>
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">즉시</div>
+                <div class="footer-stat-label">자동 채점</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                <span class="footer-badge">⭐ EZM</span>
+                <span class="footer-badge">📚 Phase 1-3</span>
+                <span class="footer-badge">🚀 AI 플랫폼</span>
+            </p>
+            <p>© 2026 교정학 학습 플랫폼 | Kim Yong Eul의 Equilibrium Zone Methodology (EZM)</p>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 도구 - 교정학 학습 플랫폼</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tool-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .tool-btn {
+            padding: 12px 24px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .tool-btn.active {
+            background: #0066CC;
+            color: white;
+            border-color: #0066CC;
+        }
+        .tool-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .canvas-section {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .controls-section {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        canvas {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: crosshair;
+        }
+        .control-group {
+            margin-bottom: 20px;
+        }
+        .control-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+        .control-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+        }
+        .measurement-list {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .measurement-item {
+            padding: 8px;
+            background: #f3f4f6;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        @media (max-width: 768px) {
+            .tool-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
+    </header>
+
+    <nav>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html">📚 자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html">💡 개념정리</a>
+        <a href="ideas.html">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="tools.html" class="active">🛠️ 도구</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>🛠️ 교정학 실습 도구</h2>
+            <p style="color: #666;">세팔로메트릭 분석, 공간분석, 성장예측 등을 실습할 수 있는 웹 기반 도구입니다.</p>
+
+            <div class="tool-selector">
+                <button class="tool-btn active" onclick="selectTool('cephalometric')">📐 세팔로메트릭 분석</button>
+                <button class="tool-btn" onclick="selectTool('space')">📊 공간분석 계산기</button>
+                <button class="tool-btn" onclick="selectTool('diagnosis')">🔍 진단 보조 도구</button>
+            </div>
+        </div>
+
+        <!-- 세팔로메트릭 분석 도구 -->
+        <div id="cephalometricTool" class="card tool-section" style="display: block;">
+            <h3>📐 세팔로메트릭 분석</h3>
+            <p style="color: #666; margin-bottom: 20px;">세팔로메트릭 사진에 기준점을 표시하고 거리와 각도를 측정합니다.</p>
+
+            <div class="tool-container">
+                <div class="canvas-section">
+                    <label style="display: block; margin-bottom: 10px; font-weight: 600;">📸 이미지 업로드</label>
+                    <input type="file" id="cephImageInput" accept="image/*" style="display: block; margin-bottom: 15px;">
+                    <canvas id="cephCanvas"></canvas>
+                    <p style="font-size: 12px; color: #999; margin-top: 10px; text-align: center;">클릭으로 기준점 표시, 우클릭으로 삭제</p>
+                </div>
+
+                <div class="controls-section">
+                    <div class="control-group">
+                        <label class="control-label">🎯 기준점</label>
+                        <select id="pointType" class="control-input">
+                            <option value="">기준점 선택</option>
+                            <option value="Na">Na - 비점 (Nasion)</option>
+                            <option value="A">A point - 상악골점</option>
+                            <option value="B">B point - 하악골점</option>
+                            <option value="Pog">Pog - 이각점</option>
+                            <option value="Me">Me - 하악골 최하점</option>
+                            <option value="PNS">PNS - 후비극</option>
+                            <option value="Ba">Ba - 뇌기저</option>
+                            <option value="S">S - 안장점</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">📏 측정값</label>
+                        <div class="measurement-list" id="measurementList">
+                            <p style="color: #999; text-align: center;">측정할 항목이 없습니다</p>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="saveMeasurement()">💾 저장</button>
+                        <button class="btn btn-secondary" onclick="clearMeasurements()">🔄 초기화</button>
+                        <button class="btn btn-success" onclick="downloadReport()">📄 리포트</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 공간분석 계산기 -->
+        <div id="spaceTool" class="card tool-section" style="display: none;">
+            <h3>📊 공간분석 계산기</h3>
+            <p style="color: #666; margin-bottom: 20px;">발치 여부를 결정하는 공간분석을 계산합니다.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="control-group">
+                    <label class="control-label">상악 혼잡도 (mm)</label>
+                    <input type="number" id="maxCrowding" class="control-input" placeholder="예: -6.5" step="0.5">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">하악 혼잡도 (mm)</label>
+                    <input type="number" id="mandCrowding" class="control-input" placeholder="예: -8.0" step="0.5">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">전후 관계 (mm)</label>
+                    <input type="number" id="anteroposterior" class="control-input" placeholder="예: 3.0" step="0.5">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">성장 가능성 (mm)</label>
+                    <input type="number" id="growthPotential" class="control-input" placeholder="예: 2.0" step="0.5">
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" onclick="calculateSpace()" style="width: 100%;">📊 계산하기</button>
+            </div>
+
+            <div id="spaceResult" style="margin-top: 20px; display: none; padding: 20px; background: #e0f2fe; border: 2px solid #0066CC; border-radius: 8px;">
+                <h4 style="color: #0066CC; margin-top: 0;">진단 결과</h4>
+                <p id="spaceResultText"></p>
+            </div>
+        </div>
+
+        <!-- 진단 보조 도구 -->
+        <div id="diagnosisTool" class="card tool-section" style="display: none;">
+            <h3>🔍 진단 보조 도구</h3>
+            <p style="color: #666; margin-bottom: 20px;">환자 정보를 입력하면 예상 진단을 제시합니다.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="control-group">
+                    <label class="control-label">환자 나이</label>
+                    <input type="number" id="patientAge" class="control-input" placeholder="예: 14" min="6" max="80">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">성별</label>
+                    <select id="patientGender" class="control-input">
+                        <option value="">선택</option>
+                        <option value="M">남성</option>
+                        <option value="F">여성</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">골격 패턴</label>
+                    <select id="skeletalPattern" class="control-input">
+                        <option value="">선택</option>
+                        <option value="I">Skeletal Class I</option>
+                        <option value="II">Skeletal Class II</option>
+                        <option value="III">Skeletal Class III</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">주소증</label>
+                    <select id="complaint" class="control-input">
+                        <option value="">선택</option>
+                        <option value="crowding">혼잡 (Crowding)</option>
+                        <option value="spacing">간격 (Spacing)</option>
+                        <option value="bite">교합 (Bite problem)</option>
+                        <option value="aesthetic">심미 (Aesthetics)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" onclick="diagnosisAssist()" style="width: 100%;">🔍 진단 제시</button>
+            </div>
+
+            <div id="diagnosisResult" style="margin-top: 20px; display: none; padding: 20px; background: #d1fae5; border: 2px solid #10b981; border-radius: 8px;">
+                <h4 style="color: #059669; margin-top: 0;">진단 제시</h4>
+                <p id="diagnosisResultText"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>🎓 학습경로</h3>
+                <ul>
+                    <li><a href="learning-path.html">Phase 1: 기초 이해</a></li>
+                    <li><a href="learning-path.html">Phase 2: 고급 이해</a></li>
+                    <li><a href="learning-path.html">Phase 3: 플랫폼 적용</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>📚 주요 자료</h3>
+                <ul>
+                    <li><a href="resources.html">45개 슬라이드</a></li>
+                    <li><a href="resources.html">11개 교과서</a></li>
+                    <li><a href="resources.html">90개 전체 자료</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>🚀 학습 도구</h3>
+                <ul>
+                    <li><a href="concepts.html">개념정리</a></li>
+                    <li><a href="ideas.html">플랫폼개선</a></li>
+                    <li><a href="progress.html">학습 진도</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>✍️ 평가</h3>
+                <ul>
+                    <li><a href="quiz.html">퀴즈</a></li>
+                    <li><a href="cases.html">케이스 스터디</a></li>
+                    <li><a href="tools.html">실습 도구</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-stats" style="justify-content: center;">
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">3</div>
+                <div class="footer-stat-label">실습 도구</div>
+            </div>
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">8개</div>
+                <div class="footer-stat-label">기준점</div>
+            </div>
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">실시간</div>
+                <div class="footer-stat-label">계산</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                <span class="footer-badge">⭐ EZM</span>
+                <span class="footer-badge">📚 Phase 1-3</span>
+                <span class="footer-badge">🚀 AI 플랫폼</span>
+            </p>
+            <p>© 2026 교정학 학습 플랫폼 | Kim Yong Eul의 Equilibrium Zone Methodology (EZM)</p>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

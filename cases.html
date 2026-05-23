@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>케이스 스터디 - 교정학 학습 플랫폼</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn.active {
+            background: #0066CC;
+            color: white;
+            border-color: #0066CC;
+        }
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .case-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .case-card:hover {
+            border-color: #0066CC;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+            transform: translateY(-2px);
+        }
+        .case-image {
+            width: 100%;
+            height: 180px;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #9ca3af;
+        }
+        .case-info {
+            padding: 15px;
+        }
+        .case-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .case-subtitle {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .case-difficulty {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #e0f2fe;
+            color: #0066CC;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .case-detail {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .case-detail.show {
+            display: flex;
+        }
+        .detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+        }
+        .close-btn {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
+    </header>
+
+    <nav>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html">📚 자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html">💡 개념정리</a>
+        <a href="ideas.html">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="cases.html" class="active">📖 케이스</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>📖 임상 케이스 스터디</h2>
+            <p style="color: #666;">실제 임상 사례를 통해 EZM을 적용하는 방법을 학습하세요. 초급부터 고급까지 20개 케이스 분석.</p>
+
+            <div class="filter-section">
+                <button class="filter-btn active" onclick="filterCases('all')">모두 (20개)</button>
+                <button class="filter-btn" onclick="filterCases('beginner')">초급 (1-5)</button>
+                <button class="filter-btn" onclick="filterCases('intermediate')">중급 (6-15)</button>
+                <button class="filter-btn" onclick="filterCases('advanced')">고급 (16-20)</button>
+            </div>
+        </div>
+
+        <div id="casesGrid" class="case-grid">
+            <!-- 케이스 카드가 동적으로 로드됨 -->
+        </div>
+    </div>
+
+    <!-- 케이스 상세 모달 -->
+    <div id="caseDetailModal" class="case-detail">
+        <div class="detail-content">
+            <span class="close-btn" onclick="closeCaseDetail()">&times;</span>
+            <div id="caseDetailContent">
+                <!-- 상세 내용이 동적으로 로드됨 -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>🎓 학습경로</h3>
+                <ul>
+                    <li><a href="learning-path.html">Phase 1: 기초 이해</a></li>
+                    <li><a href="learning-path.html">Phase 2: 고급 이해</a></li>
+                    <li><a href="learning-path.html">Phase 3: 플랫폼 적용</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>📚 주요 자료</h3>
+                <ul>
+                    <li><a href="resources.html">45개 슬라이드</a></li>
+                    <li><a href="resources.html">11개 교과서</a></li>
+                    <li><a href="resources.html">90개 전체 자료</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>🚀 학습 도구</h3>
+                <ul>
+                    <li><a href="concepts.html">개념정리</a></li>
+                    <li><a href="ideas.html">플랫폼개선</a></li>
+                    <li><a href="progress.html">학습 진도</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>✍️ 평가</h3>
+                <ul>
+                    <li><a href="quiz.html">퀴즈</a></li>
+                    <li><a href="cases.html">케이스 스터디</a></li>
+                    <li><a href="tools.html">실습 도구</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-stats" style="justify-content: center;">
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">20</div>
+                <div class="footer-stat-label">임상 케이스</div>
+            </div>
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">3단계</div>
+                <div class="footer-stat-label">난이도 분류</div>
+            </div>
+            <div class="footer-stat-item">
+                <div class="footer-stat-number">실제</div>
+                <div class="footer-stat-label">임상 사례</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                <span class="footer-badge">⭐ EZM</span>
+                <span class="footer-badge">📚 Phase 1-3</span>
+                <span class="footer-badge">🚀 AI 플랫폼</span>
+            </p>
+            <p>© 2026 교정학 학습 플랫폼 | Kim Yong Eul의 Equilibrium Zone Methodology (EZM)</p>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script src="js/cases.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
