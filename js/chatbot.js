@@ -1,17 +1,26 @@
-// AI Chatbot for Orthodontics Learning Platform
-// RAG (Retrieval Augmented Generation) based Q&A system
+// KD Agent House - 동적 에이전트 기반 AI 챗봇
+// Backend API 연동 + 로컬 RAG 폴백
 
 class AIChatbot {
     constructor() {
         this.isOpen = false;
         this.conversations = [];
+        this.sessionId = this._generateSessionId();
+        this.currentAgent = 'qa_assistant';
+        this.apiEndpoint = '/api/agent_engine';
         this.ragDatabase = this.buildRAGDatabase();
+        this.isLoading = false;
         this.init();
+    }
+
+    _generateSessionId() {
+        return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     }
 
     init() {
         this.createChatbotUI();
         this.attachEventListeners();
+        this.loadSessionState();
     }
 
     createChatbotUI() {
@@ -22,13 +31,23 @@ class AIChatbot {
 
             <div class="ai-chat-modal" id="aiChatModal">
                 <div class="ai-chat-header">
-                    <h3>🤖 EZM 플랫폼 AI 어시스턴트</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <h3>🤖 AI 어시스턴트</h3>
+                        <div class="ai-chat-agent-selector" style="margin-right: 10px;">
+                            <select id="aiAgentSelector" style="padding: 5px; border-radius: 4px; border: 1px solid #ddd;">
+                                <option value="qa_assistant">📚 질문 응답</option>
+                                <option value="concept_explainer">💡 개념 설명</option>
+                                <option value="case_analyzer">🔍 케이스 분석</option>
+                                <option value="learning_tutor">🎓 학습 튜터</option>
+                            </select>
+                        </div>
+                    </div>
                     <button class="ai-chat-close" id="aiChatCloseBtn">✕</button>
                 </div>
 
                 <div class="ai-chat-messages" id="aiChatMessages">
                     <div class="ai-chat-message assistant">
-                        안녕하세요! 👋 교정학 플랫폼의 EZM, 수직부정교합, 유지프로토콜, 플랫폼 개발에 대한 모든 질문에 답변해드립니다. 편하게 질문해주세요!
+                        안녕하세요! 👋 교정학 플랫폼의 AI 어시스턴트입니다. 편하게 질문해주세요!
                     </div>
                 </div>
 
@@ -48,16 +67,20 @@ class AIChatbot {
         const sendBtn = document.getElementById('aiChatSendBtn');
         const input = document.getElementById('aiChatInput');
         const modal = document.getElementById('aiChatModal');
+        const agentSelector = document.getElementById('aiAgentSelector');
 
         floatingBtn.addEventListener('click', () => this.toggleChat());
         closeBtn.addEventListener('click', () => this.closeChat());
         sendBtn.addEventListener('click', () => this.sendMessage());
-
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.sendMessage();
+        agentSelector.addEventListener('change', (e) => {
+            this.currentAgent = e.target.value;
+            this.saveSessionState();
         });
 
-        // Close modal when clicking outside
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !this.isLoading) this.sendMessage();
+        });
+
         document.addEventListener('click', (e) => {
             if (this.isOpen && !modal.contains(e.target) && !floatingBtn.contains(e.target)) {
                 this.closeChat();
@@ -90,34 +113,97 @@ class AIChatbot {
         btn.classList.remove('active');
     }
 
-    sendMessage() {
+    async sendMessage() {
         const input = document.getElementById('aiChatInput');
         const message = input.value.trim();
 
-        if (!message) return;
+        if (!message || this.isLoading) return;
 
-        // Add user message
         this.addMessage(message, 'user');
         input.value = '';
 
-        // Show loading indicator
+        this.isLoading = true;
         this.addLoadingIndicator();
 
-        // Simulate delay for better UX
-        setTimeout(() => {
+        try {
+            const response = await this._callAgentAPI(message);
             this.removeLoadingIndicator();
-            const response = this.generateResponse(message);
-            this.addMessage(response, 'assistant');
-        }, 500);
+
+            if (response && response.response) {
+                this.addMessage(response.response, 'assistant');
+            } else {
+                this.addMessage("죄송합니다. 응답을 받을 수 없습니다.", 'assistant');
+            }
+        } catch (error) {
+            console.error('API 오류:', error);
+            this.removeLoadingIndicator();
+
+            // Fallback: 로컬 RAG 사용
+            const fallbackResponse = this.generateResponse(message);
+            this.addMessage(fallbackResponse, 'assistant');
+        } finally {
+            this.isLoading = false;
+        }
+    }
+
+    async _callAgentAPI(message) {
+        const payload = {
+            agent_id: this.currentAgent,
+            message: message,
+            user_id: this._getUserId(),
+            session_id: this.sessionId
+        };
+
+        const response = await fetch(this.apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        return await response.json();
+    }
+
+    _getUserId() {
+        let userId = localStorage.getItem('ai_user_id');
+        if (!userId) {
+            userId = `user_${Date.now()}`;
+            localStorage.setItem('ai_user_id', userId);
+        }
+        return userId;
+    }
+
+    loadSessionState() {
+        const saved = localStorage.getItem('ai_session_state');
+        if (saved) {
+            const state = JSON.parse(saved);
+            this.currentAgent = state.agent || 'qa_assistant';
+            document.getElementById('aiAgentSelector').value = this.currentAgent;
+        }
+    }
+
+    saveSessionState() {
+        localStorage.setItem('ai_session_state', JSON.stringify({
+            agent: this.currentAgent,
+            timestamp: Date.now()
+        }));
     }
 
     addMessage(text, role) {
         const messagesDiv = document.getElementById('aiChatMessages');
         const messageEl = document.createElement('div');
         messageEl.className = `ai-chat-message ${role}`;
+        messageEl.style.whiteSpace = 'pre-wrap';
+        messageEl.style.wordWrap = 'break-word';
         messageEl.textContent = text;
         messagesDiv.appendChild(messageEl);
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        this.conversations.push({ role, text, timestamp: Date.now() });
     }
 
     addLoadingIndicator() {

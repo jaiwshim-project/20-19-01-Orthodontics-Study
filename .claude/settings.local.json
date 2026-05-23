@@ -30,7 +30,20 @@
       "Bash(file *.html)",
       "Bash(findstr \"UTF\\\\|ISO\\\\|ascii\")",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git restore *)",
+      "Bash(curl -I \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/resources.html\")",
+      "Bash(curl -I \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/wiki-vault-index.html\")",
+      "Bash(curl -s \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/wiki-vault-index.html\")",
+      "Bash(curl -I \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/js/chatbot.js\")",
+      "Bash(curl -I \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/.obsidian-wiki/Phase%201%20-%20기초%20이해/README.md\")",
+      "Bash(curl -I \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/.obsidian-wiki/README.md\")",
+      "Bash(curl -I \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/.obsidian-wiki/\")",
+      "Bash(git ls-tree *)",
+      "Bash(git check-ignore *)",
+      "Bash(curl -s -H \"Cache-Control: no-cache\" \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/wiki-vault-index.html\")",
+      "Bash(curl -s -H \"Cache-Control: no-cache, must-revalidate\" \"https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/wiki-vault-index.html\")"
     ]
   }
 }

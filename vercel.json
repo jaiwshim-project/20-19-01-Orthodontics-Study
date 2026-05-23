@@ -1,0 +1,23 @@
+{
+  "buildCommand": "pip install -r requirements.txt",
+  "functions": {
+    "api/agent_engine.py": {
+      "memory": 1024,
+      "timeout": 60
+    }
+  },
+  "env": [
+    "SUPABASE_URL",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "ANTHROPIC_API_KEY",
+    "OPENAI_API_KEY",
+    "GOOGLE_API_KEY"
+  ],
+  "routes": [
+    {
+      "src": "/api/agent_engine",
+      "dest": "/api/agent_engine.py",
+      "methods": ["POST", "OPTIONS"]
+    }
+  ]
+}
