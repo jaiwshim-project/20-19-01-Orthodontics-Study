@@ -65,6 +65,66 @@
             </div>
 
             <div style="margin: 20px 0;">
+                <h3>📊 슬라이드 + 교과서 매핑</h3>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead>
+                        <tr style="background: #0066CC; color: white;">
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">순번</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">자료</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">시간</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">주제</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">학습 내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f9fafb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>1</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(1, event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📸 슬라이드 1-5</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>EZ 개념 기초</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">평형존 정의 • Kim 이론 • 5방향 분석</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>2</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook1', event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📖 교과서 1</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>현대 교정학</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">교정학 역사 • 현대 흐름 • EZM 위치</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>3</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(6, event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📸 슬라이드 6-10</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>성장과 발육</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">안면 성장 • 악골 성장 • 치아 이동</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>4</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook2', event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📖 교과서 2</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>성장과 발육 심화</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">성장 방향 판정 • 시계/반시계 • 성장 예측</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>5</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(11, event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📸 슬라이드 11-15</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>정상교합</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">정상교합 기준 • 대구치 관계 • 전치 관계</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>6</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook3', event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📖 교과서 3</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">5h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>부정교합</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">부정교합 분류 • 유형별 특징 • 진단 방법</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: #666; font-size: 13px; margin: 10px 0;">💡 팁: 각 슬라이드/교과서를 클릭하면 자료 페이지에서 해당 내용을 바로 볼 수 있습니다.</p>
+            </div>
+
+            <div style="margin: 20px 0;">
                 <h3>학습 활동</h3>
                 <ol style="padding-left: 20px;">
                     <li style="margin: 10px 0;">슬라이드 1-5 정독 (3시간)</li>
@@ -95,12 +155,12 @@
                 <h3>추천 학습 자료</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                     <div style="padding: 15px; background: #e0f2fe; border-radius: 6px;">
-                        <h4>📸 슬라이드 6-25</h4>
+                        <h4>📸 슬라이드 16-25</h4>
                         <p style="font-size: 13px; color: #666;">공간분석 및 진단</p>
                         <a href="resources.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">자료 보기</a>
                     </div>
                     <div style="padding: 15px; background: #f3e8ff; border-radius: 6px;">
-                        <h4>📖 교과서 3-8장</h4>
+                        <h4>📖 교과서 4-8</h4>
                         <p style="font-size: 13px; color: #666;">진단학 및 치료계획</p>
                         <a href="resources.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">자료 보기</a>
                     </div>
@@ -110,6 +170,73 @@
                         <a href="resources.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">자료 보기</a>
                     </div>
                 </div>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <h3>📊 슬라이드 + 교과서 매핑</h3>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead>
+                        <tr style="background: #0066CC; color: white;">
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">순번</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">자료</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">시간</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">주제</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">학습 내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f9fafb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>1</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(16, event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📸 슬라이드 16-20</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>공간분석 기초</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">혼잡도 • 공간 계산 • 발치 판단</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>2</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook4', event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📖 교과서 4</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>진단학 기초</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">세팔로메트릭 분석 • 안모분석 • 성장예측</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>3</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(21, event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📸 슬라이드 21-25</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>케이스 분석</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">부정교합 유형 • 치료계획 • 실제 케이스</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>4</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook5', event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📖 교과서 5</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>치료계획</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">치료방법 선택 • 부정교합별 접근 • 예후 판정</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>5</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook6', event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📖 교과서 6</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>부정교합 분류</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">Angle Classification • EZM 분석 • 임상 응용</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>6</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook7', event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📖 교과서 7</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>기기론</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">교정 장치 • 력학 원리 • 실제 적용</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>7</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook8', event)" style="color: #0066CC; cursor: pointer; text-decoration: none;">📖 교과서 8</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>심화 케이스</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">복합 케이스 • 어려운 진단 • 고급 전략</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: #666; font-size: 13px; margin: 10px 0;">💡 팁: 각 슬라이드/교과서를 클릭하면 자료 페이지에서 해당 내용을 바로 볼 수 있습니다.</p>
             </div>
 
             <div style="margin: 20px 0;">
@@ -142,21 +269,88 @@
                 <h3>추천 학습 자료</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                     <div style="padding: 15px; background: #e0f2fe; border-radius: 6px;">
-                        <h4>💻 플랫폼 적용</h4>
-                        <p style="font-size: 13px; color: #666;">코드 구조 학습</p>
-                        <a href="application.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">이동</a>
+                        <h4>📸 슬라이드 26-45</h4>
+                        <p style="font-size: 13px; color: #666;">고급 임상 및 구현</p>
+                        <a href="resources.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">자료 보기</a>
                     </div>
                     <div style="padding: 15px; background: #f3e8ff; border-radius: 6px;">
-                        <h4>🔍 웹셉·세팔로</h4>
-                        <p style="font-size: 13px; color: #666;">AI 진단 로직</p>
-                        <a href="webceph.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">이동</a>
+                        <h4>📖 교과서 9-11</h4>
+                        <p style="font-size: 13px; color: #666;">플랫폼 코드 & 구현</p>
+                        <a href="resources.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">자료 보기</a>
                     </div>
                     <div style="padding: 15px; background: #fef3c7; border-radius: 6px;">
-                        <h4>⚖️ EZM 비교</h4>
-                        <p style="font-size: 13px; color: #666;">방법론 비교 분석</p>
-                        <a href="comparison.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">이동</a>
+                        <h4>💻 플랫폼 적용</h4>
+                        <p style="font-size: 13px; color: #666;">실제 코드 구조</p>
+                        <a href="application.html" class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">이동</a>
                     </div>
                 </div>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <h3>📊 슬라이드 + 교과서 매핑</h3>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead>
+                        <tr style="background: #f59e0b; color: white;">
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">순번</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">자료</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">시간</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">주제</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">학습 내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #fffbeb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>1</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(26, event)" style="color: #f59e0b; cursor: pointer; text-decoration: none;">📸 슬라이드 26-30</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>웹셉 AI 기초</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">AI 진단 원리 • 머신러닝 • 세팔로 인식</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>2</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook9', event)" style="color: #f59e0b; cursor: pointer; text-decoration: none;">📖 교과서 9</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>플랫폼 아키텍처</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">HTML/CSS/JS 구조 • 데이터베이스 • API 설계</td>
+                        </tr>
+                        <tr style="background: #fffbeb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>3</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(31, event)" style="color: #f59e0b; cursor: pointer; text-decoration: none;">📸 슬라이드 31-35</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>세팔로메트릭 분석</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">측정점 자동 인식 • 각도 계산 • 진단 기준</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>4</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook10', event)" style="color: #f59e0b; cursor: pointer; text-decoration: none;">📖 교과서 10</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>프론트엔드 개발</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">React 컴포넌트 • UI/UX • 인터랙션</td>
+                        </tr>
+                        <tr style="background: #fffbeb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>5</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(36, event)" style="color: #f59e0b; cursor: pointer; text-decoration: none;">📸 슬라이드 36-40</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>EZM 구현</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">평형존 알고리즘 • 공간분석 자동화 • 예측 모델</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>6</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide('textbook11', event)" style="color: #f59e0b; cursor: pointer; text-decoration: none;">📖 교과서 11</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">4h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>배포 & 운영</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">클라우드 배포 • 모니터링 • 성능 최적화</td>
+                        </tr>
+                        <tr style="background: #fffbeb;">
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>7</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><a href="resources.html" onclick="openSlide(41, event)" style="color: #f59e0b; cursor: pointer; text-decoration: none;">📸 슬라이드 41-45</a></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">2h</td>
+                            <td style="border: 1px solid #ddd; padding: 12px;"><strong>미래 방향</strong></td>
+                            <td style="border: 1px solid #ddd; padding: 12px;">AI 고도화 • 모바일 앱 • 실시간 동기화</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: #666; font-size: 13px; margin: 10px 0;">💡 팁: 각 슬라이드/교과서를 클릭하면 자료 페이지에서 해당 내용을 바로 볼 수 있습니다.</p>
             </div>
 
             <div style="margin: 20px 0;">
@@ -305,6 +499,45 @@
     </div>
 
     <script src="common.js"></script>
+    <script>
+        function openSlide(slideNumber, event) {
+            event.preventDefault();
+
+            const slideMapping = {
+                // Phase 1 (Slides 1-15)
+                1: 'slides',
+                6: 'slides',
+                11: 'slides',
+                'textbook1': 'textbooks',
+                'textbook2': 'textbooks',
+                'textbook3': 'textbooks',
+                // Phase 2 (Slides 16-25)
+                16: 'slides',
+                21: 'slides',
+                'textbook4': 'textbooks',
+                'textbook5': 'textbooks',
+                'textbook6': 'textbooks',
+                'textbook7': 'textbooks',
+                'textbook8': 'textbooks',
+                // Phase 3 (Slides 26-45)
+                26: 'slides',
+                31: 'slides',
+                36: 'slides',
+                41: 'slides',
+                'textbook9': 'textbooks',
+                'textbook10': 'textbooks',
+                'textbook11': 'textbooks'
+            };
+
+            const tabName = slideMapping[slideNumber] || 'slides';
+
+            // resources.html로 이동하고 해당 탭 활성화
+            localStorage.setItem('targetTab', tabName);
+            localStorage.setItem('targetSlide', slideNumber);
+
+            window.location.href = 'resources.html';
+        }
+    </script>
     <script src="js/chatbot.js"></script>
 </body>
 </html>
