@@ -210,6 +210,65 @@
             </div>
         </div>
 
+        <!-- 부정교합 분류 상세 섹션 -->
+        <div class="card" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 2px solid #0066CC;">
+            <h2>🦷 부정교합 분류 상세 가이드</h2>
+            <p style="color: #666; margin-bottom: 20px;">6가지 주요 부정교합 타입의 특징과 진단 방법을 자세히 학습하세요.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div style="background: white; border: 1px solid #dbeafe; border-radius: 8px; padding: 20px; cursor: pointer; transition: all 0.3s;" onclick="showMalocclussionDetail('overjet')" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 48px; text-align: center; margin-bottom: 15px;">🪥</div>
+                    <h3 style="color: #0066CC; margin: 0 0 10px 0; text-align: center;">과개교합 (Overjet)</h3>
+                    <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">상악 전치가 하악 전치를 과도하게 앞으로 위치</p>
+                    <div style="margin-top: 10px; text-align: center; font-size: 12px; color: #0066CC;">자세히 보기 →</div>
+                </div>
+
+                <div style="background: white; border: 1px solid #dbeafe; border-radius: 8px; padding: 20px; cursor: pointer; transition: all 0.3s;" onclick="showMalocclussionDetail('underbite')" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 48px; text-align: center; margin-bottom: 15px;">😬</div>
+                    <h3 style="color: #0066CC; margin: 0 0 10px 0; text-align: center;">반대교합 (Underbite)</h3>
+                    <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">하악 전치가 상악 전치보다 앞으로 위치 (Class III)</p>
+                    <div style="margin-top: 10px; text-align: center; font-size: 12px; color: #0066CC;">자세히 보기 →</div>
+                </div>
+
+                <div style="background: white; border: 1px solid #dbeafe; border-radius: 8px; padding: 20px; cursor: pointer; transition: all 0.3s;" onclick="showMalocclussionDetail('crossbite')" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 48px; text-align: center; margin-bottom: 15px;">❌</div>
+                    <h3 style="color: #0066CC; margin: 0 0 10px 0; text-align: center;">교차교합 (Crossbite)</h3>
+                    <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">좌우 측방 관계에서 교합이 뒤바뀜</p>
+                    <div style="margin-top: 10px; text-align: center; font-size: 12px; color: #0066CC;">자세히 보기 →</div>
+                </div>
+
+                <div style="background: white; border: 1px solid #dbeafe; border-radius: 8px; padding: 20px; cursor: pointer; transition: all 0.3s;" onclick="showMalocclussionDetail('spacing')" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 48px; text-align: center; margin-bottom: 15px;">➡️</div>
+                    <h3 style="color: #0066CC; margin: 0 0 10px 0; text-align: center;">벌어진 치아 (Spacing)</h3>
+                    <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">치아 사이에 과도한 공간 존재</p>
+                    <div style="margin-top: 10px; text-align: center; font-size: 12px; color: #0066CC;">자세히 보기 →</div>
+                </div>
+
+                <div style="background: white; border: 1px solid #dbeafe; border-radius: 8px; padding: 20px; cursor: pointer; transition: all 0.3s;" onclick="showMalocclussionDetail('openbite')" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 48px; text-align: center; margin-bottom: 15px;">😮</div>
+                    <h3 style="color: #0066CC; margin: 0 0 10px 0; text-align: center;">개방교합 (Open Bite)</h3>
+                    <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">앞니 부위에서 치아가 접촉하지 않음</p>
+                    <div style="margin-top: 10px; text-align: center; font-size: 12px; color: #0066CC;">자세히 보기 →</div>
+                </div>
+
+                <div style="background: white; border: 1px solid #dbeafe; border-radius: 8px; padding: 20px; cursor: pointer; transition: all 0.3s;" onclick="showMalocclussionDetail('crowding')" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 48px; text-align: center; margin-bottom: 15px;">📦</div>
+                    <h3 style="color: #0066CC; margin: 0 0 10px 0; text-align: center;">총생 (Crowding)</h3>
+                    <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">치아가 복잡하게 겹쳐서 배열됨</p>
+                    <div style="margin-top: 10px; text-align: center; font-size: 12px; color: #0066CC;">자세히 보기 →</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 30px; background: white; border-radius: 8px; border: 2px solid #0066CC;">
+                <h3 style="margin-top: 0; color: #0066CC;">📊 부정교합 분류 이미지</h3>
+                <img src="images/이미지 7.png" alt="부정교합 분류" style="width: 100%; max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0, 102, 204, 0.1);">
+                <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">
+                    <strong>출처:</strong> 부정교합 분류 표준 가이드 (Kim Yong Eul EZM 교정학)<br/>
+                    좌측에서 우측으로: 과개교합 → 반대교합 → 교차교합 / 벌어진 치아 → 개방교합 → 총생
+                </p>
+            </div>
+        </div>
+
         <div class="card">
             <h2>✨ 자료 구성의 특징</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
@@ -309,6 +368,171 @@
 
             document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
+        }
+
+        const malocclussionData = {
+            overjet: {
+                title: '과개교합 (Overjet)',
+                desc: '상악 전치가 하악 전치를 과도하게 앞으로 위치',
+                features: [
+                    '상악 전치와 하악 전치 사이의 수평 거리가 3mm 이상',
+                    '보통 상악 전돌 또는 하악 열등감과 관련',
+                    'Class II 부정교합의 특징',
+                    '유아기의 손가락 빨기 습관과 연관'
+                ],
+                diagnosis: [
+                    '측면 사진에서 전치부 관계 평가',
+                    '세팔로메트릭 분석: ANB 각도 증가',
+                    '공간분석을 통한 발치 판단'
+                ],
+                treatment: '상악 성장 제약 또는 하악 성장 유도, 발치 여부 판단 후 고정식 교정',
+                severity: '중등도'
+            },
+            underbite: {
+                title: '반대교합 (Underbite)',
+                desc: '하악 전치가 상악 전치보다 앞으로 위치 (Class III)',
+                features: [
+                    '하악 전치가 상악 전치를 덮음',
+                    '골격적 하악 우위',
+                    '얼굴이 길어 보이거나 턱이 나온 외형',
+                    '성인이 될수록 악화 경향'
+                ],
+                diagnosis: [
+                    'Molar 관계: Class III',
+                    '측면 사진: 아래턱이 위턱보다 앞으로 위치',
+                    'ANB 각도: 음수 또는 0 이상'
+                ],
+                treatment: '성장기: 상악 성장 유도 + 하악 제약 / 성인: 양악 수술 또는 비수술적 한계 인지',
+                severity: '고도'
+            },
+            crossbite: {
+                title: '교차교합 (Crossbite)',
+                desc: '좌우 측방 관계에서 교합이 뒤바뀜',
+                features: [
+                    '좌측 또는 우측 측면에서 하악이 상악을 덮음',
+                    '중심선 편위 동반',
+                    '성장기 조기 개입이 중요',
+                    '한쪽이 좋아지면 다른 쪽이 악화될 수 있음'
+                ],
+                diagnosis: [
+                    '정면 사진: 중심선 관찰',
+                    '측면 사진: 한쪽에서만 확인',
+                    '교합상태 점검: 최대교합위 vs 중심위'
+                ],
+                treatment: '확대 치료 (성장기) 또는 교정으로 중심선 교정, 앞뒤 관계 동시 개선',
+                severity: '중등도-고도'
+            },
+            spacing: {
+                title: '벌어진 치아 (Spacing)',
+                desc: '치아 사이에 과도한 공간 존재',
+                features: [
+                    '정상 공간 범위를 초과하는 간격',
+                    'Diastema (정중부 간격)이 가장 흔함',
+                    '턱뼈가 치아보다 크거나 치아가 작음',
+                    '높은 frenum (연결 조직)'
+                ],
+                diagnosis: [
+                    '공간분석: 양수 값',
+                    '치아 크기와 턱뼈 크기 비교',
+                    'High frenum 확인'
+                ],
+                treatment: '비발치 교정, frenum 제거 필요 시 시술, diastema closure 집중',
+                severity: '경도'
+            },
+            openbite: {
+                title: '개방교합 (Open Bite)',
+                desc: '앞니 부위에서 치아가 접촉하지 않음',
+                features: [
+                    '앞니가 3mm 이상 벌어짐',
+                    '수직 성장 유형과 연관',
+                    '혀 내밀기 습관이 원인인 경우 많음',
+                    '심각한 경우 성인 수술 필요'
+                ],
+                diagnosis: [
+                    '측면 사진: 앞니 사이 공간 확인',
+                    '수직 피복 측정',
+                    '원인 분석: 습관 vs 골격'
+                ],
+                treatment: '습관 제거 우선, 근기능 치료, 심각한 경우 양악 수술 고려',
+                severity: '고도'
+            },
+            crowding: {
+                title: '총생 (Crowding)',
+                desc: '치아가 복잡하게 겹쳐서 배열됨',
+                features: [
+                    '공간부족으로 인한 치아 배열 불량',
+                    '가장 흔한 부정교합',
+                    '혼잡도 -4mm 이상은 발치 검토',
+                    '위생 관리가 어려워 충치 위험 증가'
+                ],
+                diagnosis: [
+                    '공간분석: 음수 값 (-6mm 이상 발치 필수)',
+                    '모형분석: 치아 크기 측정',
+                    '성장 예측: 잔존 성장량 평가'
+                ],
+                treatment: '발치 vs 비발치 판단 후 교정, 확대 고려, 추출치 결정 후 진행',
+                severity: '중등도-고도'
+            }
+        };
+
+        function showMalocclussionDetail(type) {
+            const data = malocclussionData[type];
+            if (!data) return;
+
+            let modal = document.getElementById('malocclussionModal');
+            if (!modal) {
+                const modalHTML = `
+                    <div id="malocclussionModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+                        <div style="background: white; border-radius: 12px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 30px;">
+                            <span onclick="closeMalocclussionModal()" style="float: right; font-size: 24px; cursor: pointer; color: #999;">&times;</span>
+                            <div id="malocclussionDetail"></div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+                modal = document.getElementById('malocclussionModal');
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeMalocclussionModal();
+                });
+            }
+
+            const html = `
+                <h3 style="color: #0066CC; margin-top: 0;">${data.title}</h3>
+                <p style="font-size: 16px; color: #1f2937; margin-bottom: 20px;"><strong>${data.desc}</strong></p>
+
+                <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; border-left: 4px solid #0066CC; margin-bottom: 20px;">
+                    <h4 style="margin-top: 0; color: #0066CC;">📌 난이도: <span style="background: ${
+                        data.severity === '경도' ? '#d1fae5' : data.severity === '중등도' ? '#fef3c7' : '#fee2e2'
+                    }; padding: 2px 8px; border-radius: 4px; color: ${
+                        data.severity === '경도' ? '#059669' : data.severity === '중등도' ? '#92400e' : '#991b1b'
+                    };">${data.severity}</span></h4>
+                </div>
+
+                <h4 style="color: #0066CC; margin-bottom: 10px;">🔍 주요 특징</h4>
+                <ul style="margin: 0 0 20px 0; padding-left: 20px; color: #1f2937;">
+                    ${data.features.map(f => `<li style="margin-bottom: 8px; line-height: 1.5;">${f}</li>`).join('')}
+                </ul>
+
+                <h4 style="color: #0066CC; margin-bottom: 10px;">⚕️ 진단 방법</h4>
+                <ul style="margin: 0 0 20px 0; padding-left: 20px; color: #1f2937;">
+                    ${data.diagnosis.map(d => `<li style="margin-bottom: 8px; line-height: 1.5;">${d}</li>`).join('')}
+                </ul>
+
+                <div style="background: #d1fae5; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981; margin-bottom: 20px;">
+                    <h4 style="margin-top: 0; color: #059669;">💊 치료 계획</h4>
+                    <p style="margin: 0; color: #059669; line-height: 1.6;">${data.treatment}</p>
+                </div>
+
+                <button onclick="closeMalocclussionModal()" class="btn btn-secondary" style="width: 100%;">닫기</button>
+            `;
+
+            document.getElementById('malocclussionDetail').innerHTML = html;
+            modal.style.display = 'flex';
+        }
+
+        function closeMalocclussionModal() {
+            const modal = document.getElementById('malocclussionModal');
+            if (modal) modal.style.display = 'none';
         }
     </script>
     <script src="js/chatbot.js"></script>
