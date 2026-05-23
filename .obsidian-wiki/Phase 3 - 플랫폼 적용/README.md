@@ -36,17 +36,17 @@
 
 ## 📚 학습 자료
 
-> 💡 **팁**: 아래 각 슬라이드/교과서를 클릭하면 📚 [학습경로 페이지](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html#phase3)에서 자료를 바로 볼 수 있습니다.
+> 💡 **팁**: 아래 각 슬라이드/교과서를 **클릭하면 자료를 바로 볼 수 있습니다!**
 
 | 순번 | 자료 | 타입 | 시간 | 주제 | 학습 내용 |
 |------|------|------|------|------|---------|
-| **1** | [📸 슬라이드 26-30](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📸 | 2h | **웹셉 AI 기초** | • AI 진단 원리<br/>• 머신러닝<br/>• 세팔로 인식 |
-| **2** | [📖 교과서 9](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📖 | 4h | **플랫폼 아키텍처** | • HTML/CSS/JS<br/>• 데이터베이스<br/>• API 설계 |
-| **3** | [📸 슬라이드 31-35](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📸 | 2h | **세팔로메트릭 분석** | • 측정점 인식<br/>• 각도 계산<br/>• 진단 기준 |
-| **4** | [📖 교과서 10](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📖 | 4h | **프론트엔드 개발** | • React 컴포넌트<br/>• UI/UX<br/>• 인터랙션 |
-| **5** | [📸 슬라이드 36-40](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📸 | 2h | **EZM 구현** | • 평형존 알고리즘<br/>• 공간분석 자동화<br/>• 예측 모델 |
-| **6** | [📖 교과서 11](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%84%EC%A0%95%ED%95%99/learning-path.html) | 📖 | 4h | **배포 & 운영** | • 클라우드 배포<br/>• 모니터링<br/>• 성능 최적화 |
-| **7** | [📸 슬라이드 41-45](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📸 | 2h | **미래 방향** | • AI 고도화<br/>• 모바일 앱<br/>• 실시간 동기화 |
+| **1** | [📸 슬라이드 26-30](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=slides&id=26) | 📸 | 2h | **웹셉 AI 기초** | • AI 진단 원리<br/>• 머신러닝<br/>• 세팔로 인식 |
+| **2** | [📖 교과서 9](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=textbooks&id=9) | 📖 | 4h | **플랫폼 아키텍처** | • HTML/CSS/JS<br/>• 데이터베이스<br/>• API 설계 |
+| **3** | [📸 슬라이드 31-35](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=slides&id=31) | 📸 | 2h | **세팔로메트릭 분석** | • 측정점 인식<br/>• 각도 계산<br/>• 진단 기준 |
+| **4** | [📖 교과서 10](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=textbooks&id=10) | 📖 | 4h | **프론트엔드 개발** | • React 컴포넌트<br/>• UI/UX<br/>• 인터랙션 |
+| **5** | [📸 슬라이드 36-40](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=slides&id=36) | 📸 | 2h | **EZM 구현** | • 평형존 알고리즘<br/>• 공간분석 자동화<br/>• 예측 모델 |
+| **6** | [📖 교과서 11](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=textbooks&id=11) | 📖 | 4h | **배포 & 운영** | • 클라우드 배포<br/>• 모니터링<br/>• 성능 최적화 |
+| **7** | [📸 슬라이드 41-45](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=slides&id=41) | 📸 | 2h | **미래 방향** | • AI 고도화<br/>• 모바일 앱<br/>• 실시간 동기화 |
 
 ---
 

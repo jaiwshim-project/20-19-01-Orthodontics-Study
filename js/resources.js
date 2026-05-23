@@ -191,6 +191,17 @@ function downloadResource(filePath) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // URL 파라미터 처리 (README.md에서 직접 이동할 때)
+    const params = new URLSearchParams(window.location.search);
+    const typeParam = params.get('type');
+    const idParam = params.get('id');
+
+    if (typeParam && idParam) {
+        localStorage.setItem('targetTab', typeParam);
+        localStorage.setItem('targetSlide', parseInt(idParam));
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
     // 모달 HTML이 없으면 추가
     if (!document.getElementById('resourceModal')) {
         const modalHTML = `

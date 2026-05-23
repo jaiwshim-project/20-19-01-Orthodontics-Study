@@ -40,17 +40,17 @@
 
 ### 슬라이드 + 교과서 매핑
 
-> 💡 **팁**: 아래 각 슬라이드/교과서를 클릭하면 📚 [학습경로 페이지](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html#phase2)에서 자료를 바로 볼 수 있습니다.
+> 💡 **팁**: 아래 각 슬라이드/교과서를 **클릭하면 자료를 바로 볼 수 있습니다!**
 
 | 순번 | 자료 | 타입 | 시간 | 주제 | 학습 내용 |
 |------|------|------|------|------|---------|
-| **1** | [📸 슬라이드 16-20](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📸 | 2h | **공간분석 기초** | • 혼잡도 계산<br/>• 공간 부족 판단<br/>• 발치 판단 기준 |
-| **2** | [📖 교과서 4](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📖 | 4h | **진단학 기초** | • 세팔로메트릭 분석<br/>• 안모분석<br/>• 성장예측 |
-| **3** | [📸 슬라이드 21-25](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📸 | 2h | **케이스 분석** | • 부정교합 유형<br/>• 치료계획<br/>• 실제 케이스 |
-| **4** | [📖 교과서 5](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📖 | 4h | **치료계획** | • 치료방법 선택<br/>• 부정교합별 접근<br/>• 예후 판정 |
-| **5** | [📖 교과서 6](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📖 | 4h | **부정교합 분류** | • Angle Classification<br/>• EZM 분석<br/>• 임상 응용 |
-| **6** | [📖 교과서 7](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📖 | 4h | **기기론** | • 교정 장치<br/>• 력학 원리<br/>• 실제 적용 |
-| **7** | [📖 교과서 8](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/learning-path.html) | 📖 | 4h | **심화 케이스** | • 복합 케이스<br/>• 어려운 진단<br/>• 고급 전략 |
+| **1** | [📸 슬라이드 16-20](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=slides&id=16) | 📸 | 2h | **공간분석 기초** | • 혼잡도 계산<br/>• 공간 부족 판단<br/>• 발치 판단 기준 |
+| **2** | [📖 교과서 4](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=textbooks&id=4) | 📖 | 4h | **진단학 기초** | • 세팔로메트릭 분석<br/>• 안모분석<br/>• 성장예측 |
+| **3** | [📸 슬라이드 21-25](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=slides&id=21) | 📸 | 2h | **케이스 분석** | • 부정교합 유형<br/>• 치료계획<br/>• 실제 케이스 |
+| **4** | [📖 교과서 5](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=textbooks&id=5) | 📖 | 4h | **치료계획** | • 치료방법 선택<br/>• 부정교합별 접근<br/>• 예후 판정 |
+| **5** | [📖 교과서 6](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=textbooks&id=6) | 📖 | 4h | **부정교합 분류** | • Angle Classification<br/>• EZM 분석<br/>• 임상 응용 |
+| **6** | [📖 교과서 7](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=textbooks&id=7) | 📖 | 4h | **기기론** | • 교정 장치<br/>• 력학 원리<br/>• 실제 적용 |
+| **7** | [📖 교과서 8](file:///C:/01%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/000%20%ED%8A%B9%ED%97%88-%EC%A0%80%EC%9E%91%EA%B6%8C/01%20%EC%B9%98%EA%B3%BC%20%EA%B5%90%EC%A0%95%ED%95%99/resources.html?type=textbooks&id=8) | 📖 | 4h | **심화 케이스** | • 복합 케이스<br/>• 어려운 진단<br/>• 고급 전략 |
 
 ---
 
