@@ -44,13 +44,13 @@
 
 | 순번 | 자료 | 타입 | 시간 | 주제 | 학습 내용 |
 |------|------|------|------|------|---------|
-| **1** | [📸 슬라이드 16-20](http://localhost:8000/resources.html?type=slides&id=16) | 📸 | 2h | **공간분석 기초** | • 혼잡도 계산<br/>• 공간 부족 판단<br/>• 발치 판단 기준 |
-| **2** | [📖 교과서 4](http://localhost:8000/resources.html?type=textbooks&id=4) | 📖 | 4h | **진단학 기초** | • 세팔로메트릭 분석<br/>• 안모분석<br/>• 성장예측 |
-| **3** | [📸 슬라이드 21-25](http://localhost:8000/resources.html?type=slides&id=21) | 📸 | 2h | **케이스 분석** | • 부정교합 유형<br/>• 치료계획<br/>• 실제 케이스 |
-| **4** | [📖 교과서 5](http://localhost:8000/resources.html?type=textbooks&id=5) | 📖 | 4h | **치료계획** | • 치료방법 선택<br/>• 부정교합별 접근<br/>• 예후 판정 |
-| **5** | [📖 교과서 6](http://localhost:8000/resources.html?type=textbooks&id=6) | 📖 | 4h | **부정교합 분류** | • Angle Classification<br/>• EZM 분석<br/>• 임상 응용 |
-| **6** | [📖 교과서 7](http://localhost:8000/resources.html?type=textbooks&id=7) | 📖 | 4h | **기기론** | • 교정 장치<br/>• 력학 원리<br/>• 실제 적용 |
-| **7** | [📖 교과서 8](http://localhost:8000/resources.html?type=textbooks&id=8) | 📖 | 4h | **심화 케이스** | • 복합 케이스<br/>• 어려운 진단<br/>• 고급 전략 |
+| **1** | [📸 슬라이드 16-20](https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/resources.html?type=slides&id=16) | 📸 | 2h | **공간분석 기초** | • 혼잡도 계산<br/>• 공간 부족 판단<br/>• 발치 판단 기준 |
+| **2** | [📖 교과서 4](https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/resources.html?type=textbooks&id=4) | 📖 | 4h | **진단학 기초** | • 세팔로메트릭 분석<br/>• 안모분석<br/>• 성장예측 |
+| **3** | [📸 슬라이드 21-25](https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/resources.html?type=slides&id=21) | 📸 | 2h | **케이스 분석** | • 부정교합 유형<br/>• 치료계획<br/>• 실제 케이스 |
+| **4** | [📖 교과서 5](https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/resources.html?type=textbooks&id=5) | 📖 | 4h | **치료계획** | • 치료방법 선택<br/>• 부정교합별 접근<br/>• 예후 판정 |
+| **5** | [📖 교과서 6](https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/resources.html?type=textbooks&id=6) | 📖 | 4h | **부정교합 분류** | • Angle Classification<br/>• EZM 분석<br/>• 임상 응용 |
+| **6** | [📖 교과서 7](https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/resources.html?type=textbooks&id=7) | 📖 | 4h | **기기론** | • 교정 장치<br/>• 력학 원리<br/>• 실제 적용 |
+| **7** | [📖 교과서 8](https://jaiwshim-project.github.io/20-19-01-Orthodontics-Study/resources.html?type=textbooks&id=8) | 📖 | 4h | **심화 케이스** | • 복합 케이스<br/>• 어려운 진단<br/>• 고급 전략 |
 
 ---
 
