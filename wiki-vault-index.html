@@ -553,27 +553,9 @@
     </div>
 
     <script>
-        function isFileProtocol() {
-            return window.location.protocol === 'file:';
-        }
-
-        function isGitHubPages() {
-            return window.location.hostname.includes('github.io');
-        }
-
-        function isLocalWebServer() {
-            return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        }
-
         function openVaultFolder() {
-            if (isFileProtocol()) {
-                // 로컬 파일 프로토콜: 직접 접근 가능
-                const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
-                window.open(vaultPath, '_blank');
-            } else if (isGitHubPages() || isLocalWebServer()) {
-                // 웹 서버 (GitHub Pages, localhost): 직접 접근 불가능
-                alert('Vault 폴더는 로컬 파일로 열어야 접근 가능합니다.\n\n다음 파일을 파일 탐색기에서 열어주세요:\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\wiki-vault-index.html');
-            }
+            const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
+            window.open(vaultPath, '_blank');
         }
 
         function openPhaseNote(phaseNum) {
@@ -583,35 +565,17 @@
                 3: '플랫폼%20적용'
             };
 
-            if (isFileProtocol()) {
-                // 로컬 파일 프로토콜: 직접 접근 가능
-                const phasePath = `file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%20${phaseNum}%20-%20${phaseNames[phaseNum]}/README.md`;
-                window.open(phasePath, '_blank');
-            } else {
-                // 웹 서버: 직접 접근 불가능
-                alert(`Phase ${phaseNum} 노트는 로컬 파일로 열어야 접근 가능합니다.\n\n다음 파일을 파일 탐색기에서 열어주세요:\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\wiki-vault-index.html`);
-            }
+            const phasePath = `file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%20${phaseNum}%20-%20${phaseNames[phaseNum]}/README.md`;
+            window.open(phasePath, '_blank');
         }
 
         function openObsidianApp() {
-            if (isFileProtocol()) {
-                // 로컬 파일 프로토콜: 직접 접근 가능
-                const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
-                window.open(vaultPath, '_blank');
-            } else {
-                // 웹 서버: 직접 접근 불가능
-                alert('Obsidian 앱에서 다음 폴더를 열어주세요:\n\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\.obsidian-wiki');
-            }
+            const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
+            window.open(vaultPath, '_blank');
         }
 
         function openPhaseGuide() {
-            if (isFileProtocol()) {
-                // 로컬 파일 프로토콜: 안내 메시지
-                alert('Phase 가이드:\n\n📖 로컬 폴더에서 확인:\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\.obsidian-wiki\\\nPhase 1 - 기초 이해\\README.md\nPhase 2 - 고급 이해\\README.md\nPhase 3 - 플랫폼 적용\\README.md\n\n또는 learning-path.html에서 상세 학습경로를 확인하세요.');
-            } else {
-                // 웹 서버: 로컬 접근 안내
-                alert('Phase 가이드는 로컬 파일로 열어야 접근 가능합니다.\n\n다음 파일을 파일 탐색기에서 열어주세요:\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\wiki-vault-index.html');
-            }
+            alert('Phase 가이드:\n\n📖 로컬 폴더에서 확인:\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\.obsidian-wiki\nPhase 1 - 기초 이해\\README.md\nPhase 2 - 고급 이해\\README.md\nPhase 3 - 플랫폼 적용\\README.md\n\n또는 learning-path.html에서 상세 학습경로를 확인하세요.');
         }
     </script>
     <script src="js/chatbot.js"></script>
