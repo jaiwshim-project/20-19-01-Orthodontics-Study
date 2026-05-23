@@ -553,9 +553,17 @@
     </div>
 
     <script>
+        function isGitHubPages() {
+            return window.location.hostname.includes('github.io');
+        }
+
         function openVaultFolder() {
-            const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
-            window.open(vaultPath, '_blank');
+            if (isGitHubPages()) {
+                alert('로컬 환경에서만 Vault 폴더에 직접 접근할 수 있습니다.\n\n로컬에서 다음 파일을 열어주세요:\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\wiki-vault-index.html');
+            } else {
+                const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
+                window.open(vaultPath, '_blank');
+            }
         }
 
         function openPhaseNote(phaseNum) {
@@ -565,13 +573,21 @@
                 3: '플랫폼%20적용'
             };
 
-            const phasePath = `file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%20${phaseNum}%20-%20${phaseNames[phaseNum]}/README.md`;
-            window.open(phasePath, '_blank');
+            if (isGitHubPages()) {
+                alert(`Phase ${phaseNum} 노트는 로컬 환경에서만 접근할 수 있습니다.\n\n로컬에서 다음 파일을 열어주세요:\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\wiki-vault-index.html\n\n또는 Obsidian 앱에서 직접 vault를 열어주세요.`);
+            } else {
+                const phasePath = `file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%20${phaseNum}%20-%20${phaseNames[phaseNum]}/README.md`;
+                window.open(phasePath, '_blank');
+            }
         }
 
         function openObsidianApp() {
-            const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
-            window.open(vaultPath, '_blank');
+            if (isGitHubPages()) {
+                alert('Obsidian 앱에서 다음 폴더를 열어주세요:\n\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\.obsidian-wiki');
+            } else {
+                const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
+                window.open(vaultPath, '_blank');
+            }
         }
     </script>
     <script src="js/chatbot.js"></script>
