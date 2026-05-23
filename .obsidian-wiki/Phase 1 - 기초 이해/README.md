@@ -40,12 +40,12 @@
 
 | 순번 | 자료 | 타입 | 시간 | 주제 | 학습 내용 |
 |------|------|------|------|------|---------|
-| **1** | [📸 슬라이드 1-5](../../../resources.html?type=slides&id=1) | 📸 | 2h | **EZ 개념 기초** | • 평형존의 정의<br/>• Kim의 이론<br/>• 5방향 분석 소개 |
-| **2** | [📖 교과서 1](../../../resources.html?type=textbooks&id=1) | 📖 | 4h | **현대 교정학** | • 교정학의 역사<br/>• 현대 교정의 흐름<br/>• EZM의 위치 |
-| **3** | [📸 슬라이드 6-10](../../../resources.html?type=slides&id=6) | 📸 | 2h | **성장과 발육** | • 안면 성장 패턴<br/>• 악골 성장<br/>• 치아 이동 |
-| **4** | [📖 교과서 2](../../../resources.html?type=textbooks&id=2) | 📖 | 4h | **성장과 발육 심화** | • 성장 방향 판정<br/>• 시계/반시계방향<br/>• 성장 예측 |
-| **5** | [📸 슬라이드 11-15](../../../resources.html?type=slides&id=11) | 📸 | 2h | **정상교합** | • 정상교합의 기준<br/>• 대구치 관계<br/>• 전치 관계 |
-| **6** | [📖 교과서 3](../../../resources.html?type=textbooks&id=3) | 📖 | 5h | **부정교합** | • 부정교합 분류<br/>• 각 유형별 특징<br/>• 진단 방법 |
+| **1** | [📸 슬라이드 1-5](http://localhost:8000/resources.html?type=slides&id=1) | 📸 | 2h | **EZ 개념 기초** | • 평형존의 정의<br/>• Kim의 이론<br/>• 5방향 분석 소개 |
+| **2** | [📖 교과서 1](http://localhost:8000/resources.html?type=textbooks&id=1) | 📖 | 4h | **현대 교정학** | • 교정학의 역사<br/>• 현대 교정의 흐름<br/>• EZM의 위치 |
+| **3** | [📸 슬라이드 6-10](http://localhost:8000/resources.html?type=slides&id=6) | 📸 | 2h | **성장과 발육** | • 안면 성장 패턴<br/>• 악골 성장<br/>• 치아 이동 |
+| **4** | [📖 교과서 2](http://localhost:8000/resources.html?type=textbooks&id=2) | 📖 | 4h | **성장과 발육 심화** | • 성장 방향 판정<br/>• 시계/반시계방향<br/>• 성장 예측 |
+| **5** | [📸 슬라이드 11-15](http://localhost:8000/resources.html?type=slides&id=11) | 📸 | 2h | **정상교합** | • 정상교합의 기준<br/>• 대구치 관계<br/>• 전치 관계 |
+| **6** | [📖 교과서 3](http://localhost:8000/resources.html?type=textbooks&id=3) | 📖 | 5h | **부정교합** | • 부정교합 분류<br/>• 각 유형별 특징<br/>• 진단 방법 |
 
 ---
 
