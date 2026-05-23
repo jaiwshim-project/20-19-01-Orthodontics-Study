@@ -422,12 +422,12 @@
                         <span>Vault 폴더 열기</span>
                         <span class="hub-link-arrow">→</span>
                     </a>
-                    <a href="#" onclick="openObsidianApp()" class="hub-link">
+                    <a href="#" onclick="openObsidianApp(); return false;" class="hub-link">
                         <span class="hub-link-icon">🧠</span>
                         <span>Obsidian 앱에서 열기</span>
                         <span class="hub-link-arrow">→</span>
                     </a>
-                    <a href="#" onclick="alert('Phase 1, 2, 3 폴더에 있는 README.md를 확인하세요'); return false;" class="hub-link">
+                    <a href="#" onclick="openPhaseGuide(); return false;" class="hub-link">
                         <span class="hub-link-icon">📖</span>
                         <span>Phase별 가이드 보기</span>
                         <span class="hub-link-arrow">→</span>
@@ -587,6 +587,14 @@
             } else {
                 const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
                 window.open(vaultPath, '_blank');
+            }
+        }
+
+        function openPhaseGuide() {
+            if (isGitHubPages()) {
+                alert('로컬 환경에서 다음 파일을 열어주세요:\n\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\wiki-vault-index.html\n\n또는 .obsidian-wiki 폴더의 Phase 1/2/3 폴더에서 README.md를 확인하세요.');
+            } else {
+                alert('Phase 1, 2, 3 가이드:\n\n📖 로컬 폴더에서 확인:\nC:\\.obsidian-wiki\\Phase 1 - 기초 이해\\README.md\nC:\\.obsidian-wiki\\Phase 2 - 고급 이해\\README.md\nC:\\.obsidian-wiki\\Phase 3 - 플랫폼 적용\\README.md\n\n또는 learning-path.html에서 상세 학습경로를 확인하세요.');
             }
         }
     </script>
