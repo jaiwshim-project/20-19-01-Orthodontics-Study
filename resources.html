@@ -51,6 +51,7 @@
             border-color: #0066CC;
             box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1);
             background: #f0f9ff;
+            transform: translateY(-2px);
         }
         .resource-card h4 {
             margin: 0 0 8px 0;
@@ -69,6 +70,30 @@
             border-radius: 4px;
             font-size: 11px;
             font-weight: 600;
+        }
+        .resource-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .resource-modal.show {
+            display: flex;
+        }
+        .resource-modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
         }
         @media (max-width: 768px) {
             .hero-grid {
@@ -151,200 +176,36 @@
             <div id="slides" class="tab-content active">
                 <h3>📸 Kim Yong Eul 교정학 강의 슬라이드 (45개)</h3>
                 <p style="color: #666; margin-bottom: 20px;">Equilibrium Zone Methodology의 핵심 개념을 담은 강의 슬라이드 모음</p>
-
-                <h4 style="margin-top: 20px; color: #0066CC;">Module 1: 기초 개념 (슬라이드 1-5)</h4>
-                <div class="resource-grid">
-                    <div class="resource-card">
-                        <h4>슬라이드 1</h4>
-                        <p>EZM 개념의 정의 및 역사</p>
-                        <span class="resource-badge">Phase 1</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>슬라이드 2</h4>
-                        <p>정상교합의 특징</p>
-                        <span class="resource-badge">Phase 1</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>슬라이드 3</h4>
-                        <p>부정교합의 분류</p>
-                        <span class="resource-badge">Phase 1</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>슬라이드 4</h4>
-                        <p>성장 패턴 분석</p>
-                        <span class="resource-badge">Phase 1</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>슬라이드 5</h4>
-                        <p>진단의 기초</p>
-                        <span class="resource-badge">Phase 1</span>
-                    </div>
-                </div>
-
-                <h4 style="margin-top: 20px; color: #0066CC;">Module 2-9: 고급 진단 (슬라이드 6-45)</h4>
-                <p style="color: #666; margin-bottom: 10px;">공간분석, 성장예측, 부정교합별 진단 및 치료 계획</p>
-                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
-                    <p style="margin: 0; font-size: 13px;"><strong>📌 슬라이드 6-15:</strong> 공간분석 및 발치 판단</p>
-                    <p style="margin: 8px 0 0 0; font-size: 13px;"><strong>📌 슬라이드 16-25:</strong> 안모분석 및 성장예측</p>
-                    <p style="margin: 8px 0 0 0; font-size: 13px;"><strong>📌 슬라이드 26-35:</strong> 부정교합별 진단</p>
-                    <p style="margin: 8px 0 0 0; font-size: 13px;"><strong>📌 슬라이드 36-45:</strong> 종합 케이스 분석</p>
-                </div>
+                <div class="resource-grid"></div>
             </div>
 
             <!-- 교과서 탭 -->
             <div id="textbooks" class="tab-content">
                 <h3>📖 명문출판사 교정학 교과서 (11개)</h3>
                 <p style="color: #666; margin-bottom: 20px;">체계적인 교정학 이론과 실습을 다루는 교과서</p>
-
-                <div class="resource-grid">
-                    <div class="resource-card">
-                        <h4>교과서 1</h4>
-                        <p>정상교합과 성장 개론</p>
-                        <span class="resource-badge">Phase 1</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 2</h4>
-                        <p>치아 배열의 원리</p>
-                        <span class="resource-badge">Phase 1</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 3</h4>
-                        <p>공간분석 이론</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 4</h4>
-                        <p>안모분석 및 성장예측</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 5</h4>
-                        <p>부정교합의 원인과 분류</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 6</h4>
-                        <p>수직 부정교합 진단</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 7</h4>
-                        <p>수평 부정교합 치료</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 8</h4>
-                        <p>치료 계획 수립</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 9</h4>
-                        <p>보정력과 력학</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 10</h4>
-                        <p>보정치료의 실제</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>교과서 11</h4>
-                        <p>유지와 안정성</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                </div>
+                <div class="resource-grid"></div>
             </div>
 
             <!-- 영상 탭 -->
             <div id="videos" class="tab-content">
                 <h3>🎬 강의 영상 (4개)</h3>
                 <p style="color: #666; margin-bottom: 20px;">개념 설명과 실습이 담긴 영상 자료</p>
-
-                <div class="resource-grid">
-                    <div class="resource-card">
-                        <h4>영상 1</h4>
-                        <p>EZM 기초 개념 설명</p>
-                        <span class="resource-badge">Phase 1</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>영상 2</h4>
-                        <p>공간분석 실습</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>영상 3</h4>
-                        <p>케이스 분석 워크숍</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>영상 4</h4>
-                        <p>플랫폼 사용법</p>
-                        <span class="resource-badge">Phase 3</span>
-                    </div>
-                </div>
+                <div class="resource-grid"></div>
             </div>
 
             <!-- 프레젠테이션 탭 -->
             <div id="presentations" class="tab-content">
                 <h3>📊 프레젠테이션 (9개)</h3>
                 <p style="color: #666; margin-bottom: 20px;">실제 임상 케이스와 분석 결과를 담은 프레젠테이션</p>
-
-                <div class="resource-grid">
-                    <div class="resource-card">
-                        <h4>프레젠테이션 1</h4>
-                        <p>Deep Bite 케이스 분석</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>프레젠테이션 2</h4>
-                        <p>Open Bite 치료 결과</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>프레젠테이션 3</h4>
-                        <p>Class II 부정교합 사례</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>프레젠테이션 4</h4>
-                        <p>Class III 부정교합 사례</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>프레젠테이션 5</h4>
-                        <p>전후방 치조골 부족</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>프레젠테이션 6</h4>
-                        <p>성인 복합 부정교합</p>
-                        <span class="resource-badge">Phase 2</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>프레젠테이션 7</h4>
-                        <p>GEO-AIO 도입 사례 1</p>
-                        <span class="resource-badge">Phase 3</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>프레젠테이션 8</h4>
-                        <p>GEO-AIO 도입 사례 2</p>
-                        <span class="resource-badge">Phase 3</span>
-                    </div>
-                    <div class="resource-card">
-                        <h4>프레젠테이션 9</h4>
-                        <p>GEO-AIO 도입 사례 3</p>
-                        <span class="resource-badge">Phase 3</span>
-                    </div>
-                </div>
+                <div class="resource-grid"></div>
             </div>
 
             <!-- 문서 탭 -->
             <div id="documents" class="tab-content">
                 <h3>📄 학습 문서 (21개)</h3>
                 <p style="color: #666; margin-bottom: 20px;">논문, 가이드, 참고자료 등</p>
-
                 <div style="padding: 15px; background: #d1fae5; border-radius: 6px; border-left: 4px solid #10b981; margin-bottom: 20px;">
-                    <p style="margin: 0;"><strong>💾 상세 자료는 Obsidian Vault와 resources/documents 폴더에서 확인하세요.</strong></p>
+                    <p style="margin: 0;"><strong>💾 모든 자료는 resources/documents 폴더에서 확인하세요.</strong></p>
                 </div>
             </div>
         </div>
@@ -437,6 +298,7 @@
     </div>
 
     <script src="common.js"></script>
+    <script src="js/resources.js"></script>
     <script>
         function switchTab(tabName) {
             const tabs = document.querySelectorAll('.tab-content');
