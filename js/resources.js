@@ -1,5 +1,66 @@
 // 교정학 플랫폼 - 자료 관리 시스템
 
+// 기본 요약 슬라이드 생성 (슬라이드 제목 기반)
+function generateDefaultSummaries(slideTitle) {
+    const templates = {
+        "안모분석 기초": [
+            { title: "안모분석의 정의", subtitle: "Facial Analysis Overview", image: "images/안모분석.png", content: ["안모분석은 환자의 얼굴 특성을 객관적으로 평가하는 교정 진단의 중요한 부분입니다.", "정상 안모의 특징을 이해하고 부정교합 환자의 안모 특성을 파악합니다.", "세팔로메트릭 분석과 임상 진찰을 결합하여 종합적인 평가를 수행합니다.", "개인의 미용적 특성과 생물학적 특성을 동시에 고려합니다."], keyPoints: ["얼굴 분석", "미용성 평가", "개인 특성", "종합 진단", "심미 목표"] },
+            { title: "정상 안모의 특징", subtitle: "Esthetic Characteristics", image: "images/안모분석.png", content: ["정상 안모는 특정한 미용적 특징을 가지고 있습니다.", "얼굴의 대칭성, 비율, 그리고 조화를 평가합니다.", "안면각, 입술 돌출도, 턱의 위치 등이 평가 대상입니다.", "이러한 특징들은 교정 치료의 목표 설정에 중요한 역할을 합니다."], keyPoints: ["대칭성", "비율", "조화", "입술 위치", "턱 위치"] },
+            { title: "측면 분석", subtitle: "Sagittal Analysis", image: "images/안모분석.png", content: ["측면에서 본 안모 분석은 전후방 관계를 평가합니다.", "이마, 코, 입술, 턱의 위치와 돌출도를 측정합니다.", "안면각, 입술각, 턱의 각도 등을 분석합니다.", "부정교합의 골격적 특성을 파악하는 데 중요합니다."], keyPoints: ["전후방", "돌출도", "각도", "골격 특성", "미학"] },
+            { title: "정면 분석", subtitle: "Frontal Analysis", image: "images/안모분석.png", content: ["정면에서 본 안모의 대칭성과 비율을 평가합니다.", "양쪽의 높이, 폭, 그리고 비대칭을 평가합니다.", "얼굴의 세로비율과 가로비율을 측정합니다.", "치열의 정렬과 미소 라인을 평가합니다."], keyPoints: ["대칭성", "비율", "정렬", "미소", "얼굴폭"] },
+            { title: "안모와 교합의 관계", subtitle: "Facial-Dental Relationship", image: "images/안모분석.png", content: ["안모와 교합은 밀접한 관계가 있습니다.", "부정교합이 안모에 미치는 영향을 이해합니다.", "치료를 통한 안모 변화를 예측할 수 있습니다.", "환자의 심미적 요구와 생물학적 현실의 균형을 맞춥니다."], keyPoints: ["상관관계", "영향 평가", "변화 예측", "심미 목표", "협력"] },
+            { title: "성장과 안모 변화", subtitle: "Growth and Facial Changes", image: "images/안모분석.png", content: ["성장 과정에서 안모는 변합니다.", "성장 방향에 따른 안모 변화를 예측합니다.", "수평 성장과 수직 성장의 안모적 차이를 이해합니다.", "성장기 교정 치료 계획에 이러한 예측을 반영합니다."], keyPoints: ["성장 예측", "방향", "변화", "시간적 변화", "치료 계획"] },
+            { title: "개인 특성 고려", subtitle: "Individual Characteristics", image: "images/안모분석.png", content: ["각 개인의 안모 특성은 다릅니다.", "인종적, 문화적, 유전적 특성을 고려합니다.", "개인의 선호도와 미용 기준을 존중합니다.", "이를 통해 맞춤형 치료 목표를 설정합니다."], keyPoints: ["개인차", "인종 특성", "문화", "유전", "선호도"] },
+            { title: "안모분석과 진단", subtitle: "Analysis to Diagnosis", image: "images/안모분석.png", content: ["안모분석 결과는 부정교합 진단에 활용됩니다.", "세팔로메트릭 분석과 통합하여 종합 진단을 수행합니다.", "안모적 특성이 부정교합의 원인이나 특성을 나타냅니다.", "이를 바탕으로 치료 계획을 수립합니다."], keyPoints: ["통합 진단", "세팔로 연결", "원인 파악", "특성 분석", "계획 수립"] },
+            { title: "안모 개선의 목표", subtitle: "Aesthetic Goals", image: "images/안모분석.png", content: ["교정 치료의 주요 목표 중 하나는 안모 개선입니다.", "기능적 개선과 심미적 개선을 동시에 추구합니다.", "환자가 만족하는 결과를 달성하는 것이 중요합니다.", "이를 위해 치료 전 계획과 예측이 필수적입니다."], keyPoints: ["미학 개선", "기능성", "환자 만족", "예측", "결과"] },
+            { title: "안모분석 실습", subtitle: "Practical Application", image: "images/안모분석.png", content: ["이론을 바탕으로 실제 환자 케이스에 적용합니다.", "다양한 안모 유형을 분석하고 분류합니다.", "각 케이스에 맞는 분석 기법을 적용합니다.", "다음 단계인 세팔로메트릭 분석으로 진행합니다."], keyPoints: ["실습", "케이스 분석", "기법 적용", "분류", "다음 단계"] }
+        ],
+        "세팔로메트릭 분석": Array.from({length: 10}, (_, i) => ({
+            title: `세팔로 분석 ${i+1}`,
+            subtitle: "Cephalometric Landmarks",
+            image: "images/세팔로.png",
+            content: [
+                "세팔로메트릭 분석은 교정 진단의 핵심 도구입니다.",
+                "두부 X선 사진에서 특정 점과 선을 표시하여 분석합니다.",
+                "해부학적 구조의 정확한 위치와 각도를 측정합니다.",
+                "이를 통해 골격과 치아의 3차원적 관계를 파악합니다."
+            ],
+            keyPoints: ["X선 분석", "랜드마크", "각도", "거리", "비율"]
+        })),
+        "성장 예측": Array.from({length: 10}, (_, i) => ({
+            title: `성장 예측 ${i+1}`,
+            subtitle: "Growth Prediction Methods",
+            image: "images/성장예측.png",
+            content: [
+                "성장 예측은 교정 치료 계획의 기초입니다.",
+                "이전 성장 기록으로부터 향후 성장을 예측합니다.",
+                "각 환자의 성장 양상과 방향을 파악합니다.",
+                "이를 바탕으로 최적의 치료 시기를 결정합니다."
+            ],
+            keyPoints: ["성장률", "예측식", "방향", "시간", "계획"]
+        }))
+    };
+
+    // 기본 템플릿 (부제목, 이미지 없는 경우)
+    if (templates[slideTitle]) {
+        return templates[slideTitle];
+    }
+
+    // 일반적인 기본 요약 생성
+    return Array.from({length: 10}, (_, i) => ({
+        title: `${slideTitle} - 주제 ${i+1}`,
+        subtitle: "Learning Content",
+        image: "images/default.png",
+        content: [
+            `이 슬라이드의 핵심 개념 ${i+1}을 학습합니다.`,
+            `${slideTitle}과 관련된 중요한 특성과 원리를 이해합니다.`,
+            `임상적 적용과 실무에서의 활용 방법을 배웁니다.`,
+            `다음 단계의 학습으로 나아가기 위한 기초를 다집니다.`
+        ],
+        keyPoints: ["핵심개념", "이해", "적용", "실무", "진행"]
+    }));
+}
+
 // 각 슬라이드의 10개 요약 슬라이드 생성 (실제 학습 내용 포함)
 function generateSummarySlidesForSlide(slideId, slideTitle) {
     const slides = {
@@ -246,7 +307,7 @@ function generateSummarySlidesForSlide(slideId, slideTitle) {
                 ],
                 keyPoints: ["기준점 설정", "편차 인식", "평형대 파악", "다음 단계", "통합 학습"]
             }
-        ]
+        ],
         8: [ // 발치 판단 기준 - Extraction Decision Criteria
             { title: "발치의 적응증", subtitle: "언제 발치할 것인가?", image: "images/발치판단.png", content: ["발치는 교정 치료의 중요한 결정 사항입니다. 발치의 주요 적응증은 공간 부족(crowding)이 4mm 이상일 때입니다. 이는 가장 객관적인 기준이며, 공간분석을 통해 정량화할 수 있습니다. 공간 부족이 비발치 비수술로 해결될 수 없는 경우, 발치를 고려합니다.", "또한 부정교합의 심각도도 중요한 기준입니다. Class II나 Class III를 가진 환자에서 발치를 통한 공간 확보가 필요할 때, 발치를 고려할 수 있습니다. 특히 Class II 분할 1에서 상악 전치의 심한 전경이 있는 경우, 발치를 통해 전치를 후방으로 이동시킬 수 있습니다.", "치아의 크기 불조화(size discrepancy)도 발치의 적응증이 될 수 있습니다. Bolton 비율이 비정상인 경우, 순수 비발치 치료만으로는 완벽한 교합을 달성할 수 없을 수 있으며, IPR(interproximal reduction)과 함께 발치를 고려할 수 있습니다.", "환자의 나이와 성장 단계도 발치 결정에 영향을 미칩니다. 성장기 환자의 경우 성장의 유리한 측면을 활용할 수 있으므로 발치를 피할 수 있는 경우도 있습니다. 반면 성장이 종료된 성인에서는 공간분석 결과가 더욱 중요합니다."], keyPoints: ["공간 부족", "부정교합 심각도", "크기 불조화", "나이 고려", "성장 예측"] },
             { title: "발치의 금기증", subtitle: "발치하지 말아야 할 경우", image: "images/발치판단.png", content: ["발치의 금기증 중 가장 중요한 것은 공간 부족이 경미한 경우입니다. 공간 부족이 2-3mm 미만이고, 다른 방법(확대, 원근 이동 등)으로 해결 가능한 경우에는 발치를 피할 수 있습니다.", "또한 환자가 치아를 매우 소중하게 생각하는 경우도 금기증이 될 수 있습니다. 건강한 영구치의 발치는 일생 동안의 영향을 미치므로, 환자의 동의와 충분한 설명이 필수적입니다.", "특정 부위의 공간 부족은 발치보다 다른 방법이 더 적절할 수 있습니다. 예를 들어, 상악 협착으로 인한 crowding은 상악 확대로 충분히 해결될 수 있으며, 이 경우 발치는 불필요합니다.", "또한 현재의 교정 기술 발전으로, 많은 경우에 비발치 치료가 가능해졌습니다. 따라서 발치 여부는 단순히 공간분석 결과만을 기준으로 하지 않고, 다양한 치료 옵션의 가능성을 함께 고려하여 결정해야 합니다."], keyPoints: ["경미한 공간", "환자 동의", "대체 방법", "기술 발전", "유연한 판단"] },
@@ -273,7 +334,11 @@ function generateSummarySlidesForSlide(slideId, slideTitle) {
     }));
 }
 
-        3: [ // 부정교합의 분류
+const resourcesData = {
+    slides: [
+        { id: 1, title: "슬라이드 1", desc: "EZM 개념의 정의 및 역사", phase: "Phase 1", category: "기초 개념", file: "slides/01_EZM_개념.pdf" },
+        { id: 2, title: "슬라이드 2", desc: "정상교합의 특징", phase: "Phase 1", category: "기초 개념", file: "slides/02_정상교합.pdf" },
+        { id: 3, title: "슬라이드 3", desc: "부정교합의 분류", phase: "Phase 1", category: "기초 개념", file: "slides/03_부정교합분류.pdf" },
             {
                 title: "부정교합의 정의",
                 subtitle: "정상 범위를 벗어난 교합",
@@ -566,9 +631,7 @@ function generateSummarySlidesForSlide(slideId, slideTitle) {
                 ],
                 keyPoints: ["실습 필요", "케이스 분석", "개인차 인식", "다음 주제", "통합 학습"]
             }
-        ]
-    };
-
+        ],
         6: [ // 공간분석 입문 (Space analysis introduction)
             { title: "공간분석의 정의", subtitle: "Space Analysis 개요", image: "images/공간분석.png", content: ["공간분석은 치열궁에서 사용 가능한 공간과 치아가 필요로 하는 공간을 비교하여, 부정교합의 원인을 파악하고 치료 계획을 수립하는 분석 방법입니다. 이는 특히 crowding(치아 배열 부족)이나 spacing(과도한 공간)을 진단하는 데 필수적입니다. 공간분석을 통해 발치의 필요성을 객관적으로 판단할 수 있으며, 치료 계획의 정확성을 높일 수 있습니다.", "공간분석의 기본 원리는 간단합니다. 각 치아의 폭경을 모두 합한 값이 사용 가능한 공간보다 크면 crowding이 발생하고, 작으면 spacing이 발생합니다. 유치열에서 영구치열로의 전환 과정에서 또는 영구치열에서 crowding이 있을 때, 이 분석을 통해 자연적 개선 가능성과 치료 필요성을 판단할 수 있습니다.", "공간분석은 정량적이므로 객관적인 진단이 가능합니다. 의사의 주관적 판단에 의존하지 않고, 계측 수치를 통해 발치 필요성을 결정할 수 있습니다. 이는 환자와의 커뮤니케이션에서도 이점이 있으며, 치료 계획의 정당성을 설명할 때 설득력이 높습니다.", "EZM의 관점에서도 공간분석은 개인의 특성을 고려한 분석입니다. 표준적인 공간분석 방법을 기본으로 하면서도, 개인의 골격 특성과 성장 예측을 함께 고려하여 최종적인 치료 계획을 수립하게 됩니다."], keyPoints: ["정의", "부정교합 원인", "발치 판단", "객관적 분석", "개인 특성"] },
             { title: "사용 가능한 공간의 측정", subtitle: "Available Space 계산", image: "images/공간분석.png", content: ["사용 가능한 공간은 치열궁의 길이(arch length)에서 보철적 공간(prosthetic space)을 뺀 값입니다. 측면 세팔로 사진과 석고 모형을 이용하여 측정합니다. 먼저 치열궁의 정중선에서 양쪽 제1대구치의 원심까지의 거리를 측정합니다. 이 거리가 곧 각 측면에서 사용 가능한 공간의 기초가 됩니다.", "정확한 공간 측정을 위해서는 치열궁의 형태를 정확하게 파악해야 합니다. parabolic 형태의 치열궁과 U-shaped 형태의 치열궁은 다른 분석 방법을 필요로 할 수 있습니다. 현대에는 디지털 모델 분석을 통해 더욱 정확한 공간 측정이 가능하며, 각 치아의 mesiodistal 거리를 정확하게 계산할 수 있습니다.", "보철적 공간은 치아의 두께를 나타내는 개념으로, 대구치 부위의 교합면 폭경(buccolingual width)을 고려합니다. 특히 하악 제1대구치의 경우, buccolingual 폭경이 크면 더 많은 공간을 차지하게 됩니다. 이를 정확하게 측정하여 사용 가능한 공간을 계산하는 것이 공간분석의 정확성을 높입니다.", "사용 가능한 공간의 계산은 성장 단계에 따라 달라질 수 있습니다. 성장기 환자의 경우, 성장에 따른 공간 변화를 예측해야 합니다. 특히 transverse development(폭경 증가)가 예상되는 경우, 현재의 공간 부족이 성장에 의해 해소될 가능성이 있습니다. 따라서 공간분석은 현재의 상태뿐만 아니라, 예상되는 성장을 고려한 미래의 공간을 함께 분석해야 합니다."], keyPoints: ["측정 방법", "치열궁 길이", "보철적 공간", "정확도", "성장 고려"] },
@@ -588,111 +651,54 @@ function generateSummarySlidesForSlide(slideId, slideTitle) {
             { title: "특수한 상황의 공간분석", subtitle: "선천적 결손과 초과", image: "images/공간분석.png", content: ["일부 환자는 치아의 선천적 결손(agenesis)이나 초과 치아(supernumerary teeth)를 가지고 있으며, 이는 공간분석을 복잡하게 만듭니다. 선천적으로 치아가 없는 경우, 그 치아의 MD 크기를 필요 공간에서 제외해야 합니다.", "또한 조기 유치 상실, 또는 충치 등으로 인해 치아가 손실된 경우도 고려해야 합니다. 이 경우 현재의 공간 상황뿐만 아니라, 향후 보철이나 임플란트 계획도 함께 고려하여 공간분석을 수행해야 합니다.", "초과 치아가 있는 경우, 이들을 제거할 것인지 보존할 것인지의 결정도 공간분석 결과를 반영하여 이루어져야 합니다. 초과 치아의 위치와 크기에 따라, 공간 상황이 크게 달라질 수 있습니다.", "이러한 특수한 상황들은 EZM의 개인 맞춤 진단의 중요성을 잘 보여줍니다. 표준화된 공간분석 방법을 기초로 하면서도, 개인의 특수한 상황을 고려하여 유연하게 분석하고 치료 계획을 수립해야 합니다."], keyPoints: ["선천적 결손", "치아 초과", "조기 상실", "보철 계획", "유연한 분석"] },
             { title: "공간분석과 발치 위치 결정", subtitle: "어느 치아를 발치할 것인가?", image: "images/공간분석.png", content: ["발치가 필요하다고 결정한 후에는, 어느 치아를 발치할 것인지를 결정해야 합니다. 일반적으로 제1소구치의 발치가 가장 널리 사용되는 방법입니다. 제1소구치는 부정교합을 교정하기에 적절한 크기와 위치를 가지고 있으며, 이 부위의 공간 폐쇄가 가장 용이하기 때문입니다.", "그러나 특수한 경우에는 다른 위치의 발치를 고려할 수 있습니다. 예를 들어, Class III를 가진 환자에서는 하악 제1소구치 대신 제2소구치를 발치할 수도 있습니다. 또는 상악 제1대구치를 발치하는 경우도 있습니다. 이러한 결정은 부정교합의 유형, 골격 특성, 그리고 미용 목표를 종합하여 이루어집니다.", "또한 발치 부위의 선택도 공간분석 결과와 밀접한 관련이 있습니다. 공간 부족이 주로 전치부에 있는지, 아니면 후방에 있는지에 따라, 발치의 위치도 달라질 수 있습니다.", "최종적으로, 어느 치아를 발치할 것인지의 결정은 개인의 부정교합 특성, 성장 예측, 심미적 목표, 그리고 현대 교정 기술의 가능성을 모두 종합하여 이루어집니다. 이것이 진정한 의미의 개인 맞춤 진단입니다."], keyPoints: ["위치 선택", "제1소구치", "특수한 경우", "부정교합 유형", "종합 판단"] },
             { title: "공간분석의 한계와 개선", subtitle: "다음 단계로", image: "images/공간분석.png", content: ["공간분석은 매우 객관적이고 유용한 도구이지만, 한계도 있습니다. 첫째, 2D 석고 모형 분석은 치아의 버클리기우스 위치를 정확하게 반영하지 못합니다. 치아가 협측으로 경사되어 있으면 실제 MD 크기보다 작게 측정될 수 있습니다.", "둘째, 공간분석은 치아 크기와 치열궁 길이만을 고려하며, 개별 치아의 경사, 안면미학, 또는 턱관절 건강 등의 다른 요소들은 고려하지 않습니다.", "셋째, 공간분석은 정적인 분석이므로, 치료 과정 중의 동적 변화를 예측하지 못합니다. 치료 중에 예상하지 못한 문제가 발생할 수 있으며, 이에 대응하기 위해서는 정기적인 추적과 계획 수정이 필요합니다.", "따라서 공간분석은 훌륭한 도구이지만, 이것만으로 모든 진단 결정을 내릴 수 없습니다. 공간분석 결과를 바탕으로, 세팔로메트릭 분석, 임상 평가, 성장 예측, 그리고 심미적 판단을 모두 종합하여, 최종적인 진단과 치료 계획을 수립해야 합니다. 이것이 EZM의 핵심 철학입니다."], keyPoints: ["2D의 한계", "다른 요소", "정적 분석", "추적 필요", "통합 진단"] }
-        ]
+        ],
+        8: [ // 발치 판단 기준 (Extraction Decision Criteria) - existing content continued
+            { title: "발치의 임상 적응증", subtitle: "발치가 필요한 경우", image: "images/발치판단.png", content: ["발치는 다음과 같은 경우에 적응됩니다. 첫째, 심한 공간 부족(space discrepancy 5mm 이상)이 있을 때입니다. 이 경우 비발치 치료로는 과도한 전치 협설 경사를 야기하거나 치료 기간이 지나치게 연장될 수 있습니다.", "둘째, 부정교합의 유형이 발치를 필요로 할 때입니다. 예를 들어, 심한 Class II 부정교합에서 상악 전치의 협설 경사가 있거나 하악의 공간 부족이 있는 경우, 발치가 필요할 수 있습니다.", "셋째, 안면미학적 목표 달성을 위해 필요할 때입니다. 과도한 입술 돌출을 가진 환자에서 발치를 통한 전치 후방 이동이 미학적 개선을 위해 필요할 수 있습니다.", "넷째, 치주 상태가 좋지 않은 치아가 있을 때입니다. 회복 불가능한 우식이나 치주 질환이 있는 치아는 발치의 대상이 될 수 있으며, 이를 통해 공간 문제 해결과 치료를 동시에 달성할 수 있습니다."], keyPoints: ["임상 적응증", "공간 부족", "부정교합 유형", "미학적 목표", "치주 상태"] },
+            { title: "비발치 치료의 조건", subtitle: "발치 없이 가능한 경우", image: "images/발치판단.png", content: ["비발치 치료가 가능한 경우는 다음과 같습니다. 첫째, space discrepancy가 4mm 이하일 때입니다. 이 경우 치열궁 확대나 원근 이동을 통해 충분한 공간을 확보할 수 있습니다.", "둘째, 상악의 협착이 주요 원인일 때입니다. 상악 확대를 통해 폭경을 증가시킬 수 있으며, 특히 성장기 환자에서는 더욱 효과적입니다.", "셋째, 성장이 진행 중이고 성장 방향이 유리할 때입니다. 특히 수평 성장 양상을 보이는 환자는 transverse와 anteroposterior 성장이 충분할 가능성이 높습니다.", "넷째, 환자의 나이와 성장 예측을 고려했을 때, 향후 자연적 개선 가능성이 있을 때입니다. 혼합치열기의 약간의 공간 부족은 leeway space에 의해 자연적으로 해결될 수 있습니다."], keyPoints: ["공간 기준", "상악 확대", "성장 고려", "자연적 개선", "환자 나이"] },
+            { title: "성인 환자의 발치 판단", subtitle: "성장이 완료된 환자", image: "images/발치판단.png", content: ["성인 환자의 경우, 추가적인 성장이 없으므로 현재의 공간분석 결과가 더욱 중요합니다. 성인에서 추가적인 폭경 성장은 기대할 수 없으므로, space discrepancy의 평가가 발치 판단에 절대적입니다.", "성인 환자에서 비발치 치료는 더욱 제한적입니다. 일반적으로 2-3mm 이상의 공간 부족이 있는 경우, 발치를 고려하는 것이 더욱 현실적입니다. 비발치 치료는 치열궁 확대로 인한 치주 문제의 위험이 높기 때문입니다.", "다만 현대의 디스탈라이저나 3D 교정 기술의 발전으로, 성인에서도 선택적 비발치 치료가 가능해졌습니다. 특히 경계선 케이스(borderline cases)에서는 이러한 기술을 활용하여 발치 없이 치료할 수 있습니다.", "성인 환자의 경우, 추가적으로 심미적 요구와 기능적 안정성을 함께 고려해야 합니다. 입술 돌출도, 안모 밸런스, 그리고 장기적인 안정성을 모두 종합하여 발치 여부를 결정합니다."], keyPoints: ["성장 부재", "엄격한 기준", "기술 활용", "심미성", "장기 안정성"] },
+            { title: "성장기 환자와 발치 시기", subtitle: "조기 발치 vs 지연 발치", image: "images/발치판단.png", content: ["성장기 환자에서 발치 시기를 결정하는 것은 중요한 임상 결정입니다. 조기 발치(early extraction)는 혼합치열기에 발치하는 경우로, 유치가 아직 남아있을 때 영구치를 발치합니다. 이 경우 유치의 유지 기능을 상실하게 되며, 공간의 폐쇄 속도가 빠를 수 있습니다.", "조기 발치의 장점은 첫째, 향후 치료 기간을 단축할 수 있다는 점입니다. 둘째, crowding의 악화를 조기에 방지할 수 있습니다. 셋째, 환자의 심리적 불편감을 조기에 해소할 수 있습니다.", "반면 지연 발치(delayed extraction)는 모든 영구치가 맹출된 후에 발치하는 경우입니다. 이 경우 유치의 유지 기능을 최대한 활용할 수 있고, 성장의 이익을 최대한 누릴 수 있습니다.", "발치 시기의 결정은 개인의 공간 부족의 정도, 성장 예측, 환자의 심리적 상태, 그리고 부정교합의 유형을 종합하여 이루어집니다. 조기 발치가 모든 경우에 유리한 것은 아니며, 개인 맞춤형 접근이 필요합니다."], keyPoints: ["조기 발치", "지연 발치", "유지 기능", "성장 이익", "개인 판단"] },
+            { title: "부정교합 유형별 발치 전략", subtitle: "Class별 발치 계획", image: "images/발치판단.png", content: ["Class I 부정교합에서의 발치 전략은 주로 공간분석 결과에 기반합니다. 일반적으로 공간 부족이 있으면 비대칭적인 발치를 고려할 수 있으며, 특정 부위의 공간 부족만 있으면 그 부위의 선택적 발치를 고려합니다.", "Class II 부정교합에서는 상악 발치가 일반적입니다. 상악 제1소구치의 발치를 통해 상악 전치를 후방으로 이동시켜, Class II 관계를 개선할 수 있습니다. 다만 하악의 공간 상황도 함께 평가해야 합니다.", "Class III 부정교합에서는 하악 발치가 필수적일 수 있습니다. 특히 하악 프로그나시즘이 있는 경우, 하악 발치를 통해 하악 전치를 후방으로 이동시켜 부정교합을 개선합니다.", "각 부정교합 유형에서의 발치 위치와 개수는 공간분석과 세팔로메트릭 분석 결과에 기반하여 결정됩니다. EZM의 관점에서는 개인의 평형대를 고려하여, 그 개인에게 가장 현실적인 발치 계획을 수립합니다."], keyPoints: ["Class별 전략", "상악 발치", "하악 발치", "위치 결정", "개인 특성"] },
+            { title: "발치와 심미성", subtitle: "미용적 고려사항", image: "images/발치판단.png", content: ["발치는 치료 효율성뿐만 아니라 심미적 결과에도 큰 영향을 미칩니다. 일반적으로 발치로 인한 전치 후방 이동은 입술 돌출도를 감소시킵니다. 과도한 입술 돌출이 있는 환자의 경우, 발치를 통해 심미적 개선을 달성할 수 있습니다.", "그러나 과도한 발치나 부적절한 발치는 입술 함몰과 노인같은 외모를 야기할 수 있습니다. 특히 아프리카계 환자들의 경우, 발치에 의한 입술 후퇴가 심미적으로 부정적일 수 있으므로, 신중한 판단이 필요합니다.", "발치 후의 공간 폐쇄 과정도 심미성에 영향을 미칩니다. 부적절한 공간 폐쇄는 검은 삼각형(black triangle)의 형성으로 이어질 수 있으며, 이는 미용적 문제를 야기합니다.", "따라서 발치 판단 시에는 공간분석과 부정교합 교정이라는 기능적 목표뿐만 아니라, 심미적 목표도 함께 고려해야 합니다. 개인의 안면미학적 특성, 문화적 배경, 그리고 환자의 미용 기준을 모두 종합하여 발치 여부를 결정합니다."], keyPoints: ["입술 돌출", "입술 함몰", "안모 변화", "공간 폐쇄", "개인 기준"] },
+            { title: "발치 부위의 공간 폐쇄", subtitle: "발치 후 치료 계획", image: "images/발치판단.png", content: ["발치를 결정한 후에는, 발치 부위의 공간을 효율적으로 폐쇄하는 것이 중요합니다. 공간 폐쇄의 방법은 전치의 후방 이동, 후방 치아의 전방 이동, 또는 둘의 복합으로 이루어집니다.", "공간 폐쇄의 비율은 부정교합의 유형에 따라 달라집니다. Class II를 가진 환자의 상악 발치의 경우, 전치의 후방 이동이 많을 수 있습니다. 반면 Class III를 가진 환자의 경우, 후방 치아의 이동을 최소화해야 할 수 있습니다.", "공간 폐쇄 과정 중에는 여러 가지 부작용이 발생할 수 있습니다. 예를 들어, 개구(open bite)의 악화, 검은 삼각형의 형성, 또는 부정적인 안모 변화가 발생할 수 있습니다. 이러한 부작용을 최소화하기 위해서는 정확한 기계적 제어가 필요합니다.", "현대의 교정학에서는 공간 폐쇄 속도를 조절하여, 부정적인 부작용을 최소화하면서도 효율적인 치료를 달성하려고 합니다. 또한 final positioning의 정확성이 매우 중요합니다."], keyPoints: ["공간 폐쇄", "비율 결정", "부작용 최소화", "기계적 제어", "최종 위치"] }
+        ],
+        9: generateDefaultSummaries("안모분석 기초"),
+        10: generateDefaultSummaries("세팔로메트릭 분석"),
+        11: generateDefaultSummaries("성장 예측"),
+        12: generateDefaultSummaries("성장 방향 분석"),
+        13: generateDefaultSummaries("Class I 진단"),
+        14: generateDefaultSummaries("Class II 진단"),
+        15: generateDefaultSummaries("Class III 진단"),
+        16: generateDefaultSummaries("수직 부정교합"),
+        17: generateDefaultSummaries("수평 부정교합"),
+        18: generateDefaultSummaries("치료계획 수립"),
+        19: generateDefaultSummaries("치료 방법론"),
+        20: generateDefaultSummaries("장치 선택"),
+        21: generateDefaultSummaries("Case Study 1"),
+        22: generateDefaultSummaries("Case Study 2"),
+        23: generateDefaultSummaries("Case Study 3"),
+        24: generateDefaultSummaries("AI 진단 개론"),
+        25: generateDefaultSummaries("GEO-AIO 소개"),
+        26: generateDefaultSummaries("AI 진단 프로세스"),
+        27: generateDefaultSummaries("AI 검증 방법"),
+        28: generateDefaultSummaries("플랫폼 도입 사례 1"),
+        29: generateDefaultSummaries("플랫폼 도입 사례 2"),
+        30: generateDefaultSummaries("플랫폼 도입 사례 3"),
+        31: generateDefaultSummaries("고급 진단 기법"),
+        32: generateDefaultSummaries("3D 분석"),
+        33: generateDefaultSummaries("CBCT 활용"),
+        34: generateDefaultSummaries("디지털 계획"),
+        35: generateDefaultSummaries("AI 통합 워크플로우"),
+        36: generateDefaultSummaries("복합 부정교합"),
+        37: generateDefaultSummaries("성인 케이스"),
+        38: generateDefaultSummaries("수술 병합 케이스"),
+        39: generateDefaultSummaries("미니스크류 활용"),
+        40: generateDefaultSummaries("심미성 최적화"),
+        41: generateDefaultSummaries("미소 디자인"),
+        42: generateDefaultSummaries("리테이너 관리"),
+        43: generateDefaultSummaries("장기 안정성"),
+        44: generateDefaultSummaries("임상 토론 1"),
+        45: generateDefaultSummaries("임상 토론 2")
     };
-
-const resourcesData = {
-    slides: [
-        { id: 1, title: "슬라이드 1", desc: "EZM 개념의 정의 및 역사", phase: "Phase 1", category: "기초 개념", file: "slides/01_EZM_개념.pdf" },
-        { id: 2, title: "슬라이드 2", desc: "정상교합의 특징", phase: "Phase 1", category: "기초 개념", file: "slides/02_정상교합.pdf" },
-        { id: 3, title: "슬라이드 3", desc: "부정교합의 분류", phase: "Phase 1", category: "기초 개념", file: "slides/03_부정교합분류.pdf" },
-        { id: 4, title: "슬라이드 4", desc: "성장 패턴 분석", phase: "Phase 1", category: "기초 개념", file: "slides/04_성장패턴.pdf" },
-        { id: 5, title: "슬라이드 5", desc: "진단의 기초", phase: "Phase 1", category: "기초 개념", file: "slides/05_진단기초.pdf" },
-        { id: 6, title: "슬라이드 6", desc: "공간분석 입문", phase: "Phase 2", category: "공간분석", file: "slides/06_공간분석1.pdf" },
-        { id: 7, title: "슬라이드 7", desc: "공간분석 심화", phase: "Phase 2", category: "공간분석", file: "slides/07_공간분석2.pdf" },
-        { id: 8, title: "슬라이드 8", desc: "발치 판단 기준", phase: "Phase 2", category: "공간분석", file: "slides/08_발치판단.pdf" },
-        { id: 9, title: "슬라이드 9", desc: "안모분석 기초", phase: "Phase 2", category: "안모분석", file: "slides/09_안모분석1.pdf" },
-        { id: 10, title: "슬라이드 10", desc: "세팔로메트릭 분석", phase: "Phase 2", category: "안모분석", file: "slides/10_세팔로.pdf" },
-        { id: 11, title: "슬라이드 11", desc: "성장 예측", phase: "Phase 2", category: "성장예측", file: "slides/11_성장예측.pdf" },
-        { id: 12, title: "슬라이드 12", desc: "성장 방향 분석", phase: "Phase 2", category: "성장예측", file: "slides/12_성장방향.pdf" },
-        { id: 13, title: "슬라이드 13", desc: "Class I 진단", phase: "Phase 2", category: "부정교합진단", file: "slides/13_ClassI.pdf" },
-        { id: 14, title: "슬라이드 14", desc: "Class II 진단", phase: "Phase 2", category: "부정교합진단", file: "slides/14_ClassII.pdf" },
-        { id: 15, title: "슬라이드 15", desc: "Class III 진단", phase: "Phase 2", category: "부정교합진단", file: "slides/15_ClassIII.pdf" },
-        { id: 16, title: "슬라이드 16", desc: "수직 부정교합", phase: "Phase 2", category: "부정교합진단", file: "slides/16_수직.pdf" },
-        { id: 17, title: "슬라이드 17", desc: "수평 부정교합", phase: "Phase 2", category: "부정교합진단", file: "slides/17_수평.pdf" },
-        { id: 18, title: "슬라이드 18", desc: "치료계획 수립", phase: "Phase 2", category: "치료계획", file: "slides/18_치료계획1.pdf" },
-        { id: 19, title: "슬라이드 19", desc: "치료 방법론", phase: "Phase 2", category: "치료계획", file: "slides/19_치료계획2.pdf" },
-        { id: 20, title: "슬라이드 20", desc: "장치 선택", phase: "Phase 2", category: "치료계획", file: "slides/20_장치선택.pdf" },
-        { id: 21, title: "슬라이드 21", desc: "Case Study 1", phase: "Phase 2", category: "케이스분석", file: "slides/21_Case1.pdf" },
-        { id: 22, title: "슬라이드 22", desc: "Case Study 2", phase: "Phase 2", category: "케이스분석", file: "slides/22_Case2.pdf" },
-        { id: 23, title: "슬라이드 23", desc: "Case Study 3", phase: "Phase 2", category: "케이스분석", file: "slides/23_Case3.pdf" },
-        { id: 24, title: "슬라이드 24", desc: "AI 진단 개론", phase: "Phase 3", category: "AI플랫폼", file: "slides/24_AI개론.pdf" },
-        { id: 25, title: "슬라이드 25", desc: "GEO-AIO 소개", phase: "Phase 3", category: "AI플랫폼", file: "slides/25_GEO_AIO.pdf" },
-        { id: 26, title: "슬라이드 26", desc: "AI 진단 프로세스", phase: "Phase 3", category: "AI플랫폼", file: "slides/26_AI프로세스.pdf" },
-        { id: 27, title: "슬라이드 27", desc: "AI 검증 방법", phase: "Phase 3", category: "AI플랫폼", file: "slides/27_AI검증.pdf" },
-        { id: 28, title: "슬라이드 28", desc: "플랫폼 도입 사례 1", phase: "Phase 3", category: "도입사례", file: "slides/28_도입1.pdf" },
-        { id: 29, title: "슬라이드 29", desc: "플랫폼 도입 사례 2", phase: "Phase 3", category: "도입사례", file: "slides/29_도입2.pdf" },
-        { id: 30, title: "슬라이드 30", desc: "플랫폼 도입 사례 3", phase: "Phase 3", category: "도입사례", file: "slides/30_도입3.pdf" },
-        { id: 31, title: "슬라이드 31", desc: "고급 진단 기법", phase: "Phase 2", category: "고급주제", file: "slides/31_고급진단.pdf" },
-        { id: 32, title: "슬라이드 32", desc: "3D 분석", phase: "Phase 3", category: "고급주제", file: "slides/32_3D분석.pdf" },
-        { id: 33, title: "슬라이드 33", desc: "CBCT 활용", phase: "Phase 3", category: "고급주제", file: "slides/33_CBCT.pdf" },
-        { id: 34, title: "슬라이드 34", desc: "디지털 계획", phase: "Phase 3", category: "고급주제", file: "slides/34_디지털계획.pdf" },
-        { id: 35, title: "슬라이드 35", desc: "AI 통합 워크플로우", phase: "Phase 3", category: "고급주제", file: "slides/35_통합워크플로우.pdf" },
-        { id: 36, title: "슬라이드 36", desc: "복합 부정교합", phase: "Phase 2", category: "특수케이스", file: "slides/36_복합.pdf" },
-        { id: 37, title: "슬라이드 37", desc: "성인 케이스", phase: "Phase 2", category: "특수케이스", file: "slides/37_성인.pdf" },
-        { id: 38, title: "슬라이드 38", desc: "수술 병합 케이스", phase: "Phase 3", category: "특수케이스", file: "slides/38_수술.pdf" },
-        { id: 39, title: "슬라이드 39", desc: "미니스크류 활용", phase: "Phase 3", category: "특수케이스", file: "slides/39_미니스크류.pdf" },
-        { id: 40, title: "슬라이드 40", desc: "심미성 최적화", phase: "Phase 2", category: "심미치료", file: "slides/40_심미.pdf" },
-        { id: 41, title: "슬라이드 41", desc: "미소 디자인", phase: "Phase 3", category: "심미치료", file: "slides/41_미소디자인.pdf" },
-        { id: 42, title: "슬라이드 42", desc: "리테이너 관리", phase: "Phase 2", category: "유지관리", file: "slides/42_리테이너.pdf" },
-        { id: 43, title: "슬라이드 43", desc: "장기 안정성", phase: "Phase 3", category: "유지관리", file: "slides/43_안정성.pdf" },
-        { id: 44, title: "슬라이드 44", desc: "임상 토론 1", phase: "Phase 3", category: "토론", file: "slides/44_토론1.pdf" },
-        { id: 45, title: "슬라이드 45", desc: "임상 토론 2", phase: "Phase 3", category: "토론", file: "slides/45_토론2.pdf" }
-    ],
-    textbooks: [
-        { id: 1, title: "교과서 1", desc: "정상교합과 성장 개론", phase: "Phase 1", publisher: "명문출판", file: "documents/textbook_01_정상교합.pdf" },
-        { id: 2, title: "교과서 2", desc: "치아 배열의 원리", phase: "Phase 1", publisher: "명문출판", file: "documents/textbook_02_치아배열.pdf" },
-        { id: 3, title: "교과서 3", desc: "공간분석 이론", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_03_공간분석.pdf" },
-        { id: 4, title: "교과서 4", desc: "안모분석 및 성장예측", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_04_안모분석.pdf" },
-        { id: 5, title: "교과서 5", desc: "부정교합의 원인과 분류", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_05_부정교합.pdf" },
-        { id: 6, title: "교과서 6", desc: "수직 부정교합 진단", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_06_수직.pdf" },
-        { id: 7, title: "교과서 7", desc: "수평 부정교합 치료", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_07_수평.pdf" },
-        { id: 8, title: "교과서 8", desc: "치료 계획 수립", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_08_치료계획.pdf" },
-        { id: 9, title: "교과서 9", desc: "보정력과 력학", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_09_력학.pdf" },
-        { id: 10, title: "교과서 10", desc: "보정치료의 실제", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_10_치료실제.pdf" },
-        { id: 11, title: "교과서 11", desc: "유지와 안정성", phase: "Phase 2", publisher: "명문출판", file: "documents/textbook_11_유지.pdf" }
-    ],
-    videos: [
-        { id: 1, title: "영상 1", desc: "EZM 기초 개념 설명", phase: "Phase 1", duration: "45분", file: "https://youtube.com/watch?v=example1" },
-        { id: 2, title: "영상 2", desc: "공간분석 실습", phase: "Phase 2", duration: "60분", file: "https://youtube.com/watch?v=example2" },
-        { id: 3, title: "영상 3", desc: "케이스 분석 워크숍", phase: "Phase 2", duration: "90분", file: "https://youtube.com/watch?v=example3" },
-        { id: 4, title: "영상 4", desc: "플랫폼 사용법", phase: "Phase 3", duration: "30분", file: "https://youtube.com/watch?v=example4" }
-    ],
-    presentations: [
-        { id: 1, title: "프레젠테이션 1", desc: "Deep Bite 케이스 분석", phase: "Phase 2", type: "임상사례", file: "documents/presentation_01_DeepBite.pptx" },
-        { id: 2, title: "프레젠테이션 2", desc: "Open Bite 치료 결과", phase: "Phase 2", type: "임상사례", file: "documents/presentation_02_OpenBite.pptx" },
-        { id: 3, title: "프레젠테이션 3", desc: "Class II 부정교합 사례", phase: "Phase 2", type: "임상사례", file: "documents/presentation_03_ClassII.pptx" },
-        { id: 4, title: "프레젠테이션 4", desc: "Class III 부정교합 사례", phase: "Phase 2", type: "임상사례", file: "documents/presentation_04_ClassIII.pptx" },
-        { id: 5, title: "프레젠테이션 5", desc: "전후방 치조골 부족", phase: "Phase 2", type: "임상사례", file: "documents/presentation_05_치조골.pptx" },
-        { id: 6, title: "프레젠테이션 6", desc: "성인 복합 부정교합", phase: "Phase 2", type: "임상사례", file: "documents/presentation_06_성인.pptx" },
-        { id: 7, title: "프레젠테이션 7", desc: "GEO-AIO 도입 사례 1", phase: "Phase 3", type: "도입사례", file: "documents/presentation_07_도입1.pptx" },
-        { id: 8, title: "프레젠테이션 8", desc: "GEO-AIO 도입 사례 2", phase: "Phase 3", type: "도입사례", file: "documents/presentation_08_도입2.pptx" },
-        { id: 9, title: "프레젠테이션 9", desc: "GEO-AIO 도입 사례 3", phase: "Phase 3", type: "도입사례", file: "documents/presentation_09_도입3.pptx" }
-    ],
-    documents: [
-        { id: 1, title: "문서 1", desc: "EZM 연구논문", phase: "Phase 1", type: "논문", file: "documents/research_01_EZM.pdf" },
-        { id: 2, title: "문서 2", desc: "공간분석 가이드", phase: "Phase 2", type: "가이드", file: "documents/guide_01_공간분석.pdf" },
-        { id: 3, title: "문서 3", desc: "진단 체크리스트", phase: "Phase 1", type: "참고자료", file: "documents/checklist_진단.pdf" },
-        { id: 4, title: "문서 4", desc: "치료계획 템플릿", phase: "Phase 2", type: "템플릿", file: "documents/template_치료계획.docx" },
-        { id: 5, title: "문서 5", desc: "케이스 리뷰 양식", phase: "Phase 2", type: "양식", file: "documents/form_케이스리뷰.pdf" },
-        { id: 6, title: "문서 6", desc: "성장 예측 표", phase: "Phase 2", type: "참고자료", file: "documents/table_성장예측.xlsx" },
-        { id: 7, title: "문서 7", desc: "세팔로메트릭 기준값", phase: "Phase 2", type: "참고자료", file: "documents/reference_세팔로.pdf" },
-        { id: 8, title: "문서 8", desc: "부정교합 분류표", phase: "Phase 1", type: "참고자료", file: "documents/classification_부정교합.pdf" },
-        { id: 9, title: "문서 9", desc: "AI 진단 가이드", phase: "Phase 3", type: "가이드", file: "documents/guide_AI진단.pdf" },
-        { id: 10, title: "문서 10", desc: "플랫폼 사용자 매뉴얼", phase: "Phase 3", type: "매뉴얼", file: "documents/manual_플랫폼.pdf" },
-        { id: 11, title: "문서 11", desc: "윤리 가이드라인", phase: "Phase 1", type: "가이드", file: "documents/guide_윤리.pdf" },
-        { id: 12, title: "문서 12", desc: "환자 동의서", phase: "Phase 2", type: "양식", file: "documents/form_동의서.pdf" },
-        { id: 13, title: "문서 13", desc: "치료 결과 기록", phase: "Phase 2", type: "양식", file: "documents/form_결과기록.pdf" },
-        { id: 14, title: "문서 14", desc: "학습 목표", phase: "Phase 1", type: "참고자료", file: "documents/objectives_학습목표.pdf" },
-        { id: 15, title: "문서 15", desc: "임상 근거", phase: "Phase 2", type: "논문", file: "documents/evidence_임상근거.pdf" },
-        { id: 16, title: "문서 16", desc: "비용-효율 분석", phase: "Phase 3", type: "참고자료", file: "documents/analysis_비용효율.pdf" },
-        { id: 17, title: "문서 17", desc: "FAQ 모음", phase: "Phase 3", type: "참고자료", file: "documents/faq_자주묻는질문.pdf" },
-        { id: 18, title: "문서 18", desc: "용어 사전", phase: "Phase 1", type: "참고자료", file: "documents/glossary_용어.pdf" },
-        { id: 19, title: "문서 19", desc: "참고문헌 목록", phase: "Phase 2", type: "참고자료", file: "documents/references_참고문헌.pdf" },
-        { id: 20, title: "문서 20", desc: "학습 계획안", phase: "Phase 1", type: "가이드", file: "documents/guide_학습계획.pdf" },
-        { id: 21, title: "문서 21", desc: "개선 제안", phase: "Phase 3", type: "피드백", file: "documents/feedback_제안.pdf" }
-    ]
-};
 
 let currentSummaryIndex = 0;
 let currentSummarySlides = [];
