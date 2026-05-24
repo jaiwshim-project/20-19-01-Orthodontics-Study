@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프레젠테이션 - 교정학 학습 플랫폼</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
+        .resource-card { padding: 15px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; cursor: pointer; transition: all 0.3s; }
+        .resource-card:hover { border-color: #ec4899; box-shadow: 0 2px 8px rgba(236, 72, 153, 0.1); background: #fdf2f8; transform: translateY(-2px); }
+        .resource-card h4 { margin: 0 0 8px 0; color: #1f2937; font-size: 15px; }
+        .resource-card p { margin: 0 0 10px 0; font-size: 13px; color: #666; line-height: 1.4; }
+        .resource-badge { display: inline-block; padding: 4px 8px; background: #fbf1f9; color: #ec4899; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-card { background: #fdf2f8; padding: 15px; border-radius: 8px; border-left: 4px solid #ec4899; text-align: center; }
+        .stat-number { font-size: 24px; font-weight: 700; color: #ec4899; }
+        .stat-label { font-size: 12px; color: #666; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
+    </header>
+    <nav>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html">📚 자료</a>
+        <a href="learning-materials.html">📖 학습자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html">💡 개념정리</a>
+        <a href="ideas.html">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="webceph.html">🔍 웹셉·세팔로</a>
+        <a href="comparison.html">⚖️ EZM 비교</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
+    </nav>
+    <div class="container">
+        <div class="card" style="background: linear-gradient(135deg, #fdf2f8 0%, #fbf1f9 100%); border: 2px solid #ec4899; margin-bottom: 30px;">
+            <h2 style="color: #ec4899; margin-top: 0;">📊 프레젠테이션</h2>
+            <p style="color: #1f2937; font-size: 16px; line-height: 1.8;">실제 임상 케이스와 분석 결과를 담은 <strong>9개의 프레젠테이션</strong></p>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">프레젠테이션</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6+3</div>
+                    <div class="stat-label">임상/도입사례</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h3>📚 전체 프레젠테이션 목록</h3>
+            <div class="resource-grid"></div>
+        </div>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>📚 학습자료</h3>
+                    <ul>
+                        <li><a href="learning-materials.html">전체 학습자료</a></li>
+                        <li><a href="slides.html">45개 슬라이드</a></li>
+                        <li><a href="presentations.html">9개 프레젠테이션</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>© 2026 교정학 학습 플랫폼</p>
+            </div>
+        </footer>
+    </div>
+    <script src="common.js"></script>
+    <script src="js/resources.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.querySelector('.resource-grid');
+            let html = '';
+            resourcesData.presentations.forEach(pres => {
+                html += `<div class="resource-card" onclick="openResourceDetail('presentations', ${pres.id})"><h4>📊 ${pres.title}</h4><p>${pres.desc}</p><span class="resource-badge">${pres.type}</span></div>`;
+            });
+            grid.innerHTML = html;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드 - 교정학 학습 플랫폼</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .resource-card {
+            padding: 15px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .resource-card:hover {
+            border-color: #0066CC;
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1);
+            background: #f0f9ff;
+            transform: translateY(-2px);
+        }
+        .resource-card h4 {
+            margin: 0 0 8px 0;
+            color: #1f2937;
+            font-size: 15px;
+        }
+        .resource-card p {
+            margin: 0 0 10px 0;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+        }
+        .resource-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #e0f2fe;
+            color: #0066CC;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .resource-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .resource-modal.show {
+            display: flex;
+        }
+        .resource-modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        .summary-progress {
+            display: flex;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .summary-progress-bar {
+            height: 100%;
+            background: #0066CC;
+            transition: width 0.3s ease;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #0066CC;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0066CC;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .filter-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .filter-button {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #dbeafe;
+            color: #0066CC;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .filter-button.active {
+            background: #0066CC;
+            color: white;
+            border-color: #0066CC;
+        }
+        .filter-button:hover {
+            border-color: #0066CC;
+            background: #f0f9ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
+    </header>
+
+    <nav>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html">📚 자료</a>
+        <a href="learning-materials.html">📖 학습자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html">💡 개념정리</a>
+        <a href="ideas.html">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="webceph.html">🔍 웹셉·세팔로</a>
+        <a href="comparison.html">⚖️ EZM 비교</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
+    </nav>
+
+    <div class="container">
+        <!-- 히어로섹션 -->
+        <div class="card" style="background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%); border: 2px solid #0066CC; margin-bottom: 30px;">
+            <h2 style="color: #0066CC; margin-top: 0;">📸 Kim Yong Eul 교정학 강의 슬라이드</h2>
+            <p style="color: #1f2937; font-size: 16px; line-height: 1.8;">
+                Equilibrium Zone Methodology의 핵심 개념을 담은 <strong>45개의 강의 슬라이드</strong>
+            </p>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">45</div>
+                    <div class="stat-label">전체 슬라이드</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">450</div>
+                    <div class="stat-label">요약 슬라이드</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">학습 단계</div>
+                </div>
+            </div>
+            <p style="color: #666; font-size: 13px; margin: 15px 0 0 0; border-top: 1px solid #dbeafe; padding-top: 15px;">
+                ✅ 각 슬라이드마다 10개의 요약 슬라이드 연결<br/>
+                ✅ Phase 1-3 단계별 완전 분류<br/>
+                ✅ 화살표 키로 빠른 네비게이션
+            </p>
+        </div>
+
+        <!-- 필터 섹션 -->
+        <div class="card">
+            <h3>🔍 슬라이드 필터</h3>
+            <p style="color: #666; font-size: 13px; margin-bottom: 15px;">Phase를 선택하여 필터링하세요</p>
+            <div class="filter-section">
+                <button class="filter-button active" onclick="filterSlides('all')">전체 (45개)</button>
+                <button class="filter-button" onclick="filterSlides('Phase 1')">Phase 1 (기초)</button>
+                <button class="filter-button" onclick="filterSlides('Phase 2')">Phase 2 (심화)</button>
+                <button class="filter-button" onclick="filterSlides('Phase 3')">Phase 3 (응용)</button>
+            </div>
+        </div>
+
+        <!-- 슬라이드 그리드 -->
+        <div class="card">
+            <h3>📚 전체 슬라이드 목록</h3>
+            <p style="color: #666; margin-bottom: 20px;">각 슬라이드를 클릭하면 10개의 요약 슬라이드를 확인할 수 있습니다</p>
+            <div class="resource-grid"></div>
+        </div>
+
+        <!-- 학습 팁 -->
+        <div class="card" style="background: #d1fae5; border-left: 4px solid #10b981;">
+            <h3 style="margin-top: 0; color: #059669;">💡 슬라이드 활용 팁</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div>
+                    <h4 style="margin: 0 0 8px 0; color: #059669;">📌 요약 슬라이드 활용</h4>
+                    <p style="margin: 0; font-size: 13px; color: #059669; line-height: 1.5;">각 슬라이드마다 10개의 요약본이 제공됩니다. 핵심만 빠르게 학습하세요.</p>
+                </div>
+                <div>
+                    <h4 style="margin: 0 0 8px 0; color: #059669;">📖 순차 학습</h4>
+                    <p style="margin: 0; font-size: 13px; color: #059669; line-height: 1.5;">Phase 1 → 2 → 3 순서대로 진행하는 것을 권장합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>🎓 학습경로</h3>
+                    <ul>
+                        <li><a href="learning-path.html">Phase 1: 기초 이해</a></li>
+                        <li><a href="learning-path.html">Phase 2: 고급 이해</a></li>
+                        <li><a href="learning-path.html">Phase 3: 플랫폼 적용</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>📚 학습자료</h3>
+                    <ul>
+                        <li><a href="learning-materials.html">전체 학습자료</a></li>
+                        <li><a href="slides.html">45개 슬라이드</a></li>
+                        <li><a href="textbooks.html">11개 교과서</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>🚀 학습 도구</h3>
+                    <ul>
+                        <li><a href="concepts.html">개념정리</a></li>
+                        <li><a href="ideas.html">플랫폼개선</a></li>
+                        <li><a href="progress.html">학습 진도</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>⚖️ 방법론 비교</h3>
+                    <ul>
+                        <li><a href="comparison.html">EZM vs Cephalometric</a></li>
+                        <li><a href="webceph.html">웹셉·세팔로 상세</a></li>
+                        <li><a href="application.html">플랫폼 적용</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-stats" style="justify-content: center;">
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">45</div>
+                    <div class="footer-stat-label">슬라이드</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">450</div>
+                    <div class="footer-stat-label">요약 슬라이드</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">3</div>
+                    <div class="footer-stat-label">학습 단계</div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    <span class="footer-badge">⭐ EZM</span>
+                    <span class="footer-badge">📚 Phase 1-3</span>
+                    <span class="footer-badge">🚀 AI 플랫폼</span>
+                </p>
+                <p>© 2026 교정학 학습 플랫폼 | Kim Yong Eul의 Equilibrium Zone Methodology (EZM)</p>
+                <p style="margin-top: 10px; color: #6b7280;">마지막 업데이트: 2026-05-24</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="js/resources.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        let filteredSlides = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.querySelector('.resource-grid');
+            if (!grid) return;
+
+            let html = '';
+            resourcesData.slides.forEach(slide => {
+                html += `
+                    <div class="resource-card" onclick="openResourceDetail('slides', ${slide.id})">
+                        <h4>📸 ${slide.title}</h4>
+                        <p>${slide.desc}</p>
+                        <span class="resource-badge">${slide.phase}</span>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        });
+
+        function filterSlides(phase) {
+            const buttons = document.querySelectorAll('.filter-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const grid = document.querySelector('.resource-grid');
+            let html = '';
+
+            if (phase === 'all') {
+                resourcesData.slides.forEach(slide => {
+                    html += `
+                        <div class="resource-card" onclick="openResourceDetail('slides', ${slide.id})">
+                            <h4>📸 ${slide.title}</h4>
+                            <p>${slide.desc}</p>
+                            <span class="resource-badge">${slide.phase}</span>
+                        </div>
+                    `;
+                });
+            } else {
+                resourcesData.slides.filter(slide => slide.phase === phase).forEach(slide => {
+                    html += `
+                        <div class="resource-card" onclick="openResourceDetail('slides', ${slide.id})">
+                            <h4>📸 ${slide.title}</h4>
+                            <p>${slide.desc}</p>
+                            <span class="resource-badge">${slide.phase}</span>
+                        </div>
+                    `;
+                });
+            }
+
+            grid.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

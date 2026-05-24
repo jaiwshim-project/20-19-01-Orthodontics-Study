@@ -1,1 +1,8 @@
-{}
+{
+  "showLineNumber": true,
+  "readableLineLength": false,
+  "trashOption": "local",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "AIOCD/00_Inbox",
+  "attachmentFolderPath": "첨부파일"
+}

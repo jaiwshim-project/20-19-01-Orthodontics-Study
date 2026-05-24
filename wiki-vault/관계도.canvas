@@ -1,169 +1,25 @@
-﻿{
-    "edges":  [
-                  {
-                      "label":  "포함",
-                      "color":  "5",
-                      "fromNode":  "root",
-                      "id":  "edge-root-folder",
-                      "toNode":  "folder"
-                  },
-                  {
-                      "label":  "하위",
-                      "color":  "3",
-                      "fromNode":  "folder",
-                      "id":  "edge-folder-file-1",
-                      "toNode":  "file-1"
-                  },
-                  {
-                      "label":  "하위",
-                      "color":  "3",
-                      "fromNode":  "folder",
-                      "id":  "edge-folder-file-2",
-                      "toNode":  "file-2"
-                  },
-                  {
-                      "label":  "하위",
-                      "color":  "3",
-                      "fromNode":  "folder",
-                      "id":  "edge-folder-file-3",
-                      "toNode":  "file-3"
-                  },
-                  {
-                      "label":  "하위",
-                      "color":  "3",
-                      "fromNode":  "folder",
-                      "id":  "edge-folder-file-4",
-                      "toNode":  "file-4"
-                  },
-                  {
-                      "label":  "하위",
-                      "color":  "3",
-                      "fromNode":  "folder",
-                      "id":  "edge-folder-file-5",
-                      "toNode":  "file-5"
-                  },
-                  {
-                      "label":  "하위",
-                      "color":  "3",
-                      "fromNode":  "folder",
-                      "id":  "edge-folder-file-6",
-                      "toNode":  "file-6"
-                  },
-                  {
-                      "label":  "하위",
-                      "color":  "3",
-                      "fromNode":  "folder",
-                      "id":  "edge-folder-file-7",
-                      "toNode":  "file-7"
-                  },
-                  {
-                      "label":  "하위",
-                      "color":  "3",
-                      "fromNode":  "folder",
-                      "id":  "edge-folder-file-8",
-                      "toNode":  "file-8"
-                  }
-              ],
-    "nodes":  [
-                  {
-                      "id":  "root",
-                      "y":  0,
-                      "width":  300,
-                      "color":  "1",
-                      "type":  "text",
-                      "height":  100,
-                      "x":  0,
-                      "text":  "# 01 치과 교정학\n\n74개 파일"
-                  },
-                  {
-                      "id":  "folder",
-                      "y":  200,
-                      "width":  280,
-                      "color":  "2",
-                      "type":  "text",
-                      "height":  120,
-                      "x":  -300,
-                      "text":  "## 📁 폴더\n\n74개 파일\n471.43MB"
-                  },
-                  {
-                      "id":  "file-1",
-                      "y":  400,
-                      "width":  220,
-                      "color":  "4",
-                      "type":  "text",
-                      "height":  80,
-                      "x":  -50,
-                      "text":  "📄 05\n.png"
-                  },
-                  {
-                      "id":  "file-2",
-                      "y":  400,
-                      "width":  220,
-                      "color":  "4",
-                      "type":  "text",
-                      "height":  80,
-                      "x":  200,
-                      "text":  "📄 1. 현대 교정학의 발전과 과제\n.docx"
-                  },
-                  {
-                      "id":  "file-3",
-                      "y":  520,
-                      "width":  220,
-                      "color":  "4",
-                      "type":  "text",
-                      "height":  80,
-                      "x":  -300,
-                      "text":  "📄 1. 현대 교정학의 발전과 과제\n.pdf"
-                  },
-                  {
-                      "id":  "file-4",
-                      "y":  520,
-                      "width":  220,
-                      "color":  "4",
-                      "type":  "text",
-                      "height":  80,
-                      "x":  -50,
-                      "text":  "📄 11\n.png"
-                  },
-                  {
-                      "id":  "file-5",
-                      "y":  520,
-                      "width":  220,
-                      "color":  "4",
-                      "type":  "text",
-                      "height":  80,
-                      "x":  200,
-                      "text":  "📄 20-19_Orthodontic_AI_Copilot\n.pptx"
-                  },
-                  {
-                      "id":  "file-6",
-                      "y":  640,
-                      "width":  220,
-                      "color":  "4",
-                      "type":  "text",
-                      "height":  80,
-                      "x":  -300,
-                      "text":  "📄 AI_Powered_Precision_Orthodontics\n.pptx"
-                  },
-                  {
-                      "id":  "file-7",
-                      "y":  640,
-                      "width":  220,
-                      "color":  "4",
-                      "type":  "text",
-                      "height":  80,
-                      "x":  -50,
-                      "text":  "📄 Bio-AI_Orthodontics\n.pptx"
-                  },
-                  {
-                      "id":  "file-8",
-                      "y":  640,
-                      "width":  220,
-                      "color":  "4",
-                      "type":  "text",
-                      "height":  80,
-                      "x":  200,
-                      "text":  "📄 Gemini_Generated_Image_ceylfdceylfdceyl\n.png"
-                  }
-              ]
+{
+	"edges":[
+		{"label":"포함","color":"5","fromNode":"root","id":"edge-root-folder","toNode":"folder","fromSide":"bottom","toSide":"top"},
+		{"label":"하위","color":"3","fromNode":"folder","id":"edge-folder-file-1","toNode":"file-1","fromSide":"bottom","toSide":"top"},
+		{"label":"하위","color":"3","fromNode":"folder","id":"edge-folder-file-2","toNode":"file-2","fromSide":"right","toSide":"top"},
+		{"label":"하위","color":"3","fromNode":"folder","id":"edge-folder-file-3","toNode":"file-3","fromSide":"bottom","toSide":"top"},
+		{"label":"하위","color":"3","fromNode":"folder","id":"edge-folder-file-4","toNode":"file-4","fromSide":"bottom","toSide":"top"},
+		{"label":"하위","color":"3","fromNode":"folder","id":"edge-folder-file-5","toNode":"file-5","fromSide":"bottom","toSide":"top"},
+		{"label":"하위","color":"3","fromNode":"folder","id":"edge-folder-file-6","toNode":"file-6","fromSide":"bottom","toSide":"top"},
+		{"label":"하위","color":"3","fromNode":"folder","id":"edge-folder-file-7","toNode":"file-7","fromSide":"bottom","toSide":"top"},
+		{"label":"하위","color":"3","fromNode":"folder","id":"edge-folder-file-8","toNode":"file-8","fromSide":"bottom","toSide":"top"}
+	],
+	"nodes":[
+		{"id":"root","y":0,"width":300,"color":"1","type":"text","height":100,"x":0,"text":"# 01 치과 교정학\n\n74개 파일"},
+		{"id":"folder","y":200,"width":280,"color":"2","type":"text","height":120,"x":-300,"text":"## 📁 폴더\n\n74개 파일\n471.43MB"},
+		{"id":"file-1","y":400,"width":220,"color":"4","type":"text","height":80,"x":-50,"text":"📄 05\n.png"},
+		{"id":"file-2","y":400,"width":220,"color":"4","type":"text","height":80,"x":200,"text":"📄 1. 현대 교정학의 발전과 과제\n.docx"},
+		{"id":"file-3","y":520,"width":220,"color":"4","type":"text","height":80,"x":-300,"text":"📄 1. 현대 교정학의 발전과 과제\n.pdf"},
+		{"id":"file-4","y":520,"width":220,"color":"4","type":"text","height":80,"x":-50,"text":"📄 11\n.png"},
+		{"id":"file-5","y":520,"width":220,"color":"4","type":"text","height":80,"x":200,"text":"📄 20-19_Orthodontic_AI_Copilot\n.pptx"},
+		{"id":"file-6","y":640,"width":220,"color":"4","type":"text","height":80,"x":-300,"text":"📄 AI_Powered_Precision_Orthodontics\n.pptx"},
+		{"id":"file-7","y":640,"width":220,"color":"4","type":"text","height":80,"x":-50,"text":"📄 Bio-AI_Orthodontics\n.pptx"},
+		{"id":"file-8","y":640,"width":220,"color":"4","type":"text","height":80,"x":200,"text":"📄 Gemini_Generated_Image_ceylfdceylfdceyl\n.png"}
+	]
 }

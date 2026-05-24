@@ -90,10 +90,24 @@
             background: white;
             border-radius: 12px;
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
             padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        .summary-progress {
+            display: flex;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .summary-progress-bar {
+            height: 100%;
+            background: #0066CC;
+            transition: width 0.3s ease;
         }
         @media (max-width: 768px) {
             .hero-grid {
@@ -114,6 +128,7 @@
     <nav>
         <a href="index.html">🏠 홈</a>
         <a href="resources.html" class="active">📚 자료</a>
+        <a href="learning-materials.html">📖 학습자료</a>
         <a href="learning-path.html">🎓 학습경로</a>
         <a href="concepts.html">💡 개념정리</a>
         <a href="ideas.html">💭 플랫폼개선</a>
@@ -160,53 +175,15 @@
             </div>
         </div>
 
-        <div class="card">
-            <h2>📚 학습 자료</h2>
-            <p style="color: #666;">총 90개의 자료로 체계적인 학습 가능</p>
-
-            <div class="tab-buttons">
-                <button class="tab-button active" onclick="switchTab('slides')">📸 슬라이드 (45개)</button>
-                <button class="tab-button" onclick="switchTab('textbooks')">📖 교과서 (11개)</button>
-                <button class="tab-button" onclick="switchTab('videos')">🎬 영상 (4개)</button>
-                <button class="tab-button" onclick="switchTab('presentations')">📊 프레젠테이션 (9개)</button>
-                <button class="tab-button" onclick="switchTab('documents')">📄 문서 (21개)</button>
-            </div>
-
-            <!-- 슬라이드 탭 -->
-            <div id="slides" class="tab-content active">
-                <h3>📸 Kim Yong Eul 교정학 강의 슬라이드 (45개)</h3>
-                <p style="color: #666; margin-bottom: 20px;">Equilibrium Zone Methodology의 핵심 개념을 담은 강의 슬라이드 모음</p>
-                <div class="resource-grid"></div>
-            </div>
-
-            <!-- 교과서 탭 -->
-            <div id="textbooks" class="tab-content">
-                <h3>📖 명문출판사 교정학 교과서 (11개)</h3>
-                <p style="color: #666; margin-bottom: 20px;">체계적인 교정학 이론과 실습을 다루는 교과서</p>
-                <div class="resource-grid"></div>
-            </div>
-
-            <!-- 영상 탭 -->
-            <div id="videos" class="tab-content">
-                <h3>🎬 강의 영상 (4개)</h3>
-                <p style="color: #666; margin-bottom: 20px;">개념 설명과 실습이 담긴 영상 자료</p>
-                <div class="resource-grid"></div>
-            </div>
-
-            <!-- 프레젠테이션 탭 -->
-            <div id="presentations" class="tab-content">
-                <h3>📊 프레젠테이션 (9개)</h3>
-                <p style="color: #666; margin-bottom: 20px;">실제 임상 케이스와 분석 결과를 담은 프레젠테이션</p>
-                <div class="resource-grid"></div>
-            </div>
-
-            <!-- 문서 탭 -->
-            <div id="documents" class="tab-content">
-                <h3>📄 학습 문서 (21개)</h3>
-                <p style="color: #666; margin-bottom: 20px;">논문, 가이드, 참고자료 등</p>
-                <div style="padding: 15px; background: #d1fae5; border-radius: 6px; border-left: 4px solid #10b981; margin-bottom: 20px;">
-                    <p style="margin: 0;"><strong>💾 모든 자료는 resources/documents 폴더에서 확인하세요.</strong></p>
+        <!-- 학습자료는 독립적인 페이지로 이동 -->
+        <div class="card" style="background: #e0f2fe; border: 2px solid #0066CC; margin-bottom: 30px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                <div>
+                    <h2 style="margin: 0 0 10px 0; color: #0066CC;">📖 학습자료 라이브러리</h2>
+                    <p style="margin: 0 0 15px 0; color: #1f2937;">45개 슬라이드, 11개 교과서, 총 90개의 학습자료를 하나의 페이지에서 관리하세요!</p>
+                    <a href="learning-materials.html" class="btn btn-primary" style="display: inline-block; padding: 10px 20px; background: #0066CC; color: white; border-radius: 6px; text-decoration: none; font-weight: 500;">📖 학습자료 보기</a>
                 </div>
+                <div style="font-size: 48px;">📚</div>
             </div>
         </div>
 
@@ -302,11 +279,11 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>📚 주요 자료</h3>
+                    <h3>📚 학습자료</h3>
                     <ul>
-                        <li><a href="resources.html">45개 슬라이드</a></li>
-                        <li><a href="resources.html">11개 교과서</a></li>
-                        <li><a href="resources.html">90개 전체 자료</a></li>
+                        <li><a href="learning-materials.html">전체 학습자료</a></li>
+                        <li><a href="learning-materials.html">45개 슬라이드</a></li>
+                        <li><a href="learning-materials.html">11개 교과서</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

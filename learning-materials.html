@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습자료 - 교정학 학습 플랫폼</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .material-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .material-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+        }
+        .material-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: #0066CC;
+        }
+        .material-card.slides {
+            border-left: 6px solid #0066CC;
+        }
+        .material-card.slides:hover {
+            background: #f0f9ff;
+        }
+        .material-card.textbooks {
+            border-left: 6px solid #10b981;
+        }
+        .material-card.textbooks:hover {
+            background: #f0fdf4;
+        }
+        .material-card.videos {
+            border-left: 6px solid #f59e0b;
+        }
+        .material-card.videos:hover {
+            background: #fffbeb;
+        }
+        .material-card.presentations {
+            border-left: 6px solid #ec4899;
+        }
+        .material-card.presentations:hover {
+            background: #fdf2f8;
+        }
+        .material-card.documents {
+            border-left: 6px solid #8b5cf6;
+        }
+        .material-card.documents:hover {
+            background: #faf5ff;
+        }
+        .material-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        .material-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+        .material-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .material-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+        .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        .material-button {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #0066CC;
+            color: white;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .material-card.textbooks .material-button { background: #10b981; }
+        .material-card.videos .material-button { background: #f59e0b; }
+        .material-card.presentations .material-button { background: #ec4899; }
+        .material-card.documents .material-button { background: #8b5cf6; }
+        .material-button:hover {
+            opacity: 0.9;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0066CC;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0066CC;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
+    </header>
+
+    <nav>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html">📚 자료</a>
+        <a href="learning-materials.html" class="active">📖 학습자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html">💡 개념정리</a>
+        <a href="ideas.html">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="webceph.html">🔍 웹셉·세팔로</a>
+        <a href="comparison.html">⚖️ EZM 비교</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
+    </nav>
+
+    <div class="container">
+        <!-- 히어로섹션 -->
+        <div class="card" style="background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%); border: 2px solid #0066CC; margin-bottom: 30px;">
+            <h2 style="color: #0066CC; margin-top: 0;">📖 학습자료 라이브러리</h2>
+            <p style="color: #1f2937; font-size: 16px; line-height: 1.8;">
+                <strong>총 90개의 학습자료</strong>를 5개의 독립적인 페이지로 관리하세요.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">90</div>
+                    <div class="stat-label">전체 자료</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #10b981; background: #f0fdf4;">
+                    <div class="stat-number" style="color: #10b981;">5</div>
+                    <div class="stat-label">독립 페이지</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #f59e0b; background: #fffbeb;">
+                    <div class="stat-number" style="color: #f59e0b;">450</div>
+                    <div class="stat-label">요약 슬라이드</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 학습자료 카드 -->
+        <div class="card">
+            <h2>📚 학습자료별 독립 페이지</h2>
+            <p style="color: #666; margin-bottom: 20px;">각 자료 타입별 독립적인 페이지에서 상세하게 학습하세요</p>
+
+            <div class="material-cards">
+                <!-- 슬라이드 -->
+                <a href="slides.html" class="material-card slides">
+                    <div>
+                        <div class="material-icon">📸</div>
+                        <div class="material-title">강의 슬라이드</div>
+                        <div class="material-desc">Equilibrium Zone Methodology의 핵심 개념을 담은 강의 슬라이드</div>
+                        <div class="material-stats">
+                            <div class="stat">
+                                <div class="stat-number" style="color: #0066CC;">45</div>
+                                <div class="stat-label">슬라이드</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number" style="color: #0066CC;">450</div>
+                                <div class="stat-label">요약</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="material-button">📸 슬라이드 보기</button>
+                </a>
+
+                <!-- 교과서 -->
+                <a href="textbooks.html" class="material-card textbooks">
+                    <div>
+                        <div class="material-icon">📖</div>
+                        <div class="material-title">교과서</div>
+                        <div class="material-desc">체계적인 교정학 이론과 실습을 다루는 명문출판 교과서</div>
+                        <div class="material-stats">
+                            <div class="stat">
+                                <div class="stat-number" style="color: #10b981;">11</div>
+                                <div class="stat-label">교과서</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number" style="color: #10b981;">3</div>
+                                <div class="stat-label">단계</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="material-button">📖 교과서 보기</button>
+                </a>
+
+                <!-- 영상 -->
+                <a href="videos.html" class="material-card videos">
+                    <div>
+                        <div class="material-icon">🎬</div>
+                        <div class="material-title">강의 영상</div>
+                        <div class="material-desc">개념 설명과 실습이 담긴 고화질 강의 영상</div>
+                        <div class="material-stats">
+                            <div class="stat">
+                                <div class="stat-number" style="color: #f59e0b;">4</div>
+                                <div class="stat-label">영상</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number" style="color: #f59e0b;">225분</div>
+                                <div class="stat-label">총 길이</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="material-button">🎬 영상 보기</button>
+                </a>
+
+                <!-- 프레젠테이션 -->
+                <a href="presentations.html" class="material-card presentations">
+                    <div>
+                        <div class="material-icon">📊</div>
+                        <div class="material-title">프레젠테이션</div>
+                        <div class="material-desc">실제 임상 케이스와 분석 결과를 담은 프레젠테이션</div>
+                        <div class="material-stats">
+                            <div class="stat">
+                                <div class="stat-number" style="color: #ec4899;">9</div>
+                                <div class="stat-label">프레젠</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number" style="color: #ec4899;">6+3</div>
+                                <div class="stat-label">임상/사례</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="material-button">📊 프레젠테이션 보기</button>
+                </a>
+
+                <!-- 문서 -->
+                <a href="documents.html" class="material-card documents">
+                    <div>
+                        <div class="material-icon">📄</div>
+                        <div class="material-title">학습 문서</div>
+                        <div class="material-desc">논문, 가이드, 참고자료 등 다양한 문서 자료</div>
+                        <div class="material-stats">
+                            <div class="stat">
+                                <div class="stat-number" style="color: #8b5cf6;">21</div>
+                                <div class="stat-label">문서</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number" style="color: #8b5cf6;">6</div>
+                                <div class="stat-label">유형</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="material-button">📄 문서 보기</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- 학습 팁 -->
+        <div class="card" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0066CC;">
+            <h2 style="margin-top: 0; color: #0066CC;">💡 학습자료 활용 팁</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div style="padding: 15px; background: white; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0; color: #0066CC;">📌 슬라이드 활용</h4>
+                    <p style="margin: 0; font-size: 13px; color: #666; line-height: 1.5;">각 슬라이드마다 10개의 요약 슬라이드가 연결되어 있습니다. 핵심만 빠르게 학습하세요.</p>
+                </div>
+                <div style="padding: 15px; background: white; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0; color: #10b981;">📚 교과서 학습</h4>
+                    <p style="margin: 0; font-size: 13px; color: #666; line-height: 1.5;">Phase 1 → 2 → 3 순서로 체계적으로 학습하는 것을 권장합니다.</p>
+                </div>
+                <div style="padding: 15px; background: white; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0; color: #f59e0b;">🎬 영상 시청</h4>
+                    <p style="margin: 0; font-size: 13px; color: #666; line-height: 1.5;">시각적 학습으로 개념을 더 깊이 있게 이해할 수 있습니다.</p>
+                </div>
+                <div style="padding: 15px; background: white; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0; color: #ec4899;">📊 케이스 분석</h4>
+                    <p style="margin: 0; font-size: 13px; color: #666; line-height: 1.5;">실제 임상 케이스로 현실적인 진단 및 치료 능력을 키우세요.</p>
+                </div>
+                <div style="padding: 15px; background: white; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0; color: #8b5cf6;">📄 참고 자료</h4>
+                    <p style="margin: 0; font-size: 13px; color: #666; line-height: 1.5;">가이드, 템플릿, 참고자료 등을 활용해 학습을 체계화하세요.</p>
+                </div>
+                <div style="padding: 15px; background: white; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0; color: #0066CC;">🚀 진도 관리</h4>
+                    <p style="margin: 0; font-size: 13px; color: #666; line-height: 1.5;">진도 페이지에서 학습한 자료를 기록하고 복습하세요.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>🎓 학습경로</h3>
+                    <ul>
+                        <li><a href="learning-path.html">Phase 1: 기초 이해</a></li>
+                        <li><a href="learning-path.html">Phase 2: 고급 이해</a></li>
+                        <li><a href="learning-path.html">Phase 3: 플랫폼 적용</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>📚 학습자료</h3>
+                    <ul>
+                        <li><a href="slides.html">45개 슬라이드</a></li>
+                        <li><a href="textbooks.html">11개 교과서</a></li>
+                        <li><a href="documents.html">21개 문서</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>🚀 학습 도구</h3>
+                    <ul>
+                        <li><a href="concepts.html">개념정리</a></li>
+                        <li><a href="ideas.html">플랫폼개선</a></li>
+                        <li><a href="progress.html">학습 진도</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>⚖️ 방법론 비교</h3>
+                    <ul>
+                        <li><a href="comparison.html">EZM vs Cephalometric</a></li>
+                        <li><a href="webceph.html">웹셉·세팔로 상세</a></li>
+                        <li><a href="application.html">플랫폼 적용</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-stats" style="justify-content: center;">
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">90</div>
+                    <div class="footer-stat-label">학습 자료</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">5</div>
+                    <div class="footer-stat-label">독립 페이지</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">450</div>
+                    <div class="footer-stat-label">요약 슬라이드</div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    <span class="footer-badge">⭐ EZM</span>
+                    <span class="footer-badge">📚 Phase 1-3</span>
+                    <span class="footer-badge">🚀 AI 플랫폼</span>
+                </p>
+                <p>© 2026 교정학 학습 플랫폼 | Kim Yong Eul의 Equilibrium Zone Methodology (EZM)</p>
+                <p style="margin-top: 10px; color: #6b7280;">마지막 업데이트: 2026-05-24 | 5개 독립 페이지 + 450개 요약 슬라이드</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
