@@ -852,6 +852,30 @@ footer::before {
     cursor: not-allowed;
 }
 
+/* 리소스 모달 */
+.resource-modal {
+    display: none !important;
+}
+
+.resource-modal.show {
+    display: flex !important;
+}
+
+.resource-modal-content {
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media (max-width: 768px) {
     .ai-chat-floating {
         bottom: 20px;
@@ -867,5 +891,10 @@ footer::before {
         width: calc(100% - 40px);
         max-width: 360px;
         height: 500px;
+    }
+
+    .resource-modal-content {
+        width: 95% !important;
+        padding: 20px !important;
     }
 }
