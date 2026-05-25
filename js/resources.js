@@ -3644,7 +3644,7 @@ function generateSummarySlidesForDocument(id, title) {
     return content.map((c, index) => ({
         id: index + 1,
         title: c.title,
-        subtitle: c.subtitle || "",
+        subtitle: (c.subtitle && !c.subtitle.startsWith('images/')) ? c.subtitle : title,
         content: c.content || [],
         keyPoints: c.keyPoints || [],
         file: `documents/doc_${id}_summary_${String(index + 1).padStart(2, '0')}.pdf`
