@@ -3668,49 +3668,8 @@ function generateSummarySlidesForDocument(id, title) {
 //     return;
 // }
 // ─────────────────────────────────────────────────────────
-// ↓ 아래 4개 블록을 slides 블록 바로 다음에 붙여넣으세요.
+// ↓ openResourceDetail() 내부의 summaryGenerators 패턴으로 통합 처리됨
 // ============================================================
-
-    if (type === 'textbooks') {
-        currentSlideId = resource.id;
-        currentSlideTitle = resource.title;
-        currentSummarySlides = generateSummarySlidesForTextbook(resource.id, resource.title);
-        currentSummaryIndex = 0;
-        showSummarySlide();
-        modal.classList.add('show');
-        return;
-    }
-
-    if (type === 'videos') {
-        currentSlideId = resource.id;
-        currentSlideTitle = resource.title;
-        currentSummarySlides = generateSummarySlidesForVideo(resource.id, resource.title);
-        currentSummaryIndex = 0;
-        showSummarySlide();
-        modal.classList.add('show');
-        return;
-    }
-
-    if (type === 'presentations') {
-        currentSlideId = resource.id;
-        currentSlideTitle = resource.title;
-        currentSummarySlides = generateSummarySlidesForPresentation(resource.id, resource.title);
-        currentSummaryIndex = 0;
-        showSummarySlide();
-        modal.classList.add('show');
-        return;
-    }
-
-    if (type === 'documents') {
-        currentSlideId = resource.id;
-        currentSlideTitle = resource.title;
-        currentSummarySlides = generateSummarySlidesForDocument(resource.id, resource.title);
-        currentSummaryIndex = 0;
-        showSummarySlide();
-        modal.classList.add('show');
-        return;
-    }
-
 
 const resourcesData = {
     slides: [
