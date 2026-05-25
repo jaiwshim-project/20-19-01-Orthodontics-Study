@@ -1,1 +1,584 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교정학 학습 플랫폼 - 웹셉·세팔로 + Obsidian</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .hub-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hub-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .hub-card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .hub-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .hub-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hub-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s;
+            border-left: 4px solid #667eea;
+        }
+
+        .hub-link:hover {
+            background: #e8e8ff;
+            transform: translateX(5px);
+        }
+
+        .hub-link span {
+            font-weight: 600;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .hub-link-icon {
+            font-size: 18px;
+            margin-right: 12px;
+        }
+
+        .hub-link-arrow {
+            font-size: 16px;
+            color: #999;
+        }
+
+        .phase-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .phase-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .phase-header {
+            padding: 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .phase-header.phase1 {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        }
+
+        .phase-header.phase2 {
+            background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+        }
+
+        .phase-header.phase3 {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+        }
+
+        .phase-content {
+            padding: 20px;
+        }
+
+        .phase-content p {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .phase-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phase-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phase-btn.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .phase-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .phase-btn.secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+
+        .phase-btn.secondary:hover {
+            background: #f9f9f9;
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .stats-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .stats-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-item {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .quick-links {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .quick-links h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-btn {
+            padding: 15px;
+            background: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            font-size: 13px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0;
+            display: flex;
+            overflow-x: auto;
+            gap: 0;
+            flex-wrap: nowrap;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            flex: 0 1 auto;
+            min-width: auto;
+            padding: 12px 10px;
+            text-decoration: none;
+            color: #1f2937;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background: #f9fafb;
+        }
+
+        nav a.active {
+            color: #0ea5e9;
+            border-bottom-color: #0ea5e9;
+        }
+
+        nav a:last-child {
+            order: 999 !important;
+            margin-left: auto !important;
+        }
+
+        @media (max-width: 768px) {
+            .hub-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            .phase-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">🏠 홈</a>
+            <a href="resources.html">📚 자료</a>
+            <a href="learning-path.html">🎓 학습경로</a>
+            <a href="concepts.html">💡 개념정리</a>
+            <a href="ideas.html">💭 플랫폼개선</a>
+            <a href="progress.html">⏱️ 진도</a>
+            <a href="application.html">🚀 플랫폼적용</a>
+            <a href="webceph.html">🔍 웹셉·세팔로</a>
+            <a href="comparison.html">⚖️ EZM 비교</a>
+            <a href="wiki-vault-index.html" class="active">📚 EZM 교정학</a>
+            <a href="aiocd-index.html">🤖 AIOCD 플랫폼</a>
+        </nav>
+
+        <header>
+            <h1>🧠 위키볼트 학습 허브</h1>
+            <p>EZM 교정학 플랫폼 + Obsidian 학습 통합</p>
+            <p style="font-size: 14px; opacity: 0.8;">웹 플랫폼과 Obsidian에서 관리하세요</p>
+        </header>
+
+        <div class="hub-grid">
+            <!-- 웹 플랫폼 카드 -->
+            <div class="hub-card">
+                <h2>📚 웹 플랫폼</h2>
+                <p>학습 자료 접근, 진도 추적, 개념 정리, 아이디어 기록 등 모든 학습 진행을 관리합니다.</p>
+                <div class="hub-links">
+                    <a href="index.html" class="hub-link">
+                        <span class="hub-link-icon">🏠</span>
+                        <span>홈 - 플랫폼 개요</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="resources.html" class="hub-link">
+                        <span class="hub-link-icon">📚</span>
+                        <span>자료 - 90개 학습 자료</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="learning-path.html" class="hub-link">
+                        <span class="hub-link-icon">🎓</span>
+                        <span>학습경로 - Phase 1-3</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="progress.html" class="hub-link">
+                        <span class="hub-link-icon">⏱️</span>
+                        <span>진도 - 학습 추적 & 내보내기</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="concepts.html" class="hub-link">
+                        <span class="hub-link-icon">💡</span>
+                        <span>개념정리 - 학습 정의</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="ideas.html" class="hub-link">
+                        <span class="hub-link-icon">💭</span>
+                        <span>플랫폼개선 - 아이디어</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Obsidian Vault 카드 -->
+            <div class="hub-card">
+                <h2>🧠 Obsidian Vault</h2>
+                <p>Phase별 학습 노트, 케이스 분석, 개념 정리를 작성하고 관리합니다.</p>
+                <div class="hub-links">
+                    <a href="#" onclick="openVaultFolder(); return false;" class="hub-link">
+                        <span class="hub-link-icon">📂</span>
+                        <span>Vault 폴더 열기</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="#" onclick="openObsidianApp(); return false;" class="hub-link">
+                        <span class="hub-link-icon">🧠</span>
+                        <span>Obsidian 앱에서 열기</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="#" onclick="openPhaseGuide(); return false;" class="hub-link">
+                        <span class="hub-link-icon">📖</span>
+                        <span>Phase별 가이드 보기</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="#" onclick="alert('Templates 폴더에 학습노트.md, 케이스분석.md, 개념정리.md 템플릿을 사용하세요'); return false;" class="hub-link">
+                        <span class="hub-link-icon">📝</span>
+                        <span>템플릿 사용</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="#" onclick="alert('progress.html 페이지에서 JSON/CSV/마크다운 내보내기를 사용하세요'); return false;" class="hub-link">
+                        <span class="hub-link-icon">💾</span>
+                        <span>진도 데이터 내보내기</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                    <a href="#" onclick="alert('Study Notes 폴더를 만들고 개인 노트를 추가하세요'); return false;" class="hub-link">
+                        <span class="hub-link-icon">✍️</span>
+                        <span>개인 노트 작성</span>
+                        <span class="hub-link-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 카드 -->
+        <h3 style="color: white; margin-bottom: 20px; text-align: center; font-size: 22px;">📚 Phase별 학습 계획</h3>
+        <div class="phase-cards">
+            <div class="phase-card">
+                <div class="phase-header phase1">🟢 Phase 1: 기초 이해 (22시간)</div>
+                <div class="phase-content">
+                    <p><strong>학습 목표</strong></p>
+                    <ul style="margin-left: 15px; margin-bottom: 10px;">
+                        <li style="margin-bottom: 5px;">EZ 개념 완전 이해</li>
+                        <li style="margin-bottom: 5px;">5방향 사진 이해</li>
+                        <li>부정교합 분류 습득</li>
+                    </ul>
+                    <p style="margin-bottom: 15px;"><strong>자료</strong>: 슬라이드 1-15 + Chapter 1-3</p>
+                    <p style="margin-bottom: 15px;"><strong>기간</strong>: 1-2주</p>
+                    <div class="phase-buttons">
+                        <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">학습경로 보기</button>
+                        <button class="phase-btn secondary" onclick="openPhaseNote(1)">Obsidian 노트</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-header phase2">🔵 Phase 2: 고급 이해 (28시간)</div>
+                <div class="phase-content">
+                    <p><strong>학습 목표</strong></p>
+                    <ul style="margin-left: 15px; margin-bottom: 10px;">
+                        <li style="margin-bottom: 5px;">공간분석 공식 습득</li>
+                        <li style="margin-bottom: 5px;">발치판단 능력</li>
+                        <li>안모분석 역량</li>
+                    </ul>
+                    <p style="margin-bottom: 15px;"><strong>자료</strong>: 슬라이드 16-39 + Chapter 4-8</p>
+                    <p style="margin-bottom: 15px;"><strong>기간</strong>: 2-3주</p>
+                    <div class="phase-buttons">
+                        <button class="phase-btn primary" onclick="window.location.href='learning-path.html'">학습경로 보기</button>
+                        <button class="phase-btn secondary" onclick="openPhaseNote(2)">Obsidian 노트</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-header phase3">🟡 Phase 3: 플랫폼 적용 (30시간)</div>
+                <div class="phase-content">
+                    <p><strong>학습 목표</strong></p>
+                    <ul style="margin-left: 15px; margin-bottom: 10px;">
+                        <li style="margin-bottom: 5px;">플랫폼 코드 이해</li>
+                        <li style="margin-bottom: 5px;">독립 개발 능력</li>
+                        <li>문제 해결 역량</li>
+                    </ul>
+                    <p style="margin-bottom: 15px;"><strong>자료</strong>: 슬라이드 40-45 + Chapter 9-11</p>
+                    <p style="margin-bottom: 15px;"><strong>기간</strong>: 2-3주</p>
+                    <div class="phase-buttons">
+                        <button class="phase-btn primary" onclick="window.location.href='application.html'">플랫폼 적용 가이드</button>
+                        <button class="phase-btn secondary" onclick="openPhaseNote(3)">Obsidian 노트</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 통계 섹션 -->
+        <div class="stats-section">
+            <h3>📊 학습 리소스</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">90</div>
+                    <div class="stat-label">학습 자료</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">HTML 페이지</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">80</div>
+                    <div class="stat-label">학습 시간</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Learning Phase</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 빠른 링크 -->
+        <div class="quick-links">
+            <h3>🔗 빠른 메뉴</h3>
+            <div class="quick-grid">
+                <a href="index.html" class="quick-btn">🏠 플랫폼 홈</a>
+                <a href="progress.html" class="quick-btn">⏱️ 진도 추적</a>
+                <a href="concepts.html" class="quick-btn">💡 개념정리</a>
+                <a href="ideas.html" class="quick-btn">💭 아이디어</a>
+                <a href="comparison.html" class="quick-btn">⚖️ EZM 비교</a>
+                <a href="application.html" class="quick-btn">🚀 플랫폼 가이드</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>🧠 교정학 플랫폼 - 웹셉·세팔로 + Obsidian 통합 학습 시스템</p>
+            <p>Kim Yong Eul의 Equilibrium Zone Methodology (EZM) 완전 이해 & 20-19 Orthodontics AI 플랫폼 독립 개발</p>
+            <p style="margin-top: 15px; opacity: 0.8;">© 2026 | 마지막 업데이트: 2026-05-23</p>
+        </footer>
+    </div>
+
+    <script>
+        function openVaultFolder() {
+            const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
+            window.open(vaultPath, '_blank');
+        }
+
+        function openPhaseNote(phaseNum) {
+            const phaseNames = {
+                1: '기초%20이해',
+                2: '고급%20이해',
+                3: '플랫폼%20적용'
+            };
+
+            const phasePath = `file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki/Phase%20${phaseNum}%20-%20${phaseNames[phaseNum]}/README.md`;
+            window.open(phasePath, '_blank');
+        }
+
+        function openObsidianApp() {
+            const vaultPath = 'file:///C:/01%20클로드코드/000%20특허-저작권/01%20치과%20교정학/.obsidian-wiki';
+            window.open(vaultPath, '_blank');
+        }
+
+        function openPhaseGuide() {
+            alert('Phase 가이드:\n\n📖 로컬 폴더에서 확인:\nC:\\01 클로드코드\\000 특허-저작권\\01 치과 교정학\\.obsidian-wiki\nPhase 1 - 기초 이해\\README.md\nPhase 2 - 고급 이해\\README.md\nPhase 3 - 플랫폼 적용\\README.md\n\n또는 learning-path.html에서 상세 학습경로를 확인하세요.');
+        }
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

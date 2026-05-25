@@ -1,1 +1,380 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플랫폼개선 - 교정학 학습 플랫폼</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .idea-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+            overflow-x: auto;
+        }
+        .idea-tab-button {
+            padding: 12px 20px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            color: #666;
+            transition: all 0.3s;
+        }
+        .idea-tab-button.active {
+            color: #0066CC;
+            border-bottom-color: #0066CC;
+        }
+        .idea-form {
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .idea-card {
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 6px;
+            border-left: 4px solid #f59e0b;
+            margin-bottom: 15px;
+        }
+        .idea-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .idea-category {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #fef3c7;
+            color: #92400e;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 10px;
+        }
+        .idea-content {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .idea-date {
+            font-size: 12px;
+            color: #999;
+        }
+        .idea-status {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #e0f2fe;
+            color: #0066CC;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 교정학 학습 플랫폼</h1>
+        <p>Kim Yong Eul의 Equilibrium Zone 방법론 + 명문출판사 교과서 완전 통합</p>
+    </header>
+
+    <nav>
+        <a href="index.html">🏠 홈</a>
+        <a href="resources.html">📚 자료</a>
+        <a href="learning-path.html">🎓 학습경로</a>
+        <a href="concepts.html">💡 개념정리</a>
+        <a href="ideas.html" class="active">💭 플랫폼개선</a>
+        <a href="progress.html">⏱️ 진도</a>
+        <a href="application.html">🚀 플랫폼적용</a>
+        <a href="webceph.html">🔍 웹셉·세팔로</a>
+        <a href="comparison.html">⚖️ EZM 비교</a>
+        <a href="wiki-vault-index.html">🧠 위키볼트</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>💭 플랫폼 개선 아이디어</h2>
+            <p style="color: #666;">학습 과정에서 플랫폼을 더 나을 수 있다는 아이디어를 제안하세요. 좋은 의견은 실제 개발에 반영됩니다.</p>
+        </div>
+
+        <div class="card">
+            <h2>💡 아이디어 작성</h2>
+            <div class="idea-form">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">아이디어 제목</label>
+                    <input type="text" id="ideaTitle" placeholder="예: AI 챗봇 기능 추가" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">카테고리</label>
+                    <select id="ideaCategory" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px;">
+                        <option value="">선택하세요</option>
+                        <option value="기능">🚀 기능 추가</option>
+                        <option value="UI/UX">🎨 UI/UX 개선</option>
+                        <option value="학습">📚 학습 콘텐츠</option>
+                        <option value="분석">📊 분석 도구</option>
+                        <option value="연동">🔗 외부 연동</option>
+                        <option value="기타">💡 기타</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">우선순위</label>
+                    <select id="ideaPriority" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px;">
+                        <option value="">선택하세요</option>
+                        <option value="높음">⚡ 높음 (지금 필요)</option>
+                        <option value="중간">🔶 중간 (곧 필요)</option>
+                        <option value="낮음">🟢 낮음 (나중에)</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">상세 설명</label>
+                    <textarea id="ideaContent" placeholder="어떤 문제를 해결하고, 어떻게 개선하면 좋을지 설명하세요." style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px; min-height: 120px;"></textarea>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">기대 효과</label>
+                    <input type="text" id="ideaBenefit" placeholder="예: 학습 시간 30% 단축, 이해도 향상" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px;">
+                </div>
+
+                <button class="btn btn-primary" onclick="addIdea()">💾 아이디어 제출</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎯 제출된 아이디어</h2>
+            <div class="idea-tabs">
+                <button class="idea-tab-button active" onclick="filterIdeas('')">전체 (0)</button>
+                <button class="idea-tab-button" onclick="filterIdeas('기능')">기능 (0)</button>
+                <button class="idea-tab-button" onclick="filterIdeas('UI/UX')">UI/UX (0)</button>
+                <button class="idea-tab-button" onclick="filterIdeas('학습')">학습 (0)</button>
+                <button class="idea-tab-button" onclick="filterIdeas('분석')">분석 (0)</button>
+            </div>
+
+            <div id="ideaList" style="margin-top: 20px;">
+                <p style="text-align: center; color: #999; padding: 40px;">제출된 아이디어가 없습니다.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🌟 아이디어 제출 가이드</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
+                    <h4>📝 구체적으로</h4>
+                    <p style="font-size: 13px; color: #666;">"좋게 해주세요"보다는 구체적인 문제와 해결책을 제시하세요.</p>
+                </div>
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
+                    <h4>🎯 사용자 입장</h4>
+                    <p style="font-size: 13px; color: #666;">사용자(학습자)의 관점에서 어떤 불편함이 있는지 설명하세요.</p>
+                </div>
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
+                    <h4>💡 창의성</h4>
+                    <p style="font-size: 13px; color: #666;">혁신적인 기능 아이디어도 환영합니다.</p>
+                </div>
+                <div style="padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #0066CC;">
+                    <h4>📊 실현 가능성</h4>
+                    <p style="font-size: 13px; color: #666;">기술적으로 구현 가능한지도 함께 생각해 보세요.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>✨ 추천 개선 주제</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>🤖 AI 챗봇 고도화</strong> — 더 정교한 Q&A 시스템, 음성 입출력 기능
+                </li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>📱 모바일 앱화</strong> — 더 나은 모바일 UX, 오프라인 학습 지원
+                </li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>🎮 게이미피케이션</strong> — 배지, 리더보드, 리워드 시스템
+                </li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>📊 상세 분석 대시보드</strong> — 학습 패턴 분석, 약점 진단
+                </li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                    <strong>👥 협력 학습</strong> — 동료 학습자와의 공유, 토론 기능
+                </li>
+                <li style="padding: 12px 0;">
+                    <strong>🌐 다국어 지원</strong> — 한국어 외 다른 언어 지원
+                </li>
+            </ul>
+        </div>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>🎓 학습경로</h3>
+                    <ul>
+                        <li><a href="learning-path.html">Phase 1: 기초 이해</a></li>
+                        <li><a href="learning-path.html">Phase 2: 고급 이해</a></li>
+                        <li><a href="learning-path.html">Phase 3: 플랫폼 적용</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>📚 주요 자료</h3>
+                    <ul>
+                        <li><a href="resources.html">45개 슬라이드</a></li>
+                        <li><a href="resources.html">11개 교과서</a></li>
+                        <li><a href="resources.html">90개 전체 자료</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>🚀 학습 도구</h3>
+                    <ul>
+                        <li><a href="concepts.html">개념정리</a></li>
+                        <li><a href="ideas.html">플랫폼개선</a></li>
+                        <li><a href="progress.html">학습 진도</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>⚖️ 방법론 비교</h3>
+                    <ul>
+                        <li><a href="comparison.html">EZM vs Cephalometric</a></li>
+                        <li><a href="webceph.html">웹셉·세팔로 상세</a></li>
+                        <li><a href="application.html">플랫폼 적용</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-stats" style="justify-content: center;">
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">90</div>
+                    <div class="footer-stat-label">학습 자료</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">9</div>
+                    <div class="footer-stat-label">학습 페이지</div>
+                </div>
+                <div class="footer-stat-item">
+                    <div class="footer-stat-number">80</div>
+                    <div class="footer-stat-label">학습 시간</div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    <span class="footer-badge">⭐ EZM</span>
+                    <span class="footer-badge">📚 Phase 1-3</span>
+                    <span class="footer-badge">🚀 AI 플랫폼</span>
+                </p>
+                <p>© 2026 교정학 학습 플랫폼 | Kim Yong Eul의 Equilibrium Zone Methodology (EZM)</p>
+                <p style="margin-top: 10px; color: #6b7280;">마지막 업데이트: 2026-05-22 | 45개 슬라이드 × 11개 교과서 완전 연결</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        let currentFilter = '';
+
+        function addIdea() {
+            const title = document.getElementById('ideaTitle').value.trim();
+            const category = document.getElementById('ideaCategory').value;
+            const priority = document.getElementById('ideaPriority').value;
+            const content = document.getElementById('ideaContent').value.trim();
+            const benefit = document.getElementById('ideaBenefit').value.trim();
+
+            if (!title || !category || !priority || !content) {
+                alert('제목, 카테고리, 우선순위, 설명을 모두 입력해주세요.');
+                return;
+            }
+
+            const data = getData();
+            data.ideas = data.ideas || [];
+            data.ideas.push({
+                id: Date.now(),
+                title,
+                category,
+                priority,
+                content,
+                benefit,
+                date: new Date().toISOString(),
+                status: '제출됨'
+            });
+
+            saveData(data);
+
+            document.getElementById('ideaTitle').value = '';
+            document.getElementById('ideaCategory').value = '';
+            document.getElementById('ideaPriority').value = '';
+            document.getElementById('ideaContent').value = '';
+            document.getElementById('ideaBenefit').value = '';
+
+            alert('아이디어가 제출되었습니다!');
+            renderIdeas();
+        }
+
+        function deleteIdea(id) {
+            if (confirm('이 아이디어를 삭제하시겠습니까?')) {
+                const data = getData();
+                data.ideas = (data.ideas || []).filter(i => i.id !== id);
+                saveData(data);
+                renderIdeas();
+            }
+        }
+
+        function filterIdeas(category) {
+            currentFilter = category;
+            renderIdeas();
+        }
+
+        function renderIdeas() {
+            const data = getData();
+            const ideas = (data.ideas || []).filter(i => !currentFilter || i.category === currentFilter);
+            const sorted = ideas.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            const container = document.getElementById('ideaList');
+            if (sorted.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999; padding: 40px;">제출된 아이디어가 없습니다.</p>';
+            } else {
+                container.innerHTML = sorted.map(i => `
+                    <div class="idea-card">
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div style="flex: 1;">
+                                <div class="idea-title">${i.title}</div>
+                                <span class="idea-category">${i.category}</span>
+                                <span style="font-size: 11px; font-weight: 600; color: ${i.priority === '높음' ? '#dc2626' : i.priority === '중간' ? '#f59e0b' : '#10b981'};">${i.priority} 우선순위</span>
+                                <div class="idea-content">${i.content.replace(/\n/g, '<br>')}</div>
+                                ${i.benefit ? `<div style="padding: 10px; background: #f0f9ff; border-radius: 4px; margin-bottom: 10px; font-size: 13px; color: #0066CC;"><strong>기대 효과:</strong> ${i.benefit}</div>` : ''}
+                                <div class="idea-date">${new Date(i.date).toLocaleString('ko-KR')}</div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="deleteIdea(${i.id})" style="background: #ef4444; color: white; padding: 5px 10px; font-size: 12px; margin-left: 10px;">삭제</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            updateIdeaTabs();
+        }
+
+        function updateIdeaTabs() {
+            const data = getData();
+            const allCount = (data.ideas || []).length;
+            const categoryCount = (category) => (data.ideas || []).filter(i => i.category === category).length;
+
+            const buttons = document.querySelectorAll('.idea-tab-button');
+            buttons[0].textContent = `전체 (${allCount})`;
+            buttons[1].textContent = `기능 (${categoryCount('기능')})`;
+            buttons[2].textContent = `UI/UX (${categoryCount('UI/UX')})`;
+            buttons[3].textContent = `학습 (${categoryCount('학습')})`;
+            buttons[4].textContent = `분석 (${categoryCount('분석')})`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderIdeas();
+        });
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
